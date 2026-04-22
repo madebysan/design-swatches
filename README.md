@@ -8,17 +8,26 @@
 
 ---
 
-## The premise
+## What this is
 
-If you work at a company and you want an AI coding agent to ship prototypes that *look like your product*, you have to hand it your design system. Most design systems live locked inside Figma libraries, Storybook instances, or design-tokens JSON — none of which paste cleanly into a chat with an LLM.
+A corpus of 81 DESIGN.md files — one per real company, all in the same 9-section format — plus a browsable gallery and the Claude Code skill that generated them.
 
-This is a research project to test how far you can push **design systems → markdown**: can the visual identity of a brand (colors, typography, components, depth, motion personality) be captured well enough in a single 9-section text file that an AI agent can rebuild a believable interface from it alone?
+The premise: AI coding agents produce generic UIs unless you hand them a detailed design system reference. Most design systems live locked inside Figma, Storybook, or tokens JSON — none of which paste cleanly into an LLM chat. DESIGN.md is the pasteable form: 9 sections of prose + tokens that describe a brand's visual identity well enough for an agent to rebuild a believable interface from it alone.
 
-So far the answer is: **mostly yes**, with some compression. The 81-brand explorer in this repo exists to prove it.
+## What's inside
+
+```
+design-swatches/
+├── getdesign-corpus/    # 81 DESIGN.md files (~250–550 lines each)
+├── explorer/            # Browsable visual catalog of all 81
+│   ├── index.html       # Filterable gallery (search, light/dark, by category & style)
+│   └── bentos/          # One HTML "swatch" per brand
+└── skill/design-md/     # Claude Code skill that generates new DESIGN.md files
+```
 
 ## The skill
 
-The actual product here is `skill/design-md/` — a Claude Code skill that produces a DESIGN.md from any URL. The intended use is on your own company's site:
+`skill/design-md/` is a Claude Code skill that produces a DESIGN.md from any URL. The intended use is on your own company's site:
 
 ```bash
 cp -R skill/design-md ~/.claude/skills/
@@ -30,21 +39,17 @@ Then in any Claude Code session:
 /design-md https://your-company.com
 ```
 
-The skill scrapes design tokens via [dembrandt](https://github.com/dembrandt/dembrandt), picks 1–3 reference examples from the corpus to match the visual category, and writes a 9-section DESIGN.md you can drop into any agent context. Future prototypes built in that session land closer to your brand on the first try.
+The skill pulls raw design tokens via [dembrandt](https://github.com/dembrandt/dembrandt), then uses Claude with 1–3 corpus files as voice references to write a structured 9-section DESIGN.md. The result drops cleanly into any agent context — future prototypes built in that session land closer to your brand on the first try.
 
-## The proof
+### How this relates to dembrandt
 
-Generating a DESIGN.md for one company doesn't tell you whether the format actually works. So the corpus has 81 examples — wildly different visual languages, all captured in the same template — and an explorer that lets you see them side-by-side.
+Dembrandt already has a `--design-md` flag that outputs a DESIGN.md directly. What this project adds on top is the **corpus** (81 files in a consistent format, written with a specific interpretive voice) and the **exemplar-based prompting** that produces new files in that same voice. Dembrandt is the scraper layer — it tells you `#f36458` appears 12 times. This layer is what calls that coral Sanity's singular brand accent, reserved for CTAs, and flips to electric blue on hover. Raw tokens in, AI-usable design brief out.
 
-```
-design-swatches/
-├── getdesign-corpus/    # 81 DESIGN.md files (~250–550 lines each)
-└── explorer/            # Browsable visual catalog of all 81
-    ├── index.html       # Filterable gallery (search, light/dark, by category & style)
-    └── bentos/          # One HTML "swatch" per brand — colors, type, components
-```
+## The explorer
 
-The explorer is **proof**, not a swipe file. The brands catalogued here describe public corporate visual identities and remain owned by their respective companies. If you find one inspiring, use it as a voice reference for your own DESIGN.md — not as something to copy literally into a product. That's why this repo is private.
+81 DESIGN.md files is a lot of text to scan. The explorer renders each one back into a visible "design swatch" — hero typography, color palette, button variants, icon system, type specimens — so you can see the format's output side-by-side at scale. That it holds across Ferrari, Notion, A24, Mercury Weather, and Claude (wildly different visual priorities) is the evidence that the 9-section format is doing real work.
+
+The explorer is for reference, not for copying. The brands catalogued here describe public corporate visual identities and remain owned by their companies. Use them as voice references for your own DESIGN.md — not as something to lift into a product. That's why this repo is private.
 
 ## What's in a DESIGN.md
 
@@ -64,13 +69,13 @@ The last section is the payload — copy-paste prompts an AI agent can use direc
 
 ## Credits
 
-- Most corpus files come from VoltAgent's [getdesign.md](https://getdesign.md) CLI
 - Token extraction via [dembrandt](https://github.com/dembrandt/dembrandt)
-- Iconify CDN for the icon previews
+- Most corpus files bootstrapped from VoltAgent's [getdesign.md](https://getdesign.md) CLI
+- Iconify CDN for the icon previews in the explorer
 
 ## License
 
-The toolkit (skill, explorer, scripts) is [MIT](LICENSE). The DESIGN.md files describe public brand identities and remain owned by their respective companies — catalogued here for format research, not for redistribution or product use.
+The toolkit (skill, explorer, scripts) is [MIT](LICENSE). The DESIGN.md files describe public brand identities and remain owned by their respective companies — catalogued here as references, not for redistribution or product use.
 
 ---
 
