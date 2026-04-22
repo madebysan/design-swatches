@@ -1,6 +1,6 @@
 <h1 align="center">Design Swatches</h1>
 <p align="center">Portable visual identity for AI coding agents.</p>
-<p align="center"><a href="https://designmd-gamma.vercel.app"><strong>Try it live →</strong></a></p>
+<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Try it live →</strong></a></p>
 
 ![Design Swatches gallery](screenshot.png)
 
