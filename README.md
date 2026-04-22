@@ -4,6 +4,8 @@
 
 ![Design Swatches gallery](screenshot.png)
 
+![Sanity design swatch in dark mode](screenshot-detail.png)
+
 ---
 
 ## The premise
