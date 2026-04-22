@@ -25,3 +25,4 @@ explorer/shared/
 # Defensive: zombie background dev-server tasks have recreated these before
 test-harness/
 test-runs/
+.vercel
