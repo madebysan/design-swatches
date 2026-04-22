@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linear — Design Swatch</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #08090a;
+    --surface: #0f1011;
+    --surface-elevated: #191a1b;
+    --surface-hover: #28282c;
+    --heading: #f7f8f8;
+    --label: #f7f8f8;
+    --body: #8a8f98;
+    --body-strong: #d0d6e0;
+    --border: rgba(255,255,255,0.08);
+    --border-subtle: rgba(255,255,255,0.05);
+    --primary: #5e6ad2;
+    --primary-hover: #828fff;
+    --primary-light: #7170ff;
+    --brand-dark: #010102;
+    --success: #10b981;
+    --font-sans: "Inter Variable", "Inter", "SF Pro Display", -apple-system, system-ui, sans-serif;
+    --font-mono: "Berkeley Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --radius: 6px;
+    --radius-card: 8px;
+    --shadow-sm: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+    --shadow-lg: rgba(0,0,0,0) 0px 8px 2px, rgba(0,0,0,0.01) 0px 5px 2px, rgba(0,0,0,0.04) 0px 3px 2px, rgba(0,0,0,0.07) 0px 1px 1px, rgba(0,0,0,0.08) 0px 0px 1px;
+
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #5e6ad2;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-feature-settings: "cv01", "ss03"; }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv01", "ss03";
+    background: var(--brand-dark);
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main { padding: 32px 28px; }
+  .bento-wrap { display: grid; gap: 20px; max-width: 1344px; margin: 0 auto; }
+
+  .meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px; font-size: 13px; color: var(--body); letter-spacing: -0.13px; }
+  .meta a { color: var(--primary-light); text-decoration: none; font-weight: 510; }
+  .meta a:hover { color: var(--primary-hover); text-decoration: underline; }
+  .brand-label { font-size: 12px; color: var(--body-strong); font-weight: 510; letter-spacing: normal; }
+  .meta-brand { display: inline-flex; align-items: center; gap: 8px; }
+  .meta-favicon { width: 18px; height: 18px; border-radius: 3px; background: #fff; object-fit: contain; }
+
+  .hero {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(94,106,210,0.25) 0%, rgba(113,112,255,0.05) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 510;
+    color: var(--primary-light);
+    margin-bottom: 24px;
+    letter-spacing: -0.13px;
+  }
+  .hero h1 {
+    font-size: 64px;
+    font-weight: 510;
+    line-height: 1.00;
+    letter-spacing: -1.408px;
+    color: var(--heading);
+    margin-bottom: 20px;
+    max-width: 780px;
+    font-feature-settings: "cv01", "ss03";
+  }
+  .hero p { font-size: 18px; font-weight: 400; color: var(--body); max-width: 560px; margin-bottom: 28px; line-height: 1.6; letter-spacing: -0.165px; }
+  .hero-ctas { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; }
+  .tile-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .tile-title { font-size: 11px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.08em; color: var(--body-strong); }
+  .tile-sub { font-size: 12px; color: var(--body); font-weight: 510; letter-spacing: -0.13px; }
+  .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 40px; letter-spacing: -0.88px; }
+    .hero { padding: 36px 24px; }
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+    font-family: inherit; font-size: 14px; font-weight: 510;
+    border-radius: var(--radius); border: 1px solid transparent; cursor: pointer;
+    transition: background 0.12s, color 0.12s, border-color 0.12s; line-height: 1.5;
+    letter-spacing: -0.14px;
+  }
+  .btn-primary { background: var(--primary); color: #ffffff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-ghost { background: rgba(255,255,255,0.02); color: var(--body-strong); border-color: var(--border); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.04); color: var(--heading); }
+  .btn-subtle { background: rgba(255,255,255,0.04); color: var(--body); border-color: var(--border-subtle); }
+  .btn-subtle:hover { background: rgba(255,255,255,0.06); color: var(--body-strong); }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 6px; border: 1px solid var(--border); }
+  .swatch-name { font-size: 13px; font-weight: 510; color: var(--heading); letter-spacing: -0.13px; }
+  .swatch-hex { font-family: var(--font-mono); font-size: 11px; color: var(--body); }
+
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 6px; font-weight: 510; }
+  .type-display { font-size: 44px; font-weight: 510; letter-spacing: -0.968px; color: var(--heading); line-height: 1.0; }
+  .type-h2 { font-size: 24px; font-weight: 400; color: var(--heading); line-height: 1.33; letter-spacing: -0.288px; }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); line-height: 1.5; }
+  .type-caption { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--body-strong); text-transform: uppercase; letter-spacing: 0.04em; }
+  .type-spec { font-family: var(--font-mono); font-size: 10px; color: var(--body); margin-top: 6px; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); color: var(--primary-light); }
+  iconify-icon { font-size: 22px; }
+  .icon-meta { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-subtle); font-size: 12px; color: var(--body); }
+  .icon-meta strong { color: var(--heading); font-weight: 510; }
+
+  .sample-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .sample-card-title { font-size: 20px; font-weight: 590; color: var(--heading); margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.24px; }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.5; }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  .badge { display: inline-flex; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 510; }
+  .badge-success { background: transparent; color: var(--success); border: 1px solid rgba(16,185,129,0.4); }
+  .badge-neutral { background: transparent; color: var(--body-strong); border: 1px solid rgba(255,255,255,0.12); }
+
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 510; color: var(--body-strong); margin-bottom: 6px; letter-spacing: -0.13px; }
+  .input {
+    width: 100%; padding: 10px 14px; font-family: inherit; font-size: 14px; font-feature-settings: "cv01", "ss03";
+    color: var(--body-strong); background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(94,106,210,0.2); }
+  .input::placeholder { color: var(--body); }
+
+  .faq-item { border-bottom: 1px solid var(--border-subtle); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 510; color: var(--heading); text-align: left; letter-spacing: -0.165px; }
+  .faq-q::after { content: "+"; font-weight: 400; color: var(--primary-light); font-size: 20px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 14px; color: var(--body); line-height: 1.6; max-width: 540px; letter-spacing: -0.13px; }
+
+  .dark-tile { background: var(--surface-elevated); border: 1px solid var(--border); color: var(--heading); position: relative; overflow: hidden; }
+  .dark-tile::before { content: ""; position: absolute; top: -30%; right: -20%; width: 360px; height: 360px; background: radial-gradient(circle, rgba(113,112,255,0.3) 0%, transparent 60%); pointer-events: none; }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile blockquote { font-size: 20px; font-weight: 510; letter-spacing: -0.44px; line-height: 1.2; margin-bottom: 20px; color: var(--heading); }
+  .dark-tile .btn-primary { background: var(--primary); }
+
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block { height: 54px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--body); font-weight: 510; letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-mono); }
+  .shadow-1 { background: rgba(255,255,255,0.02); }
+  .shadow-2 { background: rgba(255,255,255,0.04); box-shadow: rgba(0,0,0,0.2) 0px 0px 0px 1px; }
+  .shadow-3 { background: rgba(255,255,255,0.05); box-shadow: var(--shadow-lg); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Linear</span>
+      </div>
+      <a href="../../getdesign-corpus/linear.app.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Linear 2026 · Cycles · Initiatives · Insights</span>
+        <h1>The issue tracking tool you'll enjoy using.</h1>
+        <p>Linear's language: near-black canvas, Inter Variable with cv01/ss03 and signature weight 510, and the only chromatic color is a single indigo-violet reserved for CTAs.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Start building</button>
+          <button class="btn btn-ghost">Sign in</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">dark canvas · single accent</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #08090a;"></div><div class="swatch-name">Marketing Black</div><div class="swatch-hex">#08090a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #0f1011;"></div><div class="swatch-name">Panel Dark</div><div class="swatch-hex">#0f1011</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #191a1b;"></div><div class="swatch-name">Level 3</div><div class="swatch-hex">#191a1b</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #5e6ad2;"></div><div class="swatch-name">Brand Indigo</div><div class="swatch-hex">#5e6ad2</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #7170ff;"></div><div class="swatch-name">Accent Violet</div><div class="swatch-hex">#7170ff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f7f8f8;"></div><div class="swatch-name">Primary Text</div><div class="swatch-hex">#f7f8f8</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #8a8f98;"></div><div class="swatch-name">Tertiary</div><div class="swatch-hex">#8a8f98</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #10b981;"></div><div class="swatch-name">Emerald</div><div class="swatch-hex">#10b981</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">6px · 510 weight</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Start building</button>
+          <button class="btn btn-ghost">Ghost default</button>
+          <button class="btn btn-subtle">Subtle</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Inter Variable · cv01, ss03 · 510</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 44px / 510</div>
+          <div class="type-display">Built for modern product teams.</div>
+          <div class="type-spec">Inter Variable · 510 · -0.968px · line-height 1.00</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading 2 / 24px / 400</div>
+          <div class="type-h2">Plan, track, and ship together</div>
+          <div class="type-spec">Inter Variable · 400 · -0.288px · line-height 1.33</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Linear is the issue tracking tool purpose-built for modern software teams. Cycles, projects, roadmaps, and integrations — designed with the precision you expect from the engineers using it.</div>
+          <div class="type-spec">Inter Variable · 400 · -0.165px · line-height 1.5</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Mono Label / 12px</div>
+          <div class="type-caption">LIN-4823 · PROGRESS · SPRINT 12</div>
+          <div class="type-spec">Berkeley Mono · 400 · 0.04em tracking · uppercase</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Ri line · Remix</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="lucide:bug"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:git-pull-request-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:route-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:keyboard-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:calendar-schedule-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:bar-chart-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:team-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ri:flashlight-line"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Remix Line</strong> · precise · 22px default
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Card</span>
+          <span class="tile-sub">translucent · 6px radius</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">LIN-4823 · Ship new cycle view</div>
+          <div class="sample-card-body">Redesign the cycle progress dashboard with contribution heatmap, individual velocity, and at-risk issue highlighting. Target: Cycle 24.</div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">In progress</span>
+            <span class="badge badge-neutral">Design · Engineering</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">indigo focus ring</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Work email</label>
+          <input type="email" id="email" class="input" placeholder="you@team.com" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="workspace">Workspace URL</label>
+          <input type="text" id="workspace" class="input" placeholder="acme" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Create workspace</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">luminance steps</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">LEVEL 1 · 0.02</div>
+          <div class="shadow-block shadow-2">LEVEL 2 · 0.04 + RING</div>
+          <div class="shadow-block shadow-3">LEVEL 3 · 0.05 + STACK</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline divider</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Does Linear have a free plan?</summary>
+          <div class="faq-a">Yes. Linear Free includes up to 250 issues, unlimited team members, and GitHub and Slack integrations — perfect for small teams and open-source projects.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I import from Jira?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is SOC 2 Type II available?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Brand-dark section</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.6);">#191a1b · violet aura</span>
+        </div>
+        <blockquote>"Linear replaced Jira, ClickUp, and half of Notion for us. Our team shipped more in the last quarter than the previous three combined."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #5e6ad2, #7170ff);"></div>
+          <div style="font-size: 13px; color: var(--body-strong);"><strong style="color:#fff; font-weight: 510;">Anya Reyes</strong> · Staff Engineer</div>
+        </div>
+        <button class="btn btn-primary">Read customer story</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

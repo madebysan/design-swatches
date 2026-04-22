@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SpaceX — Design Swatch</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0a0a0a;
+    --heading: #f0f0fa;
+    --label: #f0f0fa;
+    --body: rgba(240, 240, 250, 0.7);
+    --border: rgba(240, 240, 250, 0.15);
+    --primary: rgba(240, 240, 250, 0.1);
+    --primary-hover: rgba(240, 240, 250, 0.2);
+    --primary-light: rgba(240, 240, 250, 0.35);
+    --brand-dark: #000000;
+    --font-sans: "Archivo", "Arial Narrow", "Arial", "Verdana", sans-serif;
+    --shadow-sm: none;
+    --shadow-lg: none;
+
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #000;
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main { padding: 32px 28px; }
+  .bento-wrap { display: grid; gap: 20px; max-width: 1344px; margin: 0 auto; }
+
+  .meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px; font-size: 12px; color: var(--body); text-transform: uppercase; letter-spacing: 1.17px; }
+  .meta a { color: var(--heading); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.17px; color: var(--label); font-weight: 700; }
+  .meta-brand { display: inline-flex; align-items: center; gap: 8px; }
+  .meta-favicon { width: 18px; height: 18px; border-radius: 3px; background: #fff; object-fit: contain; }
+
+  .hero {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1457364887197-9150188c107b?w=1400&q=80') center/cover no-repeat, #000;
+    border: 1px solid var(--border);
+    border-radius: 0; padding: 80px 48px;
+    position: relative; overflow: hidden; min-height: 480px;
+    display: flex; align-items: flex-end;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 0; font-size: 11px; color: var(--heading);
+    margin-bottom: 24px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.17px; line-height: 0.94;
+  }
+  .hero h1 {
+    font-size: 48px; font-weight: 700; line-height: 1.00;
+    letter-spacing: 0.96px;
+    color: var(--heading); margin-bottom: 24px; max-width: 720px;
+    text-transform: uppercase;
+  }
+  .hero p {
+    font-size: 16px; font-weight: 400; color: var(--heading);
+    max-width: 560px; margin-bottom: 28px; line-height: 1.7;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0; padding: 28px;
+  }
+  .tile-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+  .tile-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.17px; color: var(--heading); }
+  .tile-sub { font-size: 11px; color: var(--body); text-transform: uppercase; letter-spacing: 1px; font-weight: 400; }
+  .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 32px; }
+    .hero { padding: 48px 24px; min-height: 360px; }
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 18px 28px;
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    border-radius: 32px; border: 1px solid var(--primary-light);
+    cursor: pointer; transition: all 0.2s; line-height: 0.94;
+    text-transform: uppercase; letter-spacing: 1.17px;
+    background: var(--primary); color: var(--heading);
+  }
+  .btn-primary:hover, .btn:hover { background: var(--primary-hover); color: var(--heading); }
+  .btn-ghost { background: transparent; }
+  .btn-dark { background: var(--heading); color: #000; border-color: transparent; }
+  .btn-dark:hover { background: #fff; color: #000; }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 56px; border-radius: 0; border: 1px solid var(--border); }
+  .swatch-name { font-size: 11px; font-weight: 700; color: var(--heading); text-transform: uppercase; letter-spacing: 1px; }
+  .swatch-hex { font-family: "Monaco", monospace; font-size: 10px; color: var(--body); text-transform: uppercase; letter-spacing: 1px; }
+
+  .type-sample { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.17px; color: var(--body); margin-bottom: 8px; font-weight: 700; }
+  .type-display { font-size: 42px; font-weight: 700; letter-spacing: 0.96px; color: var(--heading); line-height: 1.00; text-transform: uppercase; }
+  .type-h2 { font-size: 24px; font-weight: 700; letter-spacing: 0.96px; color: var(--heading); text-transform: uppercase; }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); line-height: 1.5; }
+  .type-caption { font-size: 13px; font-weight: 700; color: var(--heading); text-transform: uppercase; letter-spacing: 1.17px; }
+  .type-spec { font-family: "Monaco", monospace; font-size: 10px; color: var(--body); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--border); color: var(--heading); }
+  iconify-icon { font-size: 22px; }
+  .icon-meta { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: var(--body); text-transform: uppercase; letter-spacing: 1px; font-weight: 400; }
+  .icon-meta strong { color: var(--heading); font-weight: 700; }
+
+  .sample-card { background: transparent; border: 1px solid var(--border); border-radius: 0; padding: 24px; }
+  .sample-card-title { font-size: 22px; font-weight: 700; letter-spacing: 0.96px; color: var(--heading); margin-bottom: 10px; text-transform: uppercase; line-height: 1.1; }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.7; }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  .badge { display: inline-flex; padding: 6px 12px; border-radius: 0; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.17px; border: 1px solid var(--border); }
+  .badge-success { background: transparent; color: var(--heading); }
+  .badge-neutral { background: transparent; color: var(--body); }
+
+  .field { margin-bottom: 16px; }
+  .field-label { display: block; font-size: 11px; font-weight: 700; color: var(--heading); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.17px; }
+  .input {
+    width: 100%; padding: 14px 16px;
+    font-family: inherit; font-size: 14px; font-weight: 400;
+    color: var(--heading); background: transparent;
+    border: 1px solid var(--border); border-radius: 0; outline: none;
+    transition: border-color 0.2s;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .input:focus { border-color: var(--heading); }
+  .input::placeholder { color: var(--body); text-transform: uppercase; }
+
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--heading); text-align: left; text-transform: uppercase; letter-spacing: 1.17px; }
+  .faq-q::after { content: "+"; color: var(--heading); font-size: 20px; font-weight: 400; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 16px; font-size: 14px; color: var(--body); line-height: 1.7; max-width: 540px; }
+
+  .dark-tile { background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517976547714-720226b864c1?w=1400&q=80') center/cover no-repeat, #000; color: white; border: 1px solid var(--border); position: relative; overflow: hidden; min-height: 320px; }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: var(--heading); }
+  .dark-tile blockquote { font-size: 20px; font-weight: 700; line-height: 1.20; margin-bottom: 24px; color: white; text-transform: uppercase; letter-spacing: 0.96px; }
+  .dark-tile .btn { background: var(--primary); color: var(--heading); border-color: var(--primary-light); }
+
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block { height: 54px; background: transparent; border: 1px solid var(--border); border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--body); font-weight: 700; text-transform: uppercase; letter-spacing: 1.17px; }
+  .shadow-1 { border-color: var(--border); }
+  .shadow-2 { border-color: rgba(240,240,250,0.3); }
+  .shadow-3 { border-color: rgba(240,240,250,0.5); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · SpaceX</span>
+      </div>
+      <a href="../../getdesign-corpus/spacex.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">STARSHIP · FLIGHT 7 RECAP</span>
+        <h1>MAKING LIFE MULTIPLANETARY</h1>
+        <p>SpaceX designs, manufactures, and launches advanced rockets and spacecraft — a photographic exhibition in service of aerospace engineering.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-ghost">LEARN MORE</button>
+          <button class="btn btn-ghost">WATCH LAUNCH</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">COLOR PALETTE</span>
+          <span class="tile-sub">BLACK + SPECTRAL</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #000000;"></div><div class="swatch-name">SPACE BLACK</div><div class="swatch-hex">#000000</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f0f0fa;"></div><div class="swatch-name">SPECTRAL</div><div class="swatch-hex">#F0F0FA</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(240,240,250,0.1); border: 1px solid rgba(240,240,250,0.35);"></div><div class="swatch-name">GHOST 10%</div><div class="swatch-hex">10% ALPHA</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(240,240,250,0.35);"></div><div class="swatch-name">GHOST BORDER</div><div class="swatch-hex">35% ALPHA</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(0,0,0,0.5);"></div><div class="swatch-name">OVERLAY</div><div class="swatch-hex">BLACK 50%</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(240,240,250,0.7);"></div><div class="swatch-name">MUTED</div><div class="swatch-hex">SPEC 70%</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(240,240,250,0.15);"></div><div class="swatch-name">HAIRLINE</div><div class="swatch-hex">SPEC 15%</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #0a0a0a;"></div><div class="swatch-name">VOID</div><div class="swatch-hex">#0A0A0A</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">BUTTONS</span>
+          <span class="tile-sub">GHOST · 32PX PILL</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-ghost">LEARN MORE</button>
+          <button class="btn btn-ghost">WATCH LAUNCH</button>
+          <button class="btn btn-dark">BUY NOW</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">TYPOGRAPHY</span>
+          <span class="tile-sub">D-DIN · UPPERCASE</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">DISPLAY / 48PX</div>
+          <div class="type-display">MAKING LIFE MULTIPLANETARY</div>
+          <div class="type-spec">D-DIN-BOLD · 700 · LETTER-SPACING 0.96PX</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">HEADING / 24PX</div>
+          <div class="type-h2">MISSION SUMMARY</div>
+          <div class="type-spec">D-DIN · 700 · UPPERCASE</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">BODY / 16PX</div>
+          <div class="type-body">Founded in 2002, SpaceX designs, manufactures, and launches the world's most advanced rockets and spacecraft, with a history of firsts and a commitment to rapid iteration.</div>
+          <div class="type-spec">D-DIN · 400 · LINE-HEIGHT 1.7</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">NAV LABEL / 13PX</div>
+          <div class="type-caption">FALCON · STARSHIP · DRAGON · MISSIONS</div>
+          <div class="type-spec">D-DIN · 700 · LETTER-SPACING 1.17PX</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">ICONS</span>
+          <span class="tile-sub">MINIMAL LINE</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:earth"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:satellite-variant"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:weather-night"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:orbit"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:radar"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:arrow-up-thin"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="mdi:target"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          SET: <strong>MATERIAL OUTLINE</strong> · TREATMENT: THIN STROKE
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">MISSION CARD</span>
+          <span class="tile-sub">NO SHADOW · HAIRLINE</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">STARSHIP FLIGHT 7</div>
+          <div class="sample-card-body">A developmental test of Starship's upper stage with the Super Heavy booster. Target orbital insertion and controlled reentry over the Indian Ocean.</div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">SUCCESS</span>
+            <span class="badge badge-neutral">2026 · BOCA CHICA</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">FORM</span>
+          <span class="tile-sub">HAIRLINE INPUT</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">EMAIL</label>
+          <input type="email" id="email" class="input" placeholder="YOU@EMAIL.COM" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="interest">INTEREST</label>
+          <input type="text" id="interest" class="input" placeholder="STARLINK · LAUNCH" />
+        </div>
+        <button class="btn btn-dark" style="width: 100%; justify-content: center;">SUBSCRIBE</button>
+      </section>
+
+      <section class="tile span-3">
+        <div class="tile-head">
+          <span class="tile-title">DEPTH</span>
+          <span class="tile-sub">ZERO SHADOW</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">LEVEL 1 · HAIRLINE</div>
+          <div class="shadow-block shadow-2">LEVEL 2 · EDGE</div>
+          <div class="shadow-block shadow-3">LEVEL 3 · BRIGHT</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">HAIRLINE DIVIDER</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">WHAT IS STARSHIP?</summary>
+          <div class="faq-a">Starship is a fully reusable super-heavy-lift launch vehicle designed to carry both crew and cargo to Earth orbit, the Moon, Mars, and beyond.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">WHEN IS THE NEXT LAUNCH?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">HOW DOES REUSABILITY WORK?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">BRAND-DARK SECTION</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.6);">PHOTOGRAPHY OVERLAY</span>
+        </div>
+        <blockquote>"WHEN SOMETHING IS IMPORTANT ENOUGH, YOU DO IT EVEN IF THE ODDS ARE NOT IN YOUR FAVOR."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 28px; height: 28px; border-radius: 0; background: var(--heading);"></div>
+          <div style="font-size: 11px; letter-spacing: 1.17px;"><strong style="color: white; font-weight: 700;">ELON MUSK</strong> · CEO &amp; CHIEF ENGINEER</div>
+        </div>
+        <button class="btn btn-ghost">READ MORE</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

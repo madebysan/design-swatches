@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Binance — Design Swatch</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f5f5;
+    --heading: #1e2026;
+    --label: #1e2026;
+    --body: #848e9c;
+    --border: #e6e8ea;
+    --primary: #f0b90b;
+    --primary-hover: #d0980b;
+    --primary-light: #ffd000;
+    --brand-dark: #222126;
+    --dark-card: #2b2f36;
+    --ink: #1e2026;
+    --focus-blue: #1eaedb;
+    --crypto-green: #0ecb81;
+    --crypto-red: #f6465d;
+    --font-sans: "Inter", "BinancePlex", Arial, sans-serif;
+    --radius: 12px;
+    --shadow-sm: rgba(32, 32, 37, 0.05) 0px 3px 5px 0px;
+    --shadow-lg: rgba(8, 8, 8, 0.05) 0px 3px 5px 5px;
+
+    --sb-bg: #fafafa; --sb-border: #e5e5e5; --sb-text: #525252; --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3; --sb-active-bg: #171717; --sb-active-text: #ffffff; --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafafa; color: var(--body); font-weight: 500; line-height: 1.5; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main { padding: 32px 28px; }
+  .bento-wrap { display: grid; gap: 20px; max-width: 1344px; margin: 0 auto; }
+
+  .meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px; font-size: 12px; color: var(--body); font-weight: 500; }
+  .meta a { color: #d0980b; text-decoration: none; font-weight: 600; }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--label); }
+  .meta-brand { display: inline-flex; align-items: center; gap: 8px; }
+  .meta-favicon { width: 18px; height: 18px; border-radius: 3px; background: #fff; object-fit: contain; }
+
+  .hero { background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 56px 40px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; top: -100px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(240,185,11,0.22) 0%, rgba(248,209,47,0.08) 40%, transparent 70%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 4px; border: 1px solid var(--border); border-radius: 50px; background: var(--bg); font-size: 12px; color: var(--label); margin-bottom: 24px; font-weight: 600; }
+  .hero-eyebrow::before { content: "NEW"; background: var(--primary); color: var(--ink); padding: 2px 8px; border-radius: 50px; font-size: 10px; letter-spacing: 0.04em; font-weight: 700; }
+  .hero h1 { font-size: 60px; font-weight: 700; line-height: 1.08; color: var(--heading); margin-bottom: 20px; max-width: 760px; }
+  .hero p { font-size: 20px; font-weight: 500; color: var(--body); max-width: 560px; margin-bottom: 28px; line-height: 1.50; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .tile { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px; box-shadow: var(--shadow-sm); }
+  .tile-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .tile-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--label); }
+  .tile-sub { font-size: 12px; color: var(--body); font-weight: 500; }
+  .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 40px; } .hero { padding: 36px 24px; }
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 32px; font-family: inherit; font-size: 16px; font-weight: 600; border-radius: 50px; border: 1px solid transparent; cursor: pointer; transition: background 0.2s, color 0.2s; line-height: 1.25; letter-spacing: 0.16px; box-shadow: rgb(153,153,153) 0px 2px 10px -3px; }
+  .btn-primary { background: var(--primary); color: var(--ink); }
+  .btn-primary:hover { background: var(--focus-blue); color: white; }
+  .btn-ghost { background: white; color: var(--primary); border: 1px solid var(--primary); }
+  .btn-ghost:hover { background: var(--focus-blue); color: white; border-color: var(--focus-blue); }
+  .btn-dark { background: var(--brand-dark); color: white; }
+  .btn-dark:hover { background: var(--focus-blue); }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 8px; border: 1px solid var(--border); }
+  .swatch-name { font-size: 12px; font-weight: 600; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 4px; font-weight: 600; }
+  .type-display { font-size: 48px; font-weight: 700; color: var(--heading); line-height: 1.08; }
+  .type-h2 { font-size: 28px; font-weight: 500; color: var(--heading); line-height: 1.00; }
+  .type-body { font-size: 16px; font-weight: 500; color: var(--body); line-height: 1.50; }
+  .type-caption { font-size: 14px; font-weight: 600; color: var(--label); }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--body); margin-top: 4px; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--primary); }
+  iconify-icon { font-size: 22px; }
+  .icon-meta { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--body); font-weight: 500; }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  .sample-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm); }
+  .ticker-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .ticker-row:last-child { border-bottom: none; }
+  .ticker-pair { font-weight: 700; color: var(--heading); font-size: 14px; }
+  .ticker-price { font-family: "SF Mono", ui-monospace, monospace; font-size: 15px; font-weight: 600; color: var(--heading); }
+  .ticker-change-up { color: var(--crypto-green); font-size: 13px; font-weight: 600; }
+  .ticker-change-down { color: var(--crypto-red); font-size: 13px; font-weight: 600; }
+
+  .badge { display: inline-flex; padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+  .badge-success { background: rgba(14,203,129,0.15); color: var(--crypto-green); border: 1px solid rgba(14,203,129,0.3); }
+  .badge-neutral { background: var(--surface); color: var(--heading); border: 1px solid var(--border); }
+
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--label); margin-bottom: 6px; }
+  .input { width: 100%; padding: 12px 14px; font-family: inherit; font-size: 14px; font-weight: 500; color: var(--heading); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; outline: none; transition: border-color 0.2s; }
+  .input:focus { border-color: #000; }
+  .input::placeholder { color: var(--body); }
+
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 16px; font-weight: 600; color: var(--heading); text-align: left; }
+  .faq-q::after { content: "+"; font-weight: 400; color: var(--primary); font-size: 22px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 14px; color: var(--body); font-weight: 500; line-height: 1.5; max-width: 540px; }
+
+  .dark-tile { background: var(--brand-dark); color: white; border: none; position: relative; overflow: hidden; box-shadow: none; }
+  .dark-tile::before { content: ""; position: absolute; top: -30%; right: -20%; width: 320px; height: 320px; background: radial-gradient(circle, rgba(240,185,11,0.3) 0%, transparent 60%); pointer-events: none; }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255,255,255,0.7); }
+  .dark-tile blockquote { font-size: 22px; font-weight: 600; line-height: 1.25; margin-bottom: 20px; }
+  .dark-tile .btn-primary { background: var(--primary); color: var(--ink); }
+  .dark-tile .btn-primary:hover { background: var(--focus-blue); color: white; }
+
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block { height: 54px; background: white; border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--body); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .shadow-1 { border: 1px solid var(--border); }
+  .shadow-2 { box-shadow: var(--shadow-sm); border: none; }
+  .shadow-3 { box-shadow: var(--shadow-lg); border: none; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Binance</span>
+      </div>
+      <a href="../../getdesign-corpus/binance.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Crypto exchange · trading-floor polish</span>
+        <h1>Trade 350+ cryptocurrencies with confidence</h1>
+        <p>Binance's system is a digital trading floor — BinancePlex at weight 700, a single saturated gold accent, green/red data semantics, and dark panels for depth, white surfaces for trust.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Get Started</button>
+          <button class="btn btn-ghost">Download App</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">Single gold accent · data semantics</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #f0b90b;"></div><div class="swatch-name">Binance Yellow</div><div class="swatch-hex">#f0b90b</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffd000;"></div><div class="swatch-name">Binance Gold</div><div class="swatch-hex">#ffd000</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #222126;"></div><div class="swatch-name">Binance Dark</div><div class="swatch-hex">#222126</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1e2026;"></div><div class="swatch-name">Ink</div><div class="swatch-hex">#1e2026</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #848e9c;"></div><div class="swatch-name">Slate</div><div class="swatch-hex">#848e9c</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #0ecb81;"></div><div class="swatch-name">Crypto Green</div><div class="swatch-hex">#0ecb81</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f6465d;"></div><div class="swatch-name">Crypto Red</div><div class="swatch-hex">#f6465d</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1eaedb;"></div><div class="swatch-name">Focus Blue</div><div class="swatch-hex">#1eaedb</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">50px pill · gold stamp</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Buy Crypto</button>
+          <button class="btn btn-ghost">Start Trading</button>
+          <button class="btn btn-dark">Download App</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">BinancePlex · weights 500–700</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 60px</div>
+          <div class="type-display">Buy & trade crypto.</div>
+          <div class="type-spec">BinancePlex · 700 · normal · line-height 1.08</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 28px</div>
+          <div class="type-h2">Your gateway to crypto</div>
+          <div class="type-spec">BinancePlex · 500 · normal · line-height 1.00</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Binance is the world's leading crypto exchange, with deep liquidity, tight spreads, and the most comprehensive asset coverage across spot, futures, and staking.</div>
+          <div class="type-spec">BinancePlex · 500 · normal · line-height 1.50</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption / 14px</div>
+          <div class="type-caption">BTC · $67,420.15 · +2.81%</div>
+          <div class="type-spec">BinancePlex · 600 · tabular numerals</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Carbon · finance-grade</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="carbon:currency-dollar"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:chart-line"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:wallet"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:security"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:analytics"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:trophy"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:qr-code"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:arrows-horizontal"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Carbon</strong> · 8px cell radius · finance & crypto vocabulary
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Price Ticker</span>
+          <span class="tile-sub">tabular numerals · green/red</span>
+        </div>
+        <div class="sample-card">
+          <div class="ticker-row">
+            <span class="ticker-pair">BTC / USDT</span>
+            <span class="ticker-price">$67,420.15</span>
+            <span class="ticker-change-up">+2.81%</span>
+          </div>
+          <div class="ticker-row">
+            <span class="ticker-pair">ETH / USDT</span>
+            <span class="ticker-price">$3,842.90</span>
+            <span class="ticker-change-up">+1.24%</span>
+          </div>
+          <div class="ticker-row">
+            <span class="ticker-pair">BNB / USDT</span>
+            <span class="ticker-price">$612.47</span>
+            <span class="ticker-change-down">−0.56%</span>
+          </div>
+          <div class="ticker-row">
+            <span class="ticker-pair">SOL / USDT</span>
+            <span class="ticker-price">$195.32</span>
+            <span class="ticker-change-up">+4.07%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Deposit</span>
+          <span class="tile-sub">8px radius · compact</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="amount">Amount (USDT)</label>
+          <input type="text" id="amount" class="input" placeholder="0.00" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="asset">Asset</label>
+          <input type="text" id="asset" class="input" placeholder="BTC" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Confirm Trade</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">5% opacity</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">LEVEL 1 · FLAT</div>
+          <div class="shadow-block shadow-2">LEVEL 2 · CARD</div>
+          <div class="shadow-block shadow-3">LEVEL 3 · HOVER</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline · 16px body</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Is my crypto safe on Binance?</summary>
+          <div class="faq-a">Binance maintains the Secure Asset Fund for Users (SAFU), a 10% insurance reserve of all trading fees, plus cold storage, two-factor auth, and 24/7 risk monitoring.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What are the trading fees?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How do I pass KYC verification?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">TRUSTED BY MILLIONS</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.7);">#222126 · golden glow</span>
+        </div>
+        <blockquote>"250M+ users trust Binance with $90B+ in daily spot volume and the deepest liquidity in crypto."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #f0b90b, #ffd000);"></div>
+          <div style="font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.9);"><strong style="font-weight: 600; color: white;">Richard Teng</strong> · CEO, Binance</div>
+        </div>
+        <button class="btn btn-primary">Start Trading →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => { const text = li.textContent.toLowerCase(); li.classList.toggle('hidden', q && !text.includes(q)); });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Not Boring Apps — Design Swatch</title>
+<link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    /* Surface */
+    --bg: #ffffff;
+    --canvas: #f7f7f5;
+    --surface: #ececf0;
+    --heading: #0b0b12;
+    --label: #1a1a1d;
+    --body: #47474d;
+    --muted: #86868b;
+    --border: #e6e6ea;
+
+    /* Brand solids (apps) */
+    --violet: #4e3bff;
+    --violet-hi: #a039ff;
+    --magenta: #ff2e7a;
+    --cyan: #21c4ff;
+    --periwinkle: #7b68ff;
+    --lime: #9cff2e;
+    --teal: #18c48a;
+    --coral: #ff3366;
+    --amber: #ff9933;
+    --solar: #ffd23f;
+    --tangerine: #ff7a1a;
+
+    /* Marketing site */
+    --ink: #000000;
+    --andy-yellow: #ffe600;
+    --arial-gray: #aaaaaa;
+
+    /* Gradients */
+    --g-violet: linear-gradient(135deg, #a039ff 0%, #4e3bff 100%);
+    --g-sky: linear-gradient(135deg, #21c4ff 0%, #7b68ff 100%);
+    --g-sunrise: linear-gradient(135deg, #ff3366 0%, #ff9933 100%);
+    --g-lime: linear-gradient(135deg, #9cff2e 0%, #18c48a 100%);
+    --g-peach: linear-gradient(135deg, #ff6b9a 0%, #ffb86b 100%);
+    --g-solar: linear-gradient(135deg, #ffd23f 0%, #ff7a1a 100%);
+
+    /* Dimensional shadows — the whole point */
+    --sh-tile:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 2px 6px rgba(17, 12, 46, 0.08),
+      0 18px 36px -14px rgba(17, 12, 46, 0.22);
+
+    --sh-card:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 4px 10px rgba(17, 12, 46, 0.10),
+      0 24px 48px -18px rgba(17, 12, 46, 0.28);
+
+    --sh-pill-violet:
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.18),
+      0 2px 4px rgba(17, 12, 46, 0.12),
+      0 12px 24px -4px rgba(78, 59, 255, 0.45);
+
+    --sh-pill-dark:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.35),
+      0 2px 4px rgba(17, 12, 46, 0.18),
+      0 10px 20px -6px rgba(11, 11, 18, 0.38);
+
+    --sh-pill-outline:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 2px 6px rgba(17, 12, 46, 0.06),
+      0 8px 18px -6px rgba(17, 12, 46, 0.14);
+
+    --sh-pressed:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 3px rgba(0, 0, 0, 0.28),
+      0 1px 2px rgba(17, 12, 46, 0.12);
+
+    --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+    /* Sidebar — neutral, brand-agnostic */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-display);
+    background: var(--canvas);
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.45;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+  }
+  .meta a {
+    color: var(--violet);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+    font-weight: 600;
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--bg);
+    border-radius: 24px;
+    padding: 52px 44px;
+    box-shadow: var(--sh-card);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    right: -140px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(160, 57, 255, 0.22) 0%, rgba(33, 196, 255, 0.10) 45%, transparent 72%);
+    pointer-events: none;
+    filter: blur(10px);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(255, 46, 122, 0.14) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(6px);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px 5px 5px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 2px 6px rgba(17, 12, 46, 0.08),
+      0 8px 20px -8px rgba(17, 12, 46, 0.18);
+  }
+  .hero-eyebrow::before {
+    content: "ADA ‘22";
+    background: var(--g-violet);
+    color: white;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 10px -2px rgba(78, 59, 255, 0.5);
+  }
+  .hero h1 {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.00;
+    letter-spacing: -1.8px;
+    color: var(--heading);
+    margin-bottom: 18px;
+    max-width: 760px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: var(--g-violet);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--body);
+    max-width: 600px;
+    margin-bottom: 28px;
+    line-height: 1.45;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--sh-tile);
+    position: relative;
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 22px;
+  }
+  .tile-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+    font-family: var(--font-mono);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 36px; letter-spacing: -1px; }
+    .hero { padding: 36px 26px; }
+  }
+
+  /* ====== BUTTONS — the whole point ====== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.08s ease, box-shadow 0.12s ease;
+    letter-spacing: -0.01em;
+  }
+  .btn:active {
+    transform: translateY(1px) scale(0.985);
+  }
+
+  /* Primary dimensional violet pill */
+  .btn-primary {
+    background: var(--g-violet);
+    color: white;
+    box-shadow: var(--sh-pill-violet);
+  }
+  .btn-primary:active { box-shadow: var(--sh-pressed), 0 4px 10px -2px rgba(78, 59, 255, 0.35); }
+
+  /* Secondary outlined pill (still dimensional — not flat) */
+  .btn-ghost {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f4f6 100%);
+    color: var(--violet);
+    box-shadow: var(--sh-pill-outline);
+  }
+
+  /* Dark pill (marketing-flavored) */
+  .btn-dark {
+    background: linear-gradient(180deg, #2a2a30 0%, #0b0b12 100%);
+    color: white;
+    box-shadow: var(--sh-pill-dark);
+  }
+
+  /* Alt gradients */
+  .btn-sunrise { background: var(--g-sunrise); color: white; box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -2px 4px rgba(0,0,0,0.18), 0 2px 4px rgba(17,12,46,0.12), 0 12px 24px -4px rgba(255, 51, 102, 0.42); }
+  .btn-lime { background: var(--g-lime); color: #043b26; box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -2px 4px rgba(0,0,0,0.18), 0 2px 4px rgba(17,12,46,0.12), 0 12px 24px -4px rgba(24, 196, 138, 0.45); }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .swatch-chip {
+    height: 64px;
+    border-radius: 14px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+      0 4px 10px -2px rgba(17, 12, 46, 0.18);
+  }
+  .swatch-name { font-size: 12px; font-weight: 600; color: var(--heading); }
+  .swatch-hex { font-family: var(--font-mono); font-size: 10px; color: var(--muted); font-weight: 500; }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 6px; font-family: var(--font-mono); font-weight: 600; }
+  .type-display { font-size: 38px; font-weight: 700; letter-spacing: -1.2px; color: var(--heading); line-height: 1.00; }
+  .type-h2 { font-size: 26px; font-weight: 600; letter-spacing: -0.4px; color: var(--heading); }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); line-height: 1.45; }
+  .type-caption { font-size: 12px; font-weight: 700; color: var(--label); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+  .type-spec { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+  /* Icons — 3D objects */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: white;
+    position: relative;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+      0 3px 8px rgba(17, 12, 46, 0.12),
+      0 10px 20px -6px var(--icon-glow, rgba(78, 59, 255, 0.4));
+  }
+  .ic-violet { background: var(--g-violet); --icon-glow: rgba(78, 59, 255, 0.45); }
+  .ic-sky { background: var(--g-sky); --icon-glow: rgba(33, 196, 255, 0.45); }
+  .ic-sunrise { background: var(--g-sunrise); --icon-glow: rgba(255, 51, 102, 0.42); }
+  .ic-lime { background: var(--g-lime); --icon-glow: rgba(24, 196, 138, 0.42); color: #043b26; }
+  .ic-peach { background: var(--g-peach); --icon-glow: rgba(255, 107, 154, 0.4); }
+  .ic-solar { background: var(--g-solar); --icon-glow: rgba(255, 122, 26, 0.45); color: #3a1b00; }
+  .ic-dark { background: linear-gradient(180deg, #2a2a30 0%, #0b0b12 100%); --icon-glow: rgba(11, 11, 18, 0.35); }
+  .ic-magenta { background: linear-gradient(135deg, #ff2e7a 0%, #ff6b9a 100%); --icon-glow: rgba(255, 46, 122, 0.45); }
+
+  iconify-icon { font-size: 26px; }
+  .icon-meta {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  /* Sample card (app tile) */
+  .sample-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f5 100%);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: var(--sh-tile);
+  }
+  .sample-card-title { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--heading); margin-bottom: 6px; }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.45; }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; align-items: center; }
+
+  /* Habit dots row */
+  .habit-row { display: flex; gap: 6px; margin: 14px 0 6px; }
+  .habit-dot {
+    width: 24px; height: 24px; border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.12), 0 2px 4px rgba(17,12,46,0.15);
+  }
+  .habit-dot.filled-violet { background: var(--g-violet); }
+  .habit-dot.filled-lime { background: var(--g-lime); }
+  .habit-dot.filled-sunrise { background: var(--g-sunrise); }
+  .habit-dot.empty { background: var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.05); }
+
+  /* Badge — dimensional chips */
+  .badge {
+    display: inline-flex;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .badge-success { background: var(--g-lime); color: #043b26; box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 6px -1px rgba(24, 196, 138, 0.35); }
+  .badge-violet { background: var(--g-violet); color: white; box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 6px -1px rgba(78, 59, 255, 0.35); }
+  .badge-neutral { background: #fff; color: var(--heading); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 2px 4px rgba(17, 12, 46, 0.08); }
+
+  /* Form — dimensional input */
+  .field { margin-bottom: 16px; }
+  .field-label { display: block; font-size: 12px; font-weight: 600; color: var(--label); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--font-mono); }
+  .input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--heading);
+    background: #fff;
+    border: none;
+    border-radius: 14px;
+    outline: none;
+    box-shadow:
+      inset 0 2px 4px rgba(17, 12, 46, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.9),
+      0 0 0 1px rgba(17, 12, 46, 0.06);
+    transition: box-shadow 0.15s;
+  }
+  .input:focus {
+    box-shadow:
+      inset 0 2px 4px rgba(17, 12, 46, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.9),
+      0 0 0 3px rgba(78, 59, 255, 0.28);
+  }
+  .input::placeholder { color: var(--muted); font-weight: 400; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+    letter-spacing: -0.01em;
+  }
+  .faq-q::after {
+    content: "+";
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    width: 24px; height: 24px;
+    border-radius: 999px;
+    background: var(--g-violet);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 6px -1px rgba(78, 59, 255, 0.4);
+  }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 16px; font-size: 14px; color: var(--body); font-weight: 400; line-height: 1.55; max-width: 560px; }
+
+  /* Dark tile */
+  .dark-tile { background: linear-gradient(160deg, #1a1a1d 0%, #0b0b12 100%); color: white; position: relative; overflow: hidden; box-shadow: var(--sh-card); }
+  .dark-tile::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(160, 57, 255, 0.45) 0%, transparent 60%);
+    pointer-events: none;
+    filter: blur(8px);
+  }
+  .dark-tile::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(33, 196, 255, 0.28) 0%, transparent 65%);
+    pointer-events: none;
+    filter: blur(6px);
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255, 255, 255, 0.6); }
+  .dark-tile blockquote { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 22px; }
+  .dark-tile .btn-primary { background: white; color: var(--heading); box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -2px 4px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.25), 0 12px 28px -6px rgba(255,255,255,0.15); }
+
+  /* Shadow showcase — the core demo */
+  .shadow-row { display: flex; flex-direction: column; gap: 16px; }
+  .shadow-block {
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--label);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f4f6 100%);
+  }
+  .shadow-1 {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 2px 4px rgba(17, 12, 46, 0.08);
+  }
+  .shadow-2 {
+    box-shadow: var(--sh-tile);
+  }
+  .shadow-3 {
+    box-shadow: var(--sh-card);
+  }
+  .shadow-4 {
+    background: var(--g-violet);
+    color: white;
+    box-shadow: var(--sh-pill-violet);
+  }
+
+  /* Apps grid — toy-like tiles */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .app-card {
+    padding: 16px;
+    border-radius: 18px;
+    color: white;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.18),
+      0 3px 8px rgba(17, 12, 46, 0.14),
+      0 16px 32px -10px var(--glow, rgba(78, 59, 255, 0.45));
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 120px;
+  }
+  .app-card .app-icon {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 4px rgba(0,0,0,0.15);
+  }
+  .app-card .app-name { font-weight: 700; font-size: 14px; letter-spacing: -0.2px; }
+  .app-card .app-meta { font-size: 11px; opacity: 0.85; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; margin-top: auto; }
+  .app-violet { background: var(--g-violet); --glow: rgba(78, 59, 255, 0.5); }
+  .app-sky { background: var(--g-sky); --glow: rgba(33, 196, 255, 0.48); }
+  .app-sunrise { background: var(--g-sunrise); --glow: rgba(255, 51, 102, 0.48); }
+  .app-lime { background: var(--g-lime); --glow: rgba(24, 196, 138, 0.48); color: #043b26; }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Not Boring</span>
+      </div>
+      <a href="../../getdesign-corpus/notboring.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">App studio · Apple Design Award winner</span>
+        <h1>Flat is the enemy. <em>Dimension is the brand.</em></h1>
+        <p>Andy Allen's Not Boring Apps rebel against the flat-design decade with tactile pills, gradient-filled icons, and shadows that actually cast light. Playful software for life's boring routines — with the rigor of a Swiss watchmaker.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Download Calculator <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></button>
+          <button class="btn btn-ghost">Open the studio →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">8 gradient + solid tokens</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: var(--g-violet);"></div><div class="swatch-name">Electric Violet</div><div class="swatch-hex">#a039ff → #4e3bff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--g-sky);"></div><div class="swatch-name">Sky Ribbon</div><div class="swatch-hex">#21c4ff → #7b68ff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--g-sunrise);"></div><div class="swatch-name">Sunrise</div><div class="swatch-hex">#ff3366 → #ff9933</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--g-lime);"></div><div class="swatch-name">Lime Pop</div><div class="swatch-hex">#9cff2e → #18c48a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--magenta);"></div><div class="swatch-name">Magenta</div><div class="swatch-hex">#ff2e7a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--solar);"></div><div class="swatch-name">Solar Yellow</div><div class="swatch-hex">#ffd23f</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(180deg, #1a1a1d 0%, #0b0b12 100%);"></div><div class="swatch-name">Midnight</div><div class="swatch-hex">#0b0b12</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--canvas); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 0 0 1px rgba(17,12,46,0.08), 0 4px 10px -2px rgba(17,12,46,0.10);"></div><div class="swatch-name">Off-White</div><div class="swatch-hex">#f7f7f5</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">bevel + glow</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+          <button class="btn btn-primary">Download Now</button>
+          <button class="btn btn-sunrise">Wake Up ☀️</button>
+          <button class="btn btn-lime">Keep Streak</button>
+          <button class="btn btn-ghost">Read the story</button>
+          <button class="btn btn-dark">Contact Andy</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Founders Grotesk · JetBrains Mono · weight 600-700</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 76px</div>
+          <div class="type-display">Savor the routine.</div>
+          <div class="type-spec">Founders Grotesk · 700 · -1.8px · line-height 1.00</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 36px</div>
+          <div class="type-h2">Playful software for life's boring routines</div>
+          <div class="type-spec">Founders Grotesk · 600 · -0.4px · line-height 1.00</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Most apps help you save time. We help you savor it. Every pixel, every shadow, every haptic is tuned to make the small moments in your day feel a little more alive.</div>
+          <div class="type-spec">Arial / Inter · 400 · line-height 1.45</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Micro Caps / 12px</div>
+          <div class="type-caption">MADE IN NYC · BY HAND · SINCE 2019</div>
+          <div class="type-spec">JetBrains Mono · 700 · 0.06em · uppercase</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">3D objects · gradient + glow</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell ic-violet"><iconify-icon icon="solar:calculator-bold"></iconify-icon></div>
+          <div class="icon-cell ic-sky"><iconify-icon icon="solar:cloud-sun-bold"></iconify-icon></div>
+          <div class="icon-cell ic-lime"><iconify-icon icon="solar:graph-up-bold"></iconify-icon></div>
+          <div class="icon-cell ic-sunrise"><iconify-icon icon="solar:alarm-bold"></iconify-icon></div>
+          <div class="icon-cell ic-peach"><iconify-icon icon="solar:heart-bold"></iconify-icon></div>
+          <div class="icon-cell ic-solar"><iconify-icon icon="solar:star-bold"></iconify-icon></div>
+          <div class="icon-cell ic-magenta"><iconify-icon icon="solar:bell-bold"></iconify-icon></div>
+          <div class="icon-cell ic-dark"><iconify-icon icon="solar:moon-stars-bold"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Solar Bold Fill</strong> · Treatment: gradient base + inset rim + colored glow. Never flat.
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">App Tile</span>
+          <span class="tile-sub">Habits streak · day 7</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">7-day streak 🔥</div>
+          <div class="sample-card-body">You've meditated every morning this week. Your confetti is ready — tap to celebrate.</div>
+          <div class="habit-row">
+            <div class="habit-dot filled-violet"></div>
+            <div class="habit-dot filled-violet"></div>
+            <div class="habit-dot filled-lime"></div>
+            <div class="habit-dot filled-lime"></div>
+            <div class="habit-dot filled-sunrise"></div>
+            <div class="habit-dot filled-violet"></div>
+            <div class="habit-dot filled-lime"></div>
+          </div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">On a roll</span>
+            <span class="badge badge-neutral">7 / 7 days</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">inset well · violet focus ring</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Email</label>
+          <input type="email" id="email" class="input" placeholder="hello@notboring.software" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="app">Favorite app</label>
+          <input type="text" id="app" class="input" placeholder="Calculator, Weather, Habits…" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Join the list →</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Dimensional Shadows</span>
+          <span class="tile-sub">6-layer stack</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">L1 · Stamped</div>
+          <div class="shadow-block shadow-2">L2 · Tile</div>
+          <div class="shadow-block shadow-3">L3 · Card</div>
+          <div class="shadow-block shadow-4">L4 · Pill + Glow</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">The Not Boring family</span>
+          <span class="tile-sub">4 apps · 1 philosophy</span>
+        </div>
+        <div class="apps-grid">
+          <div class="app-card app-violet">
+            <div class="app-icon"><iconify-icon icon="solar:calculator-bold"></iconify-icon></div>
+            <div class="app-name">Calculator</div>
+            <div class="app-meta">Soap-bar display</div>
+          </div>
+          <div class="app-card app-sky">
+            <div class="app-icon"><iconify-icon icon="solar:cloud-sun-bold"></iconify-icon></div>
+            <div class="app-name">Weather</div>
+            <div class="app-meta">ADA ‘22 winner</div>
+          </div>
+          <div class="app-card app-lime">
+            <div class="app-icon"><iconify-icon icon="solar:graph-up-bold"></iconify-icon></div>
+            <div class="app-name">Habits</div>
+            <div class="app-meta">Confetti physics</div>
+          </div>
+          <div class="app-card app-sunrise">
+            <div class="app-icon"><iconify-icon icon="solar:alarm-bold"></iconify-icon></div>
+            <div class="app-name">Timers</div>
+            <div class="app-meta">Haptic bloom</div>
+          </div>
+        </div>
+        <div class="icon-meta">
+          Each app has its own soul. The shared rules: <strong>dimensional buttons, gradient fills, paired highlight + shadow, tactile pressed state.</strong>
+        </div>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">From the studio</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.6);">Andy Allen · founder</span>
+        </div>
+        <blockquote>"Flat design was a phase. Our apps are little 3D toys you carry in your pocket — and that's the point."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <div style="width: 32px; height: 32px; border-radius: 999px; background: var(--g-sunrise); box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 6px rgba(255, 51, 102, 0.4);"></div>
+          <div style="font-size: 13px; font-weight: 500;"><strong style="font-weight: 700;">Andy Allen</strong> · Founder, Not Boring Apps</div>
+        </div>
+        <button class="btn btn-primary">Read the words →</button>
+      </section>
+
+      <section class="tile span-12">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">answers, with attitude</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Why does everything have a shadow?</summary>
+          <div class="faq-a">Because light exists. Flat design was a cultural overcorrection — we stripped every ounce of dimension out of software and called it "modern." Shadows aren't decoration, they're depth cues your brain has been using since birth. We put them back.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is this skeuomorphism?</summary>
+          <div class="faq-a">Kind of — but not the leather-stitching iOS 6 variety. Think of it as a new species: not imitating real-world objects, but honoring the physics those objects obey. A button behaves like a button. A tile casts its shadow. A press feels like a press.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How do you make the buttons feel so good?</summary>
+          <div class="faq-a">Six-layer shadow stack: inset top highlight, inset bottom shadow, outer ambient lift, outer drop, colored glow matching the hue, and a pressed-state compression that reduces outer shadows while deepening the inset bottom. Plus a matching haptic. Plus a sound.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Are the apps expensive?</summary>
+          <div class="faq-a">We charge for craft. Our Studio subscription bundles Calculator, Weather, Habits, and Timers — fewer apps, more love in each one. Most apps help you save time. We help you savor it.</div>
+        </details>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

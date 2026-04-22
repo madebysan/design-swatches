@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Readwise Reader — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    /* Warm cream reading palette */
+    --bg: #f8f4ed;              /* Cream Paper — canvas */
+    --surface: #f2ece0;          /* Parchment — panel */
+    --surface-elev: #fdfaf4;     /* Elevated reading container */
+    --surface-hover: #e8dfd0;    /* Linen — hover */
+    --heading: #1c1813;          /* Ink Black */
+    --label: #3d3530;            /* Warm Graphite */
+    --body: #6b6258;             /* Warm Gray */
+    --muted: #9a9086;            /* Muted Stone */
+    --border: #e0d6c3;           /* Border Cream */
+    --border-strong: #d4c9b3;    /* Border Warm */
+    --hairline: #c7bfb3;         /* Ash */
+
+    /* Brand accent — amber gold */
+    --accent: #c19a3d;           /* Amber Gold */
+    --accent-warm: #d4b15a;      /* Amber Warm — hover */
+    --accent-tint: rgba(193, 154, 61, 0.18);
+    --terracotta: #b85c3e;       /* Secondary warm accent */
+
+    /* Candle dark mode */
+    --candle-dark: #1a1613;
+    --candle-surface: #26201a;
+    --candle-border: #3a3128;
+    --candle-text: #e8dfd0;
+    --candle-text-dim: #b8ac9a;
+    --candle-accent: #d4b15a;
+
+    /* Typography — SERIF-LED */
+    --font-serif: "Source Serif 4", Charter, Georgia, "Times New Roman", serif;
+    --font-sans: "Source Serif 4", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "iA Writer Mono", "SF Mono", Menlo, ui-monospace, monospace;
+
+    /* Paper shadows — warm amber-tinted */
+    --shadow-rest: 0 1px 2px rgba(45, 30, 15, 0.04), 0 4px 12px rgba(45, 30, 15, 0.04);
+    --shadow-lift: 0 6px 24px rgba(45, 30, 15, 0.08), 0 2px 4px rgba(45, 30, 15, 0.04);
+    --shadow-float: 0 12px 32px rgba(45, 30, 15, 0.12), 0 2px 6px rgba(45, 30, 15, 0.06);
+
+    /* Sidebar — neutral (unchanged) */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-serif);
+    background: var(--bg);
+    color: var(--heading);
+    font-weight: 400;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--label);
+    font-weight: 600;
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--surface-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 56px 48px;
+    box-shadow: var(--shadow-lift);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(193, 154, 61, 0.14) 0%, rgba(193, 154, 61, 0.04) 45%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    /* faint paper vignette, bottom-left */
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(184, 92, 62, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 4px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .hero-eyebrow::before {
+    content: "DAILY REVIEW";
+    background: var(--accent);
+    color: var(--heading);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: 58px;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -1.16px;
+    color: var(--heading);
+    margin-bottom: 20px;
+    max-width: 760px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero p {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--label);
+    max-width: 600px;
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--surface-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: var(--shadow-rest);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--label);
+  }
+  .tile-sub {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 40px; letter-spacing: -0.8px; }
+    .hero { padding: 36px 24px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    line-height: 1;
+  }
+  .btn-primary { background: var(--accent); color: var(--heading); box-shadow: 0 2px 6px rgba(45, 30, 15, 0.08); }
+  .btn-primary:hover { background: var(--accent-warm); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--heading);
+    border-color: var(--border);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+  }
+  .btn-ghost:hover { background: var(--surface); border-color: var(--border-strong); }
+  .btn-dark { background: var(--heading); color: var(--surface); }
+  .btn-dark:hover { background: #2a241d; }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 56px; border-radius: 6px; border: 1px solid var(--border); }
+  .swatch-name { font-family: var(--font-sans); font-size: 12px; font-weight: 500; color: var(--heading); }
+  .swatch-hex { font-family: var(--font-mono); font-size: 11px; color: var(--body); }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--body);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .type-display {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.84px;
+    color: var(--heading);
+    line-height: 1.12;
+  }
+  .type-h2 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.24px;
+    color: var(--heading);
+    line-height: 1.3;
+  }
+  .type-body {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--label);
+    line-height: 1.65;
+  }
+  .type-body em { font-style: italic; color: var(--heading); }
+  .type-caption {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--body);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .type-spec {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--body);
+    margin-top: 6px;
+  }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--label);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  /* Highlight Card — signature component */
+  .highlight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px 18px 22px;
+    box-shadow: var(--shadow-rest);
+  }
+  .highlight-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--heading);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .highlight-quote::before { content: "“"; color: var(--accent); font-size: 28px; line-height: 0; vertical-align: -10px; margin-right: 2px; }
+  .highlight-quote::after { content: "”"; color: var(--accent); font-size: 28px; line-height: 0; vertical-align: -12px; margin-left: 2px; }
+  .highlight-source {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--body);
+  }
+  .highlight-source strong { color: var(--heading); font-weight: 600; }
+  .highlight-source .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
+
+  /* Feed row */
+  .feed-row {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .feed-row:last-child { border-bottom: none; }
+  .feed-favicon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .feed-content { flex: 1; min-width: 0; }
+  .feed-title {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .feed-excerpt {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--label);
+    line-height: 1.5;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .feed-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--body);
+    letter-spacing: 0.02em;
+  }
+  .feed-meta .dot { display: inline-block; width: 2px; height: 2px; border-radius: 50%; background: var(--muted); vertical-align: middle; margin: 0 8px; }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .badge-accent { background: var(--accent-tint); color: #7a611e; border: 1px solid rgba(193, 154, 61, 0.35); }
+  .badge-neutral { background: var(--surface); color: var(--label); border: 1px solid var(--border); }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--label);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .input {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint); }
+  .input::placeholder { color: var(--muted); }
+
+  /* Shadows */
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block {
+    height: 54px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    color: var(--body);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .shadow-1 { box-shadow: 0 1px 2px rgba(45, 30, 15, 0.05); }
+  .shadow-2 { box-shadow: var(--shadow-rest); }
+  .shadow-3 { box-shadow: var(--shadow-lift); }
+
+  /* Dark — Candle reader mode */
+  .dark-tile {
+    background: var(--candle-dark);
+    color: var(--candle-text);
+    border: 1px solid var(--candle-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .dark-tile::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -15%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(212, 177, 90, 0.22) 0%, rgba(212, 177, 90, 0.04) 45%, transparent 70%);
+    pointer-events: none;
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(232, 223, 208, 0.55); }
+  .dark-tile .tile-sub { color: var(--candle-text-dim); }
+  .dark-tile .dark-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--candle-text);
+    margin-bottom: 18px;
+    border-left: 3px solid var(--candle-accent);
+    padding-left: 18px;
+  }
+  .dark-tile .dark-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--candle-text-dim);
+  }
+  .dark-tile .dark-meta strong {
+    color: var(--candle-text);
+    font-weight: 600;
+  }
+  .dark-tile .author-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--candle-accent), var(--terracotta));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--candle-dark);
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .dark-tile .btn-primary {
+    background: var(--candle-accent);
+    color: var(--candle-dark);
+  }
+  .dark-tile .btn-primary:hover { background: #e3c06b; }
+
+  /* Reading passage sample */
+  .reading-sample {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--label);
+    max-width: 62ch;
+  }
+  .reading-sample .hl {
+    background: var(--accent-tint);
+    padding: 1px 2px;
+    border-radius: 2px;
+    color: var(--heading);
+  }
+  .reading-sample em { font-style: italic; color: var(--heading); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Readwise Reader</span>
+      </div>
+      <a href="../../getdesign-corpus/readwise.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Source Serif 4 · 1.65 reading rhythm</span>
+        <h1>A <em>reading room,</em> not a feed.</h1>
+        <p>Readwise's design language is warm cream paper, serif typography built for long-form reading, and an amber highlighter that earns its place only where it counts — the quotes you'll return to.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Start reading →</button>
+          <button class="btn btn-ghost">Import your library</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">warm cream · 8 tokens</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #f8f4ed;"></div><div class="swatch-name">Cream Paper</div><div class="swatch-hex">#f8f4ed</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f2ece0;"></div><div class="swatch-name">Parchment</div><div class="swatch-hex">#f2ece0</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #e8dfd0;"></div><div class="swatch-name">Linen</div><div class="swatch-hex">#e8dfd0</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #c19a3d;"></div><div class="swatch-name">Amber Gold</div><div class="swatch-hex">#c19a3d</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #b85c3e;"></div><div class="swatch-name">Terracotta</div><div class="swatch-hex">#b85c3e</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #6b6258;"></div><div class="swatch-name">Warm Gray</div><div class="swatch-hex">#6b6258</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #3d3530;"></div><div class="swatch-name">Warm Graphite</div><div class="swatch-hex">#3d3530</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1c1813;"></div><div class="swatch-name">Ink Black</div><div class="swatch-hex">#1c1813</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">8px radius · paper-lift</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Save to Reader</button>
+          <button class="btn btn-ghost">See also</button>
+          <button class="btn btn-dark">Open article</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">serif-led · Source Serif 4 + Inter</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 42px · Source Serif 4</div>
+          <div class="type-display">The long read, restored.</div>
+          <div class="type-spec">Source Serif 4 · 600 · -0.84px · line-height 1.12</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 24px · Source Serif 4</div>
+          <div class="type-h2">Chapter one — on margins</div>
+          <div class="type-spec">Source Serif 4 · 600 · -0.24px · line-height 1.30</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body Reading / 18px · Source Serif 4</div>
+          <div class="type-body">A good reading app disappears. It gives you <em>measure</em> (62–72 characters per line), a body serif with a true italic, and the right amount of whitespace between paragraphs so your eye can rest.</div>
+          <div class="type-spec">Source Serif 4 · 400 · line-height 1.65</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption / 12px · Inter (UI chrome)</div>
+          <div class="type-caption">READWISE READER · EST. 2021 · SAN FRANCISCO</div>
+          <div class="type-spec">Inter · 500 · 0.06em tracking · uppercase</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Solar / Phosphor · reading-led</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="solar:book-2-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:bookmark-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:highlighter-circle"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:quotes"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:feather"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:document-text-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:rss"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:book-open"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Sets: <strong>Solar Linear + Phosphor</strong> · 1.5px stroke · 22px default
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Highlight Card</span>
+          <span class="tile-sub">signature component · left rule</span>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-quote">We read to know we are not alone — and then we return to the margins to remember what the book said.</div>
+          <div class="highlight-source">
+            <strong>C. S. Lewis</strong>
+            <span class="dot"></span>
+            <span>An Experiment in Criticism</span>
+            <span class="dot"></span>
+            <span>p. 141</span>
+          </div>
+        </div>
+        <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="badge badge-accent">Daily Review</span>
+          <span class="badge badge-neutral">Literature</span>
+          <span class="badge badge-neutral">3 min read</span>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">Reading Passage</span>
+          <span class="tile-sub">62ch measure · inline highlight</span>
+        </div>
+        <div class="reading-sample">
+          The point of a reading app is not to show you more. It is to help you <span class="hl">finish what you started</span> — and then to bring it back at the right moment, weeks later, when you've forgotten the sentence but still need it. <em>The best tools do not demand attention; they earn it back across time.</em>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">focus ring · amber tint</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="url">Article URL</label>
+          <input type="url" id="url" class="input" placeholder="https://longform.org/..." />
+        </div>
+        <div class="field">
+          <label class="field-label" for="tags">Tags</label>
+          <input type="text" id="tags" class="input" placeholder="essay, philosophy, saved" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Save to Reader</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">amber-tinted ink</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">LEVEL 1 · HAIRLINE</div>
+          <div class="shadow-block shadow-2">LEVEL 2 · PAPER-REST</div>
+          <div class="shadow-block shadow-3">LEVEL 3 · PAPER-LIFT</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Feed</span>
+          <span class="tile-sub">article list · hairline rows</span>
+        </div>
+        <div class="feed-row">
+          <div class="feed-favicon"><iconify-icon icon="solar:document-text-linear"></iconify-icon></div>
+          <div class="feed-content">
+            <div class="feed-title">On Rereading Middlemarch</div>
+            <div class="feed-excerpt">A second pass reveals that the novel was never about marriage.</div>
+            <div class="feed-meta">theparisreview.org<span class="dot"></span>18 min<span class="dot"></span>3d ago</div>
+          </div>
+        </div>
+        <div class="feed-row">
+          <div class="feed-favicon"><iconify-icon icon="lucide:rss"></iconify-icon></div>
+          <div class="feed-content">
+            <div class="feed-title">The Quiet Death of the Inbox Zero Movement</div>
+            <div class="feed-excerpt">Why the productivity industrial complex finally lost interest.</div>
+            <div class="feed-meta">newyorker.com<span class="dot"></span>12 min<span class="dot"></span>1w ago</div>
+          </div>
+        </div>
+        <div class="feed-row">
+          <div class="feed-favicon"><iconify-icon icon="solar:book-2-linear"></iconify-icon></div>
+          <div class="feed-content">
+            <div class="feed-title">Notes from the Kindle Highlights</div>
+            <div class="feed-excerpt">382 books, six years, one persistent theme.</div>
+            <div class="feed-meta">substack.com<span class="dot"></span>7 min<span class="dot"></span>2w ago</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-12 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Candle — Dark Reader Mode</span>
+          <span class="tile-sub">warm near-black · lamp-lit serif</span>
+        </div>
+        <blockquote class="dark-quote">A book is a heart that beats in the chest of another. And when the reader finds it, the book is no longer alone, and the reader is no longer alone. That is the whole of it.</blockquote>
+        <div class="dark-meta">
+          <div class="author-mark">R</div>
+          <div><strong>Rebecca Solnit</strong> · The Faraway Nearby · <span style="color: var(--candle-accent);">Highlighted</span></div>
+        </div>
+        <button class="btn btn-primary">Open in Reader →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bugatti — Design Swatch</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #000000;
+    --heading: #ffffff;
+    --label: #ffffff;
+    --body: #999999;
+    --border: #999999;
+    --primary: #ffffff;
+    --primary-hover: #ffffff;
+    --primary-light: #999999;
+    --brand-dark: #000000;
+    --silver-mist: #999999;
+    --font-display: "Bugatti Display", "Unbounded", "Archivo Black", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Bugatti Monospace", "Space Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-text: "Bugatti Text Regular", "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Oswald", var(--font-text);
+    --radius: 16px;
+    --shadow-sm: none;
+    --shadow-lg: none;
+
+    --sb-bg: #fafafa; --sb-border: #e5e5e5; --sb-text: #525252; --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3; --sb-active-bg: #171717; --sb-active-text: #ffffff; --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-text); background: #000000; color: var(--body); font-weight: 400; line-height: 1.50; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main { padding: 32px 28px; }
+  .bento-wrap { display: grid; gap: 20px; max-width: 1344px; margin: 0 auto; }
+
+  .meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px; font-family: var(--font-mono); font-size: 12px; color: #999999; font-weight: 400; letter-spacing: 1.2px; text-transform: uppercase; }
+  .meta a { color: #ffffff; text-decoration: none; font-weight: 400; }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; color: #ffffff; }
+  .meta-brand { display: inline-flex; align-items: center; gap: 8px; }
+  .meta-favicon { width: 18px; height: 18px; border-radius: 0; background: #fff; object-fit: contain; }
+
+  .hero { background: #000000; color: #ffffff; border: none; border-radius: 0; padding: 80px 48px 64px; box-shadow: none; position: relative; overflow: hidden; border-top: 1px solid #999999; border-bottom: 1px solid #999999; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid #ffffff; background: transparent; font-family: var(--font-mono); font-size: 12px; color: #ffffff; margin-bottom: 32px; font-weight: 400; text-transform: uppercase; letter-spacing: 1.4px; border-radius: 9999px; }
+  .hero h1 { font-family: var(--font-display); font-size: 120px; font-weight: 400; line-height: 1.00; text-transform: uppercase; color: #ffffff; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.02em; }
+  .hero p { font-family: var(--font-text); font-size: 18px; font-weight: 400; color: #999999; max-width: 560px; margin-bottom: 32px; line-height: 1.40; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .tile { background: #000000; border: 1px solid #999999; border-radius: 0; padding: 28px; box-shadow: none; color: #ffffff; }
+  .tile-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .tile-title { font-family: var(--font-mono); font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 1.4px; color: #ffffff; }
+  .tile-sub { font-family: var(--font-mono); font-size: 11px; color: #999999; font-weight: 400; text-transform: uppercase; letter-spacing: 1.2px; }
+  .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 60px; } .hero { padding: 48px 24px; }
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 24px; font-family: var(--font-mono); font-size: 14px; font-weight: 400; border-radius: 9999px; border: 1px solid transparent; cursor: pointer; transition: background 0.25s, color 0.25s, opacity 0.25s; line-height: 1.43; text-transform: uppercase; letter-spacing: 1.4px; }
+  .btn-primary { background: transparent; color: #ffffff; border: 1px solid #ffffff; }
+  .btn-primary:hover { background: #ffffff; color: #000000; }
+  .btn-ghost { background: transparent; color: #ffffff; border: 1px solid #999999; border-radius: 6px; padding: 6px 12px; font-size: 12px; letter-spacing: 1.2px; }
+  .btn-ghost:hover { border-color: #ffffff; }
+  .btn-dark { background: transparent; color: #ffffff; border: 1px solid #ffffff; }
+  .btn-dark:hover { opacity: 0.7; }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 0; border: 1px solid #999999; }
+  .swatch-name { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px; }
+  .swatch-hex { font-family: var(--font-mono); font-size: 11px; color: #999999; letter-spacing: 0.04em; }
+
+  .type-sample { padding: 12px 0; border-bottom: 1px solid #999999; }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: #999999; margin-bottom: 6px; font-weight: 400; }
+  .type-display { font-family: var(--font-display); font-size: 60px; font-weight: 400; color: #ffffff; line-height: 1.00; text-transform: uppercase; letter-spacing: -0.01em; }
+  .type-h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; color: #ffffff; line-height: 1.11; text-transform: uppercase; }
+  .type-body { font-family: var(--font-text); font-size: 16px; font-weight: 400; color: #999999; line-height: 1.50; }
+  .type-caption { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: #ffffff; text-transform: uppercase; letter-spacing: 1.2px; }
+  .type-spec { font-family: var(--font-mono); font-size: 10px; color: #999999; margin-top: 4px; letter-spacing: 0.04em; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid #999999; border-radius: 0; color: #ffffff; }
+  iconify-icon { font-size: 22px; }
+  .icon-meta { margin-top: 14px; padding-top: 14px; border-top: 1px solid #999999; font-family: var(--font-mono); font-size: 11px; color: #999999; font-weight: 400; text-transform: uppercase; letter-spacing: 1.2px; }
+  .icon-meta strong { color: #ffffff; font-weight: 400; }
+
+  .sample-card { background: #000000; border: 1px solid #999999; border-radius: 0; padding: 24px; box-shadow: none; }
+  .sample-card-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; color: #ffffff; margin-bottom: 12px; text-transform: uppercase; line-height: 1.00; }
+  .sample-card-body { font-family: var(--font-text); font-size: 14px; color: #999999; line-height: 1.50; font-weight: 400; margin-bottom: 16px; }
+  .sample-card-spec { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #999999; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; }
+  .sample-card-spec:last-child { border-bottom: none; }
+  .sample-card-spec span:first-child { color: #999999; }
+  .sample-card-spec span:last-child { color: #ffffff; }
+
+  .badge { display: inline-flex; padding: 4px 10px; border-radius: 9999px; font-family: var(--font-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: 1.2px; }
+  .badge-success { background: transparent; color: #ffffff; border: 1px solid #ffffff; }
+  .badge-neutral { background: transparent; color: #999999; border: 1px solid #999999; }
+
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-family: var(--font-mono); font-size: 11px; font-weight: 400; color: #ffffff; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.4px; }
+  .input { width: 100%; padding: 12px 14px; font-family: var(--font-text); font-size: 15px; font-weight: 400; color: #ffffff; background: #000000; border: 1px solid #999999; border-radius: 6px; outline: none; transition: border-color 0.25s; }
+  .input:focus { border-color: #ffffff; }
+  .input::placeholder { color: #999999; }
+
+  .faq-item { border-bottom: 1px solid #999999; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: #ffffff; text-align: left; text-transform: uppercase; letter-spacing: 1.4px; }
+  .faq-q::after { content: "+"; font-weight: 300; color: #ffffff; font-size: 22px; font-family: var(--font-text); }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-family: var(--font-text); font-size: 14px; color: #999999; font-weight: 400; line-height: 1.50; max-width: 540px; }
+
+  .dark-tile { background: #000000; color: #ffffff; border: 1px solid #ffffff; position: relative; overflow: hidden; }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: #ffffff; }
+  .dark-tile blockquote { font-family: var(--font-display); font-size: 32px; font-weight: 400; line-height: 1.05; margin-bottom: 24px; text-transform: uppercase; }
+  .dark-tile .btn-primary { background: transparent; color: #ffffff; border: 1px solid #ffffff; }
+  .dark-tile .btn-primary:hover { background: #ffffff; color: #000000; }
+
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block { height: 54px; background: #000000; border: 1px solid #999999; border-radius: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: #999999; font-weight: 400; letter-spacing: 1.2px; text-transform: uppercase; }
+  .shadow-1 { border: none; }
+  .shadow-2 { border: 1px solid #999999; }
+  .shadow-3 { border: 1px solid #ffffff; color: #ffffff; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Bugatti</span>
+      </div>
+      <a href="../../getdesign-corpus/bugatti.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Hypercar · Molsheim</span>
+        <h1>Bugatti</h1>
+        <p>Pure cinema-black canvas, 288px display at rest, three colors only — black, white, and a single mid-gray. The chrome is silent so the product can speak.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Explore Our Opportunities</button>
+          <button class="btn btn-ghost">Store</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">3 hexes · total monochrome</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #000000;"></div><div class="swatch-name">Velvet Black</div><div class="swatch-hex">#000000</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffffff;"></div><div class="swatch-name">Showroom White</div><div class="swatch-hex">#ffffff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #999999;"></div><div class="swatch-name">Silver Mist</div><div class="swatch-hex">#999999</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(0,0,0,0.4); border-color: #999;"></div><div class="swatch-name">Vignette</div><div class="swatch-hex">rgba(0,0,0,.4)</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: transparent; border-color: #ffffff;"></div><div class="swatch-name">White Hairline</div><div class="swatch-hex">1px #ffffff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: transparent; border-color: #999999;"></div><div class="swatch-name">Mist Hairline</div><div class="swatch-hex">1px #999999</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #000000; border: 1px solid #ffffff;"></div><div class="swatch-name">Canvas</div><div class="swatch-hex">#000000</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffffff;"></div><div class="swatch-name">Text</div><div class="swatch-hex">#ffffff</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">9999px pill · 1px outline</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Explore Opportunities</button>
+          <button class="btn btn-ghost">View Details</button>
+          <button class="btn btn-dark">Configure</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">3 custom faces · weight 400 only</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 60–288px</div>
+          <div class="type-display">Tourbillon</div>
+          <div class="type-spec">Bugatti Display · 400 · 1.00 · UPPERCASE</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Section Heading / 36px</div>
+          <div class="type-h2">Where Art Meets Engineering</div>
+          <div class="type-spec">Bugatti Display · 400 · line-height 1.11</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Each Bugatti is entirely hand-built in Molsheim, France, where master craftsmen assemble every Tourbillon from over 3,000 components over approximately six months.</div>
+          <div class="type-spec">Bugatti Text Regular · 400 · line-height 1.50</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption / 14px</div>
+          <div class="type-caption">BUGATTI · MOLSHEIM · EST. 1909</div>
+          <div class="type-spec">Bugatti Monospace · 400 · 1.4px · UPPERCASE</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Carbon Outline · engineering</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="carbon:car"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:meter"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:rocket"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:settings"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:flame"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:flash"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:gem"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:compass"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Carbon</strong> · hairline outline · hypercar telemetry
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Model Data</span>
+          <span class="tile-sub">mono caps · hairline divider</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">Tourbillon</div>
+          <div class="sample-card-body">1,800 hp naturally-aspirated V16 hybrid. Only 250 examples will ever be built. First deliveries begin in 2026.</div>
+          <div class="sample-card-spec"><span>Power</span><span>1,800 hp</span></div>
+          <div class="sample-card-spec"><span>0–62 mph</span><span>2.0 s</span></div>
+          <div class="sample-card-spec"><span>Top Speed</span><span>276 mph</span></div>
+          <div class="sample-card-spec"><span>Production</span><span>250 units</span></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Inquire</span>
+          <span class="tile-sub">mono labels · white focus</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Email</label>
+          <input type="email" id="email" class="input" placeholder="name@domain.com" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="model">Model of Interest</label>
+          <input type="text" id="model" class="input" placeholder="Tourbillon" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Request Contact</button>
+      </section>
+
+      <section class="tile span-3">
+        <div class="tile-head">
+          <span class="tile-title">Depth</span>
+          <span class="tile-sub">hairlines only</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">FLAT · NONE</div>
+          <div class="shadow-block shadow-2">MIST HAIRLINE</div>
+          <div class="shadow-block shadow-3">WHITE HAIRLINE</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">mono caps · hairline</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">How many bugatti tourbillons will be built?</summary>
+          <div class="faq-a">Only 250 examples of the Tourbillon will ever be produced, each individually numbered and built at the historic Molsheim atelier in Alsace, France.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What is the delivery timeline?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can the car be personalized?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">FROM THE ATELIER</span>
+          <span class="tile-sub">Molsheim, Alsace</span>
+        </div>
+        <blockquote>"If it is comparable, it is no longer Bugatti."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 32px; height: 32px; border-radius: 0; background: transparent; border: 1px solid #fff;"></div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 1.2px;"><strong style="color: #ffffff; font-weight: 400;">Ettore Bugatti</strong> · 1909</div>
+        </div>
+        <button class="btn btn-primary">Read Heritage →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => { const text = li.textContent.toLowerCase(); li.classList.toggle('hidden', q && !text.includes(q)); });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

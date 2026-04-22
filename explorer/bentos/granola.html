@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Granola — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    /* Warm off-white surfaces */
+    --bg: #ffffff;
+    --surface: #f8f7f3;     /* paper cream */
+    --surface-warm: #eaebe5; /* oat cream — the anchor */
+    --border: #d5d5d2;      /* warm light gray */
+    --border-hairline: rgba(71, 67, 42, 0.18); /* olive at 18% — the softest divider */
+
+    /* Warm text neutrals */
+    --heading: #0e0f0c;     /* warm near-black, olive undertone */
+    --label: #292929;
+    --body: #454745;        /* body / mid-gray */
+    --muted: #818179;       /* tertiary */
+    --sage: #72726e;        /* text on dark */
+
+    /* Accent — lime, used with restraint */
+    --accent: #94f27f;
+    --accent-strong: #79d65e;
+    --accent-text: #0d7916;
+    --accent-wash: rgba(148, 242, 127, 0.20);
+    --accent-ring: rgba(148, 242, 127, 0.32);
+
+    /* Oats palette — decorative accents */
+    --oats-red: #f29e8b;
+    --oats-red-deep: #e95d3d;
+    --oats-purple: #cebef8;
+    --oats-yellow: #febe29;
+    --oats-yellow-deep: #ed9212;
+    --oats-green-100: #e5eacd;
+    --oats-green-200: #d1e043;
+    --oats-green-500: #5b6f00;
+    --oats-pink: #ffdef6;
+    --oats-blue: #b8d5ff;
+    --oats-gold: #ede1a1;
+
+    /* Warm dark (not pure black) */
+    --brand-dark: #1f1e1a;  /* warm near-black with olive undertone */
+    --brand-dark-2: #2a2823;
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: "Instrument Serif", "Quadrant Fallback", Georgia, "Times New Roman", serif;
+
+    /* Warm layered shadows — the craft */
+    --shadow-0: rgba(0, 0, 0, 0.03) 0px 0px 2px 0px inset;
+    --shadow-1:
+      rgba(0, 0, 0, 0.03) 0px 0px 2px 0px inset,
+      rgba(35, 30, 15, 0.04) 0px 1px 2px 0px,
+      rgba(35, 30, 15, 0.03) 0px 2px 8px 0px;
+    --shadow-2:
+      rgba(0, 0, 0, 0.03) 0px 0px 2px 0px inset,
+      rgba(35, 30, 15, 0.05) 0px 4px 12px 0px,
+      rgba(35, 30, 15, 0.04) 0px 0px 36px 0px;
+    --shadow-3:
+      rgba(0, 0, 0, 0.03) 0px 0px 2px 0px inset,
+      rgba(35, 30, 15, 0.15) 0px 8px 48px 0px,
+      rgba(35, 30, 15, 0.06) 0px 2px 8px 0px;
+
+    /* Sidebar — neutral, brand-agnostic */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--surface);
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+  }
+  .meta a {
+    color: var(--accent-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--label);
+    font-weight: 500;
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 52px 44px;
+    box-shadow: var(--shadow-2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -160px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle,
+      rgba(148, 242, 127, 0.22) 0%,
+      rgba(209, 224, 67, 0.10) 45%,
+      transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle,
+      rgba(206, 190, 248, 0.15) 0%,
+      transparent 65%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 12px 3px 3px;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: var(--bg);
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .hero-eyebrow::before {
+    content: "MEETING";
+    background: var(--accent);
+    color: var(--accent-text);
+    padding: 3px 8px;
+    border-radius: 9999px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: 58px;
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -1.45px;
+    color: var(--heading);
+    margin-bottom: 18px;
+    max-width: 760px;
+  }
+  .hero p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--body);
+    max-width: 580px;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow-1);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--label);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .span-3 { grid-column: span 3; }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 38px; letter-spacing: -0.76px; }
+    .hero { padding: 36px 24px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: box-shadow 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+    box-shadow: var(--shadow-0);
+  }
+  .btn-primary:hover {
+    background: var(--accent-strong);
+    box-shadow: var(--shadow-1);
+  }
+  .btn-ghost {
+    background: var(--bg);
+    color: var(--heading);
+    border-color: var(--border);
+    
+    box-shadow: var(--shadow-0);
+  }
+  .btn-ghost:hover { background: rgba(0, 0, 0, 0.024); }
+  .btn-dark {
+    background: var(--brand-dark);
+    color: #fff;
+    
+  }
+  .btn-dark:hover { background: var(--brand-dark-2); }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip {
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid var(--border-hairline);
+    box-shadow: var(--shadow-0);
+  }
+  .swatch-name { font-size: 12px; font-weight: 500; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--muted); }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border-hairline); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+  .type-display {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -0.84px;
+    color: var(--heading);
+    line-height: 1.02;
+  }
+  .type-h2 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.42px;
+    color: var(--heading);
+    line-height: 1.15;
+  }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); line-height: 1.5; }
+  .type-caption { font-size: 13px; font-weight: 500; color: var(--label); letter-spacing: 0.13px; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-warm);
+    border-radius: 8px;
+    color: var(--heading);
+    box-shadow: var(--shadow-0);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-hairline);
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 500; }
+
+  /* Meeting Note Card */
+  .note-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--shadow-2);
+    position: relative;
+  }
+  .note-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .note-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    color: var(--heading);
+    line-height: 1.25;
+  }
+  .note-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .note-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-wash);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .note-body {
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.55;
+  }
+  .note-body p { margin-bottom: 10px; }
+  .note-body strong { color: var(--heading); font-weight: 600; background: var(--accent-wash); padding: 1px 4px; border-radius: 3px; }
+  .note-actions {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-hairline);
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* Action chips (inside card) */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    border-radius: 9999px;
+    background: var(--surface-warm);
+    color: var(--label);
+    border: 1px solid var(--border-hairline);
+  }
+  .chip iconify-icon { font-size: 13px; color: var(--muted); }
+  .chip-accent { background: var(--oats-green-100); color: var(--oats-green-500); border-color: transparent; }
+  .chip-purple { background: #e8defa; color: #5932b3; border-color: transparent; }
+  .chip-gold   { background: var(--oats-gold); color: #7a5b00; border-color: transparent; }
+
+  /* Badge */
+  .badge { display: inline-flex; padding: 3px 10px; border-radius: 9999px; font-size: 11px; font-weight: 500; }
+  .badge-success { background: var(--oats-green-100); color: var(--oats-green-500); }
+  .badge-neutral { background: var(--surface-warm); color: var(--heading); }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 500; color: var(--label); margin-bottom: 6px; }
+  .input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus {
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 0 3px var(--accent-ring);
+  }
+  .input::placeholder { color: var(--muted); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border-hairline); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 300; color: var(--accent-text); font-size: 20px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.55; max-width: 540px; }
+
+  /* Dark (warm, not pure black) */
+  .dark-tile {
+    background: var(--brand-dark);
+    color: #fff;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      rgba(255, 255, 255, 0.03) 0px 0px 2px 0px inset,
+      rgba(15, 12, 0, 0.15) 0px 8px 48px 0px;
+  }
+  .dark-tile::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(148, 242, 127, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255, 255, 255, 0.55); }
+  .dark-tile blockquote {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.33px;
+    line-height: 1.25;
+    margin-bottom: 22px;
+    color: rgba(255, 255, 255, 0.96);
+  }
+  .dark-tile .btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+  }
+  .dark-tile .btn-primary:hover { background: var(--accent-strong); }
+
+  /* Shadows */
+  .shadow-row { display: flex; flex-direction: column; gap: 14px; }
+  .shadow-block {
+    height: 58px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .shadow-1-demo { box-shadow: var(--shadow-0); }
+  .shadow-2-demo { box-shadow: var(--shadow-1); }
+  .shadow-3-demo { box-shadow: var(--shadow-2); }
+  .shadow-4-demo { box-shadow: var(--shadow-3); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Granola</span>
+      </div>
+      <a href="../../getdesign-corpus/granola.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">AI notetaker · warm-neutral macOS craft</span>
+        <h1>Meeting notes that write themselves, quietly.</h1>
+        <p>Granola's design language: warm off-white surfaces, layered ring-inset shadows, a single lime highlight that earns its attention, and editorial serif headlines that read like a notebook, not a dashboard.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">
+            <iconify-icon icon="solar:download-minimalistic-linear"></iconify-icon>
+            Download for Mac
+          </button>
+          <button class="btn btn-ghost">See a sample note →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">8 brand tokens · warm neutrals + oats</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #94f27f;"></div><div class="swatch-name">Accent Lime</div><div class="swatch-hex">#94f27f</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #0e0f0c;"></div><div class="swatch-name">Granola Ink</div><div class="swatch-hex">#0e0f0c</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #eaebe5;"></div><div class="swatch-name">Oat Cream</div><div class="swatch-hex">#eaebe5</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #d5d5d2;"></div><div class="swatch-name">Stone Mist</div><div class="swatch-hex">#d5d5d2</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #cebef8;"></div><div class="swatch-name">Oats Purple</div><div class="swatch-hex">#cebef8</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f29e8b;"></div><div class="swatch-name">Oats Coral</div><div class="swatch-hex">#f29e8b</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #febe29;"></div><div class="swatch-name">Oats Honey</div><div class="swatch-hex">#febe29</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #818179;"></div><div class="swatch-name">Warm Silver</div><div class="swatch-hex">#818179</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">pill · 9999px</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+          <button class="btn btn-primary">
+            <iconify-icon icon="solar:microphone-2-linear"></iconify-icon>
+            Start recording
+          </button>
+          <button class="btn btn-ghost">
+            <iconify-icon icon="solar:notebook-minimalistic-linear"></iconify-icon>
+            Open notes
+          </button>
+          <button class="btn btn-dark">
+            <iconify-icon icon="solar:calendar-linear"></iconify-icon>
+            Connect calendar
+          </button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Quadrant serif · Melange sans</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 68px</div>
+          <div class="type-display">Your meetings, remembered.</div>
+          <div class="type-spec">Quadrant serif · 400 · -1.02px · line-height 1.00</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 28px</div>
+          <div class="type-h2">Action items, captured automatically</div>
+          <div class="type-spec">Quadrant serif · 400 · -0.42px · line-height 1.15</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Granola listens to your Zoom, Google Meet, and Teams calls — no meeting bots, nothing to install on the other side. Notes appear in the native macOS app as the conversation unfolds.</div>
+          <div class="type-spec">Melange sans · 400 · line-height 1.50</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption / 13px</div>
+          <div class="type-caption">GRANOLA · NEW YORK · PRIVATE BETA</div>
+          <div class="type-spec">Melange sans · 500 · 0.13px tracking · uppercase</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Solar linear · meeting-themed</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="solar:microphone-2-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:notebook-minimalistic-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:calendar-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:checklist-minimalistic-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:users-group-rounded-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:document-text-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:headphones-round-linear"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:magic-stick-3-linear"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Solar Linear</strong> · stroke 1.5px · 22px default
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Meeting Note Card</span>
+          <span class="tile-sub">elevated · warm ambient shadow</span>
+        </div>
+        <div class="note-card">
+          <div class="note-head">
+            <div>
+              <div class="note-title">Weekly product sync — Thursday</div>
+              <div class="note-meta">25 MIN · 4 PARTICIPANTS · AUTO-SUMMARIZED</div>
+            </div>
+            <div class="note-dot" aria-hidden="true"></div>
+          </div>
+          <div class="note-body">
+            <p>Maya walked through the onboarding redesign and shipped the new empty states. Team aligned on <strong>shipping v2 next Tuesday</strong>.</p>
+            <p>Dana raised a concern about the export flow — needs a design review before rollout.</p>
+          </div>
+          <div class="note-actions">
+            <span class="chip chip-accent"><iconify-icon icon="solar:checklist-minimalistic-linear"></iconify-icon>3 action items</span>
+            <span class="chip chip-purple"><iconify-icon icon="solar:users-group-rounded-linear"></iconify-icon>4 attendees</span>
+            <span class="chip chip-gold"><iconify-icon icon="solar:star-linear"></iconify-icon>Starred</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">lime focus ring · 8px radius</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Email</label>
+          <input type="email" id="email" class="input" placeholder="you@company.com" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="meeting">Meeting title</label>
+          <input type="text" id="meeting" class="input" placeholder="Weekly product sync" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">
+          <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+          Create note
+        </button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">warm, layered</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1-demo">Lv 0 · Inset Ring</div>
+          <div class="shadow-block shadow-2-demo">Lv 1 · Soft Lift</div>
+          <div class="shadow-block shadow-3-demo">Lv 2 · Card</div>
+          <div class="shadow-block shadow-4-demo">Lv 3 · Floating</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">Follow-ups</span>
+          <span class="tile-sub">hairline divider · olive alpha</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Do I need to install a bot on the meeting?</summary>
+          <div class="faq-a">No. Granola runs locally on your Mac and captures audio directly from the meeting app. Nothing joins your call. Nothing notifies the other side. It just listens through your speakers.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I edit the AI-generated notes?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Where are my notes stored?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Does it work with Zoom, Meet, and Teams?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Brand-dark section</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.55);">#1f1e1a · lime glow</span>
+        </div>
+        <blockquote>"Granola took the part of meetings I dreaded — writing up what was said — and made it invisible."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <div style="width: 30px; height: 30px; border-radius: 9999px; background: linear-gradient(135deg, var(--oats-purple), var(--accent));"></div>
+          <div style="font-size: 13px; font-weight: 400;"><strong style="font-weight: 600;">John Borthwick</strong> · Investor, Betaworks</div>
+        </div>
+        <button class="btn btn-primary">
+          <iconify-icon icon="solar:play-linear"></iconify-icon>
+          Watch the demo
+        </button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

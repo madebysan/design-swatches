@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design Swatches — Explorer</title>
+<meta name="description" content="Portable visual identity for AI coding agents. Browse 81 real-company design systems as filterable visual swatches — colors, typography, components, and the full DESIGN.md for each." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:title" content="Design Swatches — Explorer" />
+<meta property="og:description" content="Portable visual identity for AI coding agents. Browse 81 real-company design systems as filterable visual swatches." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* Designed against vercel.md — utility/archive aesthetic.
+     Geist Sans + Geist Mono, shadow-as-border, monochrome canvas. */
+  :root {
+    --bg: #ffffff;
+    --surface: #fafafa;
+    --surface-2: #f5f5f5;
+    --header-bg: rgba(250, 250, 250, 0.92);
+    --divider: rgba(0, 0, 0, 0.08);
+    --border-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    --border-shadow-strong: 0 0 0 1px rgba(0, 0, 0, 0.14);
+    --text: #171717;
+    --text-muted: #666666;
+    --text-subtle: #999999;
+    --accent: #171717;
+    --accent-fg: #ffffff;
+    --radius: 6px;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --surface: #000000;
+    --surface-2: #1a1a1a;
+    --header-bg: rgba(0, 0, 0, 0.85);
+    --divider: rgba(255, 255, 255, 0.1);
+    --border-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+    --border-shadow-strong: 0 0 0 1px rgba(255, 255, 255, 0.18);
+    --text: #ededed;
+    --text-muted: #a1a1a1;
+    --text-subtle: #666666;
+    --accent: #ededed;
+    --accent-fg: #0a0a0a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "liga";
+    background: var(--surface);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Header ===== */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--header-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 0 var(--divider);
+  }
+  .header-top {
+    padding: 16px 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  .header-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0;
+  }
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+  .search {
+    flex: 1;
+    max-width: 280px;
+    padding: 7px 12px;
+    border: 0;
+    box-shadow: var(--border-shadow);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-feature-settings: "liga";
+    font-size: 13px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .search:focus { box-shadow: 0 0 0 1px var(--text); }
+
+  /* Size switcher */
+  .size-switcher {
+    display: flex;
+    border: 0;
+    box-shadow: var(--border-shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .size-btn {
+    padding: 7px 12px;
+    background: transparent;
+    border: 0;
+    font-family: var(--font-mono);
+    font-feature-settings: "liga";
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    letter-spacing: 0;
+    min-width: 30px;
+  }
+  .size-btn:not(:last-child) { box-shadow: 1px 0 0 0 var(--divider); }
+  .size-btn:hover { color: var(--text); }
+  .size-btn.active {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  /* Theme toggle — same shape language as size-btn */
+  .theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    box-shadow: var(--border-shadow);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.15s, box-shadow 0.15s;
+  }
+  .theme-btn:hover { color: var(--text); box-shadow: var(--border-shadow-strong); }
+  .theme-btn svg { width: 14px; height: 14px; display: block; }
+  .theme-btn .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-btn .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-btn .icon-moon { display: none; }
+
+  /* Filters — one visually continuous row */
+  .header-filters {
+    padding: 0 24px 14px;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .filter-row { display: contents; }  /* collapse wrappers so pills flow as siblings */
+  .cat-pill, .style-pill {
+    padding: 4px 11px;
+    border: 0;
+    box-shadow: var(--border-shadow);
+    border-radius: 9999px;
+    background: var(--bg);
+    font-family: var(--font-sans);
+    font-feature-settings: "liga";
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    letter-spacing: 0;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  }
+  .cat-pill:hover, .style-pill:hover {
+    color: var(--text);
+    box-shadow: var(--border-shadow-strong);
+  }
+  .cat-pill.active, .style-pill.active {
+    background: var(--accent);
+    color: var(--accent-fg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .cat-count, .pill-count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.55;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  /* ===== Grid container ===== */
+  .grid-wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px 24px 64px;
+  }
+
+  /* Default medium grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .grid.view-L {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 28px;
+  }
+  .grid.view-S {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* ===== Card (M & L) ===== */
+  .card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--border-shadow), 0 0 0 0 rgba(0, 0, 0, 0);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--border-shadow-strong), rgba(0, 0, 0, 0.04) 0px 2px 2px, rgba(0, 0, 0, 0.04) 0px 8px 24px -8px;
+  }
+  .card.hidden { display: none; }
+  .card-thumb {
+    aspect-ratio: 1 / 1;
+    background: var(--surface-2);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .card-thumb.no-image {
+    color: var(--text-subtle);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 -1px 0 0 var(--divider);
+  }
+  .card-favicon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    background: var(--surface-2);
+    object-fit: contain;
+  }
+  .card-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    color: var(--text);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-arrow {
+    font-size: 13px;
+    color: var(--text-subtle);
+    flex-shrink: 0;
+  }
+  .card:hover .card-arrow { color: var(--text); }
+  .card-cat {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    padding-left: 8px;
+    box-shadow: -1px 0 0 0 var(--divider);
+    text-transform: uppercase;
+  }
+
+  /* ===== Small view: compact grouped rows ===== */
+  .group {
+    margin-bottom: 32px;
+  }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 6px 10px 10px;
+    box-shadow: 0 1px 0 0 var(--divider);
+    margin-bottom: 8px;
+  }
+  .group-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--text);
+  }
+  .group-count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .row-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    transition: background 0.12s;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .row:hover {
+    background: var(--surface-2);
+  }
+  .row.hidden { display: none; }
+  .row-favicon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--surface-2);
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .row-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Empty state */
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .empty.hidden { display: none; }
+
+  @media (max-width: 720px) {
+    .header-brand { flex-direction: column; gap: 2px; }
+    .header-controls { width: 100%; }
+    .search { max-width: none; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .grid.view-L { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  }
+</style>
+<script>
+  // Set theme BEFORE body renders to avoid flash. Shared key 'swatch-theme'
+  // is also read by every bento sidebar to stay in sync.
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div class="header-brand">
+      <a class="header-title" href="./index.html" title="Back to top">Design Swatches</a>
+      <span class="header-sub">Portable visual identity for AI coding agents.</span>
+    </div>
+    <div class="header-controls">
+      <input type="search" class="search" id="search" placeholder="Search" />
+      <div class="size-switcher" role="tablist">
+        <button class="size-btn" data-size="S" title="Small (grouped list)">S</button>
+        <button class="size-btn active" data-size="M" title="Medium (grid)">M</button>
+        <button class="size-btn" data-size="L" title="Large (cards)">L</button>
+      </div>
+      <button class="theme-btn" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="header-filters">
+    <div class="filter-row" id="cat-filters"></div>
+    <div class="filter-row" id="style-filters"></div>
+  </div>
+</header>
+
+<div class="grid-wrap">
+  <div class="grid view-M" id="grid"></div>
+  <div class="empty hidden" id="empty">No brands match your filter.</div>
+</div>
+
+<script>
+  const DOMAINS = {
+  "a24films": "a24films.com",
+  "airbnb": "airbnb.com",
+  "airtable": "airtable.com",
+  "apple": "apple.com",
+  "arc": "arc.net",
+  "binance": "binance.com",
+  "bmw": "bmw.com",
+  "bugatti": "bugatti.com",
+  "cal": "cal.com",
+  "cape": "cape.co",
+  "claude-ai": "claude.ai",
+  "clay": "clay.earth",
+  "clickhouse": "clickhouse.com",
+  "cohere": "cohere.com",
+  "coinbase": "coinbase.com",
+  "composio": "composio.dev",
+  "cursor": "cursor.com",
+  "elevenlabs": "elevenlabs.io",
+  "expo": "expo.dev",
+  "ferrari": "ferrari.com",
+  "fey": "feyapp.com",
+  "figma": "figma.com",
+  "fluent": "fluent2.microsoft.design",
+  "framer": "framer.com",
+  "granola": "granola.ai",
+  "hashicorp": "hashicorp.com",
+  "ibm": "ibm.com",
+  "intercom": "intercom.com",
+  "ivory": "tapbots.com",
+  "kraken": "kraken.com",
+  "lamborghini": "lamborghini.com",
+  "linear.app": "linear.app",
+  "lovable": "lovable.dev",
+  "mastercard": "mastercard.com",
+  "mercury-weather": "mercuryweather.com",
+  "meta": "about.meta.com",
+  "minimax": "minimax.io",
+  "mintlify": "mintlify.com",
+  "miro": "miro.com",
+  "mistral.ai": "mistral.ai",
+  "mongodb": "mongodb.com",
+  "nike": "nike.com",
+  "notboring": "notboring.software",
+  "notion": "notion.so",
+  "nvidia": "nvidia.com",
+  "ollama": "ollama.com",
+  "opencode.ai": "opencode.ai",
+  "pinterest": "pinterest.com",
+  "pitch": "pitch.com",
+  "playstation": "playstation.com",
+  "posthog": "posthog.com",
+  "raycast": "raycast.com",
+  "readwise": "readwise.io",
+  "renault": "renault.com",
+  "replicate": "replicate.com",
+  "resend": "resend.com",
+  "revolut": "revolut.com",
+  "runwayml": "runwayml.com",
+  "sanity": "sanity.io",
+  "sentry": "sentry.io",
+  "shopify": "shopify.com",
+  "spacex": "spacex.com",
+  "spotify": "spotify.com",
+  "starbucks": "starbucks.com",
+  "stripe": "stripe.com",
+  "supabase": "supabase.com",
+  "superhuman": "superhuman.com",
+  "tesla": "tesla.com",
+  "theverge": "theverge.com",
+  "things": "culturedcode.com",
+  "together.ai": "together.ai",
+  "uber": "uber.com",
+  "vercel": "vercel.com",
+  "vodafone": "vodafone.com",
+  "voltagent": "voltagent.dev",
+  "warp": "warp.dev",
+  "webflow": "webflow.com",
+  "wired": "wired.com",
+  "wise": "wise.com",
+  "x.ai": "x.ai",
+  "zapier": "zapier.com"
+};
+  const CATEGORIES = {
+  "a24films":      { "category": "Media",        "styles": ["Dark", "Mono", "Editorial", "Bold"] },
+  "airbnb":        { "category": "Retail",       "styles": ["Warm", "Light", "Bold"] },
+  "airtable":      { "category": "SaaS",         "styles": ["Light", "Minimal"] },
+  "apple":         { "category": "Retail",       "styles": ["Minimal", "Light", "Mono"] },
+  "arc":           { "category": "Browser",      "styles": ["Colorful", "Gradient", "Warm", "Light"] },
+  "binance":       { "category": "Finance",      "styles": ["Dark", "Bold"] },
+  "bmw":           { "category": "Auto",         "styles": ["Dark", "Minimal", "Bold"] },
+  "bugatti":       { "category": "Auto",         "styles": ["Dark", "Bold", "Mono"] },
+  "cal":           { "category": "SaaS",         "styles": ["Minimal", "Mono", "Light"] },
+  "cape":          { "category": "Productivity", "styles": ["Minimal", "Light", "Warm"] },
+  "claude-ai":     { "category": "AI",           "styles": ["Warm", "Serif", "Light", "Tactile"] },
+  "clay":          { "category": "SaaS",         "styles": ["Warm", "Light", "Minimal"] },
+  "clickhouse":    { "category": "Dev Tools",    "styles": ["Dark", "Bold", "Colorful"] },
+  "cohere":        { "category": "AI",           "styles": ["Gradient", "Light", "Minimal"] },
+  "coinbase":      { "category": "Finance",      "styles": ["Minimal", "Light"] },
+  "composio":      { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
+  "cursor":        { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
+  "elevenlabs":    { "category": "AI",           "styles": ["Dark", "Minimal"] },
+  "expo":          { "category": "Dev Tools",    "styles": ["Minimal", "Light"] },
+  "ferrari":       { "category": "Auto",         "styles": ["Dark", "Bold", "Colorful"] },
+  "fey":           { "category": "Finance",      "styles": ["Dark", "Tactile", "Minimal"] },
+  "figma":         { "category": "Design",       "styles": ["Colorful", "Light", "Gradient"] },
+  "fluent":        { "category": "Design System","styles": ["Gradient", "Light", "Minimal"] },
+  "framer":        { "category": "Design",       "styles": ["Dark", "Gradient", "Colorful", "Bold"] },
+  "granola":       { "category": "AI",           "styles": ["Warm", "Minimal", "Light", "Tactile"] },
+  "hashicorp":     { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
+  "ibm":           { "category": "Enterprise",   "styles": ["Minimal", "Light", "Bold"] },
+  "intercom":      { "category": "SaaS",         "styles": ["Warm", "Light"] },
+  "ivory":         { "category": "Productivity", "styles": ["Tactile", "Dark", "Warm"] },
+  "kraken":        { "category": "Finance",      "styles": ["Dark", "Colorful"] },
+  "lamborghini":   { "category": "Auto",         "styles": ["Dark", "Bold", "Mono"] },
+  "linear.app":    { "category": "SaaS",         "styles": ["Dark", "Minimal", "Mono"] },
+  "lovable":       { "category": "AI",           "styles": ["Warm", "Light", "Minimal"] },
+  "mastercard":    { "category": "Finance",      "styles": ["Colorful", "Light", "Bold"] },
+  "mercury-weather":{"category": "Productivity", "styles": ["Gradient", "Colorful", "Tactile"] },
+  "meta":          { "category": "Enterprise",   "styles": ["Light", "Minimal"] },
+  "minimax":       { "category": "AI",           "styles": ["Dark", "Gradient", "Colorful"] },
+  "mintlify":      { "category": "Dev Tools",    "styles": ["Minimal", "Light"] },
+  "miro":          { "category": "SaaS",         "styles": ["Colorful", "Light", "Bold"] },
+  "mistral.ai":    { "category": "AI",           "styles": ["Light", "Minimal", "Colorful"] },
+  "mongodb":       { "category": "Dev Tools",    "styles": ["Light", "Minimal", "Bold"] },
+  "nike":          { "category": "Retail",       "styles": ["Bold", "Mono", "Minimal"] },
+  "notboring":     { "category": "Productivity", "styles": ["Tactile", "Colorful", "Gradient", "Bold"] },
+  "notion":        { "category": "SaaS",         "styles": ["Minimal", "Light", "Warm"] },
+  "nvidia":        { "category": "Enterprise",   "styles": ["Dark", "Bold", "Colorful"] },
+  "ollama":        { "category": "AI",           "styles": ["Warm", "Light", "Minimal"] },
+  "opencode.ai":   { "category": "Dev Tools",    "styles": ["Dark", "Minimal", "Mono"] },
+  "pinterest":     { "category": "Retail",       "styles": ["Warm", "Light", "Colorful"] },
+  "pitch":         { "category": "SaaS",         "styles": ["Gradient", "Dark", "Colorful"] },
+  "playstation":   { "category": "Gaming",       "styles": ["Dark", "Bold", "Minimal"] },
+  "posthog":       { "category": "Dev Tools",    "styles": ["Warm", "Light", "Bold"] },
+  "raycast":       { "category": "Productivity", "styles": ["Dark", "Minimal", "Tactile"] },
+  "readwise":      { "category": "Productivity", "styles": ["Warm", "Serif", "Light", "Editorial"] },
+  "renault":       { "category": "Auto",         "styles": ["Dark", "Bold", "Minimal"] },
+  "replicate":     { "category": "AI",           "styles": ["Colorful", "Gradient", "Bold"] },
+  "resend":        { "category": "Dev Tools",    "styles": ["Dark", "Serif", "Minimal"] },
+  "revolut":       { "category": "Finance",      "styles": ["Dark", "Minimal", "Bold"] },
+  "runwayml":      { "category": "AI",           "styles": ["Dark", "Minimal", "Mono"] },
+  "sanity":        { "category": "Dev Tools",    "styles": ["Dark", "Bold", "Colorful"] },
+  "sentry":        { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
+  "shopify":       { "category": "Retail",       "styles": ["Dark", "Bold", "Minimal"] },
+  "spacex":        { "category": "Enterprise",   "styles": ["Dark", "Mono", "Minimal", "Bold"] },
+  "spotify":       { "category": "Media",        "styles": ["Dark", "Minimal"] },
+  "starbucks":     { "category": "Retail",       "styles": ["Warm", "Light", "Minimal"] },
+  "stripe":        { "category": "Finance",      "styles": ["Minimal", "Light", "Gradient"] },
+  "supabase":      { "category": "Dev Tools",    "styles": ["Dark", "Minimal", "Mono"] },
+  "superhuman":    { "category": "Productivity", "styles": ["Dark", "Minimal", "Gradient"] },
+  "tesla":         { "category": "Auto",         "styles": ["Minimal", "Light", "Mono"] },
+  "theverge":      { "category": "Media",        "styles": ["Dark", "Colorful", "Bold", "Editorial"] },
+  "things":        { "category": "Productivity", "styles": ["Minimal", "Light", "Tactile"] },
+  "together.ai":   { "category": "AI",           "styles": ["Gradient", "Colorful", "Light"] },
+  "uber":          { "category": "Retail",       "styles": ["Mono", "Minimal", "Bold"] },
+  "vercel":        { "category": "Dev Tools",    "styles": ["Minimal", "Mono", "Light"] },
+  "vodafone":      { "category": "Enterprise",   "styles": ["Bold", "Light", "Colorful"] },
+  "voltagent":     { "category": "AI",           "styles": ["Dark", "Minimal", "Colorful"] },
+  "warp":          { "category": "Dev Tools",    "styles": ["Dark", "Warm", "Minimal"] },
+  "webflow":       { "category": "Design",       "styles": ["Gradient", "Colorful", "Light"] },
+  "wired":         { "category": "Media",        "styles": ["Serif", "Bold", "Editorial", "Light"] },
+  "wise":          { "category": "Finance",      "styles": ["Bold", "Light", "Minimal"] },
+  "x.ai":          { "category": "AI",           "styles": ["Dark", "Mono", "Minimal"] },
+  "zapier":        { "category": "SaaS",         "styles": ["Warm", "Light", "Colorful"] }
+};
+
+  const brands = Object.keys(DOMAINS).sort();
+  const grid = document.getElementById('grid');
+  const search = document.getElementById('search');
+  const empty = document.getElementById('empty');
+  const catFiltersEl = document.getElementById('cat-filters');
+  const styleFiltersEl = document.getElementById('style-filters');
+  const sizeButtons = document.querySelectorAll('.size-btn');
+
+  let state = {
+    size: 'M',
+    filter: null,  // single selection across BOTH category and style pills (null = all)
+    query: '',
+  };
+
+  const getCat = (slug) => (CATEGORIES[slug] && CATEGORIES[slug].category) || 'Other';
+  const getStyles = (slug) => (CATEGORIES[slug] && CATEGORIES[slug].styles) || [];
+
+  // ===== Unified filters: single-select across categories AND styles =====
+  //   "All" = no filter · click an active pill = deselect (back to All)
+  //   Category and style pills are visually identical
+  function selectPill(value) {
+    // value === 'all' means no filter (null). Clicking active pill deselects.
+    const resolved = value === 'all' ? null : value;
+    state.filter = state.filter === resolved ? null : resolved;
+    document.querySelectorAll('.cat-pill, .style-pill').forEach(p => {
+      const v = p.dataset.cat || p.dataset.style;
+      const isActive = (v === 'all' && state.filter === null) || v === state.filter;
+      p.classList.toggle('active', isActive);
+    });
+    applyFilter();
+  }
+
+  function buildCategoryFilters() {
+    const catCount = {};
+    brands.forEach(slug => {
+      const cat = getCat(slug);
+      catCount[cat] = (catCount[cat] || 0) + 1;
+    });
+    const sorted = Object.keys(catCount).sort((a, b) => catCount[b] - catCount[a]);
+    const pills = [
+      `<button class="cat-pill active" data-cat="all">All <span class="cat-count">${brands.length}</span></button>`,
+      ...sorted.map(cat => `<button class="cat-pill" data-cat="${cat}">${cat} <span class="cat-count">${catCount[cat]}</span></button>`),
+    ];
+    catFiltersEl.insertAdjacentHTML('beforeend', pills.join(''));
+    catFiltersEl.querySelectorAll('.cat-pill').forEach(el => {
+      el.addEventListener('click', () => selectPill(el.dataset.cat));
+    });
+  }
+
+  function buildStyleFilters() {
+    const styleCount = {};
+    brands.forEach(slug => {
+      getStyles(slug).forEach(s => {
+        styleCount[s] = (styleCount[s] || 0) + 1;
+      });
+    });
+    const sorted = Object.keys(styleCount).sort((a, b) => styleCount[b] - styleCount[a]);
+    const pills = sorted.map(s => `<button class="style-pill" data-style="${s}">${s} <span class="pill-count">${styleCount[s]}</span></button>`);
+    styleFiltersEl.insertAdjacentHTML('beforeend', pills.join(''));
+    styleFiltersEl.querySelectorAll('.style-pill').forEach(el => {
+      el.addEventListener('click', () => selectPill(el.dataset.style));
+    });
+  }
+
+  // ===== Renderers =====
+  function cardHTML(slug, size) {
+    const domain = DOMAINS[slug];
+    const cat = (CATEGORIES[slug] && CATEGORIES[slug].category) || '';
+    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+    const thumb = `thumbnails/${slug}.png`;
+    return `
+      <a class="card" href="bentos/${slug}.html" data-name="${slug}" data-category="${cat}">
+        <div class="card-thumb">
+          <img src="${thumb}" alt="${slug} preview" loading="lazy" onerror="this.parentElement.innerHTML='<span>Preview pending</span>';this.parentElement.classList.add('no-image')" />
+        </div>
+        <div class="card-foot">
+          <img class="card-favicon" src="${favicon}" alt="" loading="lazy" />
+          <span class="card-name">${slug}</span>
+          ${size === 'L' ? `<span class="card-cat">${cat}</span>` : ''}
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+    `;
+  }
+
+  function rowHTML(slug) {
+    const domain = DOMAINS[slug];
+    const cat = (CATEGORIES[slug] && CATEGORIES[slug].category) || '';
+    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+    return `
+      <a class="row" href="bentos/${slug}.html" data-name="${slug}" data-category="${cat}">
+        <img class="row-favicon" src="${favicon}" alt="" loading="lazy" />
+        <span class="row-name">${slug}</span>
+      </a>
+    `;
+  }
+
+  function render() {
+    grid.className = `grid view-${state.size}`;
+
+    if (state.size === 'S') {
+      // Grouped list by category
+      const groups = {};
+      brands.forEach(slug => {
+        const cat = (CATEGORIES[slug] && CATEGORIES[slug].category) || 'Other';
+        groups[cat] = groups[cat] || [];
+        groups[cat].push(slug);
+      });
+      const sortedCats = Object.keys(groups).sort();
+      grid.innerHTML = sortedCats.map(cat => {
+        const rows = groups[cat].map(rowHTML).join('');
+        return `
+          <section class="group" data-cat="${cat}">
+            <div class="group-head">
+              <span class="group-title">${cat}</span>
+              <span class="group-count">${groups[cat].length}</span>
+            </div>
+            <div class="row-list">${rows}</div>
+          </section>
+        `;
+      }).join('');
+    } else {
+      // Grid of cards (M / L)
+      grid.innerHTML = brands.map(slug => cardHTML(slug, state.size)).join('');
+    }
+    applyFilter();
+  }
+
+  function matchesFilters(slug) {
+    const q = state.query.toLowerCase().trim();
+    const nameMatch = !q || slug.toLowerCase().includes(q);
+    if (!state.filter) return nameMatch;
+    // Single selection — matches if it's the brand's category OR one of its styles
+    const tagMatch = getCat(slug) === state.filter || getStyles(slug).includes(state.filter);
+    return nameMatch && tagMatch;
+  }
+
+  function applyFilter() {
+    let visible = 0;
+
+    if (state.size === 'S') {
+      document.querySelectorAll('.group').forEach(groupEl => {
+        let groupVisible = 0;
+        groupEl.querySelectorAll('.row').forEach(row => {
+          const show = matchesFilters(row.dataset.name);
+          row.classList.toggle('hidden', !show);
+          if (show) { groupVisible++; visible++; }
+        });
+        groupEl.style.display = groupVisible > 0 ? '' : 'none';
+        const countEl = groupEl.querySelector('.group-count');
+        if (countEl) countEl.textContent = groupVisible;
+      });
+    } else {
+      grid.querySelectorAll('.card').forEach(card => {
+        const show = matchesFilters(card.dataset.name);
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+    }
+
+    empty.classList.toggle('hidden', visible > 0);
+  }
+
+  // ===== Wire up controls =====
+  search.addEventListener('input', (e) => {
+    state.query = e.target.value;
+    applyFilter();
+  });
+  sizeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizeButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.size = btn.dataset.size;
+      render();
+    });
+  });
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('swatch-theme', next);
+  });
+
+  buildCategoryFilters();
+  buildStyleFilters();
+  render();
+</script>
+
+</body>
+</html>

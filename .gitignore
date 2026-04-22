@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Node / build artifacts (just in case anything ever gets npm-installed here)
+node_modules/
+dist/
+build/
+.next/
+
+# Local logs / scratch
+*.log
+
+# Internal tracking — not for the repo
+plan.md
+backlog.md
+CHANGELOG.md
+
+# Local-only build tooling (regenerates sidebars / index when adding a new brand)
+explorer/shared/
+
+# Defensive: zombie background dev-server tasks have recreated these before
+test-harness/
+test-runs/
