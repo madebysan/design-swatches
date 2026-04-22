@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fey — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" type="image/x-icon" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    /* Fey warm-dark palette */
+    --bg: #0b0b0b;                       /* warm charcoal canvas */
+    --bg-deep: #000000;                  /* deepest layer */
+    --surface-1: rgba(255, 255, 255, 0.03);
+    --surface-2: rgba(255, 255, 255, 0.06);
+    --surface-3: rgba(255, 255, 255, 0.08);
+    --surface-glass: rgba(255, 255, 255, 0.12);
+
+    --heading: #ffffff;
+    --body: rgba(255, 255, 255, 0.66);
+    --label: #e6e6e6;
+    --muted: rgba(134, 143, 151, 0.8);
+    --gunmetal: #868f97;
+
+    /* Signature amber gradient stops */
+    --amber-light: #ffb088;
+    --amber-mid: #e87a4f;
+    --amber-deep: #c45a34;
+
+    /* Finance accents (reserved use) */
+    --link: #479ffa;
+    --gain: #22c55e;
+    --gain-glow: rgba(34, 197, 94, 0.15);
+    --gain-border: rgba(34, 197, 94, 0.30);
+    --loss: #ef4444;
+    --loss-glow: rgba(239, 68, 68, 0.15);
+    --loss-border: rgba(239, 68, 68, 0.30);
+    --chart-cyan: #479ffa;
+    --chart-acid: #c3f500;
+
+    /* Hairline borders */
+    --border: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-strong: rgba(255, 255, 255, 0.10);
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Multi-layer Fey shadows */
+    --shadow-card: rgba(0, 0, 0, 0.66) 0px 53px 87px 0px,
+                   rgba(0, 0, 0, 0.40) 0px 20px 27px 0px,
+                   rgba(0, 0, 0, 0.26) 0px 4px 7px 0px;
+    --shadow-subtle: rgba(0, 0, 0, 0.12) 0px 30px 16px 0px,
+                     rgba(0, 0, 0, 0.07) 0px 15px 8px 0px,
+                     rgba(0, 0, 0, 0.04) 0px 6px 4px 0px;
+    --shadow-hero: rgba(0, 0, 0, 0.45) 0px 45px 75px 0px,
+                   rgba(0, 0, 0, 0.325) 0px 26px 39px 0px,
+                   rgba(0, 0, 0, 0.25) 0px 13px 18px 0px,
+                   rgba(0, 0, 0, 0.196) 0px 5px 8px 0px,
+                   rgba(0, 0, 0, 0.125) 0px 1px 3px 0px;
+    --shadow-notification: rgb(19, 20, 25) 0px 0px 0px 0.75px,
+                           rgba(0, 0, 0, 0.28) 0px 14px 24px 0px;
+    --shadow-chrome: rgba(255, 255, 255, 0.25) 0px 0px 14px 0px;
+    --shadow-glass: rgba(255, 255, 255, 0.32) 1.25px 1.25px 1.25px 0px inset,
+                    rgba(255, 255, 255, 0.05) 1.25px -1.25px 1.25px 0px inset,
+                    rgba(0, 0, 0, 0.64) 4px 20px 32px 0px;
+    --shadow-ambient: rgba(0, 0, 0, 0.8) 0px 0px 44px 0px;
+
+    /* Sidebar — neutral, brand-agnostic */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.4;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN (dark) ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .meta a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Helpers */
+  .tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+  .gradient-text {
+    background: linear-gradient(90deg, var(--amber-light) 0%, var(--amber-mid) 55%, var(--amber-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hero — warm-dark dimensional card */
+  .hero {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 56px 48px 40px;
+    box-shadow: var(--shadow-hero);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(232, 122, 79, 0.22) 0%, rgba(196, 90, 52, 0.08) 35%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px 5px 5px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    background: var(--surface-1);
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 28px;
+    font-weight: 500;
+    box-shadow: var(--shadow-notification);
+  }
+  .hero-eyebrow::before {
+    content: "LIVE";
+    background: linear-gradient(90deg, var(--amber-mid), var(--amber-deep));
+    color: white;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    max-width: 820px;
+  }
+  .hero p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--body);
+    max-width: 580px;
+    margin-bottom: 36px;
+    line-height: 1.45;
+  }
+
+  /* Hero portfolio card — the signature dimensional number */
+  .portfolio-hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding: 28px 32px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(20px);
+    margin-bottom: 24px;
+  }
+  .portfolio-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .portfolio-value {
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.0;
+    letter-spacing: -1.5px;
+  }
+  .portfolio-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 3px 10px;
+    background: var(--gain-glow);
+    border: 1px solid var(--gain-border);
+    color: var(--gain);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 99px;
+  }
+  .portfolio-spark {
+    width: 200px;
+    height: 60px;
+    position: relative;
+    align-self: center;
+  }
+  .portfolio-spark svg {
+    width: 100%;
+    height: 100%;
+    filter:
+      drop-shadow(0 4px 16px rgba(71, 159, 250, 0.45))
+      drop-shadow(0 18px 48px rgba(59, 152, 215, 0.35));
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-subtle);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 38px; letter-spacing: -0.72px; }
+    .hero { padding: 36px 24px; }
+    .portfolio-hero { grid-template-columns: 1fr; }
+    .portfolio-value { font-size: 36px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 99px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: #e6e6e6;
+    color: #000;
+    box-shadow: var(--shadow-chrome);
+  }
+  .btn-primary:hover {
+    background: #ffffff;
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 20px 0px;
+  }
+  .btn-ghost {
+    background: var(--surface-3);
+    color: var(--heading);
+    border-color: var(--border-strong);
+  }
+  .btn-ghost:hover { background: var(--surface-glass); }
+  .btn-glass {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--heading);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-glass);
+  }
+  .btn-glass:hover { background: var(--surface-3); }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip {
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-subtle);
+  }
+  .swatch-name { font-size: 12px; font-weight: 600; color: var(--heading); }
+  .swatch-hex {
+    font-family: "SF Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .type-display { font-size: 40px; font-weight: 600; letter-spacing: -0.8px; color: var(--heading); line-height: 1.02; }
+  .type-h2 { font-size: 26px; font-weight: 600; letter-spacing: -0.3px; color: var(--heading); line-height: 1.1; }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); line-height: 1.4; }
+  .type-caption { font-size: 12px; font-weight: 600; color: var(--label); text-transform: uppercase; letter-spacing: 0.08em; }
+  .type-numeric { font-size: 36px; font-weight: 600; color: var(--heading); font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--heading);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--label); font-weight: 600; }
+
+  /* Portfolio / Stock card sample — the dimensional signature */
+  .stock-card {
+    position: relative;
+    padding: 22px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .stock-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    box-shadow: rgba(255, 255, 255, 0.06) 0 1px 0 0 inset;
+    pointer-events: none;
+  }
+  .stock-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .stock-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--amber-light), var(--amber-deep));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b0b0b;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: rgba(232, 122, 79, 0.3) 0px 8px 24px 0px;
+  }
+  .stock-ticker { font-size: 15px; font-weight: 600; color: var(--heading); }
+  .stock-name { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .stock-price {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--heading);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.4px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stock-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .stock-delta.gain { color: var(--gain); }
+  .stock-delta.loss { color: var(--loss); }
+  .stock-chart {
+    margin-top: 16px;
+    height: 56px;
+    width: 100%;
+    position: relative;
+  }
+  .stock-chart svg {
+    width: 100%;
+    height: 100%;
+    filter:
+      drop-shadow(0 2px 8px rgba(34, 197, 94, 0.5))
+      drop-shadow(0 8px 32px rgba(34, 197, 94, 0.25));
+  }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--label);
+    margin-bottom: 6px;
+  }
+  .input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus {
+    border-color: var(--border-strong);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+  }
+  .input::placeholder { color: var(--muted); }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .badge-gain { background: var(--gain-glow); color: var(--gain); border: 1px solid var(--gain-border); }
+  .badge-loss { background: var(--loss-glow); color: var(--loss); border: 1px solid var(--loss-border); }
+  .badge-neutral { background: var(--surface-2); color: var(--label); border: 1px solid var(--border); }
+
+  /* Watchlist rows */
+  .watchlist { display: flex; flex-direction: column; gap: 2px; }
+  .watch-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: background 0.15s;
+  }
+  .watch-row:hover { background: var(--surface-2); }
+  .watch-ticker { font-size: 13px; font-weight: 600; color: var(--heading); }
+  .watch-name { font-size: 11px; color: var(--muted); }
+  .watch-price { font-size: 13px; font-weight: 600; color: var(--heading); font-variant-numeric: tabular-nums; }
+  .watch-change { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 60px; text-align: right; }
+  .watch-change.gain { color: var(--gain); }
+  .watch-change.loss { color: var(--loss); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 400; color: var(--amber-mid); font-size: 20px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.5; max-width: 540px; }
+
+  /* Bright accent section — breaks the dark monotony */
+  .bright-tile {
+    background: linear-gradient(135deg, #ffb088 0%, #e87a4f 50%, #c45a34 100%);
+    color: #1a0a00;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      rgba(232, 122, 79, 0.4) 0px 40px 80px -20px,
+      rgba(196, 90, 52, 0.3) 0px 20px 40px -10px,
+      rgba(0, 0, 0, 0.4) 0px 4px 8px 0px;
+  }
+  .bright-tile::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .bright-tile > * { position: relative; z-index: 1; }
+  .bright-tile .tile-title { color: rgba(26, 10, 0, 0.75); }
+  .bright-tile .tile-sub { color: rgba(26, 10, 0, 0.6); }
+  .bright-tile blockquote {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #1a0a00;
+  }
+  .bright-tile .quote-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26, 10, 0, 0.8);
+  }
+  .bright-tile .quote-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1a0a00;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 12px 0px;
+  }
+  .bright-tile .btn-primary {
+    background: #1a0a00;
+    color: #ffb088;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 20px 0px;
+  }
+  .bright-tile .btn-primary:hover { background: #000; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 24px 0px; }
+
+  /* Shadows showcase */
+  .shadow-row { display: flex; flex-direction: column; gap: 14px; }
+  .shadow-block {
+    height: 54px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .shadow-1 { box-shadow: var(--shadow-ambient); }
+  .shadow-2 { box-shadow: var(--shadow-subtle); }
+  .shadow-3 { box-shadow: var(--shadow-card); }
+  .shadow-4 { box-shadow: var(--shadow-notification); }
+
+  /* Chart card */
+  .chart-card {
+    position: relative;
+    height: 180px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    overflow: hidden;
+  }
+  .chart-card svg {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 70%;
+  }
+  .chart-card .cyan-line { filter: drop-shadow(0 2px 8px rgba(71, 159, 250, 0.6)) drop-shadow(0 12px 48px rgba(59, 152, 215, 0.45)); }
+  .chart-card .acid-line { filter: drop-shadow(0 2px 8px rgba(195, 245, 0, 0.5)) drop-shadow(0 12px 40px rgba(191, 240, 0, 0.35)); }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Fey</span>
+      </div>
+      <a href="../../getdesign-corpus/fey.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Markets open · tabular-nums on</span>
+        <h1><span class="gradient-text">Your portfolio,</span><br/>dimensional by design.</h1>
+        <p>Fey tracks positions, earnings, and news on a warm-dark canvas built from 29 layered shadows and a single copper gradient — finance craft without the clutter.</p>
+
+        <div class="portfolio-hero">
+          <div>
+            <div class="portfolio-label">Portfolio · Today</div>
+            <div class="portfolio-value tnum">$24,847.20</div>
+            <div class="portfolio-delta tnum">
+              <iconify-icon icon="carbon:arrow-up-right"></iconify-icon>
+              +$482.14 · +1.98%
+            </div>
+          </div>
+          <div class="portfolio-spark">
+            <svg viewBox="0 0 200 60" preserveAspectRatio="none" fill="none">
+              <path d="M0,45 L20,42 L35,48 L55,38 L75,32 L95,35 L115,25 L135,22 L155,18 L175,12 L200,8"
+                    stroke="#479ffa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Download for macOS <iconify-icon icon="carbon:arrow-right"></iconify-icon></button>
+          <button class="btn btn-glass">Watch demo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">warm-dark · single gradient</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #0b0b0b;"></div><div class="swatch-name">Warm Charcoal</div><div class="swatch-hex">#0b0b0b</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08);"></div><div class="swatch-name">Surface 2</div><div class="swatch-hex">#fff · 6%</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffb088;"></div><div class="swatch-name">Amber Peach</div><div class="swatch-hex">#ffb088</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #e87a4f;"></div><div class="swatch-name">Copper Glow</div><div class="swatch-hex">#e87a4f</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #c45a34;"></div><div class="swatch-name">Burnt Sienna</div><div class="swatch-hex">#c45a34</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #479ffa;"></div><div class="swatch-name">Info · Gain Glow</div><div class="swatch-hex">#479ffa</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #22c55e;"></div><div class="swatch-name">Gains</div><div class="swatch-hex">#22c55e</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ef4444;"></div><div class="swatch-name">Losses</div><div class="swatch-hex">#ef4444</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">pill · 99px radius</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Download <iconify-icon icon="carbon:arrow-right"></iconify-icon></button>
+          <button class="btn btn-glass">Read the docs</button>
+          <button class="btn btn-ghost">Join the beta</button>
+        </div>
+        <div class="icon-meta">
+          Chrome: <strong>#e6e6e6 + inset glow</strong><br/>
+          Radius: <strong>99px (full pill)</strong>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">calibre · weight 600 signature · tabular-nums on numbers</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Hero Display / 56px</div>
+          <div class="type-display gradient-text">Earnings in real time.</div>
+          <div class="type-spec">calibre · 600 · 1.00 · background-clip:text</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Numeric Display / 36px · tabular</div>
+          <div class="type-numeric">$24,847.20</div>
+          <div class="type-spec">calibre · 600 · font-variant-numeric: tabular-nums · -0.5px</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 26px</div>
+          <div class="type-h2">Portfolio, watchlist, news.</div>
+          <div class="type-spec">calibre · 600 · 1.10 · -0.3px</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Fey is a terminal for public markets — earnings summaries, live calls, filings, and news in one warm-dark workspace. Works on macOS, iOS, and the web.</div>
+          <div class="type-spec">calibre · 400 · 1.40</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption / 12px</div>
+          <div class="type-caption">FEY · NEW YORK · MARKETS OPEN 09:30 ET</div>
+          <div class="type-spec">calibre · 600 · uppercase · 0.08em tracking</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Carbon · finance</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="carbon:chart-line-smooth"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:growth"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:wallet"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:chart-candlestick"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:currency-dollar"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:trophy"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:bell"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="carbon:earth-filled"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Carbon</strong> · finance-first · 22px on 10px radius tiles
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Stock Card</span>
+          <span class="tile-sub">3-layer shadow · inset rim-light</span>
+        </div>
+        <div class="stock-card">
+          <div class="stock-head">
+            <div class="stock-logo">N</div>
+            <div style="flex: 1;">
+              <div class="stock-ticker">NVDA · NVIDIA</div>
+              <div class="stock-name">After-hours · vol 38.2M</div>
+            </div>
+            <span class="badge badge-gain tnum">+3.42%</span>
+          </div>
+          <div class="stock-price tnum">$1,184.76</div>
+          <div class="stock-delta gain tnum">
+            <iconify-icon icon="carbon:arrow-up-right"></iconify-icon>
+            +$39.12 today
+          </div>
+          <div class="stock-chart">
+            <svg viewBox="0 0 280 56" preserveAspectRatio="none" fill="none">
+              <path d="M0,44 L14,40 L28,43 L42,38 L56,34 L70,36 L84,30 L98,32 L112,26 L126,22 L140,24 L154,18 L168,14 L182,16 L196,12 L210,8 L224,10 L238,6 L252,4 L266,2 L280,4"
+                    stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">Watchlist</span>
+          <span class="tile-sub">tabular · row hover on surface-2</span>
+        </div>
+        <div class="watchlist">
+          <div class="watch-row">
+            <div class="stock-logo" style="width: 32px; height: 32px; font-size: 12px; background: linear-gradient(135deg, #ffb088, #c45a34);">A</div>
+            <div>
+              <div class="watch-ticker">AAPL</div>
+              <div class="watch-name">Apple Inc.</div>
+            </div>
+            <div class="watch-price tnum">$227.48</div>
+            <div class="watch-change gain tnum">+1.24%</div>
+          </div>
+          <div class="watch-row">
+            <div class="stock-logo" style="width: 32px; height: 32px; font-size: 12px; background: linear-gradient(135deg, #479ffa, #1e3a8a);">M</div>
+            <div>
+              <div class="watch-ticker">MSFT</div>
+              <div class="watch-name">Microsoft Corp.</div>
+            </div>
+            <div class="watch-price tnum">$438.11</div>
+            <div class="watch-change gain tnum">+0.82%</div>
+          </div>
+          <div class="watch-row">
+            <div class="stock-logo" style="width: 32px; height: 32px; font-size: 12px; background: linear-gradient(135deg, #c3f500, #789100);">T</div>
+            <div>
+              <div class="watch-ticker">TSLA</div>
+              <div class="watch-name">Tesla, Inc.</div>
+            </div>
+            <div class="watch-price tnum">$248.90</div>
+            <div class="watch-change loss tnum">−2.17%</div>
+          </div>
+          <div class="watch-row">
+            <div class="stock-logo" style="width: 32px; height: 32px; font-size: 12px; background: linear-gradient(135deg, #e87a4f, #c45a34);">B</div>
+            <div>
+              <div class="watch-ticker">BRK.B</div>
+              <div class="watch-name">Berkshire Hathaway</div>
+            </div>
+            <div class="watch-price tnum">$462.03</div>
+            <div class="watch-change gain tnum">+0.38%</div>
+          </div>
+          <div class="watch-row">
+            <div class="stock-logo" style="width: 32px; height: 32px; font-size: 12px; background: linear-gradient(135deg, #868f97, #474c52);">G</div>
+            <div>
+              <div class="watch-ticker">GOOGL</div>
+              <div class="watch-name">Alphabet Inc.</div>
+            </div>
+            <div class="watch-price tnum">$181.72</div>
+            <div class="watch-change loss tnum">−0.64%</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">dark input · hairline border</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="ticker">Add ticker</label>
+          <input type="text" id="ticker" class="input" placeholder="AAPL, NVDA, BRK.B" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="amount">Position size (USD)</label>
+          <input type="text" id="amount" class="input tnum" placeholder="$0.00" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Add to portfolio</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">4 of 29 shadows</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">Level 1 · Ambient</div>
+          <div class="shadow-block shadow-2">Level 2 · Subtle 3-layer</div>
+          <div class="shadow-block shadow-3">Level 3 · Card 3-layer</div>
+          <div class="shadow-block shadow-4">Level 4 · Notification</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Chart Glow</span>
+          <span class="tile-sub">color as light, not fill</span>
+        </div>
+        <div class="chart-card">
+          <svg viewBox="0 0 280 80" preserveAspectRatio="none" fill="none">
+            <path class="cyan-line" d="M0,60 L20,55 L40,58 L60,48 L80,42 L100,45 L120,35 L140,32 L160,28 L180,22 L200,25 L220,18 L240,14 L260,10 L280,6"
+                  stroke="#479ffa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="acid-line" d="M0,70 L20,68 L40,64 L60,66 L80,58 L100,54 L120,56 L140,48 L160,50 L180,42 L200,38 L220,40 L240,32 L260,30 L280,26"
+                  stroke="#c3f500" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+          </svg>
+        </div>
+        <div class="icon-meta">
+          Cyan: <strong>#479ffa glow</strong> (gain series)<br/>
+          Acid: <strong>#c3f500 glow</strong> (counter series)
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline divider · amber +/−</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">How does Fey deliver earnings in real time?</summary>
+          <div class="faq-a">We stream live earnings calls and transcribe them on-device. Fey alerts you the second calls start, then delivers a structured summary within 90 seconds of close — no sifting through 10-Ks required.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Which markets and asset classes are covered?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is Fey a brokerage or an analytics tool?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Does Fey work offline on macOS?</summary>
+        </details>
+      </section>
+
+      <!-- BRIGHT ACCENT SECTION — breaks the dark monotony -->
+      <section class="tile span-5 bright-tile">
+        <div class="tile-head">
+          <span class="tile-title">Member Quote</span>
+          <span class="tile-sub">amber gradient · not dark-inverted</span>
+        </div>
+        <blockquote>"I cancelled three market-data subscriptions the week I started using Fey. It's the terminal I didn't know I was waiting for."</blockquote>
+        <div class="quote-meta">
+          <div class="quote-avatar"></div>
+          <div><strong style="font-weight: 700;">Dev Kapoor</strong> · Portfolio Manager, Oak Capital</div>
+        </div>
+        <button class="btn btn-primary">Read the review <iconify-icon icon="carbon:arrow-right"></iconify-icon></button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

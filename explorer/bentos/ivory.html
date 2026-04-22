@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ivory — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    /* Ivory / Tapbots palette — warm dark, purple gradient, mascot red */
+    --bg: #1a1a1a;
+    --surface: #222224;
+    --surface-tint: rgba(255, 255, 255, 0.04);
+    --heading: #ffffff;
+    --label: #c3c3c3;
+    --body: #999999;
+    --muted: #666666;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.15);
+
+    /* Purple gradient — the signature */
+    --purple: #ba94ff;
+    --purple-light: #deccff;
+    --purple-mist: #cdd4f8;
+    --grad-top: #c9a6ff;
+    --grad-bot: #a07ff0;
+    --grad-top-hov: #d4b5ff;
+    --grad-bot-hov: #a984ff;
+    --purple-deep: #4c278e;
+
+    /* Mascot red — display-P3 aware with sRGB fallback */
+    --red: #ff4d4d;
+    --red-p3: color(display-p3 1 0.302 0.302);
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "helvetica-neue", helvetica, arial, sans-serif;
+
+    /* DIMENSIONAL SHADOW STACK — the Tapbots craft signature */
+    --shadow-cta:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(186, 148, 255, 0.28);
+    --shadow-cta-hover:
+      inset 0 1px 0 rgba(255, 255, 255, 0.38),
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 12px 32px rgba(186, 148, 255, 0.38);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.4);
+    --shadow-inset-dark: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    /* Sidebar — neutral, brand-agnostic */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--label);
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .meta a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .meta a:hover { color: #ffffff; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+    font-weight: 500;
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 56px 48px;
+    box-shadow: var(--shadow-lg), var(--shadow-inset-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(205, 212, 248, 0.16) 0%, rgba(186, 148, 255, 0.1) 35%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -200px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(186, 148, 255, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 4px;
+    border: 1px solid var(--border-strong);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero-eyebrow::before {
+    content: "TAPBOTS";
+    background: linear-gradient(180deg, var(--grad-top), var(--grad-bot));
+    color: white;
+    padding: 3px 9px;
+    border-radius: 40px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+    color: var(--heading);
+    margin-bottom: 18px;
+    max-width: 780px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    font-weight: 600;
+    background: linear-gradient(180deg, var(--grad-top), var(--grad-bot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--label);
+    max-width: 600px;
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow-card), var(--shadow-inset-dark);
+    position: relative;
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--heading);
+  }
+  .tile-sub {
+    font-size: 11px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 38px; letter-spacing: -0.8px; }
+    .hero { padding: 40px 24px; }
+  }
+
+  /* ====== BUTTONS — THE DIMENSIONAL STACK ====== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 40px;
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    transition: background 0.12s, box-shadow 0.15s, transform 0.08s;
+    line-height: 1;
+    text-decoration: none;
+  }
+  /* Primary = the Ivory pill — gradient + inset highlight + contact + ambient halo */
+  .btn-primary {
+    background: linear-gradient(180deg, var(--grad-top) 0%, var(--grad-bot) 100%);
+    color: white;
+    box-shadow: var(--shadow-cta);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, var(--grad-top-hov) 0%, var(--grad-bot-hov) 100%);
+    box-shadow: var(--shadow-cta-hover);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.22),
+      0 0 0 rgba(0,0,0,0);
+  }
+  /* Ghost = dimensional dark chip */
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--heading);
+    border-color: var(--border-strong);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+  /* App Store — simulated Apple black badge with dimensional feel */
+  .btn-appstore {
+    background: linear-gradient(180deg, #2a2a2a 0%, #0f0f0f 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 10px 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 6px 16px rgba(0, 0, 0, 0.35);
+  }
+  .btn-appstore:hover {
+    background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
+  }
+  .btn-appstore .small-label {
+    font-size: 9px; font-weight: 400; letter-spacing: 0.04em; opacity: 0.85; display: block; line-height: 1;
+  }
+  .btn-appstore .big-label {
+    font-size: 16px; font-weight: 600; letter-spacing: -0.2px; display: block; line-height: 1.1;
+  }
+  .btn-appstore .stack { display: flex; flex-direction: column; gap: 3px; }
+
+  /* Red text link — the Tapbots signature link */
+  .btn-red {
+    background: transparent;
+    color: var(--red);
+    color: var(--red-p3);
+    border: none;
+    padding: 8px 4px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  .btn-red:hover { color: #ffffff; }
+  .btn-red iconify-icon { color: inherit; }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip {
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-inset-dark);
+  }
+  .swatch-name { font-size: 12px; font-weight: 500; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+
+  /* Gradient chip special */
+  .chip-gradient { background: linear-gradient(180deg, var(--grad-top) 0%, var(--grad-bot) 100%); }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 6px; font-weight: 500; }
+  .type-display { font-size: 36px; font-weight: 300; letter-spacing: -0.5px; color: var(--heading); line-height: 1.1; }
+  .type-h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.3px; color: var(--heading); line-height: 1.1; }
+  .type-body { font-size: 18px; font-weight: 400; color: var(--label); line-height: 1.55; }
+  .type-caption { font-size: 14px; font-weight: 400; color: var(--body); }
+  .type-upper { font-size: 11px; font-weight: 400; color: var(--body); text-transform: uppercase; letter-spacing: 0.1em; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+  /* Icons — dimensional cells */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--purple-light);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.12s, color 0.12s;
+  }
+  .icon-cell:hover {
+    color: white;
+    transform: translateY(-1px);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  /* Mastodon status card */
+  .sample-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow-card), var(--shadow-inset-dark);
+  }
+  .status-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .status-avatar {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--grad-top), var(--grad-bot));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 6px rgba(186,148,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; font-weight: 700;
+  }
+  .status-author { font-size: 14px; font-weight: 600; color: var(--heading); line-height: 1.2; }
+  .status-handle { font-size: 13px; color: var(--body); line-height: 1.2; }
+  .status-body { font-size: 15px; color: var(--heading); line-height: 1.5; margin-bottom: 14px; font-weight: 400; }
+  .status-actions {
+    display: flex; gap: 28px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .status-action {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--body); font-weight: 500;
+    cursor: pointer;
+    transition: color 0.12s;
+  }
+  .status-action:hover { color: var(--heading); }
+  .status-action.boosted { color: var(--purple-light); }
+  .status-action.favorited { color: var(--red); color: var(--red-p3); }
+
+  /* Badge */
+  .badge { display: inline-flex; padding: 3px 10px; border-radius: 40px; font-size: 11px; font-weight: 500; align-items: center; gap: 5px; }
+  .badge-purple {
+    background: linear-gradient(180deg, rgba(186,148,255,0.18), rgba(186,148,255,0.08));
+    color: var(--purple-light);
+    border: 1px solid rgba(186,148,255,0.3);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .badge-neutral { background: rgba(255,255,255,0.06); color: var(--label); border: 1px solid var(--border-strong); }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 12px; font-weight: 500; color: var(--label); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .input {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .input:focus { border-color: var(--purple); box-shadow: inset 0 1px 2px rgba(0,0,0,0.2), 0 0 0 3px rgba(186, 148, 255, 0.18); }
+  .input::placeholder { color: var(--muted); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 300; color: var(--purple); font-size: 22px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 16px; font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.6; max-width: 540px; }
+
+  /* LIGHT THEME tile — showcase Ivory's light-mode character */
+  .light-tile {
+    background: #fafaf7;
+    color: #222;
+    border: 1px solid #e8e6df;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .light-tile .tile-title { color: #555; }
+  .light-tile .tile-sub { color: #999; }
+  .light-tile blockquote {
+    font-size: 20px; font-weight: 300; letter-spacing: -0.2px;
+    line-height: 1.32; color: #1a1a1a; margin-bottom: 18px; max-width: 420px;
+  }
+  .light-tile .btn-light {
+    background: linear-gradient(180deg, #ffffff 0%, #f2eefe 100%);
+    color: #6840e6;
+    border: 1px solid rgba(104, 64, 230, 0.2);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 1px 2px rgba(104, 64, 230, 0.1),
+      0 6px 16px rgba(186, 148, 255, 0.22);
+    padding: 11px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .light-tile .btn-light:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #ebe3ff 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 2px 4px rgba(104, 64, 230, 0.15),
+      0 10px 24px rgba(186, 148, 255, 0.32);
+  }
+
+  /* Shadow / elevation */
+  .shadow-row { display: flex; flex-direction: column; gap: 14px; }
+  .shadow-block {
+    height: 56px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .shadow-flat { box-shadow: none; }
+  .shadow-card { box-shadow: 0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05); }
+  .shadow-cta {
+    background: linear-gradient(180deg, var(--grad-top), var(--grad-bot));
+    border-color: var(--border-strong);
+    color: white;
+    box-shadow: var(--shadow-cta);
+  }
+
+  /* Mascot bird tile */
+  .mascot-tile {
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .mascot-tile::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(255, 77, 77, 0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .mascot-tile > * { position: relative; z-index: 1; }
+  .mascot-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .bird-svg {
+    width: 88px;
+    height: 88px;
+    filter: drop-shadow(0 4px 16px rgba(255, 77, 77, 0.35));
+  }
+  .bird-svg path, .bird-svg circle, .bird-svg line {
+    stroke: #ff4d4d;
+    stroke: color(display-p3 1 0.302 0.302);
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .mascot-caption {
+    font-size: 12px;
+    color: var(--body);
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .mascot-caption strong { color: var(--heading); font-weight: 600; }
+
+  /* Button recipe code block */
+  .recipe {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-family: "SF Mono", ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--purple-light);
+    line-height: 1.7;
+    overflow-x: auto;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .recipe .k { color: #ffa3a3; }
+  .recipe .v { color: #cdd4f8; }
+  .recipe .c { color: #666; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Ivory by Tapbots</span>
+      </div>
+      <a href="../../getdesign-corpus/ivory.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Mastodon, crafted · since 2007</span>
+        <h1>A <em>tactile</em> client for the federated timeline.</h1>
+        <p>Tapbots has been carving dimensional buttons since iPhone OS 2. Ivory carries the Tweetbot legacy into Mastodon — warm dark, inset highlights, drop shadows, and the little red bird that's been their signature for seventeen years.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary"><iconify-icon icon="ph:chat-circle-fill"></iconify-icon> Need Help with Ivory?</button>
+          <a class="btn btn-appstore">
+            <iconify-icon icon="ph:apple-logo-fill" style="font-size: 22px;"></iconify-icon>
+            <span class="stack"><span class="small-label">Download on the</span><span class="big-label">App Store</span></span>
+          </a>
+          <button class="btn btn-ghost"><iconify-icon icon="solar:mirror-left-bold"></iconify-icon> See the app</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <!-- Color palette -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">8 brand tokens · warm dark + lavender</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip chip-gradient"></div><div class="swatch-name">Ivory Pill Gradient</div><div class="swatch-hex">#c9a6ff → #a07ff0</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ba94ff;"></div><div class="swatch-name">Ivory Purple</div><div class="swatch-hex">#ba94ff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #deccff;"></div><div class="swatch-name">Lavender Light</div><div class="swatch-hex">#deccff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #cdd4f8;"></div><div class="swatch-name">Periwinkle Mist</div><div class="swatch-hex">#cdd4f8</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ff4d4d; background: color(display-p3 1 0.302 0.302);"></div><div class="swatch-name">Tapbots Red (P3)</div><div class="swatch-hex">#ff4d4d</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1a1a1a;"></div><div class="swatch-name">Off-Black Warm</div><div class="swatch-hex">#1a1a1a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #c3c3c3;"></div><div class="swatch-name">Paper Gray</div><div class="swatch-hex">#c3c3c3</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #666666;"></div><div class="swatch-name">Metadata Gray</div><div class="swatch-hex">#666666</div></div>
+        </div>
+      </section>
+
+      <!-- Buttons — THE signature component -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">40px pill · 5-layer stack</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+          <button class="btn btn-primary"><iconify-icon icon="ph:chat-circle-fill"></iconify-icon> Need help?</button>
+          <button class="btn btn-ghost"><iconify-icon icon="solar:heart-angle-bold"></iconify-icon> Favorite</button>
+          <button class="btn btn-appstore">
+            <iconify-icon icon="ph:apple-logo-fill" style="font-size: 18px;"></iconify-icon>
+            <span class="stack"><span class="small-label">Download on the</span><span class="big-label" style="font-size: 13px;">App Store</span></span>
+          </button>
+          <button class="btn btn-red"><iconify-icon icon="ph:mastodon-logo-fill"></iconify-icon> Mastodon</button>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">-apple-system · SF Pro native</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Hero Display / 36px · weight 300</div>
+          <div class="type-display">Ivory for Mastodon.</div>
+          <div class="type-spec">-apple-system · 300 · -0.5px · line-height 1.1</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Feature Heading / 28px · weight 600</div>
+          <div class="type-h2">Designed for craft.</div>
+          <div class="type-spec">-apple-system · 600 · -0.3px · line-height 1.1</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 18px · weight 400</div>
+          <div class="type-body">Tapbots has been creating simple utilitarian apps with delightful experiences since 2007. We are 3 humans, Paul, Mark & Todd, living in North Texas and Canada.</div>
+          <div class="type-spec">-apple-system · 400 · line-height 1.55</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Uppercase Label / 11px</div>
+          <div class="type-upper">©2008-2026 TAPBOTS, LLC. ALL RIGHTS RESERVED.</div>
+          <div class="type-spec">-apple-system · 400 · 0.1em tracking</div>
+        </div>
+      </section>
+
+      <!-- Icons — Mastodon-flavored, Solar Bold + Phosphor Fill -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Solar Bold · Phosphor Fill</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="ph:mastodon-logo-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:arrow-right-up-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:heart-angle-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:chat-round-dots-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:bookmark-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:repeat-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:bird-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:stars-bold"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Phosphor Fill + Solar Bold</strong> · weighted, dimensional · 22px
+        </div>
+      </section>
+
+      <!-- Mastodon status card -->
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Status Card</span>
+          <span class="tile-sub">Mastodon toot · boost · favorite</span>
+        </div>
+        <div class="sample-card">
+          <div class="status-head">
+            <div class="status-avatar">PH</div>
+            <div>
+              <div class="status-author">Paul Haddad</div>
+              <div class="status-handle">@tapbot_paul@tapbots.social · 2h</div>
+            </div>
+          </div>
+          <div class="status-body">Ivory 3.0 is shipping with per-account filters, custom haptics on boost, and a rebuilt keyboard. Seventeen years of tactile buttons into one timeline app.</div>
+          <div class="status-actions">
+            <span class="status-action"><iconify-icon icon="solar:chat-round-bold"></iconify-icon> 142</span>
+            <span class="status-action boosted"><iconify-icon icon="ph:repeat-fill"></iconify-icon> 1.2K</span>
+            <span class="status-action favorited"><iconify-icon icon="solar:heart-angle-bold"></iconify-icon> 3.4K</span>
+            <span class="status-action"><iconify-icon icon="solar:bookmark-bold"></iconify-icon> 89</span>
+          </div>
+        </div>
+        <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="badge badge-purple"><iconify-icon icon="ph:repeat-fill" style="font-size: 11px;"></iconify-icon> Boosted</span>
+          <span class="badge badge-neutral">#ivoryapp</span>
+          <span class="badge badge-neutral">federated</span>
+        </div>
+      </section>
+
+      <!-- The Button Recipe - code -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Button Recipe</span>
+          <span class="tile-sub">5 layers · copy-paste</span>
+        </div>
+        <div class="recipe">
+<span class="c">/* Ivory primary pill */</span><br>
+<span class="k">border-radius</span>: <span class="v">40px</span>;<br>
+<span class="k">background</span>: <span class="v">linear-gradient(180deg,<br>&nbsp;&nbsp;#c9a6ff, #a07ff0)</span>;<br>
+<span class="k">border</span>: <span class="v">1px solid rgba(255,255,255,.15)</span>;<br>
+<span class="k">box-shadow</span>:<br>
+&nbsp;&nbsp;<span class="v">inset 0 1px 0 rgba(255,255,255,.28)</span>,<br>
+&nbsp;&nbsp;<span class="v">0 1px 2px rgba(0,0,0,.2)</span>,<br>
+&nbsp;&nbsp;<span class="v">0 8px 24px rgba(186,148,255,.28)</span>;
+        </div>
+        <div class="icon-meta">
+          <strong>Layer stack:</strong> ambient halo → contact shadow → gradient fill → rim light → inset highlight.
+        </div>
+      </section>
+
+      <!-- Elevation -->
+      <section class="tile span-4" style="grid-column: span 3;">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">4 levels</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-flat">L0 · FLAT</div>
+          <div class="shadow-block shadow-card">L1 · CARD</div>
+          <div class="shadow-block shadow-cta">L2 · CTA</div>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Compose</span>
+          <span class="tile-sub">500-char Mastodon limit</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="toot-user">Replying as</label>
+          <input type="text" id="toot-user" class="input" value="@tapbot_paul@tapbots.social" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="toot-body">Your toot</label>
+          <input type="text" id="toot-body" class="input" placeholder="What's on your mind?" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;"><iconify-icon icon="solar:arrow-right-up-bold"></iconify-icon> Post · 500</button>
+      </section>
+
+      <!-- Mascot bird -->
+      <section class="tile span-4 mascot-tile">
+        <div class="tile-head">
+          <span class="tile-title">Mascot</span>
+          <span class="tile-sub">Tapbots bird · since 2008</span>
+        </div>
+        <div class="mascot-stage">
+          <svg class="bird-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- stylized Tapbots songbird silhouette: round body, two antennae, simple eye -->
+            <circle cx="50" cy="52" r="24" />
+            <circle cx="50" cy="52" r="5" fill="#ff4d4d" style="fill: color(display-p3 1 0.302 0.302);" stroke="none" />
+            <line x1="38" y1="28" x2="34" y2="16" />
+            <line x1="62" y1="28" x2="66" y2="16" />
+            <circle cx="34" cy="14" r="2.5" fill="#ff4d4d" style="fill: color(display-p3 1 0.302 0.302);" stroke="none" />
+            <circle cx="66" cy="14" r="2.5" fill="#ff4d4d" style="fill: color(display-p3 1 0.302 0.302);" stroke="none" />
+          </svg>
+        </div>
+        <div class="mascot-caption">
+          Outline-only, <strong>display-P3 red</strong>, footer-sized.<br>Never animated. Never enlarged.
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">Ivory · Tapbots</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">What is Ivory?</summary>
+          <div class="faq-a">Ivory is Tapbots' Mastodon client for iOS and macOS — the spiritual successor to Tweetbot, rebuilt from the ground up for the federated timeline. System requirements: iOS/iPadOS 16.1 or later, macOS 13 Ventura or later.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Who are Paul, Mark, and Todd?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Why warm dark instead of pure black?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Where did the red bird come from?</summary>
+        </details>
+      </section>
+
+      <!-- Light theme -->
+      <section class="tile span-5 light-tile">
+        <div class="tile-head">
+          <span class="tile-title">Light Theme</span>
+          <span class="tile-sub">Ivory ↔ Ebony · piano-key duality</span>
+        </div>
+        <blockquote>"We've been making apps feel like physical objects since 2007. Ivory is that ethos, federated."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, #c9a6ff, #a07ff0); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 6px rgba(186,148,255,0.3);"></div>
+          <div style="font-size: 13px; color: #333;"><strong style="font-weight: 600;">Mark Jardine</strong> · Co-founder, Tapbots</div>
+        </div>
+        <button class="btn-light"><iconify-icon icon="solar:download-minimalistic-bold"></iconify-icon> Get Ivory for Mac</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

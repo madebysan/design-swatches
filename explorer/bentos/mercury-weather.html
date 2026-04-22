@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mercury Weather — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #fbf5ed;
+    --surface: #f4ebdd;
+    --heading: #1f1b2e;
+    --label: #3a3450;
+    --body: #6b6380;
+    --border: rgba(31, 27, 46, 0.08);
+    --hairline: rgba(31, 27, 46, 0.06);
+
+    /* Weather-mood palette */
+    --sunrise: #ffb07a;
+    --peach: #f5c9a8;
+    --sky: #4fa8d8;
+    --haze: #a9d5ec;
+    --amber: #f28a5a;
+    --rose: #d86a9a;
+    --plum: #7a4e8f;
+    --bruise: #3a2c52;
+    --midnight: #0e1b3a;
+    --indigo: #1c2e5a;
+
+    /* Brand accents */
+    --mercury: #e06d3c;
+    --mercury-deep: #b8471f;
+    --moonlight: #e8e4f0;
+
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+
+    /* Atmospheric shadows */
+    --shadow-sm: 0 1px 2px rgba(20, 30, 60, 0.06), 0 8px 24px rgba(20, 30, 60, 0.08);
+    --shadow-lg: 0 2px 6px rgba(20, 30, 60, 0.10), 0 20px 40px rgba(20, 30, 60, 0.14);
+    --shadow-xl: 0 4px 12px rgba(20, 30, 60, 0.14), 0 32px 64px rgba(20, 30, 60, 0.20);
+
+    /* Signature gradients */
+    --sky-dusk: linear-gradient(145deg, #ffb07a 0%, #f28a5a 28%, #d86a9a 62%, #7a4e8f 100%);
+    --sky-midday: linear-gradient(180deg, #4fa8d8 0%, #a9d5ec 100%);
+    --sky-night: linear-gradient(180deg, #0e1b3a 0%, #1c2e5a 55%, #2a3a6a 100%);
+    --sky-dawn: linear-gradient(180deg, #ffb07a 0%, #f5c9a8 60%, #f4ebdd 100%);
+
+    /* Sidebar — neutral */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #f4ebdd;
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.45;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .meta a {
+    color: var(--mercury);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .meta a:hover { color: var(--mercury-deep); text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+    font-weight: 500;
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero — painterly dusk sky */
+  .hero {
+    border-radius: 20px;
+    padding: 56px 44px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+    color: #fbf5ed;
+    background: #3a2c52;
+    min-height: 360px;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--sky-dusk);
+    z-index: 0;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 75% 20%, rgba(255, 230, 200, 0.35) 0%, transparent 35%),
+      radial-gradient(circle at 15% 85%, rgba(58, 44, 82, 0.45) 0%, transparent 55%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px 5px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .hero-eyebrow::before {
+    content: "GOLDEN HOUR";
+    background: linear-gradient(90deg, var(--mercury), var(--rose));
+    color: white;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 200;
+    line-height: 1.02;
+    letter-spacing: -1.6px;
+    color: #fff;
+    margin-bottom: 18px;
+    max-width: 720px;
+    text-shadow: 0 1px 2px rgba(58, 44, 82, 0.18);
+  }
+  .hero p {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 580px;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--label);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 38px; letter-spacing: -1px; }
+    .hero { padding: 40px 28px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 20px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--mercury);
+    color: white;
+    box-shadow: 0 4px 14px rgba(224, 109, 60, 0.35);
+  }
+  .btn-primary:hover { background: var(--mercury-deep); transform: translateY(-1px); }
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.24); }
+  .btn-dark {
+    background: var(--midnight);
+    color: white;
+    box-shadow: 0 4px 14px rgba(14, 27, 58, 0.30);
+  }
+  .btn-dark:hover { background: var(--indigo); }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip {
+    height: 64px;
+    border-radius: 12px;
+    border: 1px solid var(--hairline);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), var(--shadow-sm);
+  }
+  .swatch-name { font-size: 12px; font-weight: 500; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--body); margin-bottom: 6px; font-weight: 500; }
+  .type-display { font-size: 48px; font-weight: 200; letter-spacing: -1.6px; color: var(--heading); line-height: 1.02; }
+  .type-h2 { font-size: 28px; font-weight: 300; letter-spacing: -0.5px; color: var(--heading); }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); }
+  .type-caption { font-size: 12px; font-weight: 500; color: var(--label); letter-spacing: 0.1em; text-transform: uppercase; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--body); margin-top: 5px; }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #fbf5ed 0%, #efe4d1 100%);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    color: var(--mercury);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 4px rgba(31, 27, 46, 0.06);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  /* Weather hero card — dimensional, atmospheric */
+  .weather-card {
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    color: #fbf5ed;
+    box-shadow: var(--shadow-lg);
+    background: var(--sky-dusk);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .weather-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(255, 230, 200, 0.45) 0%, transparent 40%),
+      radial-gradient(circle at 10% 95%, rgba(58, 44, 82, 0.35) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .weather-card > * { position: relative; z-index: 1; }
+  .weather-location {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 2px;
+  }
+  .weather-condition-small {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .weather-temp {
+    font-size: 84px;
+    font-weight: 100;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    color: white;
+    margin: 14px 0 6px;
+    text-shadow: 0 2px 8px rgba(58, 44, 82, 0.2);
+  }
+  .weather-condition {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2px;
+  }
+  .weather-hilo {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+  }
+
+  /* Dial — circular instrument */
+  .dial-wrap { display: flex; gap: 16px; align-items: center; }
+  .dial {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: conic-gradient(from -90deg, var(--sky) 0deg, var(--amber) 140deg, var(--mercury) 220deg, rgba(31, 27, 46, 0.08) 220deg 360deg);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.12),
+      inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+      0 4px 12px rgba(20, 30, 60, 0.10);
+  }
+  .dial-inner {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fff 0%, #f4ebdd 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  .dial-value {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.6px;
+    color: var(--heading);
+    line-height: 1;
+  }
+  .dial-unit {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--body);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .dial-meta { flex: 1; }
+  .dial-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .dial-note {
+    font-size: 13px;
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* Hourly strip */
+  .hourly {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .hour {
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+    color: white;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  .hour-time {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.78);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .hour-temp {
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: -0.3px;
+  }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 12px; font-weight: 600; color: var(--label); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .input {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input:focus { border-color: var(--mercury); box-shadow: 0 0 0 3px rgba(224, 109, 60, 0.18); }
+  .input::placeholder { color: var(--body); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--hairline); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 300; color: var(--mercury); font-size: 22px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 16px; font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.55; max-width: 540px; }
+
+  /* Dark / Night sky tile */
+  .dark-tile {
+    background: var(--sky-night);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .dark-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(232, 228, 240, 0.22) 0%, transparent 30%),
+      radial-gradient(1px 1px at 18% 28%, rgba(255, 255, 255, 0.85), transparent),
+      radial-gradient(1px 1px at 42% 14%, rgba(255, 255, 255, 0.75), transparent),
+      radial-gradient(1px 1px at 64% 42%, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(1px 1px at 88% 65%, rgba(255, 255, 255, 0.65), transparent),
+      radial-gradient(1px 1px at 12% 72%, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(1px 1px at 74% 82%, rgba(255, 255, 255, 0.55), transparent),
+      radial-gradient(2px 2px at 32% 56%, rgba(255, 255, 255, 0.9), transparent);
+    pointer-events: none;
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255, 255, 255, 0.65); }
+  .dark-tile blockquote { font-size: 20px; font-weight: 300; letter-spacing: -0.3px; line-height: 1.3; margin-bottom: 22px; }
+  .dark-tile .btn-primary {
+    background: var(--moonlight);
+    color: var(--midnight);
+    box-shadow: 0 4px 14px rgba(232, 228, 240, 0.25);
+  }
+  .dark-tile .btn-primary:hover { background: #fff; }
+  .moon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 32%, #fdf9ef 0%, #e8dfca 45%, #b5a98b 100%);
+    box-shadow:
+      inset -8px -6px 16px rgba(30, 20, 50, 0.5),
+      0 0 24px rgba(232, 228, 240, 0.25);
+    flex-shrink: 0;
+  }
+
+  /* Shadows */
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block {
+    height: 54px;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--body);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .shadow-1 { box-shadow: 0 1px 2px rgba(20, 30, 60, 0.06), 0 4px 12px rgba(20, 30, 60, 0.05); }
+  .shadow-2 { box-shadow: var(--shadow-sm); }
+  .shadow-3 { box-shadow: var(--shadow-lg); }
+
+  /* Badge */
+  .badge { display: inline-flex; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
+  .badge-warm { background: rgba(224, 109, 60, 0.14); color: var(--mercury-deep); border: 1px solid rgba(224, 109, 60, 0.28); }
+  .badge-cool { background: rgba(79, 168, 216, 0.14); color: #1d6c9a; border: 1px solid rgba(79, 168, 216, 0.3); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Mercury Weather</span>
+      </div>
+      <a href="../../getdesign-corpus/mercury-weather.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO — dusk sky -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Painterly skies · dimensional dials · SF Pro</span>
+        <h1>The weather, rendered as light.</h1>
+        <p>Mercury's design language: atmospheric sky gradients that shift from dawn to dusk, dimensional weather instruments seated into warm glass panels, and the thinnest SF Pro numerals you'll ever read a temperature in.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Download for iOS</button>
+          <button class="btn btn-ghost">See the forecast</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <!-- Color palette: 8 sky moods -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">8 weather moods</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(145deg, #ffb07a, #f5c9a8);"></div><div class="swatch-name">Sunrise Coral</div><div class="swatch-hex">#FFB07A</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(180deg, #4fa8d8, #a9d5ec);"></div><div class="swatch-name">Midday Sky</div><div class="swatch-hex">#4FA8D8</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(145deg, #f28a5a, #d86a9a);"></div><div class="swatch-name">Golden Hour</div><div class="swatch-hex">#F28A5A</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(180deg, #d86a9a, #7a4e8f);"></div><div class="swatch-name">Dusk Magenta</div><div class="swatch-hex">#D86A9A</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(180deg, #0e1b3a, #1c2e5a);"></div><div class="swatch-name">Midnight</div><div class="swatch-hex">#0E1B3A</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: linear-gradient(145deg, #6e7d8c, #b4bec8);"></div><div class="swatch-name">Overcast Pewter</div><div class="swatch-hex">#6E7D8C</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #e06d3c;"></div><div class="swatch-name">Mercury Accent</div><div class="swatch-hex">#E06D3C</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #fbf5ed;"></div><div class="swatch-name">Parchment</div><div class="swatch-hex">#FBF5ED</div></div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">pill · 999px</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Download for iOS</button>
+          <button class="btn btn-dark">Check the sky</button>
+          <button class="btn" style="background: var(--parchment, #fbf5ed); color: var(--heading); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">Learn more →</button>
+        </div>
+      </section>
+
+      <!-- Dimensional weather card (signature move) -->
+      <section class="tile span-5" style="padding: 20px;">
+        <div class="tile-head">
+          <span class="tile-title">Weather Card</span>
+          <span class="tile-sub">dusk gradient · glass</span>
+        </div>
+        <div class="weather-card">
+          <div>
+            <div class="weather-location">San Francisco</div>
+            <div class="weather-condition-small">Partly Cloudy</div>
+          </div>
+          <div>
+            <div class="weather-temp">72°</div>
+            <div class="weather-condition">Partly Cloudy</div>
+            <div class="weather-hilo">H: 74°   L: 58°   Feels like 70°</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">SF Pro · Thin temperature, Regular body</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Temperature Hero / 48px (scales to 128 in app)</div>
+          <div class="type-display">72°</div>
+          <div class="type-spec">SF Pro Display · 100 Thin · -1.6px · line-height 1.02</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Title / 28px</div>
+          <div class="type-h2">Partly Cloudy, clearing by 6 PM</div>
+          <div class="type-spec">SF Pro Display · 300 Light · -0.5px</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">A gentle breeze from the west. Sunset at 7:48 PM will paint Ocean Beach in amber and rose. Humidity dropping through the afternoon.</div>
+          <div class="type-spec">SF Pro Text · 400 Regular · line-height 1.5</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Dial Label / 12px</div>
+          <div class="type-caption">UV INDEX · WIND · HUMIDITY · SUNRISE</div>
+          <div class="type-spec">SF Pro Text · 600 · +0.12em · uppercase</div>
+        </div>
+      </section>
+
+      <!-- Icons -->
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Weather Icons</span>
+          <span class="tile-sub">Solar · warm accent</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="solar:sun-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:cloud-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:cloud-rain-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:cloud-snowfall-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:wind-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:moon-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:temperature-bold"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="solar:umbrella-bold"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Solar Bold</strong> · Treatment: filled dimensional shapes · Placeholder for hand-painted condition illustrations in production
+        </div>
+      </section>
+
+      <!-- UV Index dial (signature skeuomorphic move) -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">UV Index Dial</span>
+          <span class="tile-sub">circular instrument</span>
+        </div>
+        <div class="dial-wrap">
+          <div class="dial">
+            <div class="dial-inner">
+              <div class="dial-value">6</div>
+              <div class="dial-unit">HIGH</div>
+            </div>
+          </div>
+          <div class="dial-meta">
+            <div class="dial-label">UV INDEX</div>
+            <div class="dial-note">Sun protection recommended until 4 PM. Peak UV at 1:15 PM.</div>
+          </div>
+        </div>
+        <div style="margin-top: 16px; display: flex; gap: 6px; flex-wrap: wrap;">
+          <span class="badge badge-warm">SPF 30+</span>
+          <span class="badge badge-cool">Clearing 4:20 PM</span>
+        </div>
+      </section>
+
+      <!-- Hourly forecast strip -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Hourly Forecast</span>
+          <span class="tile-sub">time-keyed sky gradients</span>
+        </div>
+        <div class="hourly">
+          <div class="hour" style="background: linear-gradient(180deg, #4fa8d8, #a9d5ec);">
+            <div class="hour-time">1 PM</div><div class="hour-temp">72°</div>
+          </div>
+          <div class="hour" style="background: linear-gradient(180deg, #6ab4de, #bad5ea);">
+            <div class="hour-time">3 PM</div><div class="hour-temp">74°</div>
+          </div>
+          <div class="hour" style="background: linear-gradient(180deg, #f28a5a, #f5b488);">
+            <div class="hour-time">5 PM</div><div class="hour-temp">71°</div>
+          </div>
+          <div class="hour" style="background: linear-gradient(180deg, #d86a9a, #b8558a);">
+            <div class="hour-time">7 PM</div><div class="hour-temp">66°</div>
+          </div>
+          <div class="hour" style="background: linear-gradient(180deg, #7a4e8f, #4a3868);">
+            <div class="hour-time">9 PM</div><div class="hour-temp">61°</div>
+          </div>
+          <div class="hour" style="background: linear-gradient(180deg, #1c2e5a, #0e1b3a);">
+            <div class="hour-time">11 PM</div><div class="hour-temp">58°</div>
+          </div>
+        </div>
+        <div class="icon-meta">
+          Each strip's gradient matches that hour's predicted sky mood. Reading left-to-right is a visual narrative of the day.
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Add Location</span>
+          <span class="tile-sub">warm focus · pill radius</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="city">City or ZIP</label>
+          <input type="text" id="city" class="input" placeholder="Lisbon, Portugal" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="units">Units</label>
+          <input type="text" id="units" class="input" placeholder="Fahrenheit · Imperial" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Save location</button>
+      </section>
+
+      <!-- Elevation -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">atmospheric bloom</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">Ambient</div>
+          <div class="shadow-block shadow-2">Raised — dials</div>
+          <div class="shadow-block shadow-3">Sheet — modals</div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline dividers</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Which data source?</summary>
+          <div class="faq-a">Apple Weather (WeatherKit) underpins forecasts, radar, and precipitation. Mercury renders the data through a painterly sky layer tuned per condition.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Does it work offline?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Widgets & lock screen?</summary>
+        </details>
+      </section>
+
+      <!-- Dark / Night sky -->
+      <section class="tile span-4 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Tonight</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.55);">midnight sky · moon glow</span>
+        </div>
+        <blockquote>"Clear skies. Moon rises at 9:14 PM over the Pacific."</blockquote>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+          <div class="moon"></div>
+          <div style="font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.82);">
+            <strong style="font-weight: 600; color: #fff;">Waxing Gibbous · 78%</strong><br>
+            <span style="color: rgba(255,255,255,0.6);">Full moon in 3 days</span>
+          </div>
+        </div>
+        <button class="btn btn-primary">Open radar →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>

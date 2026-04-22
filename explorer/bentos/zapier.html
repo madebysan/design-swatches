@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zapier — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #fffefb;
+    --surface: #fffdf9;
+    --mid: #eceae3;
+    --heading: #201515;
+    --label: #201515;
+    --body: #36342e;
+    --muted: #939084;
+    --sand: #c5c0b1;
+    --light-sand: #eceae3;
+    --border: #c5c0b1;
+    --primary: #ff4f00;
+    --primary-hover: #e64600;
+    --brand-dark: #201515;
+    --success: #2f7d52;
+    --font-display: "Degular Display", "Inter", Helvetica, Arial, sans-serif;
+    --font-sans: "Plus Jakarta Sans", "Inter", Helvetica, Arial, sans-serif;
+    --font-editorial: "GT Alpina", Georgia, "Times New Roman", serif;
+    --radius-card: 12px;
+    --radius-btn: 8px;
+    --shadow-sm: rgba(32,21,21,0.06) 0px 3px 8px;
+    --shadow-lg: rgba(32,21,21,0.12) 0px 16px 36px -12px;
+
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main { padding: 32px 28px; }
+  .bento-wrap { display: grid; gap: 20px; max-width: 1344px; margin: 0 auto; }
+
+  .meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px; font-size: 12px; color: var(--body); }
+  .meta a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--primary); text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 500; }
+  .meta a:hover { text-decoration: none; }
+  .brand-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--heading); font-weight: 600; }
+  .meta-brand { display: inline-flex; align-items: center; gap: 8px; }
+  .meta-favicon { width: 18px; height: 18px; border-radius: 3px; background: #fff; object-fit: contain; }
+
+  .hero {
+    background: var(--bg);
+    border: 1px solid var(--sand);
+    border-radius: var(--radius-card);
+    padding: 60px 44px;
+    box-shadow: var(--shadow-sm);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,79,0,0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 14px;
+    background: var(--mid); color: var(--heading);
+    border-radius: 999px; font-size: 12px; font-weight: 500;
+    margin-bottom: 24px;
+    border: 1px solid var(--sand);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 68px; font-weight: 500; line-height: 0.95;
+    letter-spacing: -1.2px; color: var(--heading);
+    margin-bottom: 18px; max-width: 780px;
+  }
+  .hero p {
+    font-family: var(--font-editorial);
+    font-size: 20px; color: var(--body);
+    max-width: 580px; margin-bottom: 28px; line-height: 1.45;
+    font-style: italic; font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .tile { background: var(--bg); border: 1px solid var(--sand); border-radius: var(--radius-card); padding: 28px; box-shadow: var(--shadow-sm); }
+  .tile-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; }
+  .tile-title { font-size: 13px; font-weight: 600; color: var(--heading); }
+  .tile-sub { font-size: 12px; color: var(--muted); }
+  .span-3 { grid-column: span 3; }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-3, .span-4, .span-5, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 44px; letter-spacing: -0.8px; }
+    .hero { padding: 36px 24px; }
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 22px; font-family: inherit;
+    font-size: 15px; font-weight: 500;
+    border-radius: var(--radius-btn);
+    border: 1px solid transparent; cursor: pointer;
+    transition: all 0.15s; line-height: 1;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-dark { background: var(--heading); color: #fff; }
+  .btn-dark:hover { background: #000; }
+  .btn-ghost { background: var(--mid); color: var(--heading); }
+  .btn-ghost:hover { background: var(--sand); }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 8px; border: 1px solid var(--sand); }
+  .swatch-name { font-size: 12px; font-weight: 500; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--muted); }
+
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--sand); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
+  .type-display { font-family: var(--font-display); font-size: 52px; font-weight: 500; letter-spacing: -1px; color: var(--heading); line-height: 0.95; }
+  .type-h2 { font-family: var(--font-display); font-size: 32px; font-weight: 500; letter-spacing: -0.5px; color: var(--heading); }
+  .type-body { font-size: 16px; font-weight: 400; color: var(--body); }
+  .type-editorial { font-family: var(--font-editorial); font-size: 20px; font-style: italic; font-weight: 300; color: var(--heading); line-height: 1.35; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: var(--mid); border-radius: 8px; color: var(--primary); }
+  iconify-icon { font-size: 22px; }
+  .icon-meta { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--sand); font-size: 12px; color: var(--muted); }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  .sample-card { background: var(--surface); border: 1px solid var(--sand); border-radius: var(--radius-card); padding: 22px; }
+  .sample-card-title { font-family: var(--font-display); font-size: 26px; font-weight: 500; letter-spacing: -0.5px; color: var(--heading); margin-bottom: 8px; line-height: 1; }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.55; }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  .badge { display: inline-flex; padding: 3px 12px; border-radius: 999px; font-size: 11px; font-weight: 500; }
+  .badge-success { background: rgba(47,125,82,0.12); color: var(--success); }
+  .badge-neutral { background: var(--mid); color: var(--heading); border: 1px solid var(--sand); }
+
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 500; color: var(--heading); margin-bottom: 6px; }
+  .input {
+    width: 100%; padding: 11px 14px; font-family: inherit;
+    font-size: 14px; color: var(--heading);
+    background: var(--bg); border: 1px solid var(--sand); border-radius: var(--radius-btn);
+    outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,79,0,0.15); }
+  .input::placeholder { color: var(--muted); }
+
+  .faq-item { border-bottom: 1px solid var(--sand); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--heading); text-align: left; }
+  .faq-q::after { content: "+"; color: var(--primary); font-size: 22px; font-weight: 400; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 16px; font-size: 14px; color: var(--body); line-height: 1.6; max-width: 540px; }
+
+  .dark-tile { background: var(--heading); color: #fff; border: none; position: relative; overflow: hidden; box-shadow: none; }
+  .dark-tile::before { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--primary); }
+  .dark-tile::after { content: ""; position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,79,0,0.15), transparent 60%); pointer-events: none; }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255,255,255,0.6); }
+  .dark-tile blockquote { font-family: var(--font-editorial); font-size: 22px; font-weight: 300; font-style: italic; letter-spacing: -0.2px; line-height: 1.3; margin-bottom: 22px; }
+  .dark-tile .btn-primary { background: var(--primary); color: #fff; }
+
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--sand); margin-bottom: 16px; }
+  .tab { padding: 10px 16px; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 4px solid transparent; margin-bottom: -1px; }
+  .tab.active { color: var(--heading); border-color: var(--primary); }
+
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block { height: 54px; background: #fff; border: 1px solid var(--sand); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; }
+  .shadow-1 { box-shadow: rgba(32,21,21,0.03) 0px 1px 3px; }
+  .shadow-2 { box-shadow: var(--shadow-sm); }
+  .shadow-3 { box-shadow: var(--shadow-lg); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" data-gallery-geist />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Zapier</span>
+      </div>
+      <a href="../../getdesign-corpus/zapier.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Automation that works while you don't</span>
+        <h1>Connect everything. Automate anything.</h1>
+        <p>Zapier's warm cream canvas meets fire-orange CTAs. Degular Display sets wide, confident headlines; GT Alpina italic leans in for editorial moments.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Start free — no credit card</button>
+          <button class="btn btn-ghost">See how it works</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">Cream + orange + sand</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #ff4f00;"></div><div class="swatch-name">Zapier Orange</div><div class="swatch-hex">#ff4f00</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #201515;"></div><div class="swatch-name">Zapier Black</div><div class="swatch-hex">#201515</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #fffefb;"></div><div class="swatch-name">Cream White</div><div class="swatch-hex">#fffefb</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #fffdf9;"></div><div class="swatch-name">Off-White</div><div class="swatch-hex">#fffdf9</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #c5c0b1;"></div><div class="swatch-name">Sand</div><div class="swatch-hex">#c5c0b1</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #eceae3;"></div><div class="swatch-name">Light Sand</div><div class="swatch-hex">#eceae3</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #939084;"></div><div class="swatch-name">Warm Gray</div><div class="swatch-hex">#939084</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #36342e;"></div><div class="swatch-name">Dark Charcoal</div><div class="swatch-hex">#36342e</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">8px · warm</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Start free →</button>
+          <button class="btn btn-dark">Sign in</button>
+          <button class="btn btn-ghost">Browse apps</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Degular Display · GT Alpina · Inter</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display / 52px</div>
+          <div class="type-display">Work that works itself.</div>
+          <div class="type-spec">Degular Display · 500 · -1px · line-height 0.95</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading / 32px</div>
+          <div class="type-h2">8,000+ apps, one automation platform</div>
+          <div class="type-spec">Degular Display · 500 · -0.5px</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Editorial pull-quote / 20px</div>
+          <div class="type-editorial">"The best way to work isn't harder. It's fewer things, on autopilot."</div>
+          <div class="type-spec">GT Alpina · italic · 300 · line-height 1.35</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Zapier connects the apps you use every day, so you can move data between them without writing code. Build automations — Zaps — that run in the background while you focus on real work.</div>
+          <div class="type-spec">Inter · 400 · line-height 1.55</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Tabler · duotone feel</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="tabler:bolt"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:plug"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:arrows-right-left"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:mail"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:calendar"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:table"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:robot"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="tabler:arrow-right"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Tabler</strong> · 1.5 stroke · 22px
+        </div>
+      </section>
+
+      <section class="tile span-5">
+        <div class="tile-head">
+          <span class="tile-title">Zap card</span>
+          <span class="tile-sub">Tab underline = orange</span>
+        </div>
+        <div class="tabs">
+          <div class="tab active">Triggers</div>
+          <div class="tab">Actions</div>
+          <div class="tab">History</div>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">New Stripe payment → Slack alert</div>
+          <div class="sample-card-body">When a new charge completes, post a formatted message to #sales with customer, amount, and product. Runs in 3 seconds.</div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">Active</span>
+            <span class="badge badge-neutral">1,284 runs</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">Orange focus ring</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="zap-name">Zap name</label>
+          <input type="text" id="zap-name" class="input" placeholder="New lead → HubSpot" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="trigger">Trigger app</label>
+          <input type="text" id="trigger" class="input" placeholder="Typeform, Gmail, Slack..." />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Create Zap</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">Soft sand</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">L1 · SOFT</div>
+          <div class="shadow-block shadow-2">L2 · CARD</div>
+          <div class="shadow-block shadow-3">L3 · FLOAT</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Do I need to know how to code?</summary>
+          <div class="faq-a">No. Zapier's visual builder lets you create workflows by connecting apps and setting up triggers in a click-through interface. Developers can add code steps when they need custom logic, but it's optional.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How many apps does Zapier integrate with?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is there a free plan?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Customer story</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.5);">Orange bottom rule</span>
+        </div>
+        <blockquote>"We replaced a 3-person ops team with 47 Zaps. Everything that used to require a human now runs itself — and nothing has broken in eight months."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary);"></div>
+          <div style="font-size: 13px;"><strong style="font-weight: 600; color: #fff;">Javier Ocampo</strong> · Head of RevOps, Northspoke</div>
+        </div>
+        <button class="btn btn-primary">Read case study →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>
