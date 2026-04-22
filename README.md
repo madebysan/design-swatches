@@ -1,6 +1,6 @@
 <h1 align="center">Design Swatches</h1>
-<p align="center">Generate a portable DESIGN.md for your brand that AI coding agents can use to build on-brand prototypes — without dragging Figma into the chat.</p>
-<p align="center"><a href="https://designmd-gamma.vercel.app"><strong>Browse the proof gallery →</strong></a></p>
+<p align="center">Portable visual identity for AI coding agents.</p>
+<p align="center"><a href="https://designmd-gamma.vercel.app"><strong>Try it live →</strong></a></p>
 
 ![Design Swatches gallery](screenshot.png)
 
