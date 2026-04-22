@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design Swatches — Explorer</title>
-<meta name="description" content="Portable visual identity for AI coding agents. Browse 81 real-company design systems as filterable visual swatches — colors, typography, components, and the full DESIGN.md for each." />
+<meta name="description" content="Portable visual identity for AI coding agents. Browse 98 real-company design systems as filterable visual swatches — colors, typography, components, and the full DESIGN.md for each." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta property="og:title" content="Design Swatches — Explorer" />
-<meta property="og:description" content="Portable visual identity for AI coding agents. Browse 81 real-company design systems as filterable visual swatches." />
+<meta property="og:description" content="Portable visual identity for AI coding agents. Browse 98 real-company design systems as filterable visual swatches." />
 <meta property="og:image" content="og-image.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -443,15 +443,19 @@
 <script>
   const DOMAINS = {
   "a24films": "a24films.com",
+  "aceternity": "ui.aceternity.com",
   "airbnb": "airbnb.com",
   "airtable": "airtable.com",
+  "align-ui": "alignui.com",
   "apple": "apple.com",
   "arc": "arc.net",
+  "atlassian": "atlassian.design",
   "binance": "binance.com",
   "bmw": "bmw.com",
   "bugatti": "bugatti.com",
   "cal": "cal.com",
   "cape": "cape.co",
+  "carbon": "carbondesignsystem.com",
   "claude-ai": "claude.ai",
   "clay": "clay.earth",
   "clickhouse": "clickhouse.com",
@@ -459,6 +463,7 @@
   "coinbase": "coinbase.com",
   "composio": "composio.dev",
   "cursor": "cursor.com",
+  "daisyui": "daisyui.com",
   "elevenlabs": "elevenlabs.io",
   "expo": "expo.dev",
   "ferrari": "ferrari.com",
@@ -468,14 +473,17 @@
   "framer": "framer.com",
   "granola": "granola.ai",
   "hashicorp": "hashicorp.com",
+  "hero-ui": "heroui.com",
   "ibm": "ibm.com",
   "intercom": "intercom.com",
+  "ios-hig": "developer.apple.com",
   "ivory": "tapbots.com",
   "kraken": "kraken.com",
   "lamborghini": "lamborghini.com",
   "linear.app": "linear.app",
   "lovable": "lovable.dev",
   "mastercard": "mastercard.com",
+  "material-3": "m3.material.io",
   "mercury-weather": "mercuryweather.com",
   "meta": "about.meta.com",
   "minimax": "minimax.io",
@@ -488,11 +496,16 @@
   "notion": "notion.so",
   "nvidia": "nvidia.com",
   "ollama": "ollama.com",
+  "once-ui": "once-ui.com",
   "opencode.ai": "opencode.ai",
+  "park-ui": "park-ui.com",
   "pinterest": "pinterest.com",
   "pitch": "pitch.com",
   "playstation": "playstation.com",
+  "polaris": "polaris.shopify.com",
   "posthog": "posthog.com",
+  "preline": "preline.co",
+  "primer": "primer.style",
   "raycast": "raycast.com",
   "readwise": "readwise.io",
   "renault": "renault.com",
@@ -502,6 +515,7 @@
   "runwayml": "runwayml.com",
   "sanity": "sanity.io",
   "sentry": "sentry.io",
+  "shadcn": "ui.shadcn.com",
   "shopify": "shopify.com",
   "spacex": "spacex.com",
   "spotify": "spotify.com",
@@ -509,11 +523,14 @@
   "stripe": "stripe.com",
   "supabase": "supabase.com",
   "superhuman": "superhuman.com",
+  "tailwind-plus": "tailwindcss.com",
   "tesla": "tesla.com",
   "theverge": "theverge.com",
   "things": "culturedcode.com",
   "together.ai": "together.ai",
+  "tremor": "tremor.so",
   "uber": "uber.com",
+  "untitled-ui": "untitledui.com",
   "vercel": "vercel.com",
   "vodafone": "vodafone.com",
   "voltagent": "voltagent.dev",
@@ -525,87 +542,785 @@
   "zapier": "zapier.com"
 };
   const CATEGORIES = {
-  "a24films":      { "category": "Media",        "styles": ["Dark", "Mono", "Editorial", "Bold"] },
-  "airbnb":        { "category": "Retail",       "styles": ["Warm", "Light", "Bold"] },
-  "airtable":      { "category": "SaaS",         "styles": ["Light", "Minimal"] },
-  "apple":         { "category": "Retail",       "styles": ["Minimal", "Light", "Mono"] },
-  "arc":           { "category": "Browser",      "styles": ["Colorful", "Gradient", "Warm", "Light"] },
-  "binance":       { "category": "Finance",      "styles": ["Dark", "Bold"] },
-  "bmw":           { "category": "Auto",         "styles": ["Dark", "Minimal", "Bold"] },
-  "bugatti":       { "category": "Auto",         "styles": ["Dark", "Bold", "Mono"] },
-  "cal":           { "category": "SaaS",         "styles": ["Minimal", "Mono", "Light"] },
-  "cape":          { "category": "Productivity", "styles": ["Minimal", "Light", "Warm"] },
-  "claude-ai":     { "category": "AI",           "styles": ["Warm", "Serif", "Light", "Tactile"] },
-  "clay":          { "category": "SaaS",         "styles": ["Warm", "Light", "Minimal"] },
-  "clickhouse":    { "category": "Dev Tools",    "styles": ["Dark", "Bold", "Colorful"] },
-  "cohere":        { "category": "AI",           "styles": ["Gradient", "Light", "Minimal"] },
-  "coinbase":      { "category": "Finance",      "styles": ["Minimal", "Light"] },
-  "composio":      { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
-  "cursor":        { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
-  "elevenlabs":    { "category": "AI",           "styles": ["Dark", "Minimal"] },
-  "expo":          { "category": "Dev Tools",    "styles": ["Minimal", "Light"] },
-  "ferrari":       { "category": "Auto",         "styles": ["Dark", "Bold", "Colorful"] },
-  "fey":           { "category": "Finance",      "styles": ["Dark", "Tactile", "Minimal"] },
-  "figma":         { "category": "Design",       "styles": ["Colorful", "Light", "Gradient"] },
-  "fluent":        { "category": "Design System","styles": ["Gradient", "Light", "Minimal"] },
-  "framer":        { "category": "Design",       "styles": ["Dark", "Gradient", "Colorful", "Bold"] },
-  "granola":       { "category": "AI",           "styles": ["Warm", "Minimal", "Light", "Tactile"] },
-  "hashicorp":     { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
-  "ibm":           { "category": "Enterprise",   "styles": ["Minimal", "Light", "Bold"] },
-  "intercom":      { "category": "SaaS",         "styles": ["Warm", "Light"] },
-  "ivory":         { "category": "Productivity", "styles": ["Tactile", "Dark", "Warm"] },
-  "kraken":        { "category": "Finance",      "styles": ["Dark", "Colorful"] },
-  "lamborghini":   { "category": "Auto",         "styles": ["Dark", "Bold", "Mono"] },
-  "linear.app":    { "category": "SaaS",         "styles": ["Dark", "Minimal", "Mono"] },
-  "lovable":       { "category": "AI",           "styles": ["Warm", "Light", "Minimal"] },
-  "mastercard":    { "category": "Finance",      "styles": ["Colorful", "Light", "Bold"] },
-  "mercury-weather":{"category": "Productivity", "styles": ["Gradient", "Colorful", "Tactile"] },
-  "meta":          { "category": "Enterprise",   "styles": ["Light", "Minimal"] },
-  "minimax":       { "category": "AI",           "styles": ["Dark", "Gradient", "Colorful"] },
-  "mintlify":      { "category": "Dev Tools",    "styles": ["Minimal", "Light"] },
-  "miro":          { "category": "SaaS",         "styles": ["Colorful", "Light", "Bold"] },
-  "mistral.ai":    { "category": "AI",           "styles": ["Light", "Minimal", "Colorful"] },
-  "mongodb":       { "category": "Dev Tools",    "styles": ["Light", "Minimal", "Bold"] },
-  "nike":          { "category": "Retail",       "styles": ["Bold", "Mono", "Minimal"] },
-  "notboring":     { "category": "Productivity", "styles": ["Tactile", "Colorful", "Gradient", "Bold"] },
-  "notion":        { "category": "SaaS",         "styles": ["Minimal", "Light", "Warm"] },
-  "nvidia":        { "category": "Enterprise",   "styles": ["Dark", "Bold", "Colorful"] },
-  "ollama":        { "category": "AI",           "styles": ["Warm", "Light", "Minimal"] },
-  "opencode.ai":   { "category": "Dev Tools",    "styles": ["Dark", "Minimal", "Mono"] },
-  "pinterest":     { "category": "Retail",       "styles": ["Warm", "Light", "Colorful"] },
-  "pitch":         { "category": "SaaS",         "styles": ["Gradient", "Dark", "Colorful"] },
-  "playstation":   { "category": "Gaming",       "styles": ["Dark", "Bold", "Minimal"] },
-  "posthog":       { "category": "Dev Tools",    "styles": ["Warm", "Light", "Bold"] },
-  "raycast":       { "category": "Productivity", "styles": ["Dark", "Minimal", "Tactile"] },
-  "readwise":      { "category": "Productivity", "styles": ["Warm", "Serif", "Light", "Editorial"] },
-  "renault":       { "category": "Auto",         "styles": ["Dark", "Bold", "Minimal"] },
-  "replicate":     { "category": "AI",           "styles": ["Colorful", "Gradient", "Bold"] },
-  "resend":        { "category": "Dev Tools",    "styles": ["Dark", "Serif", "Minimal"] },
-  "revolut":       { "category": "Finance",      "styles": ["Dark", "Minimal", "Bold"] },
-  "runwayml":      { "category": "AI",           "styles": ["Dark", "Minimal", "Mono"] },
-  "sanity":        { "category": "Dev Tools",    "styles": ["Dark", "Bold", "Colorful"] },
-  "sentry":        { "category": "Dev Tools",    "styles": ["Dark", "Minimal"] },
-  "shopify":       { "category": "Retail",       "styles": ["Dark", "Bold", "Minimal"] },
-  "spacex":        { "category": "Enterprise",   "styles": ["Dark", "Mono", "Minimal", "Bold"] },
-  "spotify":       { "category": "Media",        "styles": ["Dark", "Minimal"] },
-  "starbucks":     { "category": "Retail",       "styles": ["Warm", "Light", "Minimal"] },
-  "stripe":        { "category": "Finance",      "styles": ["Minimal", "Light", "Gradient"] },
-  "supabase":      { "category": "Dev Tools",    "styles": ["Dark", "Minimal", "Mono"] },
-  "superhuman":    { "category": "Productivity", "styles": ["Dark", "Minimal", "Gradient"] },
-  "tesla":         { "category": "Auto",         "styles": ["Minimal", "Light", "Mono"] },
-  "theverge":      { "category": "Media",        "styles": ["Dark", "Colorful", "Bold", "Editorial"] },
-  "things":        { "category": "Productivity", "styles": ["Minimal", "Light", "Tactile"] },
-  "together.ai":   { "category": "AI",           "styles": ["Gradient", "Colorful", "Light"] },
-  "uber":          { "category": "Retail",       "styles": ["Mono", "Minimal", "Bold"] },
-  "vercel":        { "category": "Dev Tools",    "styles": ["Minimal", "Mono", "Light"] },
-  "vodafone":      { "category": "Enterprise",   "styles": ["Bold", "Light", "Colorful"] },
-  "voltagent":     { "category": "AI",           "styles": ["Dark", "Minimal", "Colorful"] },
-  "warp":          { "category": "Dev Tools",    "styles": ["Dark", "Warm", "Minimal"] },
-  "webflow":       { "category": "Design",       "styles": ["Gradient", "Colorful", "Light"] },
-  "wired":         { "category": "Media",        "styles": ["Serif", "Bold", "Editorial", "Light"] },
-  "wise":          { "category": "Finance",      "styles": ["Bold", "Light", "Minimal"] },
-  "x.ai":          { "category": "AI",           "styles": ["Dark", "Mono", "Minimal"] },
-  "zapier":        { "category": "SaaS",         "styles": ["Warm", "Light", "Colorful"] }
+  "a24films": {
+    "category": "Media",
+    "styles": [
+      "Dark",
+      "Mono",
+      "Editorial",
+      "Bold"
+    ]
+  },
+  "aceternity": {
+    "category": "Design System",
+    "styles": [
+      "Dark",
+      "Gradient",
+      "Bold"
+    ]
+  },
+  "airbnb": {
+    "category": "Retail",
+    "styles": [
+      "Warm",
+      "Light",
+      "Bold"
+    ]
+  },
+  "airtable": {
+    "category": "SaaS",
+    "styles": [
+      "Light",
+      "Minimal"
+    ]
+  },
+  "align-ui": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "apple": {
+    "category": "Retail",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Mono"
+    ]
+  },
+  "arc": {
+    "category": "Browser",
+    "styles": [
+      "Colorful",
+      "Gradient",
+      "Warm",
+      "Light"
+    ]
+  },
+  "atlassian": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "binance": {
+    "category": "Finance",
+    "styles": [
+      "Dark",
+      "Bold"
+    ]
+  },
+  "bmw": {
+    "category": "Auto",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "bugatti": {
+    "category": "Auto",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Mono"
+    ]
+  },
+  "cal": {
+    "category": "SaaS",
+    "styles": [
+      "Minimal",
+      "Mono",
+      "Light"
+    ]
+  },
+  "cape": {
+    "category": "Productivity",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Warm"
+    ]
+  },
+  "carbon": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "claude-ai": {
+    "category": "AI",
+    "styles": [
+      "Warm",
+      "Serif",
+      "Light",
+      "Tactile"
+    ]
+  },
+  "clay": {
+    "category": "SaaS",
+    "styles": [
+      "Warm",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "clickhouse": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Colorful"
+    ]
+  },
+  "cohere": {
+    "category": "AI",
+    "styles": [
+      "Gradient",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "coinbase": {
+    "category": "Finance",
+    "styles": [
+      "Minimal",
+      "Light"
+    ]
+  },
+  "composio": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "cursor": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "daisyui": {
+    "category": "Design System",
+    "styles": [
+      "Colorful",
+      "Light",
+      "Playful"
+    ]
+  },
+  "elevenlabs": {
+    "category": "AI",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "expo": {
+    "category": "Dev Tools",
+    "styles": [
+      "Minimal",
+      "Light"
+    ]
+  },
+  "ferrari": {
+    "category": "Auto",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Colorful"
+    ]
+  },
+  "fey": {
+    "category": "Finance",
+    "styles": [
+      "Dark",
+      "Tactile",
+      "Minimal"
+    ]
+  },
+  "figma": {
+    "category": "Design",
+    "styles": [
+      "Colorful",
+      "Light",
+      "Gradient"
+    ]
+  },
+  "fluent": {
+    "category": "Design System",
+    "styles": [
+      "Gradient",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "framer": {
+    "category": "Design",
+    "styles": [
+      "Dark",
+      "Gradient",
+      "Colorful",
+      "Bold"
+    ]
+  },
+  "granola": {
+    "category": "AI",
+    "styles": [
+      "Warm",
+      "Minimal",
+      "Light",
+      "Tactile"
+    ]
+  },
+  "hashicorp": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "hero-ui": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Colorful",
+      "Bold"
+    ]
+  },
+  "ibm": {
+    "category": "Enterprise",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Bold"
+    ]
+  },
+  "intercom": {
+    "category": "SaaS",
+    "styles": [
+      "Warm",
+      "Light"
+    ]
+  },
+  "ios-hig": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Tactile"
+    ]
+  },
+  "ivory": {
+    "category": "Productivity",
+    "styles": [
+      "Tactile",
+      "Dark",
+      "Warm"
+    ]
+  },
+  "kraken": {
+    "category": "Finance",
+    "styles": [
+      "Dark",
+      "Colorful"
+    ]
+  },
+  "lamborghini": {
+    "category": "Auto",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Mono"
+    ]
+  },
+  "linear.app": {
+    "category": "SaaS",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "lovable": {
+    "category": "AI",
+    "styles": [
+      "Warm",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "mastercard": {
+    "category": "Finance",
+    "styles": [
+      "Colorful",
+      "Light",
+      "Bold"
+    ]
+  },
+  "material-3": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Colorful",
+      "Tactile"
+    ]
+  },
+  "mercury-weather": {
+    "category": "Productivity",
+    "styles": [
+      "Gradient",
+      "Colorful",
+      "Tactile"
+    ]
+  },
+  "meta": {
+    "category": "Enterprise",
+    "styles": [
+      "Light",
+      "Minimal"
+    ]
+  },
+  "minimax": {
+    "category": "AI",
+    "styles": [
+      "Dark",
+      "Gradient",
+      "Colorful"
+    ]
+  },
+  "mintlify": {
+    "category": "Dev Tools",
+    "styles": [
+      "Minimal",
+      "Light"
+    ]
+  },
+  "miro": {
+    "category": "SaaS",
+    "styles": [
+      "Colorful",
+      "Light",
+      "Bold"
+    ]
+  },
+  "mistral.ai": {
+    "category": "AI",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Colorful"
+    ]
+  },
+  "mongodb": {
+    "category": "Dev Tools",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "nike": {
+    "category": "Retail",
+    "styles": [
+      "Bold",
+      "Mono",
+      "Minimal"
+    ]
+  },
+  "notboring": {
+    "category": "Productivity",
+    "styles": [
+      "Tactile",
+      "Colorful",
+      "Gradient",
+      "Bold"
+    ]
+  },
+  "notion": {
+    "category": "SaaS",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Warm"
+    ]
+  },
+  "nvidia": {
+    "category": "Enterprise",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Colorful"
+    ]
+  },
+  "ollama": {
+    "category": "AI",
+    "styles": [
+      "Warm",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "once-ui": {
+    "category": "Design System",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "opencode.ai": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "park-ui": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal"
+    ]
+  },
+  "pinterest": {
+    "category": "Retail",
+    "styles": [
+      "Warm",
+      "Light",
+      "Colorful"
+    ]
+  },
+  "pitch": {
+    "category": "SaaS",
+    "styles": [
+      "Gradient",
+      "Dark",
+      "Colorful"
+    ]
+  },
+  "playstation": {
+    "category": "Gaming",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Minimal"
+    ]
+  },
+  "polaris": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "posthog": {
+    "category": "Dev Tools",
+    "styles": [
+      "Warm",
+      "Light",
+      "Bold"
+    ]
+  },
+  "preline": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "primer": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "raycast": {
+    "category": "Productivity",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Tactile"
+    ]
+  },
+  "readwise": {
+    "category": "Productivity",
+    "styles": [
+      "Warm",
+      "Serif",
+      "Light",
+      "Editorial"
+    ]
+  },
+  "renault": {
+    "category": "Auto",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Minimal"
+    ]
+  },
+  "replicate": {
+    "category": "AI",
+    "styles": [
+      "Colorful",
+      "Gradient",
+      "Bold"
+    ]
+  },
+  "resend": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Serif",
+      "Minimal"
+    ]
+  },
+  "revolut": {
+    "category": "Finance",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "runwayml": {
+    "category": "AI",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "sanity": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Colorful"
+    ]
+  },
+  "sentry": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "shadcn": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "shopify": {
+    "category": "Retail",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Minimal"
+    ]
+  },
+  "spacex": {
+    "category": "Enterprise",
+    "styles": [
+      "Dark",
+      "Mono",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "spotify": {
+    "category": "Media",
+    "styles": [
+      "Dark",
+      "Minimal"
+    ]
+  },
+  "starbucks": {
+    "category": "Retail",
+    "styles": [
+      "Warm",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "stripe": {
+    "category": "Finance",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Gradient"
+    ]
+  },
+  "supabase": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Mono"
+    ]
+  },
+  "superhuman": {
+    "category": "Productivity",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Gradient"
+    ]
+  },
+  "tailwind-plus": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "tesla": {
+    "category": "Auto",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Mono"
+    ]
+  },
+  "theverge": {
+    "category": "Media",
+    "styles": [
+      "Dark",
+      "Colorful",
+      "Bold",
+      "Editorial"
+    ]
+  },
+  "things": {
+    "category": "Productivity",
+    "styles": [
+      "Minimal",
+      "Light",
+      "Tactile"
+    ]
+  },
+  "together.ai": {
+    "category": "AI",
+    "styles": [
+      "Gradient",
+      "Colorful",
+      "Light"
+    ]
+  },
+  "tremor": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Colorful"
+    ]
+  },
+  "uber": {
+    "category": "Retail",
+    "styles": [
+      "Mono",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "untitled-ui": {
+    "category": "Design System",
+    "styles": [
+      "Light",
+      "Minimal",
+      "Bold"
+    ]
+  },
+  "vercel": {
+    "category": "Dev Tools",
+    "styles": [
+      "Minimal",
+      "Mono",
+      "Light"
+    ]
+  },
+  "vodafone": {
+    "category": "Enterprise",
+    "styles": [
+      "Bold",
+      "Light",
+      "Colorful"
+    ]
+  },
+  "voltagent": {
+    "category": "AI",
+    "styles": [
+      "Dark",
+      "Minimal",
+      "Colorful"
+    ]
+  },
+  "warp": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Warm",
+      "Minimal"
+    ]
+  },
+  "webflow": {
+    "category": "Design",
+    "styles": [
+      "Gradient",
+      "Colorful",
+      "Light"
+    ]
+  },
+  "wired": {
+    "category": "Media",
+    "styles": [
+      "Serif",
+      "Bold",
+      "Editorial",
+      "Light"
+    ]
+  },
+  "wise": {
+    "category": "Finance",
+    "styles": [
+      "Bold",
+      "Light",
+      "Minimal"
+    ]
+  },
+  "x.ai": {
+    "category": "AI",
+    "styles": [
+      "Dark",
+      "Mono",
+      "Minimal"
+    ]
+  },
+  "zapier": {
+    "category": "SaaS",
+    "styles": [
+      "Warm",
+      "Light",
+      "Colorful"
+    ]
+  }
 };
 
   const brands = Object.keys(DOMAINS).sort();

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DaisyUI — Design Swatch</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #fefce8;
+    --heading: #1f2937;
+    --label: #374151;
+    --body: #6b7280;
+    --border: #e5e7eb;
+    --primary: #661ae6;
+    --primary-hover: #5214b8;
+    --primary-light: #f0ebff;
+    --brand-dark: #1d232a;
+    --ruby: #dd2b1b;
+    --magenta: #d926a9;
+    --success: #36d399;
+    --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+
+    /* Sidebar — neutral, brand-agnostic */
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-feature-settings: "ss01"; }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    background: #fafafa;
+    color: var(--body);
+    font-weight: 300;
+    line-height: 1.4;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== LAYOUT ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (neutral) ====== */
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  /* ====== MAIN ====== */
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  /* Meta bar */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .meta a {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .meta a:hover { color: #171717; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 48px 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(249, 107, 238, 0.15) 0%, rgba(234, 34, 97, 0.05) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px 3px 3px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg);
+    font-size: 12px;
+    color: var(--label);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .hero-eyebrow::before {
+    content: "NEW";
+    background: linear-gradient(90deg, var(--ruby), var(--magenta));
+    color: white;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+  .hero h1 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: var(--heading);
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .hero p {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--body);
+    max-width: 560px;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 300;
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 36px; letter-spacing: -0.72px; }
+    .hero { padding: 36px 24px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    line-height: 1.43;
+  }
+  .btn-primary { background: var(--primary); color: #ffffff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-ghost { background: transparent; color: var(--primary); border-color: var(--border); }
+  .btn-ghost:hover { background: var(--primary-light); }
+  .btn-dark { background: var(--brand-dark); color: #fafafa; }
+  .btn-dark:hover { background: var(--primary-hover); }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 4px; border: 1px solid var(--border); }
+  .swatch-name { font-size: 12px; font-weight: 400; color: var(--heading); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+
+  /* Typography */
+  .type-sample { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 4px; }
+  .type-display { font-size: 36px; font-weight: 300; letter-spacing: -0.72px; color: var(--heading); line-height: 1.05; }
+  .type-h2 { font-size: 26px; font-weight: 300; letter-spacing: -0.26px; color: var(--heading); }
+  .type-body { font-size: 16px; font-weight: 300; color: var(--body); }
+  .type-caption { font-size: 12px; font-weight: 400; color: var(--label); }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--body); margin-top: 4px; }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--primary);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 300;
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 400; }
+
+  /* Card */
+  .sample-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+  }
+  .sample-card-title { font-size: 18px; font-weight: 300; letter-spacing: -0.18px; color: var(--heading); margin-bottom: 8px; }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.45; font-weight: 300; }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  /* Badge */
+  .badge { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 400; }
+  .badge-success { background: rgba(21, 190, 83, 0.2); color: #108c3d; border: 1px solid rgba(21, 190, 83, 0.4); }
+  .badge-neutral { background: var(--surface); color: var(--heading); border: 1px solid var(--border); }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 400; color: var(--label); margin-bottom: 5px; }
+  .input {
+    width: 100%;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-feature-settings: "ss01";
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--heading);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(83, 58, 253, 0.12); }
+  .input::placeholder { color: var(--body); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 13px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-feature-settings: "ss01";
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 300; color: var(--primary); font-size: 20px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--body); font-weight: 300; line-height: 1.5; max-width: 540px; }
+
+  /* Dark */
+  .dark-tile { background: var(--brand-dark); color: white; border: none; position: relative; overflow: hidden; }
+  .dark-tile::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(249, 107, 238, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255, 255, 255, 0.6); }
+  .dark-tile blockquote { font-size: 20px; font-weight: 300; letter-spacing: -0.2px; line-height: 1.22; margin-bottom: 18px; }
+  .dark-tile .btn-primary { background: white; color: var(--heading); }
+  .dark-tile .btn-primary:hover { background: rgba(255, 255, 255, 0.92); }
+
+  /* Shadows */
+  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
+  .shadow-block {
+    height: 54px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--body);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .shadow-1 { box-shadow: rgba(23, 23, 23, 0.06) 0px 3px 6px; }
+  .shadow-2 { box-shadow: var(--shadow-sm); }
+  .shadow-3 { box-shadow: var(--shadow-lg); }
+
+  /* daisyui overrides */
+  .tile { border-radius: 16px; }
+  .hero { border-radius: 24px; background: linear-gradient(135deg, #faf089 0%, #fbcfe8 50%, #bae6fd 100%); border: none; }
+  .hero h1, .hero p { color: #1f2937; }
+  .hero::before { display: none; }
+  .hero-eyebrow { border-radius: 9999px; background: rgba(255,255,255,0.8); }
+  .hero-eyebrow::before { border-radius: 9999px; }
+  .sample-card { border-radius: 12px; }
+  .input { border-radius: 8px; font-weight: 400; }
+  .badge { border-radius: 9999px; font-weight: 500; padding: 2px 10px; }
+  .badge-success { background: rgba(54,211,153,0.15); color: #047857; border-color: rgba(54,211,153,0.4); }
+  .swatch-chip { border-radius: 8px; height: 58px; }
+  .type-display { font-weight: 900; letter-spacing: -1.6px; font-size: 44px; }
+  .type-h2 { font-weight: 800; letter-spacing: -0.5px; font-size: 28px; }
+  .type-body { font-weight: 400; }
+  .type-caption { font-family: ui-monospace, monospace; }
+  .icon-cell { border-radius: 12px; color: var(--primary); background: var(--primary-light); border-color: transparent; }
+  .shadow-block { border-radius: 12px; }
+  .shadow-1 { box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .shadow-2 { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+  .shadow-3 { box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+  .dark-tile { background: #1d232a; border-radius: 16px; }
+  .dark-tile::before { display: none; }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="aceternity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ui.aceternity.com&sz=64" alt="" loading="lazy" /><span>ACETERNITY</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="align-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=alignui.com&sz=64" alt="" loading="lazy" /><span>ALIGN-UI</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="atlassian.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=atlassian.design&sz=64" alt="" loading="lazy" /><span>ATLASSIAN</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="carbon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=carbondesignsystem.com&sz=64" alt="" loading="lazy" /><span>CARBON</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="daisyui.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=daisyui.com&sz=64" alt="" loading="lazy" /><span>DAISYUI</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="hero-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=heroui.com&sz=64" alt="" loading="lazy" /><span>HERO-UI</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="ios-hig.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=developer.apple.com&sz=64" alt="" loading="lazy" /><span>IOS-HIG</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="material-3.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=m3.material.io&sz=64" alt="" loading="lazy" /><span>MATERIAL-3</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="once-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=once-ui.com&sz=64" alt="" loading="lazy" /><span>ONCE-UI</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="park-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=park-ui.com&sz=64" alt="" loading="lazy" /><span>PARK-UI</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="polaris.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=polaris.shopify.com&sz=64" alt="" loading="lazy" /><span>POLARIS</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="preline.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=preline.co&sz=64" alt="" loading="lazy" /><span>PRELINE</span></a></li>
+      <li><a href="primer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=primer.style&sz=64" alt="" loading="lazy" /><span>PRIMER</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="shadcn.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ui.shadcn.com&sz=64" alt="" loading="lazy" /><span>SHADCN</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tailwind-plus.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tailwindcss.com&sz=64" alt="" loading="lazy" /><span>TAILWIND-PLUS</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="tremor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tremor.so&sz=64" alt="" loading="lazy" /><span>TREMOR</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="untitled-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=untitledui.com&sz=64" alt="" loading="lazy" /><span>UNTITLED-UI</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=daisyui.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · DaisyUI</span>
+      </div>
+      <a href="../../getdesign-corpus/daisyui.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Semantic Tailwind components · 36 themes</span>
+        <h1>Tailwind without the cognitive load.</h1>
+        <p>DaisyUI gives every Tailwind project a semantic component class system and 36 ready-to-use themes — friendly, colorful, accessible out of the box.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Install</button>
+          <button class="btn btn-ghost">Browse themes</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">Semantic tokens · cupcake theme</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #661ae6;"></div><div class="swatch-name">Primary</div><div class="swatch-hex">#661ae6</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffffff;"></div><div class="swatch-name">Primary Content</div><div class="swatch-hex">#ffffff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #d926a9;"></div><div class="swatch-name">Secondary</div><div class="swatch-hex">#d926a9</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1fb2a6;"></div><div class="swatch-name">Accent</div><div class="swatch-hex">#1fb2a6</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1d232a;"></div><div class="swatch-name">Neutral</div><div class="swatch-hex">#1d232a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffffff;"></div><div class="swatch-name">Base 100</div><div class="swatch-hex">#ffffff</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f2f2f2;"></div><div class="swatch-name">Base 200</div><div class="swatch-hex">#f2f2f2</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #1f2937;"></div><div class="swatch-name">Base Content</div><div class="swatch-hex">#1f2937</div></div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">&nbsp;</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-dark">Outline</button>
+        </div>
+      </section>
+
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Outfit · 900 · -1.5px · line-height 1.05</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Display</div>
+          <div class="type-display">Cupcake. Bumblebee. Synthwave.</div>
+          <div class="type-spec">Outfit · 900 · -1.5px · line-height 1.05</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Heading</div>
+          <div class="type-h2">36 themes out of the box</div>
+          <div class="type-spec">Outfit · 700 · normal · line-height 1.10</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body</div>
+          <div class="type-body">Every theme is a consistent palette — primary, secondary, accent, neutral, base — generated as CSS variables. Swap theme and every component updates, from buttons to badges to charts.</div>
+          <div class="type-spec">Outfit · 400 · line-height 1.50</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Caption</div>
+          <div class="type-caption" style="font-family: ui-monospace, monospace;"><button class="btn btn-primary">Click</button></div>
+          <div class="type-spec">ui-monospace · 400</div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Lucide · playful set</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="lucide:flower-2"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:palette"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:paintbrush"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:wand"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:droplets"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:layers"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:heart"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="lucide:sparkles"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Any icon set works · commonly paired with <strong>Lucide</strong> or <strong>Heroicons</strong>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Card</span>
+          <span class="tile-sub">&nbsp;</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-card-title">Playful by default</div>
+          <div class="sample-card-body">DaisyUI doesn't shy away from personality — buttons have hover lift, colors are saturated, and every theme has a name like Cupcake, Valentine, or Synthwave.</div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">Active theme</span>
+            <span class="badge badge-neutral">Cupcake</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">focus ring</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="daisyui-f1">Theme</label>
+          <input type="text" id="daisyui-f1" class="input" placeholder="cupcake / dracula / retro" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="daisyui-f2">Primary color</label>
+          <input type="text" id="daisyui-f2" class="input" placeholder="#661ae6" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Apply theme</button>
+      </section>
+
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">&nbsp;</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">LEVEL 1 · CARD</div>
+          <div class="shadow-block shadow-2">LEVEL 2 · HOVER</div>
+          <div class="shadow-block shadow-3">LEVEL 3 · MODAL</div>
+        </div>
+      </section>
+
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline divider</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">Is DaisyUI a component library or a class system?</summary>
+          <div class="faq-a">Both — it's semantic class names (like `.btn`, `.card`, `.badge`) implemented as Tailwind layers. You get component shortcuts without leaving Tailwind's utility-first approach.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How many themes ship by default?</summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I make my own theme?</summary>
+        </details>
+      </section>
+
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Brand moment</span>
+          <span class="tile-sub" style="color: rgba(255,255,255,0.6);">dark surface</span>
+        </div>
+        <blockquote>"DaisyUI makes Tailwind feel like Bootstrap again — in the best possible way."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+          <div style="font-size: 13px; font-weight: 300;"><strong style="font-weight: 500;">Pouya Saadeghi</strong> · Creator, DaisyUI</div>
+        </div>
+        <button class="btn btn-primary">Star on GitHub →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar live filter
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  // Scroll active item into view on load
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>
