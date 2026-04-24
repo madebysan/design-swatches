@@ -1,6 +1,7 @@
 <h1 align="center">Design Swatches</h1>
-<p align="center">Portable visual identity for AI coding agents.</p>
-<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Try it live →</strong></a></p>
+<p align="center">Portable visual identity for AI coding agents.<br>
+98-brand DESIGN.md corpus with a browsable explorer and a Claude Code skill.</p>
+<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Browse -></strong></a></p>
 
 ![Design Swatches gallery](screenshot.png)
 
@@ -39,17 +40,15 @@ Then in any Claude Code session:
 /design-md https://your-company.com
 ```
 
-The skill pulls raw design tokens via [dembrandt](https://github.com/dembrandt/dembrandt), then uses Claude with 1–3 corpus files as voice references to write a structured 9-section DESIGN.md. The result drops into any agent context. Future prototypes built in that session land closer to your brand on the first try.
+The skill pulls raw design tokens via [dembrandt](https://github.com/dembrandt/dembrandt), then uses Claude with 1–3 corpus files as voice references to write a structured 9-section DESIGN.md. Dembrandt tells you `#f36458` appears 12 times. This layer is what calls that coral Sanity's singular brand accent, reserved for CTAs, and flips to electric blue on hover. Raw tokens in, AI-usable design brief out.
 
-### How this relates to dembrandt
-
-Dembrandt already has a `--design-md` flag that outputs a DESIGN.md directly. What this project adds is the corpus (98 files in a consistent format, written with a specific interpretive voice) and the prompting that produces new files in that same voice. Dembrandt is the scraper layer. It tells you `#f36458` appears 12 times. This layer is what calls that coral Sanity's singular brand accent, reserved for CTAs, and flips to electric blue on hover. Raw tokens in, AI-usable design brief out.
+Future prototypes built in that session land closer to your brand on the first try.
 
 ## The explorer
 
-98 DESIGN.md files is a lot of text to scan. The explorer renders each one back into a visible "design swatch", hero typography, color palette, button variants, icon system, type specimens, so you can see the format's output side-by-side at scale. The 9-section format works across Ferrari, Notion, A24, Mercury Weather, and Claude. Wildly different visual priorities, same format.
+The explorer renders each DESIGN.md into a visible "design swatch" so you can scan all 98 at a glance. The 9-section format holds across Ferrari, Notion, A24, Mercury Weather, and Claude.
 
-The explorer is for reference, not for copying. The brands catalogued here describe public corporate visual identities and remain owned by their companies. Use them as voice references for your own DESIGN.md, not as something to lift into a product.
+For reference only. These describe public brand identities, don't lift them into your own product.
 
 ## What's in a DESIGN.md
 
