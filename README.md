@@ -1,7 +1,7 @@
 <h1 align="center">Design Swatches</h1>
 <p align="center">Portable visual identity for AI coding agents.<br>
 98-brand DESIGN.md corpus with a browsable explorer and a Claude Code skill.</p>
-<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Browse -></strong></a></p>
+<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Browse →</strong></a></p>
 
 ![Design Swatches gallery](screenshot.png)
 
