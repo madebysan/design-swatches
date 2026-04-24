@@ -69,7 +69,6 @@ The last section is the payload: copy-paste prompts an AI agent can use directly
 ## Credits
 
 - Token extraction via [dembrandt](https://github.com/dembrandt/dembrandt)
-- Most corpus files bootstrapped from VoltAgent's [getdesign.md](https://getdesign.md) CLI
 - Iconify CDN for the icon previews in the explorer
 
 ## License
