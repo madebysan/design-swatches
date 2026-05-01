@@ -1,214 +1,259 @@
 ---
 slug: atlassian
-name: Atlassian Design System
-url: https://atlassian.design
-domain: atlassian.design
-category: Design System
-styles: [Light, Minimal, Bold]
-tagline: "Atlassian Sans at weight 653, electric blue tokens, enterprise scale without visual noise."
-fonts: [Atlassian Sans, Charlie Display, Atlassian Mono]
+name: Atlassian
+url: https://www.atlassian.com
+domain: atlassian.com
+category: SaaS
+styles: [Light, Cool]
+tagline: "organized digital workspace"
+fonts: [Charlie Text, Charlie Display]
 primary_color: "#1868db"
 ---
 
-# Design System Inspired by Atlassian Design System
+# Design System Inspired by Atlassian
 
-> Atlassian Sans at weight 653, electric blue tokens, enterprise scale without visual noise.
+> organized digital workspace
 
 ## 1. Visual Theme & Atmosphere
 
-The Atlassian Design System is the enterprise design vocabulary that powers Jira, Confluence, Trello, and Bitbucket — four products serving 250,000+ organizations, with a design system that has to stay consistent across 30 years of product evolution. The homepage opens on a clean white canvas (`#ffffff`) with near-black text (`#101214`) and an **unmistakable blue** (`#1868db`) — Atlassian's primary brand color, applied sparingly but with authority. This is enterprise SaaS perfected: precise, accessible, boringly consistent in the best possible way.
+Atlassian's marketing surface reads like a meticulously organized digital workspace — crisp white canvas (`#ffffff`), near-black text (`#000000`), and a single energetic Periwinkle blue (`#1868db`) doing all the interactive work. Where most enterprise SaaS sites feel sterile, Atlassian punctuates the order with a Conic Energy gradient (`#bf63f3` violet) on hero illustrations and a Harvest Gold (`#fca700`) accent for highlight moments. The result is precise but not clinical: a tool for complex teamwork that signals approachability through deliberate moments of color.
 
-Typography uses Atlassian's **custom typeface — Atlassian Sans** — with a secondary **Charlie Display** for marketing headlines and **Atlassian Mono** for code. The sans uses an unusual weight 653 (variable-font custom axis) for the display tier, along with more conventional 500/700. The 653 weight is between semibold (600) and bold (700), giving display type a distinct confidence without shouting.
+The defining typographic move is `Charlie Display` at scale. Hero display sits at 70px with a positive letter-spacing of `0.84px` — wider tracking, not tighter. This is a notable inversion of the dark-mode-mono-tracking convention. At 48px display the spacing is `0.576px`; at 32px heading, `0.384px`. Atlassian uses positive tracking as a confidence signal, the typographic equivalent of speaking slowly with authority.
 
-The defining differentiator is Atlassian's **semantic token vocabulary** — 24+ design tokens found in the CSS scan, named with precise intent: `--ds-background-brand-subtlest-hovered`, `--ds-text-accent-teal`, `--ds-background-brand-boldest`. Each token encodes role + intensity + state. This is enterprise design systems done right — tokens that describe purpose, not appearance.
+The radius system is unusually polarized. Cards sit at a generous `20px`, primary buttons stretch to `10000px` (effectively a pill), and inputs/general elements hold a tight `2px`. The huge gap between rectangle (cards, sections) and pill (buttons) is the signature: containers are calmly rounded, but the thing you click is decisively oval. Pair this with a single, layered card shadow (`rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`) and the system gets its tactile, workspace-grade feel.
 
 **Key Characteristics:**
-- Atlassian Sans (custom typeface) with weight 653 as a variable-font signature
-- Electric blue brand (`#1868db`) applied sparingly as primary accent
-- Rich palette of sub-brand accent colors (saffron, teal, purple, magenta, orange)
-- `4px` / `8px` dominant radii — conservative, enterprise-appropriate
-- Semantic token naming (`ds-background-brand-subtlest-hovered`)
-- Dual-layer shadow system for precise elevation
-- Accessibility-first: WCAG AAA compliance by default
-- Design-for-scale: Jira alone has 1,000+ distinct UI views
+- White (`#ffffff`) canvas with Slate 900 (`#000000`) text — maximum legibility-first
+- Periwinkle 500 (`#1868db`) reserved for primary actions; Harvest Gold (`#fca700`) for accents only
+- Conic Energy gradient (`#bf63f3`) on hero illustrations signals dynamism
+- Charlie Display at 70px with positive `0.84px` tracking — confident, wide
+- Polarized radius vocabulary: `20px` cards vs `10000px` buttons vs `2px` general
+- Subtle layered card shadow with cool blue undertone (`rgba(9, 30, 66, …)`)
+- 4px base spacing unit drives a tight, workspace-grade rhythm
+- Sub-brand accent palette: violet (Conic), gold (Harvest), with disciplined deployment
+- Steel Grey (`#1c2b42`) as the cool secondary text — never warm grays
+- Sticky top nav with category-organized links
 
 ## 2. Color Palette & Roles
 
-### Brand
-- **Brand Blue** (`#1868db`): Primary brand color — 426 occurrences. CTAs, links, active states.
-- **Brand Boldest** (`#1c2b42`): Deep navy for dark brand surfaces. `--ds-background-brand-boldest`.
-- **Brand Subtlest** (`#e8f1ff`): Pale blue tint for hover states.
-- **Brand Subtlest Hovered** (`#cfe1fd`): Slightly stronger hover tint. `--ds-background-brand-subtlest-hovered`.
-- **Brand Pressed** (`#adcbfb`): Active press state. `--ds-background-brand-subtlest-pressed`.
+### Background Surfaces
+- **Canvas Frost** (`#ffffff`): Primary page background.
+- **Ash Cloud** (`#f0f1f2`): Subtle background for ghost buttons and quiet UI components.
+- **Sky Haze** (`#e9f2fe`): Hover states for interactive elements.
+- **Graphite Base** (`#101214`): Dark surface backgrounds for hero or contrast sections.
 
-### Neutral Scale
-- **Neutral 900** (`#101214`): Primary text, strongest emphasis.
-- **Neutral 800** (`#1e1f21`): Dark text.
-- **Neutral 700** (`#44546f`): Label text.
-- **Neutral 600** (`#505258`): Secondary text — 146 occurrences.
-- **Neutral 400** (`#7d818a`): Muted text.
-- **Neutral 300** (`#b3b9c4`): Placeholders, disabled.
-- **Neutral 200** (`#dcdfe4`): Default borders.
-- **Neutral 100** (`#f8f9fa`): Muted surface.
-- **Neutral 0** (`#ffffff`): Base canvas.
+### Text & Content
+- **Slate 900** (`#000000`): Primary text — headings and body on light backgrounds.
+- **Steel Grey** (`#1c2b42`): Secondary cool-toned text.
+- **Midnight Shadow** (`#292a2e`): Subtle text shades, captions.
 
-### Accent (sub-brand colors)
-- **Saffron** (`#fca700`): `--ad-color-brand-saffron`. Highlighting warnings.
-- **Grass Green** (`#6a9a23`): Success states (44 occurrences).
-- **Magenta** (`#af59e1`): Status indicators (27 occurrences). `--ds-text-accent-magenta-bolder: #50253F`.
-- **Purple** (`#af5eff`): Beta features, new indicators. `--ds-text-accent-purple-bolder: #48245D`.
-- **Orange** (`#e06c00`): Warnings. `--ds-text-orange-bolder`.
-- **Teal** (`#206a83`): Info states. `--ds-text-accent-teal: #206A83`.
-- **Blue Bolder** (`#123263`): Deep blue for accent-blue text.
+### Brand & Accent
+- **Periwinkle 500** (`#1868db`): Primary brand color — CTAs, active states, links.
+- **Conic Energy** (`#bf63f3`): Distinctive brand gradient color — hero illustrations and decorative elements signaling dynamism.
+- **Harvest Gold** (`#fca700`): Highlight accent — never for interactive elements.
 
-### Semantic
-- **Danger** (`#ae2e24`): Destructive. `--ds-text-danger: #AE2E24`.
-- **Warning** (`#9e4c00`): Warning text. `--ds-text-warning: #9E4C00`.
+### Border & Divider
+- **Subtle Mist** (`#b7b9be`): Subtle borders, list item separators.
+- **Frost Shadow** (`#c2c7d0`): Card shadow source color.
+- **Storm Sky** (`#42526e`): Input field borders and placeholder text.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `Atlassian Sans` — Atlassian's custom sans-serif (variable font with weight axis including 475, 500, 653, 700).
-- **Display**: `Charlie Display` — a more expressive display typeface used for marketing hero moments only.
-- **Monospace**: `Atlassian Mono` — custom mono for code.
-- Fallback stack: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`.
+### Font Families
+- **Charlie Text** (substitute: Inter): Primary body copy, subheadings, UI labels. Range of weights supports content hierarchy and functional clarity without overwhelming the interface.
+- **Charlie Display** (substitute: Poppins): Headlines and prominent display text. Bolder weights with positive tracking create a confident, impactful presence at larger scales.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing |
-|------|------|------|--------|-------------|----------------|
-| Display Giant | Atlassian Sans | 112px | 700 | 1.02 | normal |
-| Display Hero | Atlassian Sans | 68px | 700 | 1.05 | normal |
-| Display Large | Atlassian Sans | 44px | 700 | 1.10 | normal |
-| Display / Charlie | Charlie Display | 32px | 653 | 1.15 | normal |
-| H1 | Atlassian Sans | 40px | 653 | 1.15 | normal |
-| H2 | Atlassian Sans | 28px | 500 | 1.25 | normal |
-| H3 | Atlassian Sans | 24px | 400 | 1.30 | normal |
-| Body Large | Atlassian Sans | 16px | 400 | 1.50 | normal |
-| Body | Atlassian Sans | 14px | 400 | 1.43 | normal |
-| Caption | Atlassian Mono | 14px | 400 | 1.43 | normal |
+| Role | Font | Size | Line Height | Letter Spacing |
+|------|------|------|-------------|----------------|
+| Display Large | Charlie Display | 70px | 1.00 | 0.84px |
+| Display | Charlie Display | 48px | 1.19 | 0.576px |
+| Heading Large | Charlie Display | 40px | 1.20 | 0.48px |
+| Heading | Charlie Display | 32px | 1.17 | 0.384px |
+| Heading Small | Charlie Display | 24px | 1.29 | 0.288px |
+| Subheading | Charlie Text | 20px | 1.25 | normal |
+| Body | Charlie Text | 16px | 1.50 | normal |
+| Caption | Charlie Text | 13px | 1.40 | normal |
 
 ### Principles
-- **Weight 653 is unique**: Available via Atlassian Sans's variable font weight axis. Sits between semibold and bold for display authority.
-- **No letter-spacing**: Atlassian explicitly keeps tracking at normal across all sizes — generous and accessible.
-- **Charlie Display for marketing only**: H2/H3 inside app UI uses Atlassian Sans; Charlie appears only on marketing pages.
-- **Atlassian Mono for code**: Distinct from typical Mono Sans or JetBrains Mono — branded consistency.
+- **Positive tracking on display**: Counter to the convention of tightening display type, Atlassian opens it up. `0.84px` at 70px reads as confident, deliberate, well-spaced.
+- **Two-typeface split by job**: Charlie Display owns hero and section headlines; Charlie Text owns everything below 20px and all UI labels. Clean role separation.
+- **Weight 700–800 for display**: Bold weights at 48–80px create the signature "unleash your superteam"-level hero impact.
+- **Body stays normal**: Below 20px, letter-spacing returns to normal — Charlie Text was drawn to read at default tracking.
 
 ## 4. Component Stylings
 
 ### Buttons
-- **Primary**: `#1868db` bg, white text, `4px` radius, `8px 16px` padding, 14px Atlassian Sans weight 500.
-- **Subtle**: `#f8f9fa` bg, `#44546f` text, `4px` radius, hover `#dcdfe4`.
-- **Link**: transparent bg, `#1868db` text, no border, no bg.
-- **Danger**: `#ae2e24` bg, white text.
+
+**Primary Action (Filled Pill)**
+- Background: Periwinkle 500 (`#1868db`)
+- Text: Canvas Frost (`#ffffff`)
+- Radius: `10000px`
+- Padding: `6px 22px 8px 22px`
+- Font: Charlie Text, weight 500
+- Use: Primary CTAs site-wide
+
+**Pill Ghost Button**
+- Background: Ash Cloud (`#f0f1f2`)
+- Text: Slate 900 (`#000000`)
+- Radius: `28px`
+- Padding: `1px 30px`
+- Use: Secondary actions, navigation pills
+
+**Text Link Button**
+- Background: transparent
+- Text: Slate 900 (`#000000`)
+- Radius: `3px`
+- Padding: `8px 32px 0px 0px`
+- Use: Tertiary actions, in-text navigation
+
+**Icon Button (Round Ghost)**
+- Background: transparent
+- Icon: Slate 900 (`#000000`)
+- Shape: full circle (`100%` radius)
+- Padding: `6px` all sides
 
 ### Cards
-- `#ffffff` bg, `1px solid #dcdfe4`, `8px` radius, `24px` padding.
-- Shadow: `0 1px 1px rgba(30,31,33,0.25), 0 0 1px rgba(30,31,33,0.31)`.
+
+**Elevated Content Card**
+- Background: Canvas Frost (`#ffffff`)
+- Radius: `20px`
+- Padding: `30px 20px`
+- Shadow: `rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`
+- Use: Featured content, product cards
+
+**Transparent Card**
+- Background: transparent
+- Radius: `0px`
+- Padding: `0px`
+- Use: Content that blends into the surrounding section
+
+**Rounded Top Card**
+- Background: transparent
+- Radius: `20px 20px 0px 0px`
+- Padding: `0px`
+- Use: Sections that visually connect to content stacked below
 
 ### Inputs
-- `#ffffff` bg, `1px solid #dcdfe4`, `4px` radius, `8px 12px` padding.
-- Focus: `2px solid #1868db` with no offset (inset focus).
 
-### Badges
-- `3px` radius (not pill, not rounded — distinctive), `2px 8px` padding.
-- Variants by color scale: success (green), warning (saffron), error (red), in-progress (blue), done (purple).
+**Outline Input Field**
+- Background: transparent
+- Border-bottom: Storm Sky (`#42526e`)
+- Placeholder: Storm Sky (`#42526e`)
+- Radius: `0px`
+- Padding: minimal
+- Use: Minimalist data entry — bottom-line-only treatment
 
-### Toolbars / Nav
-- Fixed top app bar, `48-56px` height, white bg with `1px solid #dcdfe4` bottom border.
-- Icon buttons: `32px × 32px`, `3px` radius on hover state.
+### Navigation
+- Sticky persistent top bar
+- Links organized into clear categories
+- White Canvas Frost background with subtle bottom border
+- Primary CTA: filled Periwinkle 500 button, right-aligned
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: **4px** (Atlassian's `grid` token)
-- Dominant values: `8px` (55 uses), `16px` (18), `12px` (14), `24px` (7), `6px` (20)
-- Token names: `space.100` (8px), `space.200` (16px), `space.400` (32px)
-
-### Grid
-- Atlassian's `Grid` primitive with `gap`, `alignItems`, `justifyContent` props
-- App layout: persistent 56px left rail + 240px nav panel + content
-- Marketing: 12-column with `24px` gutter, max `1200px`
+- **elementGap**: `4px` — tight base unit drives the grid
+- **sectionGap**: `24px` between content blocks; sections use multiples
+- **cardPadding**: `20px` standard
 
 ### Border Radius Scale
-- `2px`: Inline elements, tiny chrome (26 uses)
-- `3px`: Badges (distinctive)
-- `4px`: Buttons, inputs — the workhorse (16 uses)
-- `6-8px`: Cards, dropdowns (9 uses at 8px)
-- `16-28px`: Featured callouts, marketing hero cards
+- **buttons (primary)**: `10000px` (effectively pill)
+- **buttons (secondary pill)**: `28px`
+- **cards**: `20px`
+- **general / inline**: `2px` to `3px`
+- **icon button**: `100%` (full circle)
+
+### Grid
+- Centered max-width content with consistent vertical rhythm
+- Card grids for feature sections
+- Two-column splits for text-and-visual blocks
+- Hero often full-bleed with centered content stack
+
+### Layout & Composition
+The page maintains a centered max-width with consistent vertical spacing. The hero section often uses a full-bleed dark background with a centered headline and prominent primary action button. Content sections alternate between split layouts (text on one side, visual on the other) and centered stacks. Card grids structure feature content. Navigation persists at top with category-organized links. The composition conveys an organized, information-dense yet breathable workspace experience.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat | None | Background |
-| Level 1 | `0 1px 1px rgba(30,31,33,0.25), 0 0 1px rgba(30,31,33,0.31)` | Card rest |
-| Level 2 | `0 4px 8px rgba(30,31,33,0.15), 0 0 1px rgba(30,31,33,0.31)` | Card hover, menu |
-| Level 3 | `0 8px 12px rgba(30,31,33,0.15), 0 0 1px rgba(30,31,33,0.31)` | Dropdown, popover |
-| Level 4 | `0 40px 20px 20px rgba(0,0,0,0.09)` | Modal dialogs (unusual spread value) |
+| Level | Hex | Name | Purpose |
+|-------|-----|------|---------|
+| 0 | `#ffffff` | Canvas Frost | Primary page background |
+| 1 | `#f0f1f2` | Ash Cloud | Subtle background for ghost buttons and quiet UI |
+| 2 | `#ffffff` + card shadow | Elevated Content Card | Featured cards with subtle depth |
 
-**Shadow Philosophy**: Atlassian uses dual-layer shadows with a `0 0 1px` near-shadow for crisp edge definition + a softer far-shadow for depth. The `rgba(30,31,33,...)` shadow color is a neutral near-black that photographs consistently across brand contexts (web, mobile, marketing). Deep shadow uses `0px 40px 20px 20px` spread — highly unusual, creates an atmospheric modal effect.
+**Shadow Philosophy**: Atlassian uses a single, signature card shadow: `rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`. The cool-blue undertone (rgb 9, 30, 66 — a dark navy) gives elevation a workspace-cool feel rather than a generic gray. The shadow is restrained — barely a 1px lift — but its consistent application across every elevated card creates a unified tactile signature. Buttons, inputs, and nav stay flat; only cards earn the lift.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use semantic tokens (`--ds-background-brand-subtlest-hovered`) — not hex
-- Default to `4px` radius for buttons/inputs, `8px` for cards
-- Use Atlassian Sans weight 653 for display/H1 (variable-font weight axis)
-- Reserve Charlie Display for marketing-hero moments only
-- Use the rich accent palette (saffron, magenta, teal, purple) for status indicators
-- Apply dual-layer shadows — crisp 1px + soft atmospheric
+- Use Periwinkle 500 (`#1868db`) exclusively for primary interactive elements to clearly signpost actions.
+- Maintain high contrast by pairing Slate 900 (`#000000`) or Steel Grey (`#1c2b42`) text on Canvas Frost (`#ffffff`).
+- Apply `20px` border-radius consistently for all elevated cards and product views.
+- Utilize `10000px` border-radius for all primary buttons to create the signature pill shape.
+- Employ Charlie Display at 70–80px with weight 700 or 800 for hero headlines.
+- Use `4px` as the base unit for horizontal and vertical spacing — multiples of 4 throughout.
+- Apply the signature card shadow (`rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`) to all elevated cards.
+- Use positive letter-spacing on Charlie Display headlines — wider, not tighter.
 
 ### Don't
-- Don't use pill radius on buttons — stays `4px` in app UI
-- Don't hardcode brand blue — use the `ds-` tokens
-- Don't mix Atlassian Mono with other mono fonts — brand consistency matters
-- Don't use tight letter-spacing — Atlassian is normal-tracked at all sizes
-- Don't use generic weight 600 for display — the variable-axis 653 is specific
+- Do not use Harvest Gold (`#fca700`) for interactive elements; reserve it for accents and decorative purposes.
+- Avoid using multiple border-radii values for buttons; stick to `10000px` for primary, `28px` for secondary pills.
+- Do not introduce new shadow styles — consistency with the defined card shadow is critical.
+- Refrain from deviating from the `4px` spacing unit to avoid visual clutter.
+- Do not use letter-spacing other than `normal` for Charlie Text or the specified positive values for Charlie Display.
+- Avoid using Storm Sky (`#42526e`) as a primary text color — it's reserved for inputs and muted UI.
+- Do not use transparent + `0px` radius cards for critical distinct content; reserve them for blending sections.
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
 | Name | Width | Changes |
 |------|-------|---------|
-| Mobile | `<600px` | Left rail becomes bottom bar, nav panel slides up |
-| Tablet | `600-1024px` | Left rail visible, nav panel toggles |
-| Desktop | `1024-1280px` | Full app layout, rail + nav + content |
-| Large | `>1280px` | Max content width applied |
+| Mobile | `<640px` | Single column, display drops to ~40px, section spacing tightens |
+| md | `768px+` | Two-column text+visual layouts engage |
+| lg | `1024px+` | Card grids in 3-column, full nav category visible |
+| xl | `1280px+` | Wide max-width container with generous side margins |
 
 ### Touch Targets
-- Buttons: `32-36px` minimum height
-- Icon buttons in toolbars: `32px × 32px`
-- Tappable rows: `44px` minimum
+- Primary buttons: `36px+` height with `6px / 8px` vertical padding plus `22px` horizontal
+- Pill ghost buttons: ample `30px` horizontal padding for touch comfort
+- Icon buttons: `100%` radius keeps them circular and easy to tap
 
 ### Collapsing Strategy
-- Display: 112px → 68px → 44px across breakpoints
-- Left rail: persistent → collapsible → bottom nav
-- Sidebars: multi-panel → single panel → overlay drawer
-- Tables: horizontal scroll with sticky first column
+- Display: 70px → 48px → 32px on mobile, positive tracking scales proportionally
+- 3-column card grids → 2-column → single column stacked
+- Two-column text+visual collapses to stacked single column
+- Section spacing reduces; cards maintain `20px` padding to preserve tactile feel
+- Navigation collapses to hamburger; primary Periwinkle CTA stays visible
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Brand Blue: `#1868db`
-- Brand Boldest: `#1c2b42`
-- Foreground: `#101214`
-- Muted FG: `#505258`
-- Border: `#dcdfe4`
-- Background: `#ffffff`
-- Success: `#6a9a23`
-- Warning: `#fca700`
-- Danger: `#ae2e24`
+- Text: `#000000` (Slate 900)
+- Background: `#ffffff` (Canvas Frost)
+- Subtle Background: `#f0f1f2` (Ash Cloud)
+- Border (input): `#42526e` (Storm Sky)
+- Primary Action: `#1868db` (Periwinkle 500)
+- Accent: `#fca700` (Harvest Gold)
+- Brand Gradient: Conic Energy (`#bf63f3`)
+- Card Shadow: `rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`
 
 ### Example Component Prompts
-- "Create a primary button: #1868db bg, white text, 4px radius, 8px 16px padding, 14px Atlassian Sans weight 500. Hover: #0d5fcb (darker). Focus: 2px inset #1868db ring."
-- "Design a card: white bg, 1px solid #dcdfe4, 8px radius, 24px padding, box-shadow 0 1px 1px rgba(30,31,33,0.25), 0 0 1px rgba(30,31,33,0.31). Title at 20px Atlassian Sans weight 500 color #101214."
-- "Build a status badge: 3px radius (not pill), 2px 8px padding, 12px Atlassian Sans weight 500. Success: #dfe8d2 bg, #3e5700 text. In progress: #cfe1fd bg, #0055cc text."
+1. **Primary Action Button**: Periwinkle 500 (`#1868db`) background, Canvas Frost (`#ffffff`) text, `10000px` radius, padding `6px 22px 8px 22px`. Charlie Text font, weight 500. Text: "Get Started".
+2. **Elevated Content Card**: Canvas Frost (`#ffffff`) background, `20px` radius, shadow `rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px`. Padding `30px 20px`. Title in Charlie Display, 32px, weight 800, Slate 900. Body in Charlie Text, 16px, weight 400, Steel Grey.
+3. **Hero Display Headline**: Charlie Display, weight 800, 70px, line-height 1.0, letter-spacing `0.84px`, color `#000000`. Text: "Unleash your superteam".
+4. **Pill Ghost Button**: Ash Cloud (`#f0f1f2`) background, Slate 900 (`#000000`) text, `28px` radius, padding `1px 30px`. Charlie Text, 16px, weight 500.
+5. **Outline Input**: transparent background, Storm Sky (`#42526e`) bottom border, no radius. Placeholder in Storm Sky. Charlie Text, 16px, weight 400, Slate 900.
 
 ### Iteration Guide
-1. Tokens, not hex — always use the `ds-` semantic names
-2. `4px` radius for interactive, `8px` for cards, `3px` for badges — the enterprise rhythm
-3. Weight 653 (variable axis) is the display signature — 500/700 for body
-4. Dual-layer shadows with `1px` inner + soft outer
-5. Brand blue (`#1868db`) is primary; reserve sub-brand accents for status
-6. Accessibility is structural — never skip focus rings, contrast is AAA by default
+1. White canvas, black text, one Periwinkle accent — that's the structural baseline.
+2. Charlie Display owns 24px and above with positive tracking; Charlie Text owns everything below.
+3. Pills for primary buttons (`10000px`), rounded rectangles for cards (`20px`), tight (`2px`) for general inline.
+4. Single card shadow with cool-blue undertone — never gray, never multi-layer.
+5. Reserve Harvest Gold (`#fca700`) and Conic Energy (`#bf63f3`) for accents and illustrations only.
+6. Spacing is `4px`-grid throughout — no arbitrary values.
+
+## Preview
+
+![Atlassian](https://ysxnuuuj3kqhdyj2.public.blob.vercel-storage.com/1777423385035-thumb.jpg)
