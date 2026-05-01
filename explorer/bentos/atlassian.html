@@ -1,532 +1,514 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Atlassian Design System — Design Swatch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlassian — Design Swatch</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <style>
-  :root {
-    --bg: #ffffff;
-    --surface: #f8f9fa;
-    --heading: #101214;
-    --label: #44546f;
-    --body: #505258;
-    --border: #dcdfe4;
-    --primary: #1868db;
-    --primary-hover: #1358bf;
-    --primary-light: #cfe1fd;
-    --brand-dark: #1c2b42;
-    --ruby: #ae2e24;
-    --magenta: #af59e1;
-    --success: #6a9a23;
-    --font-sans: "Atlassian Sans", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-    --font-mono: "Atlassian Mono", ui-monospace, monospace;
-    --shadow-sm: 0 1px 1px rgba(30,31,33,0.25), 0 0 1px rgba(30,31,33,0.31);
-    --shadow-lg: 0 8px 12px rgba(30,31,33,0.15), 0 0 1px rgba(30,31,33,0.31);
+/* ── ATLASSIAN DESIGN TOKENS ── */
+:root {
+  /* Backgrounds */
+  --color-canvas-frost:  #ffffff;
+  --color-ash-cloud:     #f0f1f2;
+  --color-graphite-base: #101214;
+  --color-mid-section:   #f7f8f9;
 
-    /* Sidebar — neutral, brand-agnostic */
-    --sb-bg: #fafafa;
-    --sb-border: #e5e5e5;
-    --sb-text: #525252;
-    --sb-text-strong: #171717;
-    --sb-text-muted: #a3a3a3;
-    --sb-active-bg: #171717;
-    --sb-active-text: #ffffff;
-    --sb-hover-bg: #f0f0f0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-feature-settings: "ss01"; }
-  body {
-    font-family: var(--font-sans);
-    font-feature-settings: "ss01";
-    background: #fafafa;
-    color: var(--body);
-    font-weight: 300;
-    line-height: 1.4;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+  /* Primary */
+  --color-periwinkle-500: #1868db;
+  --color-periwinkle-600: #1159c0;
+  --color-periwinkle-100: #e3eeff;
 
-  /* ====== LAYOUT ====== */
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    min-height: 100vh;
-  }
+  /* Accent */
+  --color-harvest-gold:  #fca700;
+  --color-conic-energy:  #bf63f3;
+  --color-tidal-wave:    #00a3bf;
 
-  /* ====== SIDEBAR (neutral) ====== */
-  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
-  .sidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background: #fafafa;
-    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
-    border-right: 0;
-    overflow-y: auto;
-    padding: 16px 0;
-    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
-    font-feature-settings: "liga";
-    font-weight: 400;
-  }
-  .sb-head {
-    padding: 0 14px 12px;
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
-    margin-bottom: 10px;
-  }
-  .sb-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
-    font-size: 11px;
-    color: #666666;
-    text-decoration: none;
-    margin-bottom: 10px;
-    padding: 3px 0;
-    transition: color 0.15s;
-  }
-  .sb-back:hover { color: #171717; }
-  .sb-title {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-    color: #171717;
-  }
-  .sb-count {
-    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
-    font-variant-numeric: tabular-nums;
-    font-size: 11px;
-    color: #999999;
-    margin-top: 2px;
-  }
-  .sb-search {
-    width: calc(100% - 16px);
-    margin: 0 8px 10px;
-    padding: 6px 10px;
-    border: 0;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-    border-radius: 6px;
-    background: #ffffff;
-    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-feature-settings: "liga";
-    font-size: 12px;
-    color: #171717;
-    outline: none;
-    transition: box-shadow 0.15s;
-  }
-  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
-  .sb-list { list-style: none; padding: 0 6px 16px; }
-  .sb-list a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 8px;
-    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
-    font-feature-settings: "liga";
-    font-size: 11px;
-    color: #666666;
-    text-decoration: none;
-    border-radius: 4px;
-    line-height: 1.3;
-    text-transform: lowercase;
-    letter-spacing: 0;
-    font-weight: 500;
-  }
-  .sb-list a:hover { background: #f0f0f0; color: #171717; }
-  .sb-list a.active {
-    background: #171717;
-    color: #ffffff;
-  }
-  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
-  .sb-list li.hidden { display: none; }
-  .sb-favicon {
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-    flex-shrink: 0;
-    background: #ffffff;
-    object-fit: contain;
-  }
-  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Text */
+  --color-text-primary: #101214;
+  --color-text-muted:   #44546f;
+  --color-text-subtle:  #8590a2;
+  --color-text-white:   #ffffff;
 
-  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
-  :root[data-theme="dark"] .sidebar {
-    background: #0a0a0a;
-    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
-  }
-  :root[data-theme="dark"] .sb-head {
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  }
-  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
-  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
-  :root[data-theme="dark"] .sb-search {
-    background: #1a1a1a;
-    color: #ededed;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-  }
-  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
-  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
-  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
-  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
-  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
-  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
-  /* ====== MAIN ====== */
-  .main {
-    padding: 32px 28px;
-  }
-
-  .bento-wrap {
-    display: grid;
-    gap: 20px;
-    max-width: 1344px;
-    margin: 0 auto;
-  }
-
-  /* Meta bar */
-  .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0 4px;
-    font-size: 12px;
-    color: var(--body);
-    font-weight: 400;
-  }
-  .meta a {
-    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
-    font-size: 11px;
-    color: #666666;
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .meta a:hover { color: #171717; }
-  .brand-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--label);
-  }
-  .meta-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .meta-favicon {
-    width: 18px;
-    height: 18px;
-    border-radius: 3px;
-    background: #fff;
-    object-fit: contain;
-  }
-
-  /* Hero */
-  .hero {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 48px 40px;
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(249, 107, 238, 0.15) 0%, rgba(234, 34, 97, 0.05) 40%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-content { position: relative; z-index: 1; }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 10px 3px 3px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background: var(--bg);
-    font-size: 12px;
-    color: var(--label);
-    margin-bottom: 24px;
-    font-weight: 400;
-  }
-  .hero-eyebrow::before {
-    content: "NEW";
-    background: linear-gradient(90deg, var(--ruby), var(--magenta));
-    color: white;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-  }
-  .hero h1 {
-    font-size: 68px;
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: normal;
-    color: var(--heading);
-    margin-bottom: 16px;
-    max-width: 720px;
-  }
-  .hero p {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--body);
-    max-width: 560px;
-    margin-bottom: 24px;
-    line-height: 1.4;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  /* Grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-  }
-  .tile {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 28px;
-    box-shadow: var(--shadow-sm);
-  }
-  .tile-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-  }
-  .tile-title {
-    font-size: 13px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--label);
-  }
-  .tile-sub {
-    font-size: 12px;
-    color: var(--body);
-    font-weight: 300;
-  }
-  .span-4 { grid-column: span 4; }
-  .span-5 { grid-column: span 5; }
-  .span-6 { grid-column: span 6; }
-  .span-7 { grid-column: span 7; }
-  .span-8 { grid-column: span 8; }
-  .span-12 { grid-column: span 12; }
-
-  @media (max-width: 1100px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { position: relative; height: auto; max-height: 180px; }
-    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
-    .hero h1 { font-size: 36px; letter-spacing: -0.72px; }
-    .hero { padding: 36px 24px; }
-  }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 16px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 4px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-    line-height: 1.43;
-  }
-  .btn-primary { background: var(--primary); color: #ffffff; }
-  .btn-primary:hover { background: var(--primary-hover); }
-  .btn-ghost { background: transparent; color: var(--primary); border-color: var(--border); }
-  .btn-ghost:hover { background: var(--primary-light); }
-  .btn-dark { background: var(--brand-dark); color: #fafafa; }
-  .btn-dark:hover { background: var(--primary-hover); }
-
-  /* Colors */
-  .swatches {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-  }
-  .swatch { display: flex; flex-direction: column; gap: 6px; }
-  .swatch-chip { height: 52px; border-radius: 4px; border: 1px solid var(--border); }
-  .swatch-name { font-size: 12px; font-weight: 400; color: var(--heading); }
-  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+  /* Border */
+  --color-border:       #e3e6ea;
+  --color-border-dark:  #2c333a;
 
   /* Typography */
-  .type-sample { padding: 8px 0; border-bottom: 1px solid var(--border); }
-  .type-sample:last-child { border-bottom: none; }
-  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 4px; }
-  .type-display { font-size: 36px; font-weight: 300; letter-spacing: -0.72px; color: var(--heading); line-height: 1.05; }
-  .type-h2 { font-size: 26px; font-weight: 300; letter-spacing: -0.26px; color: var(--heading); }
-  .type-body { font-size: 16px; font-weight: 300; color: var(--body); }
-  .type-caption { font-size: 12px; font-weight: 400; color: var(--label); }
-  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--body); margin-top: 4px; }
+  --font-display: 'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
 
-  /* Icons */
-  .icon-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-  .icon-cell {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--primary);
-  }
-  iconify-icon { font-size: 22px; }
-  .icon-meta {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--body);
-    font-weight: 300;
-  }
-  .icon-meta strong { color: var(--heading); font-weight: 400; }
+  /* Type scale with POSITIVE tracking (unique to Atlassian) */
+  --text-70: 70px;
+  --text-48: 48px;
+  --text-32: 32px;
+  --text-24: 24px;
+  --text-20: 20px;
+  --text-16: 16px;
+  --text-14: 14px;
+  --text-12: 12px;
 
-  /* Card */
-  .sample-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 20px;
-    box-shadow: var(--shadow-lg);
-  }
-  .sample-card-title { font-size: 18px; font-weight: 300; letter-spacing: -0.18px; color: var(--heading); margin-bottom: 8px; }
-  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.45; font-weight: 300; }
-  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  /* Positive letter-spacing */
+  --ls-70: 0.84px;
+  --ls-48: 0.576px;
+  --ls-32: 0.384px;
+  --ls-24: 0.192px;
+  --ls-20: 0.12px;
+  --ls-16: 0px;
+  --ls-14: 0.112px;
 
-  /* Badge */
-  .badge { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 400; }
-  .badge-success { background: rgba(21, 190, 83, 0.2); color: #108c3d; border: 1px solid rgba(21, 190, 83, 0.4); }
-  .badge-neutral { background: var(--surface); color: var(--heading); border: 1px solid var(--border); }
-
-  /* Form */
-  .field { margin-bottom: 14px; }
-  .field-label { display: block; font-size: 13px; font-weight: 400; color: var(--label); margin-bottom: 5px; }
-  .input {
-    width: 100%;
-    padding: 9px 12px;
-    font-family: inherit;
-    font-feature-settings: "ss01";
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--heading);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    outline: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(83, 58, 253, 0.12); }
-  .input::placeholder { color: var(--body); }
-
-  /* FAQ */
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-item:last-child { border-bottom: none; }
-  .faq-q {
-    width: 100%;
-    padding: 13px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-feature-settings: "ss01";
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--heading);
-    text-align: left;
-  }
-  .faq-q::after { content: "+"; font-weight: 300; color: var(--primary); font-size: 20px; }
-  .faq-item[open] .faq-q::after { content: "−"; }
-  .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--body); font-weight: 300; line-height: 1.5; max-width: 540px; }
-
-  /* Dark */
-  .dark-tile { background: var(--brand-dark); color: white; border: none; position: relative; overflow: hidden; }
-  .dark-tile::before {
-    content: "";
-    position: absolute;
-    top: -30%;
-    right: -20%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(249, 107, 238, 0.25) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .dark-tile > * { position: relative; z-index: 1; }
-  .dark-tile .tile-title { color: rgba(255, 255, 255, 0.6); }
-  .dark-tile blockquote { font-size: 20px; font-weight: 300; letter-spacing: -0.2px; line-height: 1.22; margin-bottom: 18px; }
-  .dark-tile .btn-primary { background: white; color: var(--heading); }
-  .dark-tile .btn-primary:hover { background: rgba(255, 255, 255, 0.92); }
+  /* Radius — Polarized vocabulary */
+  --radius-pill-primary: 10000px;  /* Primary CTA */
+  --radius-pill-secondary: 28px;   /* Secondary pills */
+  --radius-card: 20px;
+  --radius-input: 4px;
+  --radius-inline: 3px;
 
   /* Shadows */
-  .shadow-row { display: flex; flex-direction: column; gap: 12px; }
-  .shadow-block {
-    height: 54px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: var(--body);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-  }
-  .shadow-1 { box-shadow: rgba(23, 23, 23, 0.06) 0px 3px 6px; }
-  .shadow-2 { box-shadow: var(--shadow-sm); }
-  .shadow-3 { box-shadow: var(--shadow-lg); }
+  --shadow-card: rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
+  --shadow-dropdown: rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 4px 8px -2px;
 
-  /* atlassian overrides */
-  .tile { border-radius: 8px; box-shadow: none; }
-  .hero { border-radius: 8px; box-shadow: 0 1px 1px rgba(30,31,33,0.25); }
-  .hero::before { background: radial-gradient(circle, rgba(24,104,219,0.1) 0%, transparent 60%); }
-  .hero-eyebrow { border-radius: 4px; font-size: 12px; }
-  .hero-eyebrow::before { background: var(--primary); color: #fff; border-radius: 3px; }
-  .sample-card { border-radius: 8px; }
-  .input { border-radius: 4px; }
-  .input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(24,104,219,0.2); }
-  .badge { border-radius: 3px; font-weight: 500; padding: 2px 8px; }
-  .badge-success { background: rgba(106,154,35,0.15); color: #3e5700; border-color: rgba(106,154,35,0.3); }
-  .swatch-chip { border-radius: 4px; }
-  .type-display { font-weight: 700; letter-spacing: normal; font-size: 44px; }
-  .type-h2 { font-weight: 500; letter-spacing: normal; font-size: 28px; }
-  .icon-cell { border-radius: 4px; color: var(--primary); background: var(--primary-light); border-color: transparent; }
-  .shadow-block { border-radius: 4px; }
-  .shadow-1 { box-shadow: 0 1px 1px rgba(30,31,33,0.25), 0 0 1px rgba(30,31,33,0.31); }
-  .shadow-2 { box-shadow: 0 4px 8px rgba(30,31,33,0.15), 0 0 1px rgba(30,31,33,0.31); }
-  .shadow-3 { box-shadow: 0 8px 12px rgba(30,31,33,0.15), 0 0 1px rgba(30,31,33,0.31); }
-  .dark-tile { background: var(--brand-dark); border-radius: 8px; }
-  .dark-tile::before { display: none; }
+  /* Sidebar */
+  --sb-width: 240px;
+}
 
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.55;
+  background: var(--color-ash-cloud);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── LAYOUT ── */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sb-width) 1fr;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--color-graphite-base);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+}
+.sb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-dark);
+}
+.sb-logo {
+  width: 32px; height: 32px;
+  background: var(--color-periwinkle-500);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sb-brand-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+.sb-search {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-inline);
+  padding: 8px 12px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.sb-search::placeholder { color: rgba(255,255,255,0.35); }
+.sb-search:focus { border-color: var(--color-periwinkle-500); }
+.sb-section {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 6px 0 2px;
+}
+.sb-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sb-list li.hidden { display: none; }
+.sb-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  transition: background 0.15s, color 0.15s;
+}
+.sb-list a:hover { background: rgba(255,255,255,0.08); color: #ffffff; }
+.sb-list a.active { background: rgba(24,104,219,0.35); color: #ffffff; }
+.sb-list iconify-icon { font-size: 14px; opacity: 0.7; }
+
+/* ── MAIN ── */
+.main {
+  padding: 32px;
+  overflow-y: auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.span-12 { grid-column: span 12; }
+.span-8  { grid-column: span 8; }
+.span-7  { grid-column: span 7; }
+.span-6  { grid-column: span 6; }
+.span-5  { grid-column: span 5; }
+.span-4  { grid-column: span 4; }
+.span-3  { grid-column: span 3; }
+
+/* ── TILES ── */
+.tile {
+  background: var(--color-canvas-frost);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.tile-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  font-family: var(--font-body);
+}
+
+/* ── TILE 1: HERO ── */
+.tile-hero {
+  background: var(--color-graphite-base);
+  border: none;
+  box-shadow: none;
+  min-height: 280px;
+  justify-content: center;
+  padding: 56px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.tile-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(24,104,219,0.2) 0%, transparent 60%);
+}
+.tile-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 60px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(191,99,243,0.15) 0%, transparent 60%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+}
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-periwinkle-500);
+  font-family: var(--font-display);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: var(--ls-48);
+  color: #ffffff;
+}
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-20);
+  letter-spacing: var(--ls-20);
+  color: rgba(255,255,255,0.6);
+  max-width: 460px;
+  line-height: 1.5;
+}
+
+/* ── BUTTONS ── */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  line-height: 1;
+}
+/* Primary: pill at 10000px */
+.btn-primary {
+  padding: 11px 22px;
+  border-radius: 10000px;
+  background: var(--color-periwinkle-500);
+  color: #ffffff;
+  letter-spacing: var(--ls-14);
+}
+.btn-primary:hover { background: var(--color-periwinkle-600); }
+/* Secondary: pill at 28px */
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 28px;
+  background: var(--color-canvas-frost);
+  color: var(--color-text-primary);
+  border: 1.5px solid var(--color-border);
+}
+.btn-ghost {
+  padding: 10px 20px;
+  border-radius: 28px;
+  background: transparent;
+  color: var(--color-periwinkle-500);
+  border: 1.5px solid var(--color-periwinkle-500);
+}
+.btn-dark {
+  padding: 11px 22px;
+  border-radius: 10000px;
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.btn-sm  { padding: 7px 15px; font-size: 12px; }
+.btn-lg  { padding: 14px 28px; font-size: 16px; }
+
+/* ── SWATCHES ── */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.swatch-chip {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+.swatch-name {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+.swatch-hex {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* ── ICON GRID ── */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: var(--color-ash-cloud);
+  border-radius: var(--radius-inline);
+  border: 1px solid var(--color-border);
+}
+.icon-cell iconify-icon { font-size: 20px; color: var(--color-periwinkle-500); }
+.icon-cell span {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+
+/* ── CARD ── */
+.feature-card {
+  background: var(--color-canvas-frost);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.fc-header {
+  background: linear-gradient(135deg, #1868db 0%, #0d4bbf 100%);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+}
+.fc-header iconify-icon { font-size: 28px; color: rgba(255,255,255,0.9); }
+.fc-header-label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: var(--ls-16);
+  color: #ffffff;
+}
+.fc-body { padding: 16px 20px 20px; }
+.fc-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: var(--ls-20);
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+.fc-desc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+/* ── FORM ── */
+.form-stack { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ls-14);
+  color: var(--color-text-primary);
+}
+.field input, .field select {
+  background: var(--color-canvas-frost);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-input);
+  padding: 9px 12px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field input:focus {
+  border-color: var(--color-periwinkle-500);
+  box-shadow: 0 0 0 2px rgba(24,104,219,0.2);
+}
+.field input::placeholder { color: var(--color-text-subtle); }
+.field-hint { font-size: 11px; color: var(--color-text-subtle); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── TYPOGRAPHY ── */
+.type-stack { display: flex; flex-direction: column; gap: 20px; }
+.type-row { display: flex; flex-direction: column; gap: 4px; }
+.type-meta {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+  background: var(--color-ash-cloud);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.faq-q {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: var(--ls-14);
+  color: var(--color-text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.faq-a {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  line-height: 1.55;
+}
+.faq-icon { color: var(--color-periwinkle-500); flex-shrink: 0; }
+
+/* ── ELEVATION ── */
+.elevation-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.elev-item { display: flex; flex-direction: column; gap: 8px; }
+.elev-box {
+  width: 100%;
+  aspect-ratio: 1.4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.elev-name { font-size: 10px; font-weight: 600; color: var(--color-text-subtle); }
+
+/* ── CONTRAST ── */
+.contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contrast-block {
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <script data-gallery-theme>
   (function() {
     var t = localStorage.getItem('swatch-theme') || 'light';
@@ -535,29 +517,41 @@
 </script>
 </head>
 <body>
-
 <div class="layout">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sb-head">
-      <a class="sb-back" href="../index.html">← Gallery</a>
+    <div class="sb-brand">
+      <div class="sb-logo">
+        <iconify-icon icon="ph:squares-four-fill" style="font-size:18px;color:#fff;"></iconify-icon>
+      </div>
+      <span class="sb-brand-name">Atlassian</span>
     </div>
-    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <input class="sb-search" id="sbSearch" type="search" placeholder="Filter tiles…" autocomplete="off">
+    <span class="sb-section">Design System</span>
     <ul class="sb-list" id="sbList">
+      <li><a href="1password.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=1password.com&sz=64" alt="" loading="lazy" /><span>1PASSWORD</span></a></li>
       <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="ableton.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ableton.com&sz=64" alt="" loading="lazy" /><span>ABLETON</span></a></li>
       <li><a href="aceternity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ui.aceternity.com&sz=64" alt="" loading="lazy" /><span>ACETERNITY</span></a></li>
+      <li><a href="adidas.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=adidas.com&sz=64" alt="" loading="lazy" /><span>ADIDAS</span></a></li>
       <li><a href="aesop.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=aesop.com&sz=64" alt="" loading="lazy" /><span>AESOP</span></a></li>
       <li><a href="agora.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=agora.xyz&sz=64" alt="" loading="lazy" /><span>AGORA</span></a></li>
       <li><a href="agronomywork.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=agronomywork.shop&sz=64" alt="" loading="lazy" /><span>AGRONOMYWORK</span></a></li>
       <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
       <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
       <li><a href="align-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=alignui.com&sz=64" alt="" loading="lazy" /><span>ALIGN-UI</span></a></li>
+      <li><a href="allbirds.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=allbirds.com&sz=64" alt="" loading="lazy" /><span>ALLBIRDS</span></a></li>
       <li><a href="amoeba.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=amoeba.com&sz=64" alt="" loading="lazy" /><span>AMOEBA</span></a></li>
+      <li><a href="anthropic.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64" alt="" loading="lazy" /><span>ANTHROPIC</span></a></li>
       <li><a href="antimetal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=antimetal.com&sz=64" alt="" loading="lazy" /><span>ANTIMETAL</span></a></li>
+      <li><a href="apollo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" alt="" loading="lazy" /><span>APOLLO</span></a></li>
       <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
       <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="arcade.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arcade.software&sz=64" alt="" loading="lazy" /><span>ARCADE</span></a></li>
       <li><a href="are-na.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=are.na&sz=64" alt="" loading="lazy" /><span>ARE-NA</span></a></li>
+      <li><a href="asana.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=asana.com&sz=64" alt="" loading="lazy" /><span>ASANA</span></a></li>
+      <li><a href="astro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=astro.build&sz=64" alt="" loading="lazy" /><span>ASTRO</span></a></li>
       <li><a href="athletic-brewing.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=athleticbrewing.com&sz=64" alt="" loading="lazy" /><span>ATHLETIC-BREWING</span></a></li>
       <li><a href="atlassian.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=atlassian.design&sz=64" alt="" loading="lazy" /><span>ATLASSIAN</span></a></li>
       <li><a href="audubon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=audubon.org&sz=64" alt="" loading="lazy" /><span>AUDUBON</span></a></li>
@@ -708,200 +702,315 @@
 
   <!-- MAIN -->
   <main class="main">
-  <div class="bento-wrap">
-
-    <div class="meta">
-      <div class="meta-brand">
-        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=atlassian.design&sz=64" alt="" />
-        <span class="brand-label">Design Swatch · Atlassian Design System</span>
-      </div>
-      <a href="../../getdesign-corpus/atlassian.md" target="_blank">View full DESIGN.md →</a>
-    </div>
-
-    <section class="hero">
-      <div class="hero-content">
-        <span class="hero-eyebrow">Enterprise · Jira · Confluence · Trello</span>
-        <h1>Design for teams that ship.</h1>
-        <p>The Atlassian Design System powers Jira, Confluence, Trello, and Bitbucket — enterprise-grade accessibility, semantic color tokens, and a 30-year track record.</p>
-        <div class="hero-ctas">
-          <button class="btn btn-primary">Get started</button>
-          <button class="btn btn-ghost">View tokens</button>
-        </div>
-      </div>
-    </section>
-
     <div class="grid">
 
-      <section class="tile span-8">
-        <div class="tile-head">
-          <span class="tile-title">Color Palette</span>
-          <span class="tile-sub">Semantic brand tokens</span>
-        </div>
-        <div class="swatches">
-          <div class="swatch"><div class="swatch-chip" style="background: #1868db;"></div><div class="swatch-name">Brand Blue</div><div class="swatch-hex">#1868db</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #1c2b42;"></div><div class="swatch-name">Brand Boldest</div><div class="swatch-hex">#1c2b42</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #101214;"></div><div class="swatch-name">Neutral 900</div><div class="swatch-hex">#101214</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #505258;"></div><div class="swatch-name">Neutral 500</div><div class="swatch-hex">#505258</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #fca700;"></div><div class="swatch-name">Saffron</div><div class="swatch-hex">#fca700</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #6a9a23;"></div><div class="swatch-name">Grass Green</div><div class="swatch-hex">#6a9a23</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #af59e1;"></div><div class="swatch-name">Magenta Bolder</div><div class="swatch-hex">#af59e1</div></div>
-          <div class="swatch"><div class="swatch-chip" style="background: #e06c00;"></div><div class="swatch-name">Orange Bolder</div><div class="swatch-hex">#e06c00</div></div>
-        </div>
-      </section>
-
-      <section class="tile span-4">
-        <div class="tile-head">
-          <span class="tile-title">Buttons</span>
-          <span class="tile-sub">&nbsp;</span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
-          <button class="btn btn-primary">Primary</button>
-          <button class="btn btn-ghost">Subtle</button>
-          <button class="btn btn-dark">Link</button>
-        </div>
-      </section>
-
-      <section class="tile span-8">
-        <div class="tile-head">
-          <span class="tile-title">Typography</span>
-          <span class="tile-sub">Atlassian Sans · 700 · normal · line-height 1.05</span>
-        </div>
-        <div class="type-sample">
-          <div class="type-label">Display</div>
-          <div class="type-display">Work, unblocked.</div>
-          <div class="type-spec">Atlassian Sans · 700 · normal · line-height 1.05</div>
-        </div>
-        <div class="type-sample">
-          <div class="type-label">Heading</div>
-          <div class="type-h2">Four brand voices, one system</div>
-          <div class="type-spec">Atlassian Sans · 500 · normal · line-height 1.20</div>
-        </div>
-        <div class="type-sample">
-          <div class="type-label">Body</div>
-          <div class="type-body">Atlassian's design system serves Jira, Confluence, Trello, and Bitbucket with shared foundations but differentiated surface treatments — a rare feat of enterprise-scale consistency.</div>
-          <div class="type-spec">Atlassian Sans · 400 · line-height 1.50</div>
-        </div>
-        <div class="type-sample">
-          <div class="type-label">Caption</div>
-          <div class="type-caption" style="font-family: "Atlassian Mono", ui-monospace, monospace;">ds-background-brand-subtlest-hovered: #CFE1FD</div>
-          <div class="type-spec">Atlassian Mono · 400</div>
-        </div>
-      </section>
-
-      <section class="tile span-4">
-        <div class="tile-head">
-          <span class="tile-title">Icons</span>
-          <span class="tile-sub">Remix · line</span>
-        </div>
-        <div class="icon-grid">
-          <div class="icon-cell"><iconify-icon icon="ri:checkbox-circle-line"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:git-branch-line"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:flag-line"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:user-add-line"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:lock-password-line"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:list-check-2"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:kanban-view"></iconify-icon></div>
-          <div class="icon-cell"><iconify-icon icon="ri:focus-line"></iconify-icon></div>
-        </div>
-        <div class="icon-meta">
-          Compatible with <strong>Atlassian Icons</strong> or any 1.5px-stroke set
-        </div>
-      </section>
-
-      <section class="tile span-4">
-        <div class="tile-head">
-          <span class="tile-title">Card</span>
-          <span class="tile-sub">&nbsp;</span>
-        </div>
-        <div class="sample-card">
-          <div class="sample-card-title">Jira issue · AUTH-1247</div>
-          <div class="sample-card-body">User authentication times out after 30 seconds on the login page. Reproducible on Chrome 128+ and Safari 17+. Blocks v2.3 release.</div>
-          <div class="sample-card-meta">
-            <span class="badge badge-success">In progress</span>
-            <span class="badge badge-neutral">High priority</span>
+      <!-- TILE 1: HERO -->
+      <section class="tile tile-hero span-12" id="tile-hero">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Design System Swatch</span>
+          <h1 class="hero-title">Teamwork that<br>moves faster</h1>
+          <p class="hero-sub">Atlassian's design system leads with Poppins at positive letter-spacing — the rare brand that tracks out, not in.</p>
+          <div class="btn-group">
+            <button class="btn btn-primary btn-lg">Get started free</button>
+            <button class="btn btn-dark">See all products</button>
           </div>
         </div>
       </section>
 
-      <section class="tile span-4">
-        <div class="tile-head">
-          <span class="tile-title">Form</span>
-          <span class="tile-sub">focus ring</span>
+      <!-- TILE 2: COLOR PALETTE -->
+      <section class="tile span-8" id="tile-colors">
+        <span class="tile-label">Color Tokens</span>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#ffffff;"></div>
+            <div class="swatch-name">Canvas Frost</div>
+            <div class="swatch-hex">#ffffff</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#f0f1f2;"></div>
+            <div class="swatch-name">Ash Cloud</div>
+            <div class="swatch-hex">#f0f1f2</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#101214;border-color:#333;"></div>
+            <div class="swatch-name">Graphite Base</div>
+            <div class="swatch-hex">#101214</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#44546f;"></div>
+            <div class="swatch-name">Text Muted</div>
+            <div class="swatch-hex">#44546f</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#1868db;"></div>
+            <div class="swatch-name">Periwinkle 500</div>
+            <div class="swatch-hex">#1868db</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#e3eeff;"></div>
+            <div class="swatch-name">Periwinkle 100</div>
+            <div class="swatch-hex">#e3eeff</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#fca700;border-color:#e8c88a;"></div>
+            <div class="swatch-name">Harvest Gold</div>
+            <div class="swatch-hex">#fca700</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-chip" style="background:#bf63f3;"></div>
+            <div class="swatch-name">Conic Energy</div>
+            <div class="swatch-hex">#bf63f3</div>
+          </div>
         </div>
-        <div class="field">
-          <label class="field-label" for="atlassian-f1">Summary</label>
-          <input type="text" id="atlassian-f1" class="input" placeholder="Brief description" />
-        </div>
-        <div class="field">
-          <label class="field-label" for="atlassian-f2">Assignee</label>
-          <input type="text" id="atlassian-f2" class="input" placeholder="@taylor" />
-        </div>
-        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Create issue</button>
       </section>
 
-      <section class="tile span-4">
-        <div class="tile-head">
-          <span class="tile-title">Elevation</span>
-          <span class="tile-sub">&nbsp;</span>
+      <!-- TILE 3: BUTTONS — polarized radius showcase -->
+      <section class="tile span-4" id="tile-buttons">
+        <span class="tile-label">Polarized Radius Vocab</span>
+        <div class="btn-group" style="flex-direction:column;align-items:flex-start;">
+          <button class="btn btn-primary btn-lg">Primary — 10000px</button>
+          <button class="btn btn-primary">Primary Default</button>
+          <button class="btn btn-secondary">Secondary — 28px</button>
+          <button class="btn btn-ghost">Ghost Pill — 28px</button>
+          <button class="btn btn-sm btn-primary">Small CTA</button>
         </div>
-        <div class="shadow-row">
-          <div class="shadow-block shadow-1">LEVEL 1 · CARD</div>
-          <div class="shadow-block shadow-2">LEVEL 2 · MODAL</div>
-          <div class="shadow-block shadow-3">LEVEL 3 · TOOLTIP</div>
+        <div>
+          <span class="tile-label">2px inline · 3px chips · 4px inputs · 20px cards</span>
         </div>
       </section>
 
-      <section class="tile span-7">
-        <div class="tile-head">
-          <span class="tile-title">FAQ</span>
-          <span class="tile-sub">hairline divider</span>
+      <!-- TILE 4: TYPOGRAPHY -->
+      <section class="tile span-7" id="tile-typography">
+        <span class="tile-label">Typography — Positive Letter-Spacing (Poppins + Inter)</span>
+        <div class="type-stack">
+          <div class="type-row">
+            <div class="type-meta">Poppins 800 · 52px / 1.06 · tracking +0.576px</div>
+            <div style="font-family:'Poppins',sans-serif;font-size:44px;font-weight:800;line-height:1.06;letter-spacing:0.576px;color:var(--color-text-primary);">Work without limits</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Poppins 700 · 32px / 1.2 · tracking +0.384px</div>
+            <div style="font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;line-height:1.2;letter-spacing:0.384px;color:var(--color-text-primary);">Built for every team</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Poppins 600 · 24px / 1.3 · tracking +0.192px</div>
+            <div style="font-family:'Poppins',sans-serif;font-size:24px;font-weight:600;line-height:1.3;letter-spacing:0.192px;color:var(--color-text-primary);">Jira, Confluence, Trello &amp; more</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta">Inter 400 · 16px / 1.55 · tracking 0px</div>
+            <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;color:var(--color-text-muted);">Atlassian tools bring teams together with shared context, structured workflows, and the visibility everyone needs to ship faster.</div>
+          </div>
         </div>
-        <details class="faq-item" open>
-          <summary class="faq-q">Is the design system open?</summary>
-          <div class="faq-a">The guidelines, tokens, and React components are open. Atlassian Access — the auth/platform layer — is Atlassian-proprietary.</div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">What's Atlaskit?</summary>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">Can partners use the brand colors?</summary>
-        </details>
       </section>
 
-      <section class="tile span-5 dark-tile">
-        <div class="tile-head">
-          <span class="tile-title">Brand moment</span>
-          <span class="tile-sub" style="color: rgba(255,255,255,0.6);">dark surface</span>
+      <!-- TILE 5: ICONS -->
+      <section class="tile span-5" id="tile-icons">
+        <span class="tile-label">Icons</span>
+        <div class="icon-grid">
+          <div class="icon-cell">
+            <iconify-icon icon="ph:kanban-fill"></iconify-icon>
+            <span>Board</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:file-text-fill"></iconify-icon>
+            <span>Pages</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:users-three-fill"></iconify-icon>
+            <span>Teams</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:bug-fill"></iconify-icon>
+            <span>Issues</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:git-pull-request-fill"></iconify-icon>
+            <span>PRs</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:chart-bar-fill"></iconify-icon>
+            <span>Reports</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:bell-fill" style="color:var(--color-harvest-gold);"></iconify-icon>
+            <span>Alerts</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:tag-fill" style="color:var(--color-conic-energy);"></iconify-icon>
+            <span>Labels</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:rocket-launch-fill" style="color:var(--color-tidal-wave);"></iconify-icon>
+            <span>Deploy</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:lock-key-fill"></iconify-icon>
+            <span>Security</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:puzzle-piece-fill"></iconify-icon>
+            <span>Apps</span>
+          </div>
+          <div class="icon-cell">
+            <iconify-icon icon="ph:cloud-fill"></iconify-icon>
+            <span>Cloud</span>
+          </div>
         </div>
-        <blockquote>"Thirty years of enterprise collaboration distilled into one design vocabulary — that's the Atlassian Design System."</blockquote>
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
-          <div style="font-size: 13px; font-weight: 300;"><strong style="font-weight: 500;">ADS Team</strong> · Atlassian</div>
+      </section>
+
+      <!-- TILE 6: CARD -->
+      <section class="tile span-4" id="tile-card">
+        <span class="tile-label">Product Card</span>
+        <div class="feature-card">
+          <div class="fc-header">
+            <iconify-icon icon="ph:kanban-fill"></iconify-icon>
+            <span class="fc-header-label">Jira Software</span>
+          </div>
+          <div class="fc-body">
+            <div class="fc-title">Plan and track work</div>
+            <p class="fc-desc">Agile boards, backlog management, and real-time reporting for software teams of any size.</p>
+            <button class="btn btn-primary btn-sm">Try Jira free</button>
+          </div>
         </div>
-        <button class="btn btn-primary">Read the guidelines →</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:var(--color-periwinkle-100);color:var(--color-periwinkle-500);font-size:11px;font-weight:700;padding:4px 12px;border-radius:28px;letter-spacing:0.04em;">Free tier</span>
+          <span style="background:#fff7e6;color:#b37400;font-size:11px;font-weight:700;padding:4px 12px;border-radius:28px;letter-spacing:0.04em;">Popular</span>
+          <span style="background:#f3e8fe;color:#7c2d9e;font-size:11px;font-weight:700;padding:4px 12px;border-radius:28px;letter-spacing:0.04em;">Premium</span>
+        </div>
+      </section>
+
+      <!-- TILE 7: FORM -->
+      <section class="tile span-4" id="tile-form">
+        <span class="tile-label">Form Controls</span>
+        <div class="form-stack">
+          <div class="field-row">
+            <div class="field">
+              <label>First name</label>
+              <input type="text" placeholder="Alex">
+            </div>
+            <div class="field">
+              <label>Last name</label>
+              <input type="text" placeholder="Chen">
+            </div>
+          </div>
+          <div class="field">
+            <label>Work email</label>
+            <input type="email" placeholder="alex@company.com">
+            <span class="field-hint">Your team will be notified.</span>
+          </div>
+          <div class="field">
+            <label>Team size</label>
+            <select>
+              <option>1–10 people</option>
+              <option>11–50 people</option>
+              <option>51–250 people</option>
+              <option>250+ people</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;">Start for free</button>
+        </div>
+      </section>
+
+      <!-- TILE 8: FAQ -->
+      <section class="tile span-4" id="tile-faq">
+        <span class="tile-label">FAQ</span>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">
+              Is there a free plan?
+              <iconify-icon class="faq-icon" icon="ph:plus-bold" style="font-size:14px;"></iconify-icon>
+            </div>
+            <div class="faq-a">Yes. Free plans are available for Jira, Confluence, and Trello for up to 10 users.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              How do I migrate from server?
+              <iconify-icon class="faq-icon" icon="ph:minus-bold" style="font-size:14px;"></iconify-icon>
+            </div>
+            <div class="faq-a">Use the Atlassian Migration Assistant to move your data to Cloud. Most migrations complete in under an hour.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              Is enterprise support available?
+              <iconify-icon class="faq-icon" icon="ph:plus-bold" style="font-size:14px;"></iconify-icon>
+            </div>
+            <div class="faq-a">Enterprise plans include 99.99% uptime SLA, dedicated Customer Success, and 24/7 premium support.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TILE 9: ELEVATION -->
+      <section class="tile span-6" id="tile-elevation">
+        <span class="tile-label">Elevation &amp; Depth</span>
+        <div class="elevation-row">
+          <div class="elev-item">
+            <div class="elev-box" style="background:#ffffff;border:1px solid #e3e6ea;box-shadow:rgba(9,30,66,0.31) 0px 0px 1px 0px,rgba(9,30,66,0.25) 0px 1px 1px 0px;color:#44546f;">Surface 1</div>
+            <div class="elev-name">Card shadow</div>
+          </div>
+          <div class="elev-item">
+            <div class="elev-box" style="background:#ffffff;border:1px solid #e3e6ea;box-shadow:rgba(9,30,66,0.31) 0px 0px 1px 0px,rgba(9,30,66,0.25) 0px 4px 8px -2px;color:#44546f;">Surface 2</div>
+            <div class="elev-name">Dropdown</div>
+          </div>
+          <div class="elev-item">
+            <div class="elev-box" style="background:#101214;color:#fff;">Graphite</div>
+            <div class="elev-name">#101214 · Nav</div>
+          </div>
+          <div class="elev-item">
+            <div class="elev-box" style="background:#1868db;color:#fff;">Periwinkle</div>
+            <div class="elev-name">#1868db · CTA</div>
+          </div>
+          <div class="elev-item">
+            <div class="elev-box" style="background:#fca700;color:#101214;">Gold</div>
+            <div class="elev-name">#fca700 · Accent</div>
+          </div>
+          <div class="elev-item">
+            <div class="elev-box" style="background:#bf63f3;color:#fff;">Purple</div>
+            <div class="elev-name">#bf63f3 · Energy</div>
+          </div>
+        </div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;color:var(--color-text-subtle);text-transform:uppercase;background:var(--color-ash-cloud);padding:10px;border-radius:4px;">
+          Shadow: rgba(9,30,66,0.31) 0px 0px 1px + rgba(9,30,66,0.25) 0px 1px 1px
+        </div>
+      </section>
+
+      <!-- TILE 10: DARK CONTRAST -->
+      <section class="tile span-6" id="tile-darkmode">
+        <span class="tile-label">Dark Section Contrast</span>
+        <div style="background:var(--color-graphite-base);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;">Poppins 800 · positive tracking</div>
+            <div style="font-family:'Poppins',sans-serif;font-size:36px;font-weight:800;letter-spacing:0.576px;color:#ffffff;line-height:1.1;">Power every team.</div>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;">Accent on dark</div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="background:#fca700;color:#101214;font-size:13px;font-weight:700;padding:5px 14px;border-radius:28px;">Harvest Gold</span>
+              <span style="background:#bf63f3;color:#fff;font-size:13px;font-weight:700;padding:5px 14px;border-radius:28px;">Conic Energy</span>
+              <span style="background:#00a3bf;color:#fff;font-size:13px;font-weight:700;padding:5px 14px;border-radius:28px;">Tidal Wave</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-primary" style="flex:1;justify-content:center;">Get started</button>
+            <button class="btn btn-dark" style="flex:1;justify-content:center;">Learn more</button>
+          </div>
+        </div>
       </section>
 
     </div>
-
-  </div>
   </main>
 </div>
 
 <script>
-  // Sidebar live filter
-  const search = document.getElementById('sbSearch');
-  const items = document.querySelectorAll('#sbList li');
-  search.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    items.forEach(li => {
-      const text = li.textContent.toLowerCase();
-      li.classList.toggle('hidden', q && !text.includes(q));
-    });
+const search = document.getElementById('sbSearch');
+const items  = document.querySelectorAll('#sbList li');
+search.addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  items.forEach(li => {
+    const text = li.textContent.toLowerCase();
+    li.classList.toggle('hidden', q && !text.includes(q));
   });
-  // Scroll active item into view on load
-  const active = document.querySelector('.sb-list a.active');
-  if (active) active.scrollIntoView({ block: 'center' });
+});
+const active = document.querySelector('.sb-list a.active');
+if (active) active.scrollIntoView({ block: 'center' });
 </script>
-
 </body>
 </html>

@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design Swatches — Explorer</title>
-<meta name="description" content="Portable visual identity for AI coding agents. Browse 158 real-company design systems as filterable visual swatches — colors, typography, components, and the full DESIGN.md for each." />
+<meta name="description" content="Portable visual identity for AI coding agents. Browse 167 real-company design systems as filterable visual swatches — colors, typography, components, and the full DESIGN.md for each." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta property="og:title" content="Design Swatches — Explorer" />
-<meta property="og:description" content="Portable visual identity for AI coding agents. Browse 158 real-company design systems as filterable visual swatches." />
+<meta property="og:description" content="Portable visual identity for AI coding agents. Browse 167 real-company design systems as filterable visual swatches." />
 <meta property="og:image" content="og-image.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -442,19 +442,28 @@
 
 <script>
   const DOMAINS = {
+  "1password": "1password.com",
   "a24films": "a24films.com",
+  "ableton": "ableton.com",
   "aceternity": "ui.aceternity.com",
+  "adidas": "adidas.com",
   "aesop": "aesop.com",
   "agora": "agora.xyz",
   "agronomywork": "agronomywork.shop",
   "airbnb": "airbnb.com",
   "airtable": "airtable.com",
   "align-ui": "alignui.com",
+  "allbirds": "allbirds.com",
   "amoeba": "amoeba.com",
+  "anthropic": "anthropic.com",
   "antimetal": "antimetal.com",
+  "apollo": "apollo.io",
   "apple": "apple.com",
   "arc": "arc.net",
+  "arcade": "arcade.software",
   "are-na": "are.na",
+  "asana": "asana.com",
+  "astro": "astro.build",
   "athletic-brewing": "athleticbrewing.com",
   "atlassian": "atlassian.design",
   "audubon": "audubon.org",
@@ -602,6 +611,12 @@
   "zapier": "zapier.com"
 };
   const CATEGORIES = {
+  "1password": {
+    "category": "SaaS",
+    "styles": [
+      "Playful"
+    ]
+  },
   "a24films": {
     "category": "Media",
     "styles": [
@@ -611,12 +626,29 @@
       "Bold"
     ]
   },
+  "ableton": {
+    "category": "Productivity",
+    "styles": [
+      "Light",
+      "Bold",
+      "Monochromatic"
+    ]
+  },
   "aceternity": {
     "category": "Design System",
     "styles": [
       "Dark",
       "Gradient",
       "Bold"
+    ]
+  },
+  "adidas": {
+    "category": "Retail",
+    "styles": [
+      "Light",
+      "Minimalist",
+      "Gradient",
+      "Monochromatic"
     ]
   },
   "aesop": {
@@ -666,6 +698,12 @@
       "Bold"
     ]
   },
+  "allbirds": {
+    "category": "Retail",
+    "styles": [
+      "Light"
+    ]
+  },
   "amoeba": {
     "category": "Retail",
     "styles": [
@@ -674,12 +712,29 @@
       "Editorial"
     ]
   },
+  "anthropic": {
+    "category": "AI",
+    "styles": [
+      "Light",
+      "Editorial",
+      "Gradient",
+      "Monochromatic"
+    ]
+  },
   "antimetal": {
     "category": "Dev Tools",
     "styles": [
       "Light",
       "Editorial",
       "Bold"
+    ]
+  },
+  "apollo": {
+    "category": "SaaS",
+    "styles": [
+      "Light",
+      "Warm",
+      "Playful"
     ]
   },
   "apple": {
@@ -699,12 +754,36 @@
       "Light"
     ]
   },
+  "arcade": {
+    "category": "SaaS",
+    "styles": [
+      "Light",
+      "Playful"
+    ]
+  },
   "are-na": {
     "category": "Productivity",
     "styles": [
       "Light",
       "Mono",
       "Minimal"
+    ]
+  },
+  "asana": {
+    "category": "Productivity",
+    "styles": [
+      "Light",
+      "Editorial",
+      "Monochromatic",
+      "Warm"
+    ]
+  },
+  "astro": {
+    "category": "Dev Tools",
+    "styles": [
+      "Dark",
+      "Bold",
+      "Gradient"
     ]
   },
   "athletic-brewing": {
