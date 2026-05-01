@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Olipop — Design Swatch</title>
+<link rel="icon" href="https://www.google.com/s2/favicons?domain=drinkolipop.com&sz=64" />
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<style>
+  :root {
+    --bg: #fbf7ee;
+    --surface: #fff4e2;
+    --heading: #0c3b2e;
+    --label: #0c3b2e;
+    --body: #5a6a5e;
+    --border: #e8dfc8;
+    --primary: #c8202b;
+    --primary-hover: #a91722;
+    --primary-light: #f5a8be;
+    --brand-dark: #0c3b2e;
+    --hot-pink: #ec5093;
+    --mint: #a8d9a3;
+    --blush: #f5a8be;
+    --magenta: #c43680;
+    --plum: #7b2649;
+    --peach: #f3b89a;
+    --promo-yellow: #ffd24d;
+    --cream: #fff4e2;
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'DM Sans', 'Inter', system-ui, sans-serif;
+    --shadow-sm: 0 4px 12px rgba(12, 59, 46, 0.06);
+    --shadow-lg: 0 8px 24px rgba(12, 59, 46, 0.08);
+
+    --sb-bg: #fafafa;
+    --sb-border: #e5e5e5;
+    --sb-text: #525252;
+    --sb-text-strong: #171717;
+    --sb-text-muted: #a3a3a3;
+    --sb-active-bg: #171717;
+    --sb-active-text: #ffffff;
+    --sb-hover-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafafa;
+    color: var(--body);
+    font-weight: 400;
+    line-height: 1.4;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ====== SIDEBAR (gallery-aligned, vercel.md aesthetic) ====== */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fafafa;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08);
+    border-right: 0;
+    overflow-y: auto;
+    padding: 16px 0;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif;
+    font-feature-settings: "liga";
+    font-weight: 400;
+  }
+  .sb-head {
+    padding: 0 14px 12px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .sb-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    transition: color 0.15s;
+  }
+  .sb-back:hover { color: #171717; }
+  .sb-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #171717;
+  }
+  .sb-count {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: #999999;
+    margin-top: 2px;
+  }
+  .sb-search {
+    width: calc(100% - 16px);
+    margin: 0 8px 10px;
+    padding: 6px 10px;
+    border: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    background: #ffffff;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "liga";
+    font-size: 12px;
+    color: #171717;
+    outline: none;
+    transition: box-shadow 0.15s;
+  }
+  .sb-search:focus { box-shadow: 0 0 0 1px #171717; }
+  .sb-list { list-style: none; padding: 0 6px 16px; }
+  .sb-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-feature-settings: "liga";
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.3;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .sb-list a:hover { background: #f0f0f0; color: #171717; }
+  .sb-list a.active {
+    background: #171717;
+    color: #ffffff;
+  }
+  .sb-list a.active .sb-favicon { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
+  .sb-list li.hidden { display: none; }
+  .sb-favicon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: #ffffff;
+    object-fit: contain;
+  }
+  .sb-list a span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ====== SIDEBAR dark theme (synced with gallery via localStorage) ====== */
+  :root[data-theme="dark"] .sidebar {
+    background: #0a0a0a;
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-head {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-back { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-back:hover { color: #ededed; }
+  :root[data-theme="dark"] .sb-search {
+    background: #1a1a1a;
+    color: #ededed;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  :root[data-theme="dark"] .sb-search::placeholder { color: #666; }
+  :root[data-theme="dark"] .sb-search:focus { box-shadow: 0 0 0 1px #ededed; }
+  :root[data-theme="dark"] .sb-list a { color: #a1a1a1; }
+  :root[data-theme="dark"] .sb-list a:hover { background: #1a1a1a; color: #ededed; }
+  :root[data-theme="dark"] .sb-list a.active { background: #ededed; color: #0a0a0a; }
+  :root[data-theme="dark"] .sb-favicon { background: #1a1a1a; }
+  .main {
+    padding: 32px 28px;
+  }
+
+  .bento-wrap {
+    display: grid;
+    gap: 20px;
+    max-width: 1344px;
+    margin: 0 auto;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+  }
+  .meta a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .brand-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+  }
+  .meta-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--hot-pink);
+    border: none;
+    border-radius: 16px;
+    padding: 52px 48px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "🫐";
+    position: absolute;
+    bottom: 24px;
+    right: 48px;
+    font-size: 80px;
+    opacity: 0.22;
+    pointer-events: none;
+    transform: rotate(-15deg);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.2);
+    font-size: 12px;
+    color: var(--cream);
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.5px;
+    color: var(--cream);
+    margin-bottom: 16px;
+    max-width: 620px;
+  }
+  .hero p {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(255, 244, 226, 0.85);
+    max-width: 520px;
+    margin-bottom: 28px;
+    line-height: 1.45;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+  .tile-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--label);
+    font-family: var(--font-sans);
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+    font-family: var(--font-sans);
+  }
+  .span-4 { grid-column: span 4; }
+  .span-5 { grid-column: span 5; }
+  .span-6 { grid-column: span 6; }
+  .span-7 { grid-column: span 7; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; max-height: 180px; }
+    .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+    .hero h1 { font-size: 40px; }
+    .hero { padding: 36px 28px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 26px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+  }
+  .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--heading);
+    border: 1.5px solid var(--heading);
+  }
+  .btn-ghost:hover { background: rgba(12, 59, 46, 0.06); }
+  .btn-dark {
+    background: var(--brand-dark);
+    color: var(--cream);
+  }
+  .btn-dark:hover { background: #0a2e23; }
+
+  /* Colors */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .swatch-chip { height: 52px; border-radius: 12px; border: 1px solid var(--border); }
+  .swatch-name { font-size: 12px; font-weight: 600; color: var(--heading); font-family: var(--font-sans); }
+  .swatch-hex { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; color: var(--body); }
+
+  /* Typography */
+  .type-sample { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; }
+  .type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--body); margin-bottom: 6px; font-family: var(--font-sans); font-weight: 700; }
+  .type-display {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--heading);
+    line-height: 0.95;
+  }
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--heading);
+    line-height: 1.05;
+  }
+  .type-body { font-size: 15px; font-weight: 400; color: var(--body); font-family: var(--font-sans); line-height: 1.5; }
+  .type-caption { font-size: 11px; font-weight: 700; color: var(--label); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.06em; }
+  .type-spec { font-family: "SF Mono", ui-monospace, monospace; font-size: 10px; color: var(--body); margin-top: 4px; }
+
+  /* Icons */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .icon-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--primary);
+  }
+  iconify-icon { font-size: 22px; }
+  .icon-meta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--body);
+    font-weight: 400;
+    font-family: var(--font-sans);
+  }
+  .icon-meta strong { color: var(--heading); font-weight: 600; }
+
+  /* Card */
+  .sample-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+  }
+  .sample-card-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--heading);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .sample-card-body { font-size: 14px; color: var(--body); line-height: 1.5; font-family: var(--font-sans); }
+  .sample-card-meta { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .badge-success { background: rgba(168, 217, 163, 0.35); color: #0c3b2e; border: 1px solid rgba(168, 217, 163, 0.6); }
+  .badge-neutral { background: var(--surface); color: var(--heading); border: 1px solid var(--border); }
+  .badge-promo { background: var(--promo-yellow); color: var(--heading); border: none; }
+
+  /* Form */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--label); margin-bottom: 6px; font-family: var(--font-sans); }
+  .input {
+    width: 100%;
+    padding: 12px 20px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--heading);
+    background: #ffffff;
+    border: 1.5px solid var(--heading);
+    border-radius: 9999px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input:focus { border-color: var(--primary); border-width: 2px; }
+  .input::placeholder { color: var(--body); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+  }
+  .faq-q::after { content: "+"; font-weight: 400; color: var(--primary); font-size: 20px; }
+  .faq-item[open] .faq-q::after { content: "−"; }
+  .faq-a { padding: 0 0 14px; font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.55; max-width: 540px; font-family: var(--font-sans); }
+
+  /* Dark */
+  .dark-tile {
+    background: var(--brand-dark);
+    color: var(--cream);
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .dark-tile::before {
+    content: "🍓";
+    position: absolute;
+    top: -16px;
+    right: 20px;
+    font-size: 120px;
+    opacity: 0.12;
+    pointer-events: none;
+    transform: rotate(10deg);
+  }
+  .dark-tile > * { position: relative; z-index: 1; }
+  .dark-tile .tile-title { color: rgba(255, 244, 226, 0.55); }
+  .dark-tile blockquote {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    color: var(--cream);
+  }
+  .dark-tile .btn-primary { background: var(--primary); color: white; }
+  .dark-tile .btn-primary:hover { background: var(--primary-hover); }
+
+  /* Shadows */
+  .shadow-row { display: flex; flex-direction: column; gap: 14px; }
+  .shadow-block {
+    height: 54px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--body);
+    font-weight: 700;
+    font-family: var(--font-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .shadow-1 { box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05); }
+  .shadow-2 { box-shadow: 0 4px 12px rgba(12, 59, 46, 0.06); }
+  .shadow-3 { box-shadow: 0 8px 24px rgba(12, 59, 46, 0.08); }
+
+  /* Flavor tiles for card section */
+  .flavor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    color: var(--heading);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script data-gallery-theme>
+  (function() {
+    var t = localStorage.getItem('swatch-theme') || 'light';
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <a class="sb-back" href="../index.html">← Gallery</a>
+    </div>
+    <input type="search" class="sb-search" id="sbSearch" placeholder="Search" />
+    <ul class="sb-list" id="sbList">
+      <li><a href="1password.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=1password.com&sz=64" alt="" loading="lazy" /><span>1PASSWORD</span></a></li>
+      <li><a href="a24films.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=a24films.com&sz=64" alt="" loading="lazy" /><span>A24FILMS</span></a></li>
+      <li><a href="ableton.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ableton.com&sz=64" alt="" loading="lazy" /><span>ABLETON</span></a></li>
+      <li><a href="aceternity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ui.aceternity.com&sz=64" alt="" loading="lazy" /><span>ACETERNITY</span></a></li>
+      <li><a href="adidas.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=adidas.com&sz=64" alt="" loading="lazy" /><span>ADIDAS</span></a></li>
+      <li><a href="aesop.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=aesop.com&sz=64" alt="" loading="lazy" /><span>AESOP</span></a></li>
+      <li><a href="agora.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=agora.xyz&sz=64" alt="" loading="lazy" /><span>AGORA</span></a></li>
+      <li><a href="agronomywork.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=agronomywork.shop&sz=64" alt="" loading="lazy" /><span>AGRONOMYWORK</span></a></li>
+      <li><a href="airbnb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="" loading="lazy" /><span>AIRBNB</span></a></li>
+      <li><a href="airtable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="" loading="lazy" /><span>AIRTABLE</span></a></li>
+      <li><a href="align-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=alignui.com&sz=64" alt="" loading="lazy" /><span>ALIGN-UI</span></a></li>
+      <li><a href="allbirds.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=allbirds.com&sz=64" alt="" loading="lazy" /><span>ALLBIRDS</span></a></li>
+      <li><a href="amoeba.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=amoeba.com&sz=64" alt="" loading="lazy" /><span>AMOEBA</span></a></li>
+      <li><a href="anthropic.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64" alt="" loading="lazy" /><span>ANTHROPIC</span></a></li>
+      <li><a href="antimetal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=antimetal.com&sz=64" alt="" loading="lazy" /><span>ANTIMETAL</span></a></li>
+      <li><a href="apollo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" alt="" loading="lazy" /><span>APOLLO</span></a></li>
+      <li><a href="apple.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=apple.com&sz=64" alt="" loading="lazy" /><span>APPLE</span></a></li>
+      <li><a href="arc.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arc.net&sz=64" alt="" loading="lazy" /><span>ARC</span></a></li>
+      <li><a href="arcade.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=arcade.software&sz=64" alt="" loading="lazy" /><span>ARCADE</span></a></li>
+      <li><a href="are-na.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=are.na&sz=64" alt="" loading="lazy" /><span>ARE-NA</span></a></li>
+      <li><a href="asana.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=asana.com&sz=64" alt="" loading="lazy" /><span>ASANA</span></a></li>
+      <li><a href="astro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=astro.build&sz=64" alt="" loading="lazy" /><span>ASTRO</span></a></li>
+      <li><a href="athletic-brewing.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=athleticbrewing.com&sz=64" alt="" loading="lazy" /><span>ATHLETIC-BREWING</span></a></li>
+      <li><a href="atlassian.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=atlassian.design&sz=64" alt="" loading="lazy" /><span>ATLASSIAN</span></a></li>
+      <li><a href="audubon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=audubon.org&sz=64" alt="" loading="lazy" /><span>AUDUBON</span></a></li>
+      <li><a href="bauhaus.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bauhaus-movement.com&sz=64" alt="" loading="lazy" /><span>BAUHAUS</span></a></li>
+      <li><a href="binance.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="" loading="lazy" /><span>BINANCE</span></a></li>
+      <li><a href="blackrock.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=blackrock.com&sz=64" alt="" loading="lazy" /><span>BLACKROCK</span></a></li>
+      <li><a href="blue-bottle.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bluebottlecoffee.com&sz=64" alt="" loading="lazy" /><span>BLUE-BOTTLE</span></a></li>
+      <li><a href="bmw.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bmw.com&sz=64" alt="" loading="lazy" /><span>BMW</span></a></li>
+      <li><a href="braun.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=braun.com&sz=64" alt="" loading="lazy" /><span>BRAUN</span></a></li>
+      <li><a href="brightland.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=brightland.co&sz=64" alt="" loading="lazy" /><span>BRIGHTLAND</span></a></li>
+      <li><a href="bugatti.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=bugatti.com&sz=64" alt="" loading="lazy" /><span>BUGATTI</span></a></li>
+      <li><a href="cal.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cal.com&sz=64" alt="" loading="lazy" /><span>CAL</span></a></li>
+      <li><a href="cape.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cape.co&sz=64" alt="" loading="lazy" /><span>CAPE</span></a></li>
+      <li><a href="carbon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=carbondesignsystem.com&sz=64" alt="" loading="lazy" /><span>CARBON</span></a></li>
+      <li><a href="claude-ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" loading="lazy" /><span>CLAUDE-AI</span></a></li>
+      <li><a href="clay.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clay.earth&sz=64" alt="" loading="lazy" /><span>CLAY</span></a></li>
+      <li><a href="clickhouse.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=clickhouse.com&sz=64" alt="" loading="lazy" /><span>CLICKHOUSE</span></a></li>
+      <li><a href="cohere.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cohere.com&sz=64" alt="" loading="lazy" /><span>COHERE</span></a></li>
+      <li><a href="coinbase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=coinbase.com&sz=64" alt="" loading="lazy" /><span>COINBASE</span></a></li>
+      <li><a href="composio.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=composio.dev&sz=64" alt="" loading="lazy" /><span>COMPOSIO</span></a></li>
+      <li><a href="craigslist.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=craigslist.org&sz=64" alt="" loading="lazy" /><span>CRAIGSLIST</span></a></li>
+      <li><a href="criterion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=criterion.com&sz=64" alt="" loading="lazy" /><span>CRITERION</span></a></li>
+      <li><a href="cursor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="" loading="lazy" /><span>CURSOR</span></a></li>
+      <li><a href="daisyui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=daisyui.com&sz=64" alt="" loading="lazy" /><span>DAISYUI</span></a></li>
+      <li><a href="designspells.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=designspells.com&sz=64" alt="" loading="lazy" /><span>DESIGNSPELLS</span></a></li>
+      <li><a href="dropshot.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=usedropshot.com&sz=64" alt="" loading="lazy" /><span>DROPSHOT</span></a></li>
+      <li><a href="eataly.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=eataly.com&sz=64" alt="" loading="lazy" /><span>EATALY</span></a></li>
+      <li><a href="elevenlabs.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="" loading="lazy" /><span>ELEVENLABS</span></a></li>
+      <li><a href="erewhon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=erewhonmarket.com&sz=64" alt="" loading="lazy" /><span>EREWHON</span></a></li>
+      <li><a href="expo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=expo.dev&sz=64" alt="" loading="lazy" /><span>EXPO</span></a></li>
+      <li><a href="ferrari.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ferrari.com&sz=64" alt="" loading="lazy" /><span>FERRARI</span></a></li>
+      <li><a href="fey.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=feyapp.com&sz=64" alt="" loading="lazy" /><span>FEY</span></a></li>
+      <li><a href="figma.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="" loading="lazy" /><span>FIGMA</span></a></li>
+      <li><a href="final-fantasy.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=square-enix-games.com&sz=64" alt="" loading="lazy" /><span>FINAL-FANTASY</span></a></li>
+      <li><a href="fluent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fluent2.microsoft.design&sz=64" alt="" loading="lazy" /><span>FLUENT</span></a></li>
+      <li><a href="fly.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=fly.io&sz=64" alt="" loading="lazy" /><span>FLY</span></a></li>
+      <li><a href="fly-by-jing.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=flybyjing.com&sz=64" alt="" loading="lazy" /><span>FLY-BY-JING</span></a></li>
+      <li><a href="folk.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=folk.app&sz=64" alt="" loading="lazy" /><span>FOLK</span></a></li>
+      <li><a href="frame-io.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=frame.io&sz=64" alt="" loading="lazy" /><span>FRAME-IO</span></a></li>
+      <li><a href="framer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="" loading="lazy" /><span>FRAMER</span></a></li>
+      <li><a href="glossier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=glossier.com&sz=64" alt="" loading="lazy" /><span>GLOSSIER</span></a></li>
+      <li><a href="granola.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=granola.ai&sz=64" alt="" loading="lazy" /><span>GRANOLA</span></a></li>
+      <li><a href="graza.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=graza.co&sz=64" alt="" loading="lazy" /><span>GRAZA</span></a></li>
+      <li><a href="hashicorp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=64" alt="" loading="lazy" /><span>HASHICORP</span></a></li>
+      <li><a href="hero-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=heroui.com&sz=64" alt="" loading="lazy" /><span>HERO-UI</span></a></li>
+      <li><a href="hyperkit.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=hyperkit.pro&sz=64" alt="" loading="lazy" /><span>HYPERKIT</span></a></li>
+      <li><a href="ibm.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ibm.com&sz=64" alt="" loading="lazy" /><span>IBM</span></a></li>
+      <li><a href="intercom.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=intercom.com&sz=64" alt="" loading="lazy" /><span>INTERCOM</span></a></li>
+      <li><a href="invideo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=invideo.io&sz=64" alt="" loading="lazy" /><span>INVIDEO</span></a></li>
+      <li><a href="ios-hig.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=developer.apple.com&sz=64" alt="" loading="lazy" /><span>IOS-HIG</span></a></li>
+      <li><a href="ivory.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tapbots.com&sz=64" alt="" loading="lazy" /><span>IVORY</span></a></li>
+      <li><a href="jagjaguwar.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=jagjaguwar.com&sz=64" alt="" loading="lazy" /><span>JAGJAGUWAR</span></a></li>
+      <li><a href="kinfolk.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kinfolk.com&sz=64" alt="" loading="lazy" /><span>KINFOLK</span></a></li>
+      <li><a href="kraken.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=kraken.com&sz=64" alt="" loading="lazy" /><span>KRAKEN</span></a></li>
+      <li><a href="lamborghini.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lamborghini.com&sz=64" alt="" loading="lazy" /><span>LAMBORGHINI</span></a></li>
+      <li><a href="le-labo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lelabofragrances.com&sz=64" alt="" loading="lazy" /><span>LE-LABO</span></a></li>
+      <li><a href="leonardo.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=leonardo.ai&sz=64" alt="" loading="lazy" /><span>LEONARDO</span></a></li>
+      <li><a href="linear.app.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=linear.app&sz=64" alt="" loading="lazy" /><span>LINEAR.APP</span></a></li>
+      <li><a href="link-kit.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=link-kit.com&sz=64" alt="" loading="lazy" /><span>LINK-KIT</span></a></li>
+      <li><a href="liquid-death.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=liquiddeath.com&sz=64" alt="" loading="lazy" /><span>LIQUID-DEATH</span></a></li>
+      <li><a href="louis-vuitton.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=louisvuitton.com&sz=64" alt="" loading="lazy" /><span>LOUIS-VUITTON</span></a></li>
+      <li><a href="lovable.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=lovable.dev&sz=64" alt="" loading="lazy" /><span>LOVABLE</span></a></li>
+      <li><a href="magic-spoon.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=magicspoon.com&sz=64" alt="" loading="lazy" /><span>MAGIC-SPOON</span></a></li>
+      <li><a href="mainframe-manifesto.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=manifesto.mainframe.inc&sz=64" alt="" loading="lazy" /><span>MAINFRAME-MANIFESTO</span></a></li>
+      <li><a href="mastercard.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=64" alt="" loading="lazy" /><span>MASTERCARD</span></a></li>
+      <li><a href="material-3.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=m3.material.io&sz=64" alt="" loading="lazy" /><span>MATERIAL-3</span></a></li>
+      <li><a href="me-sh.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=me.sh&sz=64" alt="" loading="lazy" /><span>ME-SH</span></a></li>
+      <li><a href="mercury-weather.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mercuryweather.com&sz=64" alt="" loading="lazy" /><span>MERCURY-WEATHER</span></a></li>
+      <li><a href="meta.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=about.meta.com&sz=64" alt="" loading="lazy" /><span>META</span></a></li>
+      <li><a href="minimax.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=minimax.io&sz=64" alt="" loading="lazy" /><span>MINIMAX</span></a></li>
+      <li><a href="mintlify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mintlify.com&sz=64" alt="" loading="lazy" /><span>MINTLIFY</span></a></li>
+      <li><a href="miro.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=miro.com&sz=64" alt="" loading="lazy" /><span>MIRO</span></a></li>
+      <li><a href="mistral.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="" loading="lazy" /><span>MISTRAL.AI</span></a></li>
+      <li><a href="moleskine.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=moleskine.com&sz=64" alt="" loading="lazy" /><span>MOLESKINE</span></a></li>
+      <li><a href="mongodb.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=mongodb.com&sz=64" alt="" loading="lazy" /><span>MONGODB</span></a></li>
+      <li><a href="movingparts.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=movingparts.io&sz=64" alt="" loading="lazy" /><span>MOVINGPARTS</span></a></li>
+      <li><a href="muji.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=muji.com&sz=64" alt="" loading="lazy" /><span>MUJI</span></a></li>
+      <li><a href="necessaire.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=necessaire.com&sz=64" alt="" loading="lazy" /><span>NECESSAIRE</span></a></li>
+      <li><a href="nike.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nike.com&sz=64" alt="" loading="lazy" /><span>NIKE</span></a></li>
+      <li><a href="notboring.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notboring.software&sz=64" alt="" loading="lazy" /><span>NOTBORING</span></a></li>
+      <li><a href="notion.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="" loading="lazy" /><span>NOTION</span></a></li>
+      <li><a href="nvidia.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=64" alt="" loading="lazy" /><span>NVIDIA</span></a></li>
+      <li><a href="olipop.html" class="active"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=drinkolipop.com&sz=64" alt="" loading="lazy" /><span>OLIPOP</span></a></li>
+      <li><a href="ollama.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ollama.com&sz=64" alt="" loading="lazy" /><span>OLLAMA</span></a></li>
+      <li><a href="once-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=once-ui.com&sz=64" alt="" loading="lazy" /><span>ONCE-UI</span></a></li>
+      <li><a href="opencode.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=opencode.ai&sz=64" alt="" loading="lazy" /><span>OPENCODE.AI</span></a></li>
+      <li><a href="otherkind.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=otherkind.design&sz=64" alt="" loading="lazy" /><span>OTHERKIND</span></a></li>
+      <li><a href="paris-review.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theparisreview.org&sz=64" alt="" loading="lazy" /><span>PARIS-REVIEW</span></a></li>
+      <li><a href="park-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=park-ui.com&sz=64" alt="" loading="lazy" /><span>PARK-UI</span></a></li>
+      <li><a href="pendleton.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pendleton-usa.com&sz=64" alt="" loading="lazy" /><span>PENDLETON</span></a></li>
+      <li><a href="pentagram.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pentagram.com&sz=64" alt="" loading="lazy" /><span>PENTAGRAM</span></a></li>
+      <li><a href="pinterest.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy" /><span>PINTEREST</span></a></li>
+      <li><a href="pitch.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=pitch.com&sz=64" alt="" loading="lazy" /><span>PITCH</span></a></li>
+      <li><a href="playstation.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=playstation.com&sz=64" alt="" loading="lazy" /><span>PLAYSTATION</span></a></li>
+      <li><a href="polaris.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=polaris.shopify.com&sz=64" alt="" loading="lazy" /><span>POLARIS</span></a></li>
+      <li><a href="poolsuite.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=poolsuite.net&sz=64" alt="" loading="lazy" /><span>POOLSUITE</span></a></li>
+      <li><a href="posthog.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=posthog.com&sz=64" alt="" loading="lazy" /><span>POSTHOG</span></a></li>
+      <li><a href="preline.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=preline.co&sz=64" alt="" loading="lazy" /><span>PRELINE</span></a></li>
+      <li><a href="primer.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=primer.style&sz=64" alt="" loading="lazy" /><span>PRIMER</span></a></li>
+      <li><a href="ramp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ramp.com&sz=64" alt="" loading="lazy" /><span>RAMP</span></a></li>
+      <li><a href="raycast.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=raycast.com&sz=64" alt="" loading="lazy" /><span>RAYCAST</span></a></li>
+      <li><a href="readwise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=readwise.io&sz=64" alt="" loading="lazy" /><span>READWISE</span></a></li>
+      <li><a href="recess.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=takearecess.com&sz=64" alt="" loading="lazy" /><span>RECESS</span></a></li>
+      <li><a href="renault.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=renault.com&sz=64" alt="" loading="lazy" /><span>RENAULT</span></a></li>
+      <li><a href="replicate.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=replicate.com&sz=64" alt="" loading="lazy" /><span>REPLICATE</span></a></li>
+      <li><a href="resend.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=resend.com&sz=64" alt="" loading="lazy" /><span>RESEND</span></a></li>
+      <li><a href="revolut.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" alt="" loading="lazy" /><span>REVOLUT</span></a></li>
+      <li><a href="rossignol.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=rossignol.com&sz=64" alt="" loading="lazy" /><span>ROSSIGNOL</span></a></li>
+      <li><a href="runwayml.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="" loading="lazy" /><span>RUNWAYML</span></a></li>
+      <li><a href="sanity.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sanity.io&sz=64" alt="" loading="lazy" /><span>SANITY</span></a></li>
+      <li><a href="santa-maria-novella.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=smnovella.com&sz=64" alt="" loading="lazy" /><span>SANTA-MARIA-NOVELLA</span></a></li>
+      <li><a href="sega.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sega.com&sz=64" alt="" loading="lazy" /><span>SEGA</span></a></li>
+      <li><a href="sentry.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sentry.io&sz=64" alt="" loading="lazy" /><span>SENTRY</span></a></li>
+      <li><a href="sesame-street.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=sesamestreet.org&sz=64" alt="" loading="lazy" /><span>SESAME-STREET</span></a></li>
+      <li><a href="shadcn.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ui.shadcn.com&sz=64" alt="" loading="lazy" /><span>SHADCN</span></a></li>
+      <li><a href="shopify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=shopify.com&sz=64" alt="" loading="lazy" /><span>SHOPIFY</span></a></li>
+      <li><a href="spacex.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spacex.com&sz=64" alt="" loading="lazy" /><span>SPACEX</span></a></li>
+      <li><a href="spotify.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" alt="" loading="lazy" /><span>SPOTIFY</span></a></li>
+      <li><a href="starbucks.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=starbucks.com&sz=64" alt="" loading="lazy" /><span>STARBUCKS</span></a></li>
+      <li><a href="stripe.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="" loading="lazy" /><span>STRIPE</span></a></li>
+      <li><a href="supabase.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="" loading="lazy" /><span>SUPABASE</span></a></li>
+      <li><a href="superhuman.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=superhuman.com&sz=64" alt="" loading="lazy" /><span>SUPERHUMAN</span></a></li>
+      <li><a href="tailwind-plus.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tailwindcss.com&sz=64" alt="" loading="lazy" /><span>TAILWIND-PLUS</span></a></li>
+      <li><a href="tesla.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tesla.com&sz=64" alt="" loading="lazy" /><span>TESLA</span></a></li>
+      <li><a href="the-sun.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=thesun.co.uk&sz=64" alt="" loading="lazy" /><span>THE-SUN</span></a></li>
+      <li><a href="the-verge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THE-VERGE</span></a></li>
+      <li><a href="theverge.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=theverge.com&sz=64" alt="" loading="lazy" /><span>THEVERGE</span></a></li>
+      <li><a href="things.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=culturedcode.com&sz=64" alt="" loading="lazy" /><span>THINGS</span></a></li>
+      <li><a href="timespent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=timespent.so&sz=64" alt="" loading="lazy" /><span>TIMESPENT</span></a></li>
+      <li><a href="together.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=together.ai&sz=64" alt="" loading="lazy" /><span>TOGETHER.AI</span></a></li>
+      <li><a href="tremor.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=tremor.so&sz=64" alt="" loading="lazy" /><span>TREMOR</span></a></li>
+      <li><a href="triumph.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=triumphmotorcycles.com&sz=64" alt="" loading="lazy" /><span>TRIUMPH</span></a></li>
+      <li><a href="uber.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" alt="" loading="lazy" /><span>UBER</span></a></li>
+      <li><a href="ubuntu.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=ubuntu.com&sz=64" alt="" loading="lazy" /><span>UBUNTU</span></a></li>
+      <li><a href="untitled-ui.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=untitledui.com&sz=64" alt="" loading="lazy" /><span>UNTITLED-UI</span></a></li>
+      <li><a href="vercel.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="" loading="lazy" /><span>VERCEL</span></a></li>
+      <li><a href="vodafone.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=64" alt="" loading="lazy" /><span>VODAFONE</span></a></li>
+      <li><a href="voltagent.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=voltagent.dev&sz=64" alt="" loading="lazy" /><span>VOLTAGENT</span></a></li>
+      <li><a href="warp.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=warp.dev&sz=64" alt="" loading="lazy" /><span>WARP</span></a></li>
+      <li><a href="webflow.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=webflow.com&sz=64" alt="" loading="lazy" /><span>WEBFLOW</span></a></li>
+      <li><a href="wired.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wired.com&sz=64" alt="" loading="lazy" /><span>WIRED</span></a></li>
+      <li><a href="wise.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=wise.com&sz=64" alt="" loading="lazy" /><span>WISE</span></a></li>
+      <li><a href="x.ai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>X.AI</span></a></li>
+      <li><a href="xai.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="" loading="lazy" /><span>XAI</span></a></li>
+      <li><a href="zapier.html"><img class="sb-favicon" src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="" loading="lazy" /><span>ZAPIER</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+  <div class="bento-wrap">
+
+    <div class="meta">
+      <div class="meta-brand">
+        <img class="meta-favicon" src="https://www.google.com/s2/favicons?domain=drinkolipop.com&sz=64" alt="" />
+        <span class="brand-label">Design Swatch · Olipop</span>
+      </div>
+      <a href="../../getdesign-corpus/olipop.md" target="_blank">View full DESIGN.md →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">✦ Soda-fountain nostalgia · wellness DTC</span>
+        <h1>Bring on the Berry.</h1>
+        <p>Olipop's design system: chunky condensed display type, saturated pastel color blocks, cherry-red pill CTAs, and a chromatic SKU system where every flavor is its own world.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Shop the Berry →</button>
+          <button class="btn" style="background: rgba(255,255,255,0.2); color: var(--cream); border: 1.5px solid rgba(255,255,255,0.4);">All Flavors</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <!-- COLORS -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Color Palette</span>
+          <span class="tile-sub">8 brand tokens</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background: #ec5093;"></div><div class="swatch-name">Hot Pink</div><div class="swatch-hex">#ec5093</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #c8202b;"></div><div class="swatch-name">Cherry Red</div><div class="swatch-hex">#c8202b</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #0c3b2e;"></div><div class="swatch-name">Hunter Green</div><div class="swatch-hex">#0c3b2e</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #fff4e2; border: 1px solid #e8dfc8;"></div><div class="swatch-name">Olipop Cream</div><div class="swatch-hex">#fff4e2</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #a8d9a3;"></div><div class="swatch-name">Watermelon Mint</div><div class="swatch-hex">#a8d9a3</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f5a8be;"></div><div class="swatch-name">Strawberry Blush</div><div class="swatch-hex">#f5a8be</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #f3b89a;"></div><div class="swatch-name">Apple Peach</div><div class="swatch-hex">#f3b89a</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: #ffd24d;"></div><div class="swatch-name">Promo Yellow</div><div class="swatch-hex">#ffd24d</div></div>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Buttons</span>
+          <span class="tile-sub">9999px radius · pill</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <button class="btn btn-primary">Shop the Berry →</button>
+          <button class="btn btn-dark">All Flavors</button>
+          <button class="btn btn-ghost">Learn More</button>
+          <span class="badge badge-promo">✦ Save 15%</span>
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY -->
+      <section class="tile span-8">
+        <div class="tile-head">
+          <span class="tile-title">Typography</span>
+          <span class="tile-sub">Playfair Display · DM Sans</span>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Hero Display / 64–88px</div>
+          <div class="type-display">Pure Nostalgia-ahh.</div>
+          <div class="type-spec">Playfair Display · 800 · -0.5px · line-height 0.95</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Section Heading / 40px</div>
+          <div class="type-h2">Get Rewarded for Sipping</div>
+          <div class="type-spec">Playfair Display · 700 · -0.3px · line-height 1.05</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Body / 16px</div>
+          <div class="type-body">Good-for-you soda with 9g of prebiotic fiber. Made with botanical ingredients, real cane sugar, and zero artificial sweeteners. Your gut (and your inner kid) will thank you.</div>
+          <div class="type-spec">DM Sans · 400 · normal · line-height 1.50</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-label">Badge / Caption · 11px</div>
+          <div class="type-caption">Best Seller · New Flavor · Save 15%</div>
+          <div class="type-spec">DM Sans · 700 · 0.06em tracking · uppercase</div>
+        </div>
+      </section>
+
+      <!-- ICONS -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Icons</span>
+          <span class="tile-sub">Ph · Iconify</span>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-cell"><iconify-icon icon="ph:leaf-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:heart-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:shopping-cart-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:sparkle-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:star-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:arrow-circle-right-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-icon icon="ph:drop-fill"></iconify-icon></div>
+          <div class="icon-cell"><iconify-font icon="ph:smiley-fill"></iconify-font><iconify-icon icon="ph:smiley-fill"></iconify-icon></div>
+        </div>
+        <div class="icon-meta">
+          Set: <strong>Phosphor Fill</strong> · Treatment: filled · cherry-red accent · 24px
+        </div>
+      </section>
+
+      <!-- CARD -->
+      <section class="tile span-4" style="background: var(--blush);">
+        <div class="tile-head">
+          <span class="tile-title">Flavor Card</span>
+          <span class="tile-sub">chromatic SKU tile</span>
+        </div>
+        <div class="sample-card">
+          <div style="text-align: center; font-size: 52px; margin-bottom: 12px;">🍓</div>
+          <div class="sample-card-title">Strawberry Vanilla</div>
+          <div class="sample-card-body">A fizzy summer love story — creamy vanilla meets juicy strawberry with 9g prebiotic fiber. Only 35 calories.</div>
+          <div class="sample-card-meta">
+            <span class="badge badge-success">Best Seller</span>
+            <span class="badge badge-neutral">35 cal · 9g fiber</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORM -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Form</span>
+          <span class="tile-sub">pill inputs · hunter-green border</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Your Email</label>
+          <input type="email" id="email" class="input" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="fav">Favorite Flavor</label>
+          <input type="text" id="fav" class="input" placeholder="Raspberry Sherbet..." />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;">Sign Up Now →</button>
+      </section>
+
+      <!-- ELEVATION -->
+      <section class="tile span-4">
+        <div class="tile-head">
+          <span class="tile-title">Elevation</span>
+          <span class="tile-sub">hunter-green tinted</span>
+        </div>
+        <div class="shadow-row">
+          <div class="shadow-block shadow-1">Sticker Lift · L1</div>
+          <div class="shadow-block shadow-2">Card Lift · L2</div>
+          <div class="shadow-block shadow-3">Hero Lift · L3</div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="tile span-7">
+        <div class="tile-head">
+          <span class="tile-title">FAQ</span>
+          <span class="tile-sub">hairline divider · hunter-green</span>
+        </div>
+        <details class="faq-item" open>
+          <summary class="faq-q">What makes Olipop different from regular soda?</summary>
+          <div class="faq-a">Olipop contains 9g of prebiotic fiber, botanical ingredients, and far less sugar than traditional sodas — all without sacrificing that fizzy, flavor-forward soda-fountain feeling you grew up loving.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How many cans should I drink per day?</summary>
+          <div class="faq-a">We recommend starting with 1 can per day. Your gut microbiome is sensitive to change, and the prebiotic fiber does its best work with consistent, gradual introduction.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I subscribe and save?</summary>
+          <div class="faq-a">Yes! Our subscribe-and-save plan gets you 15% off every order, free shipping, and early access to new flavors before they hit shelves.</div>
+        </details>
+      </section>
+
+      <!-- DARK SECTION -->
+      <section class="tile span-5 dark-tile">
+        <div class="tile-head">
+          <span class="tile-title">Brand Dark · Testimonial</span>
+          <span class="tile-sub" style="color: rgba(255,244,226,0.5);">#0c3b2e · hunter green</span>
+        </div>
+        <blockquote>"I gave up regular soda for good — and honestly? I don't miss it. Olipop hits different."</blockquote>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 32px; height: 32px; border-radius: 9999px; background: var(--hot-pink); display:flex; align-items:center; justify-content:center; font-size: 16px;">🍒</div>
+          <div style="font-size: 13px; font-weight: 400; color: rgba(255,244,226,0.8);"><strong style="font-weight: 700; color: var(--cream);">Jamie R.</strong> · Verified Customer</div>
+        </div>
+        <button class="btn btn-primary">Shop All Flavors →</button>
+      </section>
+
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  const search = document.getElementById('sbSearch');
+  const items = document.querySelectorAll('#sbList li');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    items.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.classList.toggle('hidden', q && !text.includes(q));
+    });
+  });
+  const active = document.querySelector('.sb-list a.active');
+  if (active) active.scrollIntoView({ block: 'center' });
+</script>
+
+</body>
+</html>
