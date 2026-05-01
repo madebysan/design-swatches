@@ -1,5 +1,8 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/explorer/", "permanent": false }
+    { "source": "/", "destination": "/explorer/", "permanent": false },
+    { "source": "/bentos/:path*", "destination": "/explorer/bentos/:path*", "permanent": false },
+    { "source": "/thumbnails/:path*", "destination": "/explorer/thumbnails/:path*", "permanent": false },
+    { "source": "/shared/:path*", "destination": "/explorer/shared/:path*", "permanent": false }
   ]
 }
