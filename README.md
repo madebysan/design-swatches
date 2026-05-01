@@ -10,7 +10,7 @@
 
 ## What this is
 
-A corpus of 98 DESIGN.md files — one per real company, all in the same 9-section format — plus a browsable gallery and the Claude Code skill that generated them.
+A corpus of 167 DESIGN.md files — one per real company, all in the same 9-section format — plus a browsable gallery and the Claude Code skill that generated them.
 
 The premise: AI coding agents produce generic UIs unless you hand them a detailed design system reference. Most design systems live locked inside Figma, Storybook, or tokens JSON — none of which paste cleanly into an LLM chat. DESIGN.md is the pasteable form: 9 sections of prose + tokens that describe a brand's visual identity well enough for an agent to rebuild a believable interface from it alone.
 
@@ -18,8 +18,8 @@ The premise: AI coding agents produce generic UIs unless you hand them a detaile
 
 ```
 design-swatches/
-├── getdesign-corpus/    # 98 DESIGN.md files (~250–550 lines each)
-├── explorer/            # Browsable visual catalog of all 98
+├── getdesign-corpus/    # 167 DESIGN.md files (~250–550 lines each)
+├── explorer/            # Browsable visual catalog of all 167
 │   ├── index.html       # Filterable gallery (search, light/dark, by category & style)
 │   └── bentos/          # One HTML "swatch" per brand
 └── skill/design-md/     # Claude Code skill that generates new DESIGN.md files
@@ -43,11 +43,11 @@ The skill pulls raw design tokens via [dembrandt](https://github.com/dembrandt/d
 
 ### How this relates to dembrandt
 
-Dembrandt already has a `--design-md` flag that outputs a DESIGN.md directly. What this project adds on top is the **corpus** (98 files in a consistent format, written with a specific interpretive voice) and the **exemplar-based prompting** that produces new files in that same voice. Dembrandt is the scraper layer — it tells you `#f36458` appears 12 times. This layer is what calls that coral Sanity's singular brand accent, reserved for CTAs, and flips to electric blue on hover. Raw tokens in, AI-usable design brief out.
+Dembrandt already has a `--design-md` flag that outputs a DESIGN.md directly. What this project adds on top is the **corpus** (167 files in a consistent format, written with a specific interpretive voice) and the **exemplar-based prompting** that produces new files in that same voice. Dembrandt is the scraper layer — it tells you `#f36458` appears 12 times. This layer is what calls that coral Sanity's singular brand accent, reserved for CTAs, and flips to electric blue on hover. Raw tokens in, AI-usable design brief out.
 
 ## The explorer
 
-98 DESIGN.md files is a lot of text to scan. The explorer renders each one back into a visible "design swatch" — hero typography, color palette, button variants, icon system, type specimens — so you can see the format's output side-by-side at scale. That it holds across Ferrari, Notion, A24, Mercury Weather, and Claude (wildly different visual priorities) is the evidence that the 9-section format is doing real work.
+167 DESIGN.md files is a lot of text to scan. The explorer renders each one back into a visible "design swatch" — hero typography, color palette, button variants, icon system, type specimens — so you can see the format's output side-by-side at scale. That it holds across Ferrari, Notion, A24, Mercury Weather, and Claude (wildly different visual priorities) is the evidence that the 9-section format is doing real work.
 
 The explorer is for reference, not for copying. The brands catalogued here describe public corporate visual identities and remain owned by their companies. Use them as voice references for your own DESIGN.md — not as something to lift into a product. That's why this repo is private.
 
