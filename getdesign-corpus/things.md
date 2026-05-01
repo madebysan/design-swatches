@@ -1,4 +1,18 @@
+---
+slug: things
+name: Things (Cultured Code)
+url: https://culturedcode.com
+domain: culturedcode.com
+category: Productivity
+styles: [Minimal, Light, Tactile]
+tagline: "Paper-cool off-white canvas, dual-layer warm shadows, one blue accent used sparingly."
+fonts: [ui-sans-serif]
+primary_color: "#2576eb"
+---
+
 # Design System Inspired by Things (Cultured Code)
+
+> Paper-cool off-white canvas, dual-layer warm shadows, one blue accent used sparingly.
 
 ## 1. Visual Theme & Atmosphere
 

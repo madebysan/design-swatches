@@ -1,4 +1,18 @@
+---
+slug: align-ui
+name: AlignUI
+url: https://alignui.com
+domain: alignui.com
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "Inter Variable at weight 550, odd-number radii, and one orange-red accent doing all the heavy lifting."
+fonts: [Inter Variable, Inter, Geist Mono]
+primary_color: "#f05023"
+---
+
 # Design System Inspired by AlignUI
+
+> Inter Variable at weight 550, odd-number radii, and one orange-red accent doing all the heavy lifting.
 
 ## 1. Visual Theme & Atmosphere
 

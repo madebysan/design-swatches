@@ -1,4 +1,18 @@
+---
+slug: lovable
+name: Lovable
+url: https://lovable.dev
+domain: lovable.dev
+category: AI
+styles: [Warm, Light, Minimal]
+tagline: "Parchment cream, Camera Plain's humanist curves, depth built from a single near-black at shifting opacity."
+fonts: [Camera Plain Variable, Weight range, Feature]
+primary_color: "#3b82f6"
+---
+
 # Design System Inspired by Lovable
+
+> Parchment cream, Camera Plain's humanist curves, depth built from a single near-black at shifting opacity.
 
 ## 1. Visual Theme & Atmosphere
 

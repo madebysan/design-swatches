@@ -1,4 +1,18 @@
+---
+slug: mintlify
+name: Mintlify
+url: https://mintlify.com
+domain: mintlify.com
+category: Dev Tools
+styles: [Minimal, Light]
+tagline: "Clean white canvas, Inter compressed tight, mint green reserved for what earns attention."
+fonts: [Inter, Geist Mono]
+primary_color: "#18E299"
+---
+
 # Design System Inspired by Mintlify
+
+> Clean white canvas, Inter compressed tight, mint green reserved for what earns attention.
 
 ## 1. Visual Theme & Atmosphere
 

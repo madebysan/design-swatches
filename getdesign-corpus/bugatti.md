@@ -1,4 +1,18 @@
+---
+slug: bugatti
+name: Bugatti
+url: https://bugatti.com
+domain: bugatti.com
+category: Auto
+styles: [Dark, Bold, Mono]
+tagline: "Cinema-black canvas, 288px ALL-CAPS display, monochrome velvet dressing the car's own paint."
+fonts: [ui-sans-serif]
+primary_color: "#000000"
+---
+
 # Design System Inspired by Bugatti
+
+> Cinema-black canvas, 288px ALL-CAPS display, monochrome velvet dressing the car's own paint.
 
 ## 1. Visual Theme & Atmosphere
 

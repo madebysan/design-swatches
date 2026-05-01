@@ -1,4 +1,18 @@
+---
+slug: carbon
+name: Carbon Design System
+url: https://carbondesignsystem.com
+domain: carbondesignsystem.com
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "Sharp-cornered geometry, IBM Plex Sans at weight 300, IBM Blue as the only accent allowed."
+fonts: [IBM Plex Sans, IBM Plex Mono, IBM Plex Serif]
+primary_color: "#0f62fe"
+---
+
 # Design System Inspired by Carbon Design System
+
+> Sharp-cornered geometry, IBM Plex Sans at weight 300, IBM Blue as the only accent allowed.
 
 ## 1. Visual Theme & Atmosphere
 

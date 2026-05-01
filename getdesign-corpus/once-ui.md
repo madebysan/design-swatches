@@ -1,4 +1,18 @@
+---
+slug: once-ui
+name: Once UI
+url: https://once-ui.com
+domain: once-ui.com
+category: Design System
+styles: [Dark, Minimal, Bold]
+tagline: "Charcoal canvas, Geist at weight 300, emerald glow where shadows would be."
+fonts: [Geist, Geist Mono]
+primary_color: "#08a97c"
+---
+
 # Design System Inspired by Once UI
+
+> Charcoal canvas, Geist at weight 300, emerald glow where shadows would be.
 
 ## 1. Visual Theme & Atmosphere
 

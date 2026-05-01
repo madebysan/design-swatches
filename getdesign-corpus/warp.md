@@ -1,4 +1,18 @@
+---
+slug: warp
+name: Warp
+url: https://warp.dev
+domain: warp.dev
+category: Dev Tools
+styles: [Dark, Warm, Minimal]
+tagline: "Warm near-black canvas, Matter Regular, parchment text where cold grays once lived."
+fonts: [Matter Regular, Matter Medium, Matter SQ Regular]
+primary_color: "#faf9f6"
+---
+
 # Design System Inspired by Warp
+
+> Warm near-black canvas, Matter Regular, parchment text where cold grays once lived.
 
 ## 1. Visual Theme & Atmosphere
 

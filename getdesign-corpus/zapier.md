@@ -1,4 +1,18 @@
+---
+slug: zapier
+name: Zapier
+url: https://zapier.com
+domain: zapier.com
+category: SaaS
+styles: [Warm, Light, Colorful]
+tagline: "Cream canvas and Zapier orange, Degular Display compressed tight over Inter's quiet utility."
+fonts: []
+primary_color: "#ff4f00"
+---
+
 # Design System Inspired by Zapier
+
+> Cream canvas and Zapier orange, Degular Display compressed tight over Inter's quiet utility.
 
 ## 1. Visual Theme & Atmosphere
 

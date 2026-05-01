@@ -1,4 +1,18 @@
+---
+slug: granola
+name: Granola
+url: https://granola.ai
+domain: granola.ai
+category: AI
+styles: [Warm, Minimal, Light, Tactile]
+tagline: "Quadrant serif on paper-cream canvas, lime-green held back until it earns its moment."
+fonts: [Quadrant, Melange, -apple-system]
+primary_color: "#94f27f"
+---
+
 # Design System Inspired by Granola
+
+> Quadrant serif on paper-cream canvas, lime-green held back until it earns its moment.
 
 ## 1. Visual Theme & Atmosphere
 

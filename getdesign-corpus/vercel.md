@@ -1,4 +1,18 @@
+---
+slug: vercel
+name: Vercel
+url: https://vercel.com
+domain: vercel.com
+category: Dev Tools
+styles: [Minimal, Mono, Light]
+tagline: "Geist Sans compressed to near-black, shadow-as-border where chrome would've been."
+fonts: [Geist, Geist Mono]
+primary_color: "#ff5b4f"
+---
+
 # Design System Inspired by Vercel
+
+> Geist Sans compressed to near-black, shadow-as-border where chrome would've been.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: mastercard
+name: Mastercard
+url: https://mastercard.com
+domain: mastercard.com
+category: Finance
+styles: [Colorful, Light, Bold]
+tagline: "Warm cream canvas, pill-shaped everything, orange arcs tracing circular portraits into orbit."
+fonts: [MarkForMC, MarkOffcForMC]
+primary_color: "#EB001B"
+---
+
 # Design System Inspired by Mastercard
+
+> Warm cream canvas, pill-shaped everything, orange arcs tracing circular portraits into orbit.
 
 ## 1. Visual Theme & Atmosphere
 

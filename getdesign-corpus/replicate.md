@@ -1,4 +1,18 @@
+---
+slug: replicate
+name: Replicate
+url: https://replicate.com
+domain: replicate.com
+category: AI
+styles: [Colorful, Gradient, Bold]
+tagline: "Pill-shaped everything, rb-freigeist-neue at 128px, orange-magenta gradient as the brand's battle cry."
+fonts: [rb-freigeist-neue, basier-square, jetbrains-mono]
+primary_color: "#ea2804"
+---
+
 # Design System Inspired by Replicate
+
+> Pill-shaped everything, rb-freigeist-neue at 128px, orange-magenta gradient as the brand's battle cry.
 
 ## 1. Visual Theme & Atmosphere
 

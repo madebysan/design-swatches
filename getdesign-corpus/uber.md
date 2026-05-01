@@ -1,4 +1,18 @@
+---
+slug: uber
+name: Uber
+url: https://uber.com
+domain: uber.com
+category: Retail
+styles: [Mono, Minimal, Bold]
+tagline: "Jet black, pure white, pill-shaped capsules, UberMove bold at billboard scale."
+fonts: [UberMove, UberMoveText]
+primary_color: "#0000ee"
+---
+
 # Design System Inspired by Uber
+
+> Jet black, pure white, pill-shaped capsules, UberMove bold at billboard scale.
 
 ## 1. Visual Theme & Atmosphere
 

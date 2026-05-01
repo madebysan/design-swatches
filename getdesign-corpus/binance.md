@@ -1,4 +1,18 @@
+---
+slug: binance
+name: Binance.US
+url: https://binance.com
+domain: binance.com
+category: Finance
+styles: [Dark, Bold]
+tagline: "Gold ingot yellow on near-black panels, BinancePlex type sharpening every number."
+fonts: []
+primary_color: "#F0B90B"
+---
+
 # Design System Inspired by Binance.US
+
+> Gold ingot yellow on near-black panels, BinancePlex type sharpening every number.
 
 ## 1. Visual Theme & Atmosphere
 

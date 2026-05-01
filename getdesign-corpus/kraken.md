@@ -1,4 +1,18 @@
+---
+slug: kraken
+name: Kraken
+url: https://kraken.com
+domain: kraken.com
+category: Finance
+styles: [Dark, Colorful]
+tagline: "Deep Kraken Purple on white, tight negative tracking, shadows barely there."
+fonts: []
+primary_color: "#7132f5"
+---
+
 # Design System Inspired by Kraken
+
+> Deep Kraken Purple on white, tight negative tracking, shadows barely there.
 
 ## 1. Visual Theme & Atmosphere
 

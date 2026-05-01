@@ -1,4 +1,18 @@
+---
+slug: notboring
+name: Not Boring Apps
+url: https://notboring.software
+domain: notboring.software
+category: Productivity
+styles: [Tactile, Colorful, Gradient, Bold]
+tagline: "Beveled pills, gradient-saturated hues, and multi-layer shadows that make pixels feel pressable."
+fonts: [Founders Grotesk, JetBrains Mono, Arial]
+primary_color: "#0000ee"
+---
+
 # Design System Inspired by Not Boring Apps
+
+> Beveled pills, gradient-saturated hues, and multi-layer shadows that make pixels feel pressable.
 
 ## 1. Visual Theme & Atmosphere
 

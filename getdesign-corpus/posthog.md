@@ -1,4 +1,18 @@
+---
+slug: posthog
+name: PostHog
+url: https://posthog.com
+domain: posthog.com
+category: Dev Tools
+styles: [Warm, Light, Bold]
+tagline: "Sage-cream surfaces, IBM Plex at bold weight, orange that hides until you hover."
+fonts: [IBM Plex Sans Variable, ui-monospace, Source Code Pro]
+primary_color: "#F54E00"
+---
+
 # Design System Inspired by PostHog
+
+> Sage-cream surfaces, IBM Plex at bold weight, orange that hides until you hover.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: runwayml
+name: Runway
+url: https://runwayml.com
+domain: runwayml.com
+category: AI
+styles: [Dark, Minimal, Mono]
+tagline: "Full-bleed darkness, abcNormal compressed tight, the interface erased so footage breathes."
+fonts: [abcNormal]
+primary_color: "#767d88"
+---
+
 # Design System Inspired by Runway
+
+> Full-bleed darkness, abcNormal compressed tight, the interface erased so footage breathes.
 
 ## 1. Visual Theme & Atmosphere
 

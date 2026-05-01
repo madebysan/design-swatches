@@ -1,4 +1,18 @@
+---
+slug: webflow
+name: Webflow
+url: https://webflow.com
+domain: webflow.com
+category: Design
+styles: [Gradient, Colorful, Light]
+tagline: "White canvas, Webflow Blue, and a six-color accent spectrum on sharp 4px corners."
+fonts: []
+primary_color: "#146ef5"
+---
+
 # Design System Inspired by Webflow
+
+> White canvas, Webflow Blue, and a six-color accent spectrum on sharp 4px corners.
 
 ## 1. Visual Theme & Atmosphere
 

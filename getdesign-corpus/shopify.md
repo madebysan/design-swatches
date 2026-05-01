@@ -1,4 +1,18 @@
+---
+slug: shopify
+name: Shopify
+url: https://shopify.com
+domain: shopify.com
+category: Retail
+styles: [Dark, Bold, Minimal]
+tagline: "Near-black teal surfaces, NeueHaasGrotesk at 96px, neon mint as the sole electric signal."
+fonts: []
+primary_color: "#36F4A4"
+---
+
 # Design System Inspired by Shopify
+
+> Near-black teal surfaces, NeueHaasGrotesk at 96px, neon mint as the sole electric signal.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: lamborghini
+name: Lamborghini
+url: https://lamborghini.com
+domain: lamborghini.com
+category: Auto
+styles: [Dark, Bold, Mono]
+tagline: "True black voids, LamboType at 120px uppercase, gold reserved solely for the kill shot."
+fonts: [LamboType, No italic variants]
+primary_color: "#FFC000"
+---
+
 # Design System Inspired by Lamborghini
+
+> True black voids, LamboType at 120px uppercase, gold reserved solely for the kill shot.
 
 ## 1. Visual Theme & Atmosphere
 

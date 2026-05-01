@@ -1,4 +1,18 @@
+---
+slug: playstation
+name: PlayStation
+url: https://playstation.com
+domain: playstation.com
+category: Gaming
+styles: [Dark, Bold, Minimal]
+tagline: "Near-black hero, SST Light at whisper weight, cyan reserved for the moment you interact."
+fonts: [Arial, helvetica]
+primary_color: "#0070cc"
+---
+
 # Design System Inspired by PlayStation
+
+> Near-black hero, SST Light at whisper weight, cyan reserved for the moment you interact.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: fey
+name: Fey
+url: https://feyapp.com
+domain: feyapp.com
+category: Finance
+styles: [Dark, Tactile, Minimal]
+tagline: "Warm charcoal canvas, Calibre at 600, and 29 shadows doing all the color's work."
+fonts: [calibre, JetBrains Mono]
+primary_color: "#868f97"
+---
+
 # Design System Inspired by Fey
+
+> Warm charcoal canvas, Calibre at 600, and 29 shadows doing all the color's work.
 
 ## 1. Visual Theme & Atmosphere
 

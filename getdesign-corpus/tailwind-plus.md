@@ -1,4 +1,18 @@
+---
+slug: tailwind-plus
+name: Tailwind Plus
+url: https://tailwindcss.com
+domain: tailwindcss.com
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "Inter at weight 400, aggressive negative tracking, inset hairlines over shadows."
+fonts: [InterVariable, IBM Plex Mono]
+primary_color: "#0ea5e9"
+---
+
 # Design System Inspired by Tailwind Plus
+
+> Inter at weight 400, aggressive negative tracking, inset hairlines over shadows.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: readwise
+name: Readwise / Reader
+url: https://readwise.io
+domain: readwise.io
+category: Productivity
+styles: [Warm, Serif, Light, Editorial]
+tagline: "Cream canvas, Source Serif 4, amber highlights — a reading room, not an app."
+fonts: [Source Serif 4, Charter, Inter]
+primary_color: "#c19a3d"
+---
+
 # Design System Inspired by Readwise / Reader
+
+> Cream canvas, Source Serif 4, amber highlights — a reading room, not an app.
 
 ## 1. Visual Theme & Atmosphere
 

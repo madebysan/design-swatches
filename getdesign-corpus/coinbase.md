@@ -1,4 +1,18 @@
+---
+slug: coinbase
+name: Coinbase
+url: https://coinbase.com
+domain: coinbase.com
+category: Finance
+styles: [Minimal, Light]
+tagline: "Coinbase Blue on white, proprietary four-font system, pill buttons as financial confidence."
+fonts: []
+primary_color: "#0052ff"
+---
+
 # Design System Inspired by Coinbase
+
+> Coinbase Blue on white, proprietary four-font system, pill buttons as financial confidence.
 
 ## 1. Visual Theme & Atmosphere
 

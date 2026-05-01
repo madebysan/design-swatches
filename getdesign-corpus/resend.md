@@ -1,4 +1,18 @@
+---
+slug: resend
+name: Resend
+url: https://resend.com
+domain: resend.com
+category: Dev Tools
+styles: [Dark, Serif, Minimal]
+tagline: "Pure black stage, Domaine Display serif, crystalline blue-tinted borders as the only warmth."
+fonts: []
+primary_color: "#ff5900"
+---
+
 # Design System Inspired by Resend
+
+> Pure black stage, Domaine Display serif, crystalline blue-tinted borders as the only warmth.
 
 ## 1. Visual Theme & Atmosphere
 

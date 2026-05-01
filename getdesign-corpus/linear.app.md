@@ -1,4 +1,18 @@
+---
+slug: linear.app
+name: Linear
+url: https://linear.app
+domain: linear.app
+category: SaaS
+styles: [Dark, Minimal, Mono]
+tagline: "Near-black canvas, Inter at weight 510, one indigo-violet accent doing all the work."
+fonts: [Inter Variable, Berkeley Mono]
+primary_color: "#d0d6e0"
+---
+
 # Design System Inspired by Linear
+
+> Near-black canvas, Inter at weight 510, one indigo-violet accent doing all the work.
 
 ## 1. Visual Theme & Atmosphere
 

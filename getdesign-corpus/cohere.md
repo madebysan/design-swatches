@@ -1,4 +1,18 @@
+---
+slug: cohere
+name: Cohere
+url: https://cohere.com
+domain: cohere.com
+category: AI
+styles: [Gradient, Light, Minimal]
+tagline: "Serif authority and Swiss sans on white, with violet earned only by the hero."
+fonts: [CohereText, Unica77 Cohere Web, CohereMono]
+primary_color: "#1863dc"
+---
+
 # Design System Inspired by Cohere
+
+> Serif authority and Swiss sans on white, with violet earned only by the hero.
 
 ## 1. Visual Theme & Atmosphere
 

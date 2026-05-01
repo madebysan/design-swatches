@@ -1,4 +1,18 @@
+---
+slug: hashicorp
+name: HashiCorp
+url: https://hashicorp.com
+domain: hashicorp.com
+category: Dev Tools
+styles: [Dark, Minimal]
+tagline: "Dark `#15181e` canvases, HashiCorp Sans at 700, each product injecting its own chromatic token."
+fonts: []
+primary_color: "#656a76"
+---
+
 # Design System Inspired by HashiCorp
+
+> Dark `#15181e` canvases, HashiCorp Sans at 700, each product injecting its own chromatic token.
 
 ## 1. Visual Theme & Atmosphere
 

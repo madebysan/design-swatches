@@ -1,4 +1,18 @@
+---
+slug: ollama
+name: Ollama
+url: https://ollama.com
+domain: ollama.com
+category: AI
+styles: [Warm, Light, Minimal]
+tagline: "Grayscale void softened by SF Pro Rounded and pill-shaped everything."
+fonts: [SF Pro Rounded, ui-sans-serif, ui-monospace]
+primary_color: "#3b82f6"
+---
+
 # Design System Inspired by Ollama
+
+> Grayscale void softened by SF Pro Rounded and pill-shaped everything.
 
 ## 1. Visual Theme & Atmosphere
 

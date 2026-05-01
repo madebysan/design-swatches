@@ -1,4 +1,18 @@
+---
+slug: bmw
+name: BMW
+url: https://bmw.com
+domain: bmw.com
+category: Auto
+styles: [Dark, Minimal, Bold]
+tagline: "Sharp-cornered geometry, BMWTypeNextLatin Light at 300 weight, BMW Blue held for interaction alone."
+fonts: []
+primary_color: "#1c69d4"
+---
+
 # Design System Inspired by BMW
+
+> Sharp-cornered geometry, BMWTypeNextLatin Light at 300 weight, BMW Blue held for interaction alone.
 
 ## 1. Visual Theme & Atmosphere
 

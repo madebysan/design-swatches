@@ -1,4 +1,18 @@
+---
+slug: apple
+name: Apple
+url: https://apple.com
+domain: apple.com
+category: Retail
+styles: [Minimal, Light, Mono]
+tagline: "SF Pro optically sized, #f5f5f7 and black alternating, one blue for every click."
+fonts: [SF Pro Display, SF Pro Text]
+primary_color: "#0071e3"
+---
+
 # Design System Inspired by Apple
+
+> SF Pro optically sized, #f5f5f7 and black alternating, one blue for every click.
 
 ## 1. Visual Theme & Atmosphere
 

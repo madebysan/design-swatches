@@ -1,4 +1,18 @@
+---
+slug: tremor
+name: Tremor
+url: https://tremor.so
+domain: tremor.so
+category: Design System
+styles: [Light, Minimal, Colorful]
+tagline: "Shadow-free borders, Geist 700, mint teal reserved strictly for data series."
+fonts: [Geist, ui-monospace]
+primary_color: "#9cd2bb"
+---
+
 # Design System Inspired by Tremor
+
+> Shadow-free borders, Geist 700, mint teal reserved strictly for data series.
 
 ## 1. Visual Theme & Atmosphere
 

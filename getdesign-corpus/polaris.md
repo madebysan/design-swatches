@@ -1,4 +1,18 @@
+---
+slug: polaris
+name: Polaris
+url: https://polaris.shopify.com
+domain: polaris.shopify.com
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "Warm near-black on white, Inter at brutal tracking, commerce chrome stripped to its skeleton."
+fonts: [Inter, Shopify Sans, Mono Sans]
+primary_color: "#004c3f"
+---
+
 # Design System Inspired by Polaris
+
+> Warm near-black on white, Inter at brutal tracking, commerce chrome stripped to its skeleton.
 
 ## 1. Visual Theme & Atmosphere
 

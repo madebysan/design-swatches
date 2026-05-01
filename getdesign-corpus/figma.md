@@ -1,4 +1,18 @@
+---
+slug: figma
+name: Figma
+url: https://figma.com
+domain: figma.com
+category: Design
+styles: [Colorful, Light, Gradient]
+tagline: "Monochrome chrome, figmaSans at razor-thin 320, with gradient chaos reserved for the canvas."
+fonts: [figmaSans, figmaMono]
+primary_color: "#000000"
+---
+
 # Design System Inspired by Figma
+
+> Monochrome chrome, figmaSans at razor-thin 320, with gradient chaos reserved for the canvas.
 
 ## 1. Visual Theme & Atmosphere
 

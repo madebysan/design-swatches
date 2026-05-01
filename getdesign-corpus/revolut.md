@@ -1,4 +1,18 @@
+---
+slug: revolut
+name: Revolut
+url: https://revolut.com
+domain: revolut.com
+category: Finance
+styles: [Dark, Minimal, Bold]
+tagline: "Billboard-scale Aeonik Pro, near-black and white, pill buttons with zero shadows."
+fonts: []
+primary_color: "#494fdf"
+---
+
 # Design System Inspired by Revolut
+
+> Billboard-scale Aeonik Pro, near-black and white, pill buttons with zero shadows.
 
 ## 1. Visual Theme & Atmosphere
 

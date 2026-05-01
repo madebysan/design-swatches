@@ -1,4 +1,18 @@
+---
+slug: wise
+name: Wise
+url: https://wise.com
+domain: wise.com
+category: Finance
+styles: [Bold, Light, Minimal]
+tagline: "Lime-bright #9fe870 on warm off-white, Wise Sans 900 at billboard scale, no shadows needed."
+fonts: []
+primary_color: "#9fe870"
+---
+
 # Design System Inspired by Wise
+
+> Lime-bright #9fe870 on warm off-white, Wise Sans 900 at billboard scale, no shadows needed.
 
 ## 1. Visual Theme & Atmosphere
 

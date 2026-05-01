@@ -1,4 +1,18 @@
+---
+slug: composio
+name: Composio
+url: https://composio.dev
+domain: composio.dev
+category: Dev Tools
+styles: [Dark, Minimal]
+tagline: "Pitch-black canvas, JetBrains Mono, cyan glows rationed like voltage."
+fonts: [abcDiatype, JetBrains Mono, Menlo]
+primary_color: "#0007cd"
+---
+
 # Design System Inspired by Composio
+
+> Pitch-black canvas, JetBrains Mono, cyan glows rationed like voltage.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: intercom
+name: Intercom
+url: https://intercom.com
+domain: intercom.com
+category: SaaS
+styles: [Warm, Light]
+tagline: "Warm cream canvas, Fin Orange, and near-rectangular buttons built on compressed Saans geometry."
+fonts: []
+primary_color: "#ff5600"
+---
+
 # Design System Inspired by Intercom
+
+> Warm cream canvas, Fin Orange, and near-rectangular buttons built on compressed Saans geometry.
 
 ## 1. Visual Theme & Atmosphere
 

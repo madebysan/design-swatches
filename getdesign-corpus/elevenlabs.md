@@ -1,4 +1,18 @@
+---
+slug: elevenlabs
+name: ElevenLabs
+url: https://elevenlabs.io
+domain: elevenlabs.io
+category: AI
+styles: [Dark, Minimal]
+tagline: "Waldenburg at weight 300, warm-tinted shadows, surfaces that barely exist."
+fonts: []
+primary_color: "#7fffff"
+---
+
 # Design System Inspired by ElevenLabs
+
+> Waldenburg at weight 300, warm-tinted shadows, surfaces that barely exist.
 
 ## 1. Visual Theme & Atmosphere
 

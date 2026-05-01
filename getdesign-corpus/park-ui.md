@@ -1,4 +1,18 @@
+---
+slug: park-ui
+name: Park UI
+url: https://park-ui.com
+domain: park-ui.com
+category: Design System
+styles: [Light, Minimal]
+tagline: "Outfit 700, 4px radii, and 595 token variables doing the color work for you."
+fonts: [Outfit, ui-monospace]
+primary_color: "#29a383"
+---
+
 # Design System Inspired by Park UI
+
+> Outfit 700, 4px radii, and 595 token variables doing the color work for you.
 
 ## 1. Visual Theme & Atmosphere
 

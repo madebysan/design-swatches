@@ -1,4 +1,18 @@
+---
+slug: cape
+name: Cape
+url: https://cape.co
+domain: cape.co
+category: Productivity
+styles: [Minimal, Light, Warm]
+tagline: "Warm off-white canvas, FK Grotesk at 300 weight, hard offset shadows as the only ornament."
+fonts: [FK Grotesk]
+primary_color: "#9891e1"
+---
+
 # Design System Inspired by Cape
+
+> Warm off-white canvas, FK Grotesk at 300 weight, hard offset shadows as the only ornament.
 
 ## 1. Visual Theme & Atmosphere
 

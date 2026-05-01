@@ -1,4 +1,18 @@
+---
+slug: fluent
+name: Microsoft Fluent 2
+url: https://fluent2.microsoft.design
+domain: fluent2.microsoft.design
+category: Design System
+styles: [Gradient, Light, Minimal]
+tagline: "Acrylic blur and Communication Blue on a cool-gray token grid, depth as structure."
+fonts: [Segoe UI Variable, Fluent 2 ships]
+primary_color: "#0078D4"
+---
+
 # Design System Inspired by Microsoft Fluent 2
+
+> Acrylic blur and Communication Blue on a cool-gray token grid, depth as structure.
 
 ## 1. Visual Theme & Atmosphere
 

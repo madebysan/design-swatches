@@ -1,4 +1,18 @@
+---
+slug: minimax
+name: MiniMax
+url: https://minimax.io
+domain: minimax.io
+category: AI
+styles: [Dark, Gradient, Colorful]
+tagline: "White canvas punctuated by pink-to-purple gradient cards, pill buttons rounding every edge."
+fonts: []
+primary_color: "#1456f0"
+---
+
 # Design System Inspired by MiniMax
+
+> White canvas punctuated by pink-to-purple gradient cards, pill buttons rounding every edge.
 
 ## 1. Visual Theme & Atmosphere
 

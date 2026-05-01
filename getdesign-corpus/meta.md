@@ -1,4 +1,18 @@
+---
+slug: meta
+name: Meta (Store)
+url: https://about.meta.com
+domain: about.meta.com
+category: Enterprise
+styles: [Light, Minimal]
+tagline: "Gallery-white canvas, Optimistic type, pill CTAs in saturated blue selling hardware like museum pieces."
+fonts: []
+primary_color: "#0064E0"
+---
+
 # Design System Inspired by Meta (Store)
+
+> Gallery-white canvas, Optimistic type, pill CTAs in saturated blue selling hardware like museum pieces.
 
 ## 1. Visual Theme & Atmosphere
 

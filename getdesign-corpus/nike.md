@@ -1,4 +1,18 @@
+---
+slug: nike
+name: Nike
+url: https://nike.com
+domain: nike.com
+category: Retail
+styles: [Bold, Mono, Minimal]
+tagline: "Monochromatic black and white shell, Nike Futura ND uppercase at 0.90 line-height, product as the only color."
+fonts: []
+primary_color: "#D30005"
+---
+
 # Design System Inspired by Nike
+
+> Monochromatic black and white shell, Nike Futura ND uppercase at 0.90 line-height, product as the only color.
 
 ## 1. Visual Theme & Atmosphere
 

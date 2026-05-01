@@ -1,4 +1,18 @@
+---
+slug: arc
+name: Arc Browser
+url: https://arc.net
+domain: arc.net
+category: Browser
+styles: [Colorful, Gradient, Warm, Light]
+tagline: "Butter cream canvas shocked awake by electric ultramarine, frosted glass as browser philosophy."
+fonts: [Marlin Soft SQ, InterVariable, ABC Oracle]
+primary_color: "#3139fb"
+---
+
 # Design System Inspired by Arc Browser
+
+> Butter cream canvas shocked awake by electric ultramarine, frosted glass as browser philosophy.
 
 ## 1. Visual Theme & Atmosphere
 

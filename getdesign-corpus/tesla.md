@@ -1,4 +1,18 @@
+---
+slug: tesla
+name: Tesla
+url: https://tesla.com
+domain: tesla.com
+category: Auto
+styles: [Minimal, Light, Mono]
+tagline: "Full-viewport photography on pure white or black, Universal Sans, one blue reserved for action alone."
+fonts: [Universal Sans Display, Universal Sans Text, No italic variants]
+primary_color: "#3E6AE1"
+---
+
 # Design System Inspired by Tesla
+
+> Full-viewport photography on pure white or black, Universal Sans, one blue reserved for action alone.
 
 ## 1. Visual Theme & Atmosphere
 

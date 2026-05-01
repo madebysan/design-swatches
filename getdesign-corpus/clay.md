@@ -1,4 +1,18 @@
+---
+slug: clay
+name: Clay
+url: https://clay.earth
+domain: clay.earth
+category: SaaS
+styles: [Warm, Light, Minimal]
+tagline: "Warm cream canvas, juice-bar swatches, and Roobert tilting at hover like it means it."
+fonts: []
+primary_color: "#84e7a5"
+---
+
 # Design System Inspired by Clay
+
+> Warm cream canvas, juice-bar swatches, and Roobert tilting at hover like it means it.
 
 ## 1. Visual Theme & Atmosphere
 

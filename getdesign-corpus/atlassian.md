@@ -1,4 +1,18 @@
+---
+slug: atlassian
+name: Atlassian Design System
+url: https://atlassian.design
+domain: atlassian.design
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "Atlassian Sans at weight 653, electric blue tokens, enterprise scale without visual noise."
+fonts: [Atlassian Sans, Charlie Display, Atlassian Mono]
+primary_color: "#1868db"
+---
+
 # Design System Inspired by Atlassian Design System
+
+> Atlassian Sans at weight 653, electric blue tokens, enterprise scale without visual noise.
 
 ## 1. Visual Theme & Atmosphere
 

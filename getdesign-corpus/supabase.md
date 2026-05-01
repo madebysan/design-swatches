@@ -1,4 +1,18 @@
+---
+slug: supabase
+name: Supabase
+url: https://supabase.com
+domain: supabase.com
+category: Dev Tools
+styles: [Dark, Minimal, Mono]
+tagline: "Near-black surfaces, emerald green used once to mean everything, Circular softening the terminal edge."
+fonts: []
+primary_color: "#3ecf8e"
+---
+
 # Design System Inspired by Supabase
+
+> Near-black surfaces, emerald green used once to mean everything, Circular softening the terminal edge.
 
 ## 1. Visual Theme & Atmosphere
 

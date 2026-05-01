@@ -1,4 +1,18 @@
+---
+slug: raycast
+name: Raycast
+url: https://raycast.com
+domain: raycast.com
+category: Productivity
+styles: [Dark, Minimal, Tactile]
+tagline: "Obsidian surfaces, Inter at 0.2px tracking, red that punctuates rather than dominates."
+fonts: [Inter, SF Pro Text, GeistMono]
+primary_color: "#FF6363"
+---
+
 # Design System Inspired by Raycast
+
+> Obsidian surfaces, Inter at 0.2px tracking, red that punctuates rather than dominates.
 
 ## 1. Visual Theme & Atmosphere
 

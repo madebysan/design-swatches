@@ -1,4 +1,18 @@
+---
+slug: ivory
+name: Ivory (Tapbots)
+url: https://tapbots.com
+domain: tapbots.com
+category: Productivity
+styles: [Tactile, Dark, Warm]
+tagline: "Warm off-black canvas, pill-gradient buttons with inset highlights, SF Pro as the only type."
+fonts: [-apple-system, No web fonts]
+primary_color: "#FF4D4D"
+---
+
 # Design System Inspired by Ivory (Tapbots)
+
+> Warm off-black canvas, pill-gradient buttons with inset highlights, SF Pro as the only type.
 
 ## 1. Visual Theme & Atmosphere
 

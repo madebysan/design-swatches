@@ -1,4 +1,18 @@
+---
+slug: material-3
+name: Material Design 3
+url: https://m3.material.io
+domain: m3.material.io
+category: Design System
+styles: [Light, Colorful, Tactile]
+tagline: "Tonal purple surfaces, Google Sans 475, and 24px rounds on everything tactile."
+fonts: [Google Sans, Google Sans Text, Google Symbols]
+primary_color: "#6442d6"
+---
+
 # Design System Inspired by Material Design 3
+
+> Tonal purple surfaces, Google Sans 475, and 24px rounds on everything tactile.
 
 ## 1. Visual Theme & Atmosphere
 

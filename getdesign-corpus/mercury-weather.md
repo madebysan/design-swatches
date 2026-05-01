@@ -1,3 +1,15 @@
+---
+slug: mercury-weather
+name: Mercury Weather
+url: https://mercuryweather.com
+domain: mercuryweather.com
+category: Productivity
+styles: [Gradient, Colorful, Tactile]
+tagline: "Coral-to-navy painterly gradients, skeuomorphic dials, SF Pro thin numerals floating in atmosphere."
+fonts: []
+primary_color: "#FFB07A"
+---
+
 # Mercury Weather — Design System
 
 > Painterly skies, dimensional dials, the weather as a felt atmosphere. Mercury Weather treats a forecast like a window — something you look through, not at — and builds its entire visual language around that single conceit.

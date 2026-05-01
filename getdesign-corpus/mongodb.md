@@ -1,4 +1,18 @@
+---
+slug: mongodb
+name: MongoDB
+url: https://mongodb.com
+domain: mongodb.com
+category: Dev Tools
+styles: [Light, Minimal, Bold]
+tagline: "Forest-dark teal canvas, neon green pulse, Value Serif at database scale."
+fonts: []
+primary_color: "#001e2b"
+---
+
 # Design System Inspired by MongoDB
+
+> Forest-dark teal canvas, neon green pulse, Value Serif at database scale.
 
 ## 1. Visual Theme & Atmosphere
 

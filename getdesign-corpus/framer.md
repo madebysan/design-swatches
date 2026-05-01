@@ -1,4 +1,18 @@
+---
+slug: framer
+name: Framer
+url: https://framer.com
+domain: framer.com
+category: Design
+styles: [Dark, Gradient, Colorful, Bold]
+tagline: "Pure black void, GT Walsheim compressed to the edge, Framer Blue as the only light."
+fonts: [GT Walsheim Framer Medium, Inter Variable, Mona Sans]
+primary_color: "#0099ff"
+---
+
 # Design System Inspired by Framer
+
+> Pure black void, GT Walsheim compressed to the edge, Framer Blue as the only light.
 
 ## 1. Visual Theme & Atmosphere
 

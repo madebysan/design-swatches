@@ -1,4 +1,18 @@
+---
+slug: wired
+name: WIRED
+url: https://wired.com
+domain: wired.com
+category: Media
+styles: [Serif, Bold, Editorial, Light]
+tagline: "Broadsheet grid in pure grayscale, mono-caps kickers, and one ink-blue accent."
+fonts: [helvetica, Inter, Monaco]
+primary_color: "#057dbc"
+---
+
 # Design System Inspired by WIRED
+
+> Broadsheet grid in pure grayscale, mono-caps kickers, and one ink-blue accent.
 
 ## 1. Visual Theme & Atmosphere
 

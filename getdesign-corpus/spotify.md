@@ -1,4 +1,18 @@
+---
+slug: spotify
+name: Spotify
+url: https://spotify.com
+domain: spotify.com
+category: Media
+styles: [Dark, Minimal]
+tagline: "Near-black canvas, CircularSp bold, green reserved for the moment you press play."
+fonts: []
+primary_color: "#1ed760"
+---
+
 # Design System Inspired by Spotify
+
+> Near-black canvas, CircularSp bold, green reserved for the moment you press play.
 
 ## 1. Visual Theme & Atmosphere
 

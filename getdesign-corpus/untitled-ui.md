@@ -1,4 +1,18 @@
+---
+slug: untitled-ui
+name: Untitled UI
+url: https://untitledui.com
+domain: untitledui.com
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "White canvas, Inter 600, and a purple CTA scale tuned to one-pixel radius precision."
+fonts: [Inter, ui-monospace]
+primary_color: "#f4ebff"
+---
+
 # Design System Inspired by Untitled UI
+
+> White canvas, Inter 600, and a purple CTA scale tuned to one-pixel radius precision.
 
 ## 1. Visual Theme & Atmosphere
 

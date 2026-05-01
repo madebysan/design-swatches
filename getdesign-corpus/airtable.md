@@ -1,4 +1,18 @@
+---
+slug: airtable
+name: Airtable
+url: https://airtable.com
+domain: airtable.com
+category: SaaS
+styles: [Light, Minimal]
+tagline: "White canvas, Haas dual-weight swiss precision, and blue-tinted shadows doing the structural work."
+fonts: []
+primary_color: "#1b61c9"
+---
+
 # Design System Inspired by Airtable
+
+> White canvas, Haas dual-weight swiss precision, and blue-tinted shadows doing the structural work.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: spacex
+name: SpaceX
+url: https://spacex.com
+domain: spacex.com
+category: Enterprise
+styles: [Dark, Mono, Minimal, Bold]
+tagline: "Cinematic void in pure black, D-DIN uppercase, type stenciled onto spacecraft imagery."
+fonts: []
+primary_color: "#000000"
+---
+
 # Design System Inspired by SpaceX
+
+> Cinematic void in pure black, D-DIN uppercase, type stenciled onto spacecraft imagery.
 
 ## 1. Visual Theme & Atmosphere
 

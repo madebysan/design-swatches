@@ -1,4 +1,18 @@
+---
+slug: a24films
+name: A24
+url: https://a24films.com
+domain: a24films.com
+category: Media
+styles: [Dark, Mono, Editorial, Bold]
+tagline: "Monochrome brutalism in NB International, tight tracking where chrome would be."
+fonts: [NB International Web]
+primary_color: "#1883fd"
+---
+
 # Design System Inspired by A24
+
+> Monochrome brutalism in NB International, tight tracking where chrome would be.
 
 ## 1. Visual Theme & Atmosphere
 

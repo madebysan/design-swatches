@@ -1,4 +1,18 @@
+---
+slug: clickhouse
+name: ClickHouse
+url: https://clickhouse.com
+domain: clickhouse.com
+category: Dev Tools
+styles: [Dark, Bold, Colorful]
+tagline: "Obsidian black, neon #faff69, Inter 900 — raw speed made brutally visible."
+fonts: [Inter, Basier, Inconsolata]
+primary_color: "#faff69"
+---
+
 # Design System Inspired by ClickHouse
+
+> Obsidian black, neon #faff69, Inter 900 — raw speed made brutally visible.
 
 ## 1. Visual Theme & Atmosphere
 

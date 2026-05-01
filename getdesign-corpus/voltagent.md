@@ -1,4 +1,18 @@
+---
+slug: voltagent
+name: VoltAgent
+url: https://voltagent.dev
+domain: voltagent.dev
+category: AI
+styles: [Dark, Minimal, Colorful]
+tagline: "Carbon-black canvas, emerald glow borders, code blocks as the hero content."
+fonts: [system-ui, Inter, SFMono-Regular]
+primary_color: "#00d992"
+---
+
 # Design System Inspired by VoltAgent
+
+> Carbon-black canvas, emerald glow borders, code blocks as the hero content.
 
 ## 1. Visual Theme & Atmosphere
 

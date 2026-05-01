@@ -1,4 +1,18 @@
+---
+slug: expo
+name: Expo
+url: https://expo.dev
+domain: expo.dev
+category: Dev Tools
+styles: [Minimal, Light]
+tagline: "Cool-white canvas, Inter at 900 weight, pill geometry where sharp edges once lived."
+fonts: [Inter, JetBrains Mono]
+primary_color: "#0d74ce"
+---
+
 # Design System Inspired by Expo
+
+> Cool-white canvas, Inter at 900 weight, pill geometry where sharp edges once lived.
 
 ## 1. Visual Theme & Atmosphere
 

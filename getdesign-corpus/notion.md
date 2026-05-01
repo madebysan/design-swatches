@@ -1,4 +1,18 @@
+---
+slug: notion
+name: Notion
+url: https://notion.so
+domain: notion.so
+category: SaaS
+styles: [Minimal, Light, Warm]
+tagline: "Warm-toned neutrals and compressed NotionInter, depth felt through sub-0.05 shadows."
+fonts: [NotionInter]
+primary_color: "#000000f2"
+---
+
 # Design System Inspired by Notion
+
+> Warm-toned neutrals and compressed NotionInter, depth felt through sub-0.05 shadows.
 
 ## 1. Visual Theme & Atmosphere
 

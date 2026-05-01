@@ -1,4 +1,18 @@
+---
+slug: airbnb
+name: Airbnb
+url: https://airbnb.com
+domain: airbnb.com
+category: Retail
+styles: [Warm, Light, Bold]
+tagline: "Rausch coral on white canvas, full-bleed 4:3 photography doing all the selling."
+fonts: [Circular]
+primary_color: "#ff385c"
+---
+
 # Design System Inspired by Airbnb
+
+> Rausch coral on white canvas, full-bleed 4:3 photography doing all the selling.
 
 ## 1. Visual Theme & Atmosphere
 

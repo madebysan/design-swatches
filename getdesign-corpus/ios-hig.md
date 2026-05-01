@@ -1,4 +1,18 @@
+---
+slug: ios-hig
+name: iOS Human Interface Guidelines
+url: https://developer.apple.com
+domain: developer.apple.com
+category: Design System
+styles: [Light, Minimal, Tactile]
+tagline: "SF Pro, System Blue, and 18px corners — restraint rendered as a living OS reference."
+fonts: [SF Pro Display, SF Pro Text, SF Pro Rounded]
+primary_color: "#0071e3"
+---
+
 # Design System Inspired by iOS Human Interface Guidelines
+
+> SF Pro, System Blue, and 18px corners — restraint rendered as a living OS reference.
 
 ## 1. Visual Theme & Atmosphere
 

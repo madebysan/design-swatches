@@ -1,4 +1,18 @@
+---
+slug: miro
+name: Miro
+url: https://miro.com
+domain: miro.com
+category: SaaS
+styles: [Colorful, Light, Bold]
+tagline: "Roobert PRO on white canvas, pastel-coded contexts, rounded corners doing the collaboration work."
+fonts: []
+primary_color: "#5b76fe"
+---
+
 # Design System Inspired by Miro
+
+> Roobert PRO on white canvas, pastel-coded contexts, rounded corners doing the collaboration work.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: aceternity
+name: Aceternity UI
+url: https://ui.aceternity.com
+domain: ui.aceternity.com
+category: Design System
+styles: [Dark, Gradient, Bold]
+tagline: "Zinc-950 canvas, violet-to-pink gradients, every component a framer-motion showcase."
+fonts: [Inter, ui-monospace]
+primary_color: "#8b5cf6"
+---
+
 # Design System Inspired by Aceternity UI
+
+> Zinc-950 canvas, violet-to-pink gradients, every component a framer-motion showcase.
 
 ## 1. Visual Theme & Atmosphere
 

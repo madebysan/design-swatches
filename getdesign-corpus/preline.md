@@ -1,4 +1,18 @@
+---
+slug: preline
+name: Preline
+url: https://preline.co
+domain: preline.co
+category: Design System
+styles: [Light, Minimal, Bold]
+tagline: "White canvas, Inter 700, blue-500 accent — Tailwind's SaaS idiom at industrial scale."
+fonts: [ui-sans-serif, Kode Mono, Domine]
+primary_color: "#3b82f6"
+---
+
 # Design System Inspired by Preline
+
+> White canvas, Inter 700, blue-500 accent — Tailwind's SaaS idiom at industrial scale.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: pinterest
+name: Pinterest
+url: https://pinterest.com
+domain: pinterest.com
+category: Retail
+styles: [Warm, Light, Colorful]
+tagline: "Sand-toned neutrals and Pinterest Red, rounded corners framing photography as the entire interface."
+fonts: [Pin Sans]
+primary_color: "#e60023"
+---
+
 # Design System Inspired by Pinterest
+
+> Sand-toned neutrals and Pinterest Red, rounded corners framing photography as the entire interface.
 
 ## 1. Visual Theme & Atmosphere
 

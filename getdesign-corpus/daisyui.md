@@ -1,4 +1,18 @@
+---
+slug: daisyui
+name: DaisyUI
+url: https://daisyui.com
+domain: daisyui.com
+category: Design System
+styles: [Colorful, Light, Playful]
+tagline: "Outfit 900, full-pill radii, 36 OKLCH themes swapped by a single attribute."
+fonts: [Outfit, ui-monospace, ui-sans-serif]
+primary_color: "#661ae6"
+---
+
 # Design System Inspired by DaisyUI
+
+> Outfit 900, full-pill radii, 36 OKLCH themes swapped by a single attribute.
 
 ## 1. Visual Theme & Atmosphere
 

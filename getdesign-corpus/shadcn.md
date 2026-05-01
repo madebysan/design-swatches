@@ -1,4 +1,18 @@
+---
+slug: shadcn
+name: shadcn/ui
+url: https://ui.shadcn.com
+domain: ui.shadcn.com
+category: Design System
+styles: [Light, Minimal, Mono]
+tagline: "Geist Mono, hairline borders, -2.4px tracking — monochrome as the whole system."
+fonts: [Geist, Geist Mono, Variable font]
+primary_color: "#ef4444"
+---
+
 # Design System Inspired by shadcn/ui
+
+> Geist Mono, hairline borders, -2.4px tracking — monochrome as the whole system.
 
 ## 1. Visual Theme & Atmosphere
 

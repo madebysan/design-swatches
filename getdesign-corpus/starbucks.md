@@ -1,4 +1,18 @@
+---
+slug: starbucks
+name: Starbucks
+url: https://starbucks.com
+domain: starbucks.com
+category: Retail
+styles: [Warm, Light, Minimal]
+tagline: "Warm cream canvas, four-tier greens, SoDoSans tight-spaced as a storefront apron."
+fonts: [SoDoSans, Lander Tall, Kalam]
+primary_color: "#006241"
+---
+
 # Design System Inspired by Starbucks
+
+> Warm cream canvas, four-tier greens, SoDoSans tight-spaced as a storefront apron.
 
 ## 1. Visual Theme & Atmosphere
 

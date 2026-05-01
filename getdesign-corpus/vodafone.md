@@ -1,4 +1,18 @@
+---
+slug: vodafone
+name: Vodafone
+url: https://vodafone.com
+domain: vodafone.com
+category: Enterprise
+styles: [Bold, Light, Colorful]
+tagline: "Vodafone red as the sole accent, 800-weight uppercase display, hierarchy without a shadow in sight."
+fonts: [Vodafone, icomoon, font-smoothing: antialiased]
+primary_color: "#e60000"
+---
+
 # Design System Inspired by Vodafone
+
+> Vodafone red as the sole accent, 800-weight uppercase display, hierarchy without a shadow in sight.
 
 ## 1. Visual Theme & Atmosphere
 

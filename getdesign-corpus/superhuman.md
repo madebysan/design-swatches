@@ -1,4 +1,18 @@
+---
+slug: superhuman
+name: Superhuman
+url: https://superhuman.com
+domain: superhuman.com
+category: Productivity
+styles: [Dark, Minimal, Gradient]
+tagline: "Twilight purple hero, Super Sans VF compressed to 0.96, cream CTAs as quiet confidence."
+fonts: [Super Sans VF, Messina Sans]
+primary_color: "#1b1938"
+---
+
 # Design System Inspired by Superhuman
+
+> Twilight purple hero, Super Sans VF compressed to 0.96, cream CTAs as quiet confidence.
 
 ## 1. Visual Theme & Atmosphere
 

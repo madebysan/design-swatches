@@ -1,4 +1,18 @@
+---
+slug: sanity
+name: Sanity
+url: https://sanity.io
+domain: sanity.io
+category: Dev Tools
+styles: [Dark, Bold, Colorful]
+tagline: "Near-black canvas, waldenburg compressed tight, neon green splitting the achromatic dark."
+fonts: [waldenburgNormal, IBM Plex Mono]
+primary_color: "#f36458"
+---
+
 # Design System Inspired by Sanity
+
+> Near-black canvas, waldenburg compressed tight, neon green splitting the achromatic dark.
 
 ## 1. Visual Theme & Atmosphere
 

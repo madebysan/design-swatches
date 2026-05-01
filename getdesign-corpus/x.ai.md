@@ -1,4 +1,18 @@
+---
+slug: x.ai
+name: xAI
+url: https://x.ai
+domain: x.ai
+category: AI
+styles: [Dark, Mono, Minimal]
+tagline: "GeistMono at 320px on near-black, monospace as infrastructure, ornament as failure."
+fonts: [GeistMono, universalSans]
+primary_color: "#ffffff"
+---
+
 # Design System Inspired by xAI
+
+> GeistMono at 320px on near-black, monospace as infrastructure, ornament as failure.
 
 ## 1. Visual Theme & Atmosphere
 

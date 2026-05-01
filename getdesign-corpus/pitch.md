@@ -1,4 +1,18 @@
+---
+slug: pitch
+name: Pitch
+url: https://pitch.com
+domain: pitch.com
+category: SaaS
+styles: [Gradient, Dark, Colorful]
+tagline: "Lavender gradient mesh, glassmorphic panels, Mark Pro at 800 weight — the deck as the OS."
+fonts: []
+primary_color: "#6b53ff"
+---
+
 # Design System Inspired by Pitch
+
+> Lavender gradient mesh, glassmorphic panels, Mark Pro at 800 weight — the deck as the OS.
 
 ## 1. Visual Theme & Atmosphere
 

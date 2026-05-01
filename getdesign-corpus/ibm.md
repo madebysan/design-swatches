@@ -1,4 +1,18 @@
+---
+slug: ibm
+name: IBM
+url: https://ibm.com
+domain: ibm.com
+category: Enterprise
+styles: [Minimal, Light, Bold]
+tagline: "Carbon grid rigidity, Plex Sans Light, flat Gray 10 cards, zero border-radius."
+fonts: [IBM Plex Sans, IBM Plex Mono, IBM Plex Serif]
+primary_color: "#0f62fe"
+---
+
 # Design System Inspired by IBM
+
+> Carbon grid rigidity, Plex Sans Light, flat Gray 10 cards, zero border-radius.
 
 ## 1. Visual Theme & Atmosphere
 

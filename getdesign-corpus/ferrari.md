@@ -1,4 +1,18 @@
+---
+slug: ferrari
+name: Ferrari
+url: https://ferrari.com
+domain: ferrari.com
+category: Auto
+styles: [Dark, Bold, Colorful]
+tagline: "Chiaroscuro black panels, FerrariSans tight-set, red held back until it commands."
+fonts: [FerrariSans, Body-Font]
+primary_color: "#DA291C"
+---
+
 # Design System Inspired by Ferrari
+
+> Chiaroscuro black panels, FerrariSans tight-set, red held back until it commands.
 
 ## 1. Visual Theme & Atmosphere
 

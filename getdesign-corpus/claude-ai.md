@@ -1,4 +1,18 @@
+---
+slug: claude-ai
+name: Claude (Anthropic)
+url: https://claude.ai
+domain: claude.ai
+category: AI
+styles: [Warm, Serif, Light, Tactile]
+tagline: "Parchment canvas, Anthropic Serif, warm-toned grays — analog intellect rendered digital."
+fonts: [Anthropic Serif, Anthropic Sans, Anthropic Mono]
+primary_color: "#c96442"
+---
+
 # Design System Inspired by Claude (Anthropic)
+
+> Parchment canvas, Anthropic Serif, warm-toned grays — analog intellect rendered digital.
 
 ## 1. Visual Theme & Atmosphere
 

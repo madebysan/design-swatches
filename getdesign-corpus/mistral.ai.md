@@ -1,4 +1,18 @@
+---
+slug: mistral.ai
+name: Mistral AI
+url: https://mistral.ai
+domain: mistral.ai
+category: AI
+styles: [Light, Minimal, Colorful]
+tagline: "Amber-to-burnt-orange gradient, 82px display type, warm shadows where cool grays would be."
+fonts: [Arial]
+primary_color: "#fa520f"
+---
+
 # Design System Inspired by Mistral AI
+
+> Amber-to-burnt-orange gradient, 82px display type, warm shadows where cool grays would be.
 
 ## 1. Visual Theme & Atmosphere
 

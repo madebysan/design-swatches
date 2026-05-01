@@ -1,4 +1,18 @@
+---
+slug: together.ai
+name: Together AI
+url: https://together.ai
+domain: together.ai
+category: AI
+styles: [Gradient, Colorful, Light]
+tagline: "Pastel-gradient canvas meets midnight blue depth, 'The Future' font doing the heavy lifting."
+fonts: [The Future, PP Neue Montreal Mono]
+primary_color: "#ef2cc1"
+---
+
 # Design System Inspired by Together AI
+
+> Pastel-gradient canvas meets midnight blue depth, "The Future" font doing the heavy lifting.
 
 ## 1. Visual Theme & Atmosphere
 

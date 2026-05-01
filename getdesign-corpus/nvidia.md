@@ -1,4 +1,18 @@
+---
+slug: nvidia
+name: NVIDIA
+url: https://nvidia.com
+domain: nvidia.com
+category: Enterprise
+styles: [Dark, Bold, Colorful]
+tagline: "Electric lime `#76b900` on pure black, sharp corners, green as signal not surface."
+fonts: [NVIDIA-EMEA, Font Awesome 6 Pro, Font Awesome 6 Sharp]
+primary_color: "#76b900"
+---
+
 # Design System Inspired by NVIDIA
+
+> Electric lime `#76b900` on pure black, sharp corners, green as signal not surface.
 
 ## 1. Visual Theme & Atmosphere
 

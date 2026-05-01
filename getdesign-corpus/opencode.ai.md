@@ -1,4 +1,18 @@
+---
+slug: opencode.ai
+name: OpenCode
+url: https://opencode.ai
+domain: opencode.ai
+category: Dev Tools
+styles: [Dark, Minimal, Mono]
+tagline: "Berkeley Mono wall-to-wall on warm near-black, sharp 4px corners, terminal as the only aesthetic."
+fonts: [Berkeley Mono]
+primary_color: "#007aff"
+---
+
 # Design System Inspired by OpenCode
+
+> Berkeley Mono wall-to-wall on warm near-black, sharp 4px corners, terminal as the only aesthetic.
 
 ## 1. Visual Theme & Atmosphere
 

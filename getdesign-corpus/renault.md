@@ -1,4 +1,18 @@
+---
+slug: renault
+name: Renault
+url: https://renault.com
+domain: renault.com
+category: Auto
+styles: [Dark, Bold, Minimal]
+tagline: "NouvelR bold on black, Renault Yellow as a single signal, zero-radius precision."
+fonts: [sans-serif, No secondary typeface]
+primary_color: "#EFDF00"
+---
+
 # Design System Inspired by Renault
+
+> NouvelR bold on black, Renault Yellow as a single signal, zero-radius precision.
 
 ## 1. Visual Theme & Atmosphere
 

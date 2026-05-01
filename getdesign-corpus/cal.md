@@ -1,4 +1,18 @@
+---
+slug: cal
+name: Cal.com
+url: https://cal.com
+domain: cal.com
+category: SaaS
+styles: [Minimal, Mono, Light]
+tagline: "Grayscale confidence on white canvas, Cal Sans tight-set over Inter clarity."
+fonts: [Cal Sans, Inter, Cal Sans UI Variable Light]
+primary_color: "#0099ff"
+---
+
 # Design System Inspired by Cal.com
+
+> Grayscale confidence on white canvas, Cal Sans tight-set over Inter clarity.
 
 ## 1. Visual Theme & Atmosphere
 

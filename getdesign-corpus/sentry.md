@@ -1,4 +1,18 @@
+---
+slug: sentry
+name: Sentry
+url: https://sentry.io
+domain: sentry.io
+category: Dev Tools
+styles: [Dark, Minimal]
+tagline: "Deep purple-black canvas, lime-green CTAs, inset buttons that feel physically pressable."
+fonts: []
+primary_color: "#1f1633"
+---
+
 # Design System Inspired by Sentry
+
+> Deep purple-black canvas, lime-green CTAs, inset buttons that feel physically pressable.
 
 ## 1. Visual Theme & Atmosphere
 

@@ -1,4 +1,18 @@
+---
+slug: primer
+name: Primer
+url: https://primer.style
+domain: primer.style
+category: Design System
+styles: [Light, Minimal, Mono]
+tagline: "Mona Sans at weight 440, charcoal over white, every micro-context its own named token."
+fonts: [Mona Sans, Variable Font, ui-monospace]
+primary_color: "#59636e"
+---
+
 # Design System Inspired by Primer
+
+> Mona Sans at weight 440, charcoal over white, every micro-context its own named token.
 
 ## 1. Visual Theme & Atmosphere
 

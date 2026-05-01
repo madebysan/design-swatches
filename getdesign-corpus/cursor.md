@@ -1,4 +1,18 @@
+---
+slug: cursor
+name: Cursor
+url: https://cursor.com
+domain: cursor.com
+category: Dev Tools
+styles: [Dark, Minimal]
+tagline: "Cream canvas, CursorGothic compressed tight, oklab borders dissolving into warm near-black."
+fonts: [CursorGothic, jjannon, berkeleyMono]
+primary_color: "#f54e00"
+---
+
 # Design System Inspired by Cursor
+
+> Cream canvas, CursorGothic compressed tight, oklab borders dissolving into warm near-black.
 
 ## 1. Visual Theme & Atmosphere
 

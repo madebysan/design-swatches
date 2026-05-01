@@ -1,4 +1,18 @@
+---
+slug: hero-ui
+name: HeroUI
+url: https://heroui.com
+domain: heroui.com
+category: Design System
+styles: [Light, Colorful, Bold]
+tagline: "Electric blue and full-pill radii, Inter at 700 doing the structural heavy lifting."
+fonts: [Inter, ui-monospace]
+primary_color: "#dbeeff"
+---
+
 # Design System Inspired by HeroUI
+
+> Electric blue and full-pill radii, Inter at 700 doing the structural heavy lifting.
 
 ## 1. Visual Theme & Atmosphere
 

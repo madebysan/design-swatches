@@ -1,4 +1,18 @@
+---
+slug: stripe
+name: Stripe
+url: https://stripe.com
+domain: stripe.com
+category: Finance
+styles: [Minimal, Light, Gradient]
+tagline: "Sohne-var at weight 300, violet-navy palette, shadows tinted blue like atmosphere."
+fonts: [sohne-var, SourceCodePro]
+primary_color: "#533afd"
+---
+
 # Design System Inspired by Stripe
+
+> Sohne-var at weight 300, violet-navy palette, shadows tinted blue like atmosphere.
 
 ## 1. Visual Theme & Atmosphere
 

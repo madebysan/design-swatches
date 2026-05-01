@@ -1,4 +1,18 @@
+---
+slug: theverge
+name: The Verge
+url: https://theverge.com
+domain: theverge.com
+category: Media
+styles: [Dark, Colorful, Bold, Editorial]
+tagline: "Near-black canvas, Manuka at 107px, acid-mint borders where shadows would be."
+fonts: [Manuka, PolySans, PolySans Mono]
+primary_color: "#3cffd0"
+---
+
 # Design System Inspired by The Verge
+
+> Near-black canvas, Manuka at 107px, acid-mint borders where shadows would be.
 
 ## 1. Visual Theme & Atmosphere
 
