@@ -14,6 +14,16 @@ build/
 # Local logs / scratch
 *.log
 
+# Python
+__pycache__/
+*.pyc
+
+# Refero scrape — intermediate data, not for the repo (3,700+ files)
+research/refero-data/
+research/refero-converted/
+research/refero-styles.json
+research/designdotmd-catalog.json
+
 # Internal tracking — not for the repo
 plan.md
 backlog.md
