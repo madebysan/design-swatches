@@ -1,13 +1,15 @@
 ---
 name: design-md
-description: Generate a comprehensive DESIGN.md file by reverse-engineering the visual design system of any website from its URL. Extracts colors, typography, spacing, components, shadows, and responsive behavior into a structured 9-section markdown document optimized for AI agent consumption. Use when the user provides a website URL and wants a design system document, says 'design md', 'extract design system', 'reverse engineer the design', or wants to create a DESIGN.md for a site.
+description: Generate a comprehensive DESIGN.md file by reverse-engineering the visual design system of any website. Output follows Google's official design.md format (YAML tokens + markdown rationale, lint-validated). Use when the user provides a URL or screenshot and wants a design system document, says 'design md', 'extract design system', 'reverse engineer the design', or wants to create a DESIGN.md for a site.
 ---
 
 # Design MD Generator
 
 ## Purpose
 
-Reverse-engineer any website's visual design system from its URL and produce a structured DESIGN.md file following the 9-section format from VoltAgent/awesome-design-md. The output is optimized for AI coding agents to use as a reference when building UIs inspired by the target site.
+Reverse-engineer any website's visual design system from its URL and produce a structured DESIGN.md file in **Google's official `design.md` format** — YAML front matter with structured tokens, plus markdown body for rationale.
+
+The output passes `npx @google/design.md lint` and works as a portable visual identity reference for AI coding agents.
 
 ## When to Use
 
@@ -22,7 +24,7 @@ Reverse-engineer any website's visual design system from its URL and produce a s
 
 Before starting, check if a DESIGN.md already exists in the current project root. If it does:
 - Ask the user: update/merge into the existing one, or create a new standalone file (e.g., `DESIGN-{brand}.md`)?
-- If merging, read the existing DESIGN.md first and preserve any Decisions, Patterns, or Shared Components sections that contain project-specific content.
+- If merging, read the existing DESIGN.md first and preserve any project-specific Decisions, Patterns, or Shared Components sections.
 
 ### Phase 1: Gather Raw Design Data
 
@@ -37,103 +39,121 @@ Dembrandt extracts structured JSON with 15 top-level keys: colors (palette + sem
 
 Read that JSON as your authoritative data source. Dembrandt also writes a shallow `DESIGN.md` — **ignore it** and write your own deeper version using the JSON + the template + corpus exemplars.
 
-**Fallback path — WebFetch + Playwright** (only if dembrandt fails, e.g., heavy WAF, auth gate):
+**Fallback path — WebFetch + Playwright** (only if dembrandt fails):
 
 1. **Try WebFetch first** to get the HTML and inline/linked CSS.
-2. **If the site is JS-rendered, Framer-built, or returns mostly empty/CSS-only content**, use Playwright:
-   - Use `npx playwright screenshot {url} --full-page screenshot.png` for a visual reference
-   - Use a Playwright script to extract computed styles from key elements (body, h1-h6, buttons, cards, nav, inputs, links)
+2. **If JS-rendered or empty**, use Playwright:
+   - `npx playwright screenshot {url} --full-page screenshot.png` for a visual reference
+   - A Playwright script to extract computed styles from key elements (body, h1-h6, buttons, cards, nav, inputs, links)
 3. **For rich sites**, fetch 2-3 pages (homepage + pricing/docs/product) to discover more component variants.
 
 **Screenshot-only path** (when the user provides an image, not a URL):
 - Use Claude vision on the screenshot + 2-3 corpus exemplars as few-shot reference
 - Mark all values as estimated with `/* estimated */` since exact CSS isn't available
 
-Extract these categories of raw data:
+Extract these categories:
 
-**Colors:**
-- All hex values, rgb/rgba values, hsl values from CSS
-- CSS custom properties (`--color-*`, `--palette-*`, etc.)
-- Background colors on major elements (body, header, cards, buttons, footer)
-- Text colors at each hierarchy level
-- Border colors, shadow colors, accent colors
-- Semantic colors (error, success, warning, info states)
+**Colors:** all hex/rgb/rgba/hsl values, CSS custom properties, backgrounds, text colors, borders, semantic colors. **CRITICAL: Google's spec only accepts opaque 6-digit hex.** Plan to flatten any `rgba()`, 8-digit hex, or `oklab()` to opaque approximations.
 
-**Typography:**
-- Font families: custom fonts (via @font-face or CDN), system fonts, fallback stacks
-- OpenType features (`font-feature-settings`)
-- Variable font settings (`font-variation-settings`)
-- Font sizes across the hierarchy (hero/display down to micro/caption)
-- Font weights used and where they appear
-- Line heights, letter-spacing values
-- Text transforms (uppercase, capitalize)
+**Typography:** font families (custom + fallbacks), OpenType features, variable font settings, font sizes, weights, line heights, letter-spacing, text transforms.
 
-**Spacing & Layout:**
-- Padding and margin values (identify the base unit and scale)
-- Grid/container max-widths
-- Gap values in flex/grid layouts
-- Section spacing rhythm
+**Spacing & Layout:** padding/margin values, base unit and scale, grid/container widths, gap values.
 
-**Border Radius:**
-- All border-radius values, map to a scale (micro, standard, card, pill, circle)
+**Border Radius:** all radius values, mapped to a scale (typically `none / sm / md / lg / pill`).
 
-**Shadows:**
-- All box-shadow values, identify layers and opacity levels
-- Map to elevation levels (flat, subtle, card, elevated, dialog)
+**Shadows:** all box-shadow values, layered, mapped to elevation levels.
 
-**Components:**
-- Button variants (primary, secondary, ghost, outlined, pill, icon)
-- Card styles (background, border, radius, shadow)
-- Input/form styles (border, focus state, radius)
-- Navigation pattern (layout, colors, sticky behavior)
-- Badge/tag/pill styles
-- Image treatment (radius, overlay, aspect ratio)
+**Components:** button variants, card styles, input/form styles, navigation pattern, badge/tag styles, image treatment.
 
-**Responsive:**
-- Media query breakpoints
-- Layout changes at each breakpoint
-- Touch target sizing
+**Responsive:** media query breakpoints, layout changes, touch target sizing.
 
 ### Phase 2: Analyze and Interpret
 
 After gathering raw data, analyze it to identify:
 
-1. **Brand personality** — What adjectives describe the visual feel? (warm, minimal, luxurious, technical, playful, immersive)
-2. **Color strategy** — How many brand colors? Monochromatic, duotone, or multi-color? What role does each color play?
-3. **Typography signature** — What makes the type choices distinctive? Weight range, tracking behavior, OpenType features?
-4. **Geometric language** — Sharp corners vs. rounded? Pill shapes? Circles? What's the border-radius philosophy?
-5. **Shadow approach** — Flat, subtle, heavy? Brand-tinted? Multi-layered? How does elevation work?
-6. **Content strategy** — Photography-first? Illustration-driven? Text-heavy? Dark or light default?
+1. **Brand personality** — adjectives (warm, minimal, luxurious, technical, playful, immersive)
+2. **Color strategy** — monochromatic, duotone, multi-color? What role does each play?
+3. **Typography signature** — weight range, tracking behavior, OpenType features
+4. **Geometric language** — sharp corners vs. rounded? Pill shapes? Binary (sharp + pill) or graduated?
+5. **Shadow approach** — flat, subtle, heavy? Brand-tinted? Multi-layered?
+6. **Content strategy** — photography-first? Illustration-driven? Text-heavy? Dark or light default?
 
-### Phase 3: Generate DESIGN.md
+### Phase 3: Generate DESIGN.md (Google format)
 
-Write the document following the exact 9-section structure defined in `references/template.md`. Read that file before generating output.
+**Read the template before writing**: `references/template.md` defines the exact YAML schema and section structure.
 
-**Consult the corpus for prose voice.** Before writing, read `references/corpus-pointer.md` to locate 2-3 exemplar DESIGN.md files from the 71-file corpus that match the target's visual category (minimal tech, editorial dark, luxury auto, warm retail, etc.). Skim them for tone, depth, and Agent Prompt Guide richness. Don't copy their content — match their voice and depth.
+**Consult the corpus for prose voice**: read `references/corpus-pointer.md` to find 2-3 exemplar files in `getdesign-corpus-google/` that match the target's visual category (minimal tech, editorial dark, luxury auto, warm retail, etc.). Skim them for tone, depth, and Agent Prompt Guide richness. Don't copy content — match voice and depth.
 
-Key quality requirements:
-- Every color must include the hex/rgba value AND its role/usage
-- Every typography entry must include size, weight, line-height, letter-spacing
-- Component styles must include exact CSS values (not descriptions like "rounded corners")
-- Shadow values must be complete (full `box-shadow` syntax)
-- The "Visual Theme & Atmosphere" section must read like a design critic's review — evocative, specific, opinionated
-- The "Agent Prompt Guide" section must include copy-paste-ready component prompts with all CSS values inline
-- Do's and Don'ts must be specific to THIS design system — no generic advice
+**The output has two layers:**
 
-**If data is incomplete** (e.g., Playwright screenshot was the only source), be honest about what's estimated vs. extracted. Mark estimated values with `/* estimated */` so the user knows to verify.
+1. **YAML front matter** between `---` delimiters
+   - `version: alpha`, `name`, `description`
+   - `colors:` — opaque 6-digit hex only, organized by role
+   - `typography:` — 8-13 named tokens with fontFamily/fontSize/fontWeight/lineHeight/letterSpacing
+   - `spacing:` — brand-appropriate scale
+   - `rounded:` — only the values the brand actually uses
+   - `components:` — every variant as a structured entry, hover/focus = separate entries with suffix
 
-### Phase 4: Save and Report
+2. **Markdown body** in canonical section order
+   1. `# {Brand} Design System` — title
+   2. `## Overview` — was "Visual Theme & Atmosphere" in old corpus. 2-3 paragraphs design-critic prose, then 8-12 bullet "Key Characteristics"
+   3. `## Colors` — group by role, reference YAML tokens via `{colors.x}`
+   4. `## Typography` — font family note + token-to-use table
+   5. `## Layout` — spacing rationale
+   6. `## Elevation & Depth` — shadow ladder table + philosophy
+   7. `## Shapes` — radius scale table (pulled out as own section in Google format)
+   8. `## Components` — brief description per variant, full specs live in YAML
+   9. `## Do's and Don'ts` — brand-specific rules
+   10. `## Responsive Behavior` — preserved from old format (unknown section, parser keeps it)
+   11. `## Agent Prompt Guide` — preserved from old format (the copy-paste payload — keep this rich)
 
-1. Save the DESIGN.md to the project root (or current working directory if no project). Use the filename decided in Phase 0.
-2. If a Playwright screenshot was taken, mention it so the user can cross-reference.
-3. Report a summary: brand personality in one sentence, number of colors/type styles/components documented, and any gaps where data couldn't be extracted.
+**Critical rules to pre-empt lint failures:**
+
+- **No `rgba()`, no 8-digit hex, no `oklab()`** in YAML. Convert to opaque approximations and add `# was rgba(...) — Google format requires hex` comment.
+- **Every `{path.x}` token reference must resolve** to a declared token. Lint catches `broken-ref` errors.
+- **Padding values need units** — `12px 24px` not `12 24` or `0`.
+- **Radius values need units** — `0px` not `0`.
+- **Hover/focus/active states are separate component entries** — `button-primary` and `button-primary-hover` are two distinct entries.
+- **Component blocks reference base tokens, not raw hex** — `backgroundColor: "{colors.primary}"` not `backgroundColor: "#9891e1"`.
+
+**If data is incomplete** (e.g., Playwright screenshot only), be honest about what's estimated vs. extracted. Mark estimated values with `/* estimated */` in prose.
+
+### Phase 4: Lint and Save
+
+**Lint is mandatory.** Run before saving:
+
+```bash
+npx -y @google/design.md lint /path/to/your/DESIGN.md 2>&1 | tail -30
+```
+
+- **0 errors required.** Fix and re-lint until clean.
+- **Warnings are acceptable** but worth understanding:
+  - `orphaned-tokens` — color declared but no component references it. Often expected (shadow tints used only in prose).
+  - `contrast-ratio` — text/background pair below 4.5:1. Often intentional brand decision.
+  - `missing-typography` / `missing-primary` — rare; flag for user review.
+
+If errors persist:
+- Most common fix: a YAML color is `rgba()` or 8-digit hex. Convert to opaque 6-digit.
+- Second most common: a `{path.x}` reference points at an undeclared token. Either declare the token or fix the reference.
+- Third: padding/radius missing unit (`0` should be `0px`).
+
+Save the DESIGN.md to the project root (or current working directory). Use the filename decided in Phase 0.
+
+### Phase 5: Report
+
+Report a summary:
+- Brand personality in one sentence
+- Token counts (colors, typography, components)
+- Lint result (errors/warnings count)
+- Any data gaps where estimation was needed
+
+Optional: mention `npx @google/design.md export <file> --format tailwind` or `--format dtcg` as a downstream step if the user wants tokens in another format.
 
 ## Playwright Computed Styles Helper
 
-When WebFetch doesn't yield enough CSS data, run this via Bash to extract computed styles from key elements:
+When WebFetch doesn't yield enough CSS data, run this via Bash to extract computed styles:
 
 ```javascript
-// Save as /tmp/extract-styles.mjs and run with: npx playwright test --config=... or node with playwright
 const { chromium } = require('playwright');
 
 (async () => {
@@ -152,7 +172,6 @@ const { chromium } = require('playwright');
       results[sel] = {};
       for (const p of props) results[sel][p] = cs.getPropertyValue(p);
     }
-    // Also grab CSS custom properties from :root
     const rootStyles = getComputedStyle(document.documentElement);
     const rootVars = {};
     for (const sheet of document.styleSheets) {
@@ -164,7 +183,7 @@ const { chromium } = require('playwright');
             }
           }
         }
-      } catch(e) {} // cross-origin sheets
+      } catch(e) {}
     }
     results[':root-vars'] = rootVars;
     return results;
@@ -178,12 +197,12 @@ const { chromium } = require('playwright');
 ## Important Guidelines
 
 - **Exact values over approximations.** Extract actual CSS values. If a color is `#061b31`, write that — not "dark blue."
-- **Name colors descriptively.** "Rausch Red" for Airbnb's `#ff385c`, "Brand Indigo" for Linear's `#5e6ad2`. Use the brand's own naming if discoverable.
-- **Identify the font stack.** Custom fonts first, then the full fallback chain as declared in CSS.
-- **Capture OpenType features.** `"ss01"`, `"cv01"`, `"tnum"` etc. These define brand typography identity.
-- **Document the shadow philosophy.** Is it flat? Multi-layered? Brand-tinted? Heavy or subtle?
+- **Name colors descriptively** in prose. "Rausch Red" for Airbnb's `#ff385c`, "Brand Indigo" for Linear's `#5e6ad2`. The YAML token uses semantic role names (`primary`, `background`, `ink`).
+- **Capture OpenType features.** `"ss01"`, `"cv01"`, `"tnum"` etc. Goes in `typography.{token}.fontFeature`.
+- **Document the shadow philosophy** in prose. Is it flat? Multi-layered? Brand-tinted?
 - **Note the singular accent rule.** Many great design systems use ONE brand accent color. Identify it.
-- **Don't invent what isn't there.** If the site has no dark mode, don't create dark mode tokens. If there's no explicit spacing scale, derive one from observed values.
-- **CSS custom properties are gold.** If the site uses `--var-name` tokens, capture the naming convention.
-- **Multiple fetches may be needed.** The homepage alone may not reveal all component states. Fetch 2-3 key pages if the homepage is sparse.
-- **Mark uncertainty.** If a value was estimated from a screenshot rather than extracted from CSS, say so.
+- **Don't invent what isn't there.** If the site has no dark mode, don't create dark mode tokens. If there's no spacing scale, derive one from observed values.
+- **CSS custom properties are gold.** Capture `--var-name` naming conventions in prose; the YAML uses semantic names.
+- **Multiple fetches may be needed.** The homepage alone may not reveal all component states. Fetch 2-3 key pages if sparse.
+- **Mark uncertainty.** If a value was estimated from a screenshot, say so in prose.
+- **Lint before declaring done.** No file ships with errors.

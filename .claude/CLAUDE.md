@@ -14,16 +14,17 @@ design-swatches/
 │   ├── bentos/{slug}.html
 │   ├── thumbnails/{slug}.png
 │   └── shared/          # ⚠ gitignored — local tooling only
-├── getdesign-corpus/    # 167 canonical DESIGN.md files (deployed at /getdesign-corpus/)
+├── getdesign-corpus-google/ # 183 Google design.md files (deployed at /getdesign-corpus-google/)
+├── getdesign-corpus/        # legacy prose corpus, kept as source/reference
 └── research/            # refero scraping + conversion tooling
 ```
 
-Key relationship: each bento HTML links to `../../getdesign-corpus/{slug}.md` for "View full DESIGN.md →". This relative path **only resolves when the deploy root is the project root, not `explorer/`**.
+Key relationship: each bento HTML links to `../../getdesign-corpus-google/{slug}.md` for "View full DESIGN.md →". This relative path **only resolves when the deploy root is the project root, not `explorer/`**.
 
 ## Deploy gotchas (HARD-LEARNED)
 
 - **Vercel project**: `designmd` (custom domain `designmd.santiagoalonso.com`). Don't accidentally create a new project — `vercel link --project designmd --yes` to point `.vercel/` at the right one.
-- **Deploy root**: `/Users/san/Projects/_done/design-swatches/` (project root). NOT `explorer/`. If `.vercel/` ends up in `explorer/`, getdesign-corpus links 404.
+- **Deploy root**: `/Users/san/Projects/design-swatches/` (project root). NOT `explorer/`. If `.vercel/` ends up in `explorer/`, corpus links 404.
 - **vercel.json redirects**: don't switch `/` → `/explorer/` from a redirect to a rewrite. Rewrites silently serve the gallery HTML at `/` but break relative asset paths. The current setup also has `/bentos/*` → `/explorer/bentos/*` etc. fallbacks for old bookmarks.
 - **Pre-deploy check**: `cd <project root> && cat .vercel/project.json` should show `"projectName": "designmd"`. If it shows `"explorer"`, re-link.
 
@@ -67,7 +68,7 @@ Generated 2026-05-01 to ingest the 1,247 brands from styles.refero.design that a
 See `plan.md` "Future-batch refero workflow" — full step-by-step. Key points:
 1. Cherry-pick by recognizable + design-distinctive + category-gap fit
 2. Run mechanical converter
-3. Sonnet voice/rebucket pass → `getdesign-corpus/`
+3. Sonnet voice/rebucket pass → `getdesign-corpus/`, then convert/add the Google-format version to `getdesign-corpus-google/`
 4. Post-edit category strings to live taxonomy
 5. Opus bento generation
 6. Standard pipeline (modernize, screenshots, regen, deploy from project root)
