@@ -4,7 +4,6 @@
 183-brand Google design.md corpus with a browsable explorer and a Claude Code skill.</p>
 
 <p>
-  <img src="https://img.shields.io/badge/Claude-d97757" alt="Claude">
   <img src="https://img.shields.io/badge/JavaScript-f7df1e" alt="JavaScript">
   <img src="https://img.shields.io/badge/HTML-e34f26" alt="HTML">
   <img src="https://img.shields.io/badge/YAML-cb171e" alt="YAML">
