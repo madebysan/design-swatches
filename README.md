@@ -1,19 +1,24 @@
-<h1 align="center">Design Swatches</h1>
-<p align="center">Portable visual identity for AI coding agents.<br>
+<h1>Design Swatches</h1>
+
+<p>Portable visual identity for AI coding agents.<br>
 183-brand Google design.md corpus with a browsable explorer and a Claude Code skill.</p>
-<p align="center"><a href="https://designmd.santiagoalonso.com"><strong>Try it live →</strong></a></p>
+
+<p>
+  <img src="https://img.shields.io/badge/Claude-d97757" alt="Claude">
+  <img src="https://img.shields.io/badge/JavaScript-f7df1e" alt="JavaScript">
+  <img src="https://img.shields.io/badge/HTML-e34f26" alt="HTML">
+  <img src="https://img.shields.io/badge/YAML-cb171e" alt="YAML">
+</p>
+
+<p><a href="https://designmd.santiagoalonso.com">Live site</a></p>
 
 ![Design Swatches gallery](screenshot.png)
-
-![Sanity design swatch in dark mode](screenshot-detail.png)
-
----
-
-## What this is
 
 A corpus of 183 DESIGN.md files, one per real company, converted to Google's token-first `design.md` format. Plus a browsable gallery and the Claude Code skill that generated them.
 
 The premise: AI coding agents produce generic UIs unless you hand them a detailed design system reference. Most design systems live locked inside Figma, Storybook, or tokens JSON, none of which paste cleanly into an LLM chat. DESIGN.md is the pasteable form: structured tokens plus prose that describe a brand's visual identity well enough for an agent to rebuild a believable interface from it alone.
+
+![Sanity design swatch in dark mode](screenshot-detail.png)
 
 ## What's inside
 
